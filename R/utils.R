@@ -33,6 +33,9 @@ createdirs <- function(rootdir, dirs) {
   lapply(dirstocreate, dir.create)
 }
 
+#' Make DESCRIPTION
+#'
+#' @param name Package / project
 createdesc <- function(name) {
   desc <- devtools:::build_description(
     devtools:::extract_package_name(name)
