@@ -19,10 +19,8 @@ createBasicProject <- function(name,
                                git = TRUE,
                                readme = TRUE) {
   dir.create(name)
-  devtools:::use_template("template.Rproj",
-                          file.path(".", name, paste0(name, ".Rproj")),
-                          pkg = name)
-  createdesc(name)
+  devtools:::setup(name,check = FALSE)
+  file.remove(file.path(name,"NAMESPACE"))
 
   if (travis)
     devtools::use_travis(name)
