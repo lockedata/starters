@@ -1,10 +1,20 @@
 Package: pRojects
-Title: What the Package Does (one line, title case)
+Title: Manage Project Directories for R Projects
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Steph", "Locke", email = "steph@itsalocke.com", role = c("aut", "cre"))
+Description: Setting up R project directories for teaching, presenting, analysis,
+            package development can be a pain. pRojects shortcuts this by creating
+            folder structures and setting good defaults for you.
 Depends: R (>= 3.3.2)
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: covr
+Suggests: covr,
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Imports: devtools,
+    packrat
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1

@@ -1,0 +1,43 @@
+#' Create a very basic project directory
+#'
+#' @param name Project
+#' @param travis Configure Travis-CI
+#' @param packrat Configure Packrat
+#' @param git Configure Git
+#' @param readme Include a README
+#'
+#' @examples
+#' \dontrun{
+#' proj<-"basicproj"
+#' createBasicProject(proj)
+#' list.files(proj)
+#' unlink(proj)
+#' }
+createBasicProject <- function(name,
+                               travis = TRUE,
+                               packrat = TRUE,
+                               git = TRUE,
+                               readme = TRUE) {
+  dir.create(name)
+  devtools:::use_template("template.Rproj",
+                          file.path(".", name, paste0(name, ".Rproj")),
+                          pkg = name)
+  createdesc(name)
+
+  if (travis)
+    devtools::use_travis(name)
+
+  if (packrat) {
+    devtools::use_package("packrat", pkg = name)
+    packrat:::augmentRprofile(name)
+    packrat::init(name, enter = FALSE)
+  }
+
+  if (readme)
+    devtools::use_readme_rmd(name)
+
+  if (git)
+    devtools::use_git(pkg = name)
+
+  invisible(TRUE)
+}
