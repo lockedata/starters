@@ -27,22 +27,15 @@ use_package_doc <- function(pkg = ".") {
 #' @param pkg See [devtools::use_readme_rmd()]
 #'
 use_readme_rmd <- function(pkg = ".") {
-  pkg <- devtools:::as.package(pkg)
-
-  if (devtools:::uses_github(pkg$path)) {
-    pkg$github <- devtools:::github_info(pkg$path)
-  }
-  pkg$Rmd <- TRUE
-
-  devtools:::use_template("omni-README", save_as = "README.Rmd", data = pkg, pkg = pkg)
+  pkg <- as.package(pkg)
+  devtools:::use_template("README.Rmd", ignore = TRUE, open = TRUE, pkg = pkg)
   devtools:::use_build_ignore("^README-.*\\.png$", escape = FALSE, pkg = pkg)
-
-  if (devtools:::uses_git(pkg$path) && !file.exists(pkg$path, ".git", "hooks", "pre-commit")) {
+  if (devtools:::uses_git(pkg$path) && !file.exists(pkg$path, ".git",
+                                         "hooks", "pre-commit")) {
     message("* Adding pre-commit hook")
     devtools:::use_git_hook("pre-commit", devtools:::render_template("readme-rmd-pre-commit.sh"),
                  pkg = pkg)
   }
-
   invisible(TRUE)
 }
 
