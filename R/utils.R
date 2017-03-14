@@ -27,7 +27,7 @@ use_package_doc <- function(pkg = ".") {
 #' @param pkg See [devtools::use_readme_rmd()]
 #'
 use_readme_rmd <- function(pkg = ".") {
-  pkg <- as.package(pkg)
+  pkg <- devtools:::as.package(pkg)
   devtools:::use_template("README.Rmd", ignore = TRUE, open = TRUE, pkg = pkg)
   devtools:::use_build_ignore("^README-.*\\.png$", escape = FALSE, pkg = pkg)
   if (devtools:::uses_git(pkg$path) && !file.exists(pkg$path, ".git",
