@@ -14,7 +14,7 @@
 #' unlink(proj)
 #' }
 createTrainingProject <- function(name,
-                                  dirs = c("R", "data", "handouts", "slides"),
+                                  dirs = c("data", "handouts", "slides"),
                                   ...) {
   createBasicProject(name, ...)
   createdirs(name, dirs)
