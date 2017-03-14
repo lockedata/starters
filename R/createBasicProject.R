@@ -6,6 +6,8 @@
 #' @param git Configure Git
 #' @param readme Include a README
 #'
+#' @export
+#'
 #' @examples
 #' \dontrun{
 #' proj<-"basicproj"
