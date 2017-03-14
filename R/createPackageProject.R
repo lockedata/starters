@@ -25,7 +25,7 @@ createPackageProject <- function(name,
     devtools::use_mit_license(name)
     use_news_md(name)
     use_package_doc(name)
-    devtools::use_readme_rmd(name)
+    use_readme_rmd(name)
     devtools::use_testthat(name)
     devtools::use_vignette(name, name)
     devtools::use_git(pkg = name)

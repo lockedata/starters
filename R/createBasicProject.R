@@ -32,7 +32,7 @@ createBasicProject <- function(name,
   }
 
   if (readme)
-    devtools::use_readme_rmd(name)
+    use_readme_rmd(name)
 
   if (git)
     devtools::use_git(pkg = name)
