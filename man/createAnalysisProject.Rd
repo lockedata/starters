@@ -4,7 +4,7 @@
 \alias{createAnalysisProject}
 \title{Create a project laid out for an analysis project}
 \usage{
-createAnalysisProject(name, dirs = c("R", "data", "analysis", "outputs"), ...)
+createAnalysisProject(name, dirs = c("data", "analysis", "outputs"), ...)
 }
 \arguments{
 \item{name}{Project}

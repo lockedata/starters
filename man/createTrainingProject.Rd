@@ -4,7 +4,7 @@
 \alias{createTrainingProject}
 \title{Create a project laid out for producing training materials}
 \usage{
-createTrainingProject(name, dirs = c("R", "data", "handouts", "slides"), ...)
+createTrainingProject(name, dirs = c("data", "handouts", "slides"), ...)
 }
 \arguments{
 \item{name}{Project}
