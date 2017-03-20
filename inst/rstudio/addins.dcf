@@ -1,0 +1,6 @@
+Name: Create basic project
+Description: Creates and sets up a basic project with options for creating a
+  README, initialising git for version control, initialising packrat for package
+  management and setting up travis for continuous integration/testing.
+Binding: basicProjectGadget
+Interactive: true
