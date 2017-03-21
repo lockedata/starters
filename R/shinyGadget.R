@@ -28,7 +28,7 @@ projectGadget <- function() {
 
   server <- function(input, output, session) {
 
-    output$ui <- renderUI({
+    output$ui <- shiny::renderUI({
 
       switch(input$projectType,
 
