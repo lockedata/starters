@@ -1,6 +1,8 @@
-Name: Create basic project
-Description: Creates and sets up a basic project with options for creating a
-  README, initialising git for version control, initialising packrat for package
-  management and setting up travis for continuous integration/testing.
-Binding: basicProjectGadget
+Name: Create pRoject
+Description: Sets up and creates a project based on one of four template project
+  types - basic, analysis, package or training. To encourage best practice,
+  options allow for automated creation of a README, initialisation of git and
+  packrat for version control and package management, and setting up travis for
+  continuous integration, amongst other things.
+Binding: projectGadget
 Interactive: true
