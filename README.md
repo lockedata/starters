@@ -12,6 +12,11 @@ All projects get setup with Git and Travis by default.
 -   Use `createAnalysisProject` to get a project ready for a typical analysis project. It includes packrat to help with reproducibility.
 -   Use `createTrainingProject` to get a project ready for delivering training that often involves handouts and presentation materials. It includes packrat to help with reproducibility.
 
+RStudio gadget
+--------------
+
+If you want to set up a pRoject without using the R functions, @joncalder made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for making pRojects. Install the package to get it added to your RStudio instance.
+
 Up for grabs
 ------------
 
