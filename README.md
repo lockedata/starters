@@ -15,7 +15,7 @@ All projects get setup with Git and Travis by default.
 RStudio gadget
 --------------
 
-If you want to set up a pRoject without using the R functions, \[@jonmcalder\](<https://github.com/jonmcalder>) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for making pRojects. Install the package to get it added to your RStudio instance.
+If you want to set up a pRoject without using the R functions, [@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for making pRojects. Install the package to get it added to your RStudio instance.
 
 Up for grabs
 ------------
