@@ -11,3 +11,8 @@ All projects get setup with Git and Travis by default.
 -   Use `createPackageProject` to setup a project with code coverage, vignettes, unit testing etc out of the box
 -   Use `createAnalysisProject` to get a project ready for a typical analysis project. It includes packrat to help with reproducibility.
 -   Use `createTrainingProject` to get a project ready for delivering training that often involves handouts and presentation materials. It includes packrat to help with reproducibility.
+
+Up for grabs
+------------
+
+Make sure to check out the [Issues tab in GitHub](https://github.com/stephlocke/pRojects/issues)! We're making this project a great place to start contributing to R packages. We will help you through the process, especially if you pick up one of the [first-timers-only issues](https://github.com/stephlocke/pRojects/issues?q=is%3Aissue+is%3Aopen+label%3Afirst-timers-only). All work done on `pRojects` is subject to our [Code of Conduct](./CONDUCT.md).
