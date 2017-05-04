@@ -21,7 +21,7 @@ createBasicProject <- function(name,
                                git = TRUE,
                                readme = TRUE) {
   dir.create(name)
-  devtools:::setup(name,check = FALSE)
+  devtools::setup(name,check = FALSE)
   file.remove(file.path(name,"NAMESPACE"))
 
   if (travis)
