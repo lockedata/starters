@@ -12,6 +12,11 @@ All projects get setup with Git and Travis by default.
 -   Use `createAnalysisProject` to get a project ready for a typical analysis project. It includes packrat to help with reproducibility.
 -   Use `createTrainingProject` to get a project ready for delivering training that often involves handouts and presentation materials. It includes packrat to help with reproducibility.
 
+Install `pRojects`
+------------------
+
+    devtools::install_github("stephlocke/pRojects")
+
 RStudio gadget
 --------------
 

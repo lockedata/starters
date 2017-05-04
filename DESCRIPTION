@@ -5,7 +5,7 @@ Authors@R: person("Steph", "Locke", email = "steph@itsalocke.com", role = c("aut
 Description: Setting up R project directories for teaching, presenting, analysis,
             package development can be a pain. pRojects shortcuts this by creating
             folder structures and setting good defaults for you.
-Depends: R (>= 3.3.2)
+Depends: R (>= 3.3.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
