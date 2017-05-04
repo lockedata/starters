@@ -1,58 +1,30 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Analysis projects"
+author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Analysis projects}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+Analysis projects are projects where you perform some analysis and probably produce some outputs. 
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+The function `createAnalysisProject()` aims to facilitate your analysis by setting up a best practices template project.
 
-## Vignette Info
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+## Basic projects
+A basic project that's created with `createBasicProject()` is the fundamental building block for this type of project. Read more about [basic projects](BasicProjects.html) to get insight into them.
 
-## Styles
+## Setup
+At the moment, this facility will set up a basic project with some additional folders:
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+- data
+- analysis
+- outputs
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+## Make your own
+You could either make a wrapper around `createAnalysisProject()` to add additional setup steps, or you could make an alternative version of the function.
 
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+If you make your own, we'd be interested to hear about what you change/add and why. Please let us know on our [GitHub Issues](https://github.com/lockedata/pRojects/issues).

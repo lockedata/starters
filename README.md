@@ -2,7 +2,7 @@ pRojects
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Build Status](https://travis-ci.org/stephlocke/pRojects.svg?branch=master)](https://travis-ci.org/stephlocke/pRojects) [![Coverage Status](https://img.shields.io/coveralls/stephlocke/pRojects.svg)](https://coveralls.io/r/stephlocke/pRojects?branch=master)
+[![Build Status](https://travis-ci.org/lockedata/pRojects.svg?branch=master)](https://travis-ci.org/lockedata/pRojects) [![Coverage Status](https://img.shields.io/coveralls/lockedata/pRojects.svg)](https://coveralls.io/r/lockedata/pRojects?branch=master)
 
 This package is designed to take away some grunt work around setting up new projects.
 
