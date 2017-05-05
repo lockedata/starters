@@ -4,7 +4,13 @@
 \name{pRojects}
 \alias{pRojects}
 \alias{pRojects-package}
-\title{pRojects.}
+\title{pRojects: Manage project directories for R projects}
 \description{
-pRojects.
+Setting up R project directories can be a pain. pRojects provides shortcut
+functions which can help with this by creating template file and folder
+structures and setting good defaults for analysis, training, or package
+development projects.
+}
+\details{
+To learn more about pRojects, start with the vignettes: browseVignettes(package = "pRojects")
 }

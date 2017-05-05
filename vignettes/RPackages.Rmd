@@ -21,7 +21,7 @@ Best practices include:
 - Using a code coverage platform to check how much of your code is tested by unit tests
 - Licensing the package under MIT 
 - Creating package documentation (README, a vignette, a package doc, and a NEWS file)
-- Using git source control
+- Using [Git](https://git-scm.com/) source control
 - Developing the package subject to a Code of Conduct 
 
 

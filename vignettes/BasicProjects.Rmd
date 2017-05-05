@@ -25,12 +25,12 @@ We take the opinion that you should have these things by default but they can al
 ### README.Rmd
 A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. 
 
-We will create a README.Rmd so that you can write rmarkdown and produce a README.md suitable for GitHub. 
+We will create a README.Rmd so that you can write R Markdown and produce a README.md suitable for GitHub. 
 
 This enables you to show off your functions, your test results, etc
 
 ### Git
-We take the stance that you should be using source control and that the source control technology you should be using is [git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). For the most part, we expect your git repositories to live on [GitHub](https://github.com).
+We take the stance that you should be using source control and that the source control technology you should be using is [Git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). For the most part, we expect your Git repositories to live on [GitHub](https://github.com).
 
 When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
 
