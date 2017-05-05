@@ -25,7 +25,7 @@ We take the opinion that you should have these things by default but they can al
 ### README.Rmd
 A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. 
 
-We will create a README.Rmd so that you can write rmakdown and produce a README.md suitable for GitHub. 
+We will create a README.Rmd so that you can write rmarkdown and produce a README.md suitable for GitHub. 
 
 This enables you to show off your functions, your test results, etc
 
@@ -34,31 +34,31 @@ We take the stance that you should be using source control and that the source c
 
 When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
 
-As all the projects are created with an RStudio project, you should be able to wwork with the source control aspects within RStudio. You can also use your preferred shell or GUI to interact with it.
+As all the projects are created with an RStudio project, you should be able to work with the source control aspects within RStudio. You can also use your preferred shell or GUI to interact with it.
 
 [READ MORE ON GIT](https://git-scm.com/)
 
 ### Travis
-[Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and traianing projects as you can use it to build your reproducible documentation and host it for free on GitHub.
+[Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and training projects as you can use it to build your reproducible documentation and host it for free on GitHub.
 
 The basic project contains a [`.travis.yml` file](https://docs.travis-ci.com/user/customizing-the-build), which holds instructions for Travis. It won't interfere in any way with your development process, and to fully enable Travis you need to [turn on Travis-CI](https://travis-ci.org/getting_started) for the package. 
 
-[READ MORE ON TRAVIS_CI](https://docs.travis-ci.com/user/languages/r/)
+[READ MORE ON TRAVIS-CI](https://docs.travis-ci.com/user/languages/r/)
 
 ### Packrat
-[Packrat](https://rstudio.github.io/packrat/) is developed with reproducibility in mind. (Un)fortunately, R moves at an incredible place and there is the risk that if we're always using the latest versions of packages we can't make our results consistent over time or between users.
+[Packrat](https://rstudio.github.io/packrat/) is developed with reproducibility in mind. (Un)fortunately, R moves at an incredible pace and there is the risk that if we're always using the latest versions of packages we can't make our results consistent over time or between users.
 
 Packrat will build a manifest of package versions based on what you use at the point of production. It will then ensure people use the Packrat defined packages, instead of whatever version they have installed.
 
 [READ MORE ON PACKRAT](https://rstudio.github.io/packrat/)
 
 ### What else?
-We're working on what else should be an optional extra for basic projects and we want your opinions. Contribute your opinion on our [GitHub Issues]().
+We're working on what else should be an optional extra for basic projects and we want your opinions. Contribute your opinion on our [GitHub Issues](https://github.com/lockedata/pRojects/issues).
 
 ## Make your own
 We think `createBasicProject()` provides a strong foundation for creating project templates.
 
-To use it as a base for your own internal functions, you will need to Import the package and then do something like this as a function wrapper:
+To use it as a base for your own internal functions, you will need to import the package and then do something like this as a function wrapper:
 
 ```{r}
 createAnalysisProject <- function(name,

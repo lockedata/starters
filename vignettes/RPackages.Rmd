@@ -16,9 +16,9 @@ The package projects get a basic R package structure, i.e. a DESCRIPTION file an
 
 Best practices include:
 
-- Uses [`testthat`](http://r-pkgs.had.co.nz/tests.html) to unit test your code
+- Using [`testthat`](http://r-pkgs.had.co.nz/tests.html) to unit test your code
 - Using [Travis-CI](https://travis-ci.org/) for testing your package in a clean environment
-- Use a code coverage platform to check how much of your code is tested by unit tests
+- Using a code coverage platform to check how much of your code is tested by unit tests
 - Licensing the package under MIT 
 - Creating package documentation (README, a vignette, a package doc, and a NEWS file)
 - Using git source control
