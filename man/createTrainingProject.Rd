@@ -4,12 +4,17 @@
 \alias{createTrainingProject}
 \title{Create a project laid out for producing training materials}
 \usage{
-createTrainingProject(name, dirs = c("data", "handouts", "slides"), ...)
+createTrainingProject(name, dirs = c("data", "handouts", "slides"),
+  handoutEngine = "rmarkdown", slideEngine = "rmarkdown", ...)
 }
 \arguments{
 \item{name}{Project}
 
 \item{dirs}{Directories to create}
+
+\item{handoutEngine}{Package for building handouts}
+
+\item{slideEngine}{Package for building slides}
 
 \item{...}{Pass to \code{\link[=createBasicProject]{createBasicProject()}}}
 }
