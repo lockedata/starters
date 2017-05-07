@@ -17,6 +17,7 @@ VignetteBuilder: knitr
 Imports: devtools,
     packrat,
     shiny,
-    miniUI
+    miniUI,
+    methods
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1

@@ -26,7 +26,7 @@ createTrainingProject <- function(name,
   slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs"))
 
   # Installation dir
-  usePackrat <- !hasArg("packrat")
+  usePackrat <- !methods::hasArg("packrat")
   if (!usePackrat)
     usePackrat <- list(...)[["packrat"]]
   installDir <- ifelse(usePackrat, name, .libPaths())
