@@ -55,7 +55,13 @@ projectGadget <- function() {
                         shiny::selectInput("dirs", label = "Directories",
                           choices = c("data", "handouts", "slides"),
                           selected = c("data", "handouts", "slides"),
-                          multiple = TRUE)
+                          multiple = TRUE),
+                        shiny::radioButtons("handoutE", label = "Handouts",
+                                            choices=c("rmarkdown","bookdown"),
+                                            selected = "rmarkdown"),
+                        shiny::radioButtons("slideE", label = "Slides",
+                                            choices=c("rmarkdown","revealjs"),
+                                            selected = "rmarkdown")
         )
 
       )
@@ -82,6 +88,8 @@ projectGadget <- function() {
 
         "Training" = createTrainingProject(
                         name = input$name, dirs = input$dirs,
+                        handoutEngine = input$handoutE,
+                        slideEngine = input$slideE,
                         readme = input$readme, git = input$git,
                         travis = input$travis, packrat = input$packrat)
 
