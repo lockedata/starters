@@ -43,7 +43,7 @@ createTrainingProject <- function(name,
     if (handoutEngine == "bookdown") {
       message("bookdown demo added")
       file.copy(
-        system.file("templates","bookdown-demo", package = "pRojects"),
+        system.file("templates","bookdown", package = "pRojects"),
         file.path(name,"handouts"),
         overwrite = TRUE,
         recursive = TRUE
