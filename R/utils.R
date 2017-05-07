@@ -52,7 +52,7 @@ use_readme_rmd <- function(pkg = ".") {
 createdirs <- function(rootdir, dirs) {
   stopifnot(length(dirs) > 0)
   dirstocreate <- file.path(rootdir, dirs)
-  lapply(dirstocreate, dir.create)
+  lapply(dirstocreate, function(x){if(!dir.exists(x)) dir.create(x)})
 }
 
 #' Make DESCRIPTION

@@ -1,6 +1,6 @@
 ---
 title: "Training projects"
-author: "Vignette Author"
+author: "Steph Locke"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -22,6 +22,15 @@ At the moment, this facility will set up a basic project with some additional fo
 - data
 - handouts
 - slides
+
+## Document packages
+If you make a `handouts/` or `slides` directory (both of which are created with the defaults), we will add rmarkdown to the project's DESCRIPTION file. 
+
+You can specify an alternative package for your handouts via `handoutEngine`. At present, the only other supported package is [`bookdown`](https://cran.r-project.org/package=bookdown). If you select `bookdown` as the `handoutEngine`, `bookdown` will be added to the DESCRIPTION file and the bookdown-demo files will be added to the `handouts/` directory.
+
+You can specify an alternative package for your slides via `slideEngine`. At present, the only other supported package is [`revealjs`](https://cran.r-project.org/package=revealjs). 
+
+If the `packrat` argument is not supplied or is set to `TRUE`, we will update the packrat manifest so that the packages are available when you open the project.
 
 ## Make your own
 You could either make a wrapper around `createTrainingProject()` to add additional setup steps, or you could make an alternative version of the function.
