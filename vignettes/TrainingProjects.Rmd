@@ -26,7 +26,7 @@ At the moment, this facility will set up a basic project with some additional fo
 ## Document packages
 If you make a `handouts/` or `slides` directory (both of which are created with the defaults), we will add rmarkdown to the project's DESCRIPTION file. 
 
-You can specify an alternative package for your handouts via `handoutEngine`. At present, the only other supported package is [`bookdown`](https://cran.r-project.org/package=bookdown). If you select `bookdown` as the `handoutEngine`, `bookdown` will be added to the DESCRIPTION file and the bookdown-demo files will be added to the `handouts/` directory.
+You can specify an alternative package for your handouts via `handoutEngine`. At present, two additional package options are supported. The first is [`bookdown`](https://cran.r-project.org/package=bookdown), and the second is [`tufte`](https://cran.r-project.org/package=tufte). If you select `bookdown` or `tufte` as the `handoutEngine`, the relevant package will be added to the DESCRIPTION file and the demo files for this handout format will be added to the `handouts/` directory.
 
 You can specify an alternative package for your slides via `slideEngine`. At present, the only other supported package is [`revealjs`](https://cran.r-project.org/package=revealjs). 
 

@@ -22,7 +22,7 @@ createTrainingProject <- function(name,
                                   ...) {
   # Supported packages
   handoutEngine <-
-    match.arg(handoutEngine, c("rmarkdown", "bookdown"))
+    match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
   slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs"))
 
   # Installation dir
@@ -38,12 +38,12 @@ createTrainingProject <- function(name,
 
   # Handouts prep
   if ("handouts" %in% dirs) {
-    devtools:::add_desc_package(name,"Imports",handoutEngine)
+    devtools:::add_desc_package(name, "Imports", handoutEngine)
 
-    if (handoutEngine == "bookdown") {
-      message("bookdown demo added")
+    if (handoutEngine != "rmarkdown") {
+      message(paste(handoutEngine, "demo added"))
       file.copy(
-        list.files(system.file("templates","bookdown", package = "pRojects"),full.names = TRUE),
+        list.files(system.file("templates", handoutEngine, package = "pRojects"), full.names = TRUE),
         file.path(name,"handouts"),
         overwrite = TRUE,
         recursive = TRUE
@@ -57,7 +57,7 @@ createTrainingProject <- function(name,
     devtools:::add_desc_package(name,"Imports",slideEngine)
   }
 
-  if(usePackrat){
+  if (usePackrat) {
     packrat::snapshot(name)
     packrat::restore(name)
   }
