@@ -1,7 +1,10 @@
 Package: pRojects
 Title: Manage Project Directories for R Projects
-Version: 0.0.1.9001
-Authors@R: person("Steph", "Locke", email = "steph@itsalocke.com", role = c("aut", "cre"))
+Version: 0.0.1.9002
+Authors@R: c(
+  person("Steph", "Locke", email = "steph@itsalocke.com", role = c("aut", "cre")),
+  person("Jon", "Calder", email = "jonmcalder@gmail.com", role = "aut")
+  )
 Description: Setting up R project directories for teaching, presenting, analysis,
             package development can be a pain. pRojects shortcuts this by creating
             folder structures and setting good defaults for you.

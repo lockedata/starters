@@ -57,7 +57,7 @@ projectGadget <- function() {
                           selected = c("data", "handouts", "slides"),
                           multiple = TRUE),
                         shiny::radioButtons("handoutE", label = "Handouts",
-                                            choices=c("rmarkdown","bookdown"),
+                                            choices=c("rmarkdown","bookdown","tufte"),
                                             selected = "rmarkdown"),
                         shiny::radioButtons("slideE", label = "Slides",
                                             choices=c("rmarkdown","revealjs"),
