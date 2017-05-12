@@ -24,11 +24,11 @@ At the moment, this facility will set up a basic project with some additional fo
 - slides
 
 ## Document packages
-If you make a `handouts/` or `slides` directory (both of which are created with the defaults), we will add rmarkdown to the project's DESCRIPTION file. 
+If you make a `handouts/` or `slides/` directory (both of which are created with the defaults), we will add `rmarkdown` to the project's DESCRIPTION file. 
 
 You can specify an alternative package for your handouts via `handoutEngine`. At present, two additional package options are supported. The first is [`bookdown`](https://cran.r-project.org/package=bookdown), and the second is [`tufte`](https://cran.r-project.org/package=tufte). If you select `bookdown` or `tufte` as the `handoutEngine`, the relevant package will be added to the DESCRIPTION file and the demo files for this handout format will be added to the `handouts/` directory.
 
-You can specify an alternative package for your slides via `slideEngine`. At present, the only other supported package is [`revealjs`](https://cran.r-project.org/package=revealjs). 
+You can also specify an alternative package for your slides via `slideEngine`. The currently supported (most popular) package options are [`revealjs`](https://cran.r-project.org/package=revealjs) and [`xaringan`](https://cran.r-project.org/package=xaringan). Note also that the default `slideEngine` option (`rmarkdown`) caters for a number of additional R Markdown presentation formats such as `io_slides`, `slidy`, and `beamer` since these formats do not have additional package dependencies (although in the case of `beamer`, you'll need to have `TeX` installed). If you are using RStudio, you can find R Markdown templates for these presentation formats by going to File -> New File -> R Markdown -> Presentation.
 
 If the `packrat` argument is not supplied or is set to `TRUE`, we will update the packrat manifest so that the packages are available when you open the project.
 
