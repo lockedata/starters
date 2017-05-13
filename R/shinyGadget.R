@@ -6,7 +6,7 @@ projectGadget <- function() {
       shiny::inputPanel(
         shiny::selectInput(
           "projectType", label = "Project Type",
-          choices = c("Basic","Analysis","Package","Training"),
+          choices = c("Basic", "Analysis", "Package", "Training"),
           selected = "Basic"
         ),
         shiny::textInput("name", "Project Name")
@@ -57,10 +57,10 @@ projectGadget <- function() {
                           selected = c("data", "handouts", "slides"),
                           multiple = TRUE),
                         shiny::radioButtons("handoutE", label = "Handouts",
-                                            choices=c("rmarkdown","bookdown","tufte"),
+                                            choices = c("rmarkdown", "bookdown", "tufte"),
                                             selected = "rmarkdown"),
                         shiny::radioButtons("slideE", label = "Slides",
-                                            choices=c("rmarkdown","revealjs"),
+                                            choices = c("rmarkdown", "revealjs", "xaringan"),
                                             selected = "rmarkdown")
         )
 

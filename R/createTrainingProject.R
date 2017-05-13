@@ -21,9 +21,8 @@ createTrainingProject <- function(name,
                                   slideEngine = "rmarkdown",
                                   ...) {
   # Supported packages
-  handoutEngine <-
-    match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
-  slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs"))
+  handoutEngine <- match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
+  slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs", "xaringan"))
 
   # Installation dir
   usePackrat <- !methods::hasArg("packrat")
@@ -54,7 +53,18 @@ createTrainingProject <- function(name,
 
   # Slides prep
   if ("slides" %in% dirs) {
-    devtools:::add_desc_package(name,"Imports",slideEngine)
+    devtools:::add_desc_package(name, "Imports", slideEngine)
+
+    if (slideEngine != "rmarkdown") {
+      message(paste(slideEngine, "demo added"))
+      file.copy(
+        list.files(system.file("templates", slideEngine, package = "pRojects"), full.names = TRUE),
+        file.path(name, "slides"),
+        overwrite = TRUE,
+        recursive = TRUE
+      )
+    }
+
   }
 
   if (usePackrat) {
