@@ -1,0 +1,3 @@
+template:
+  package: lockedatapkg
+  default_assets: false
