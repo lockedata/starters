@@ -1,0 +1,16 @@
+Binding: createPackageProject
+Title: Package Project (pRojects)
+Subtitle: Create a package the devtools way
+
+Parameter: bestPractices
+Widget: CheckboxInput
+Label: Adopt Best Practice?
+Default: On
+Position: left
+
+Parameter: coverage
+Widget: SelectInput
+Label: Code Coverage
+Fields: codecov, coveralls
+Default: codecov
+Position: left

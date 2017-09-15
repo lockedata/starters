@@ -1,0 +1,41 @@
+Binding: createTrainingProject
+Title: Training Project (pRojects)
+Subtitle: Create a project laid out for producing training materials
+
+Parameter: handoutEngine
+Widget: SelectInput
+Label: Handouts
+Fields: rmarkdown, bookdown, tufte
+Default: rmarkdown
+Position: left
+
+Parameter: slideEngine
+Widget: SelectInput
+Label: Slides
+Fields: rmarkdown, revealjs, xaringan
+Default: rmarkdown
+Position: right
+
+Parameter: readme
+Widget: CheckboxInput
+Label: Create README
+Default: On
+Position: left
+
+Parameter: travis
+Widget: CheckboxInput
+Label: Use Travis
+Default: On
+Position: left
+
+Parameter: git
+Widget: CheckboxInput
+Label: Use Git
+Default: On
+Position: right
+
+Parameter: packrat
+Widget: CheckboxInput
+Label: Use Packrat
+Default: On
+Position: right
