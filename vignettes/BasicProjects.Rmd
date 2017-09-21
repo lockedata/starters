@@ -45,12 +45,17 @@ The basic project contains a [`.travis.yml` file](https://docs.travis-ci.com/use
 
 [READ MORE ON TRAVIS-CI](https://docs.travis-ci.com/user/languages/r/)
 
-### Packrat
-[Packrat](https://rstudio.github.io/packrat/) is developed with reproducibility in mind. (Un)fortunately, R moves at an incredible pace and there is the risk that if we're always using the latest versions of packages we can't make our results consistent over time or between users.
+### Reproducibility
+A problem with programming using other people's code is that other people's code changes. This risks your results changing over time. To prevent this, there are some R packages which can help us address this.
 
-Packrat will build a manifest of package versions based on what you use at the point of production. It will then ensure people use the Packrat defined packages, instead of whatever version they have installed.
+[`packrat`](https://rstudio.github.io/packrat/) will build a manifest of package versions based on what you use at the point of production. It will then ensure people use the Packrat defined packages, instead of whatever version they have installed.
 
 [READ MORE ON PACKRAT](https://rstudio.github.io/packrat/)
+
+[`checkpoint`](https://rdrr.io/cran/checkpoint) moves away from using your default CRAN repository and points to a specific repository that has daily snapshots. You then work with CRAN as of a specific date (by default the date you created the project). This is lighter weight than `packrat` but does not help with non-CRAN packages.
+
+
+[READ MORE ON CHECKPOINT](https://rdrr.io/cran/checkpoint)
 
 ### What else?
 We're working on what else should be an optional extra for basic projects and we want your opinions. Contribute your opinion on our [GitHub Issues](https://github.com/lockedata/pRojects/issues).

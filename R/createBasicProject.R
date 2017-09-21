@@ -2,7 +2,7 @@
 #'
 #' @param name Project
 #' @param travis Configure Travis-CI
-#' @param packrat Configure Packrat
+#' @param packagedeps Set a tool for package reproducibility
 #' @param git Configure Git
 #' @param readme Include a README
 #'
@@ -17,9 +17,10 @@
 #' }
 createBasicProject <- function(name,
                                travis = TRUE,
-                               packrat = TRUE,
+                               packagedeps = "packrat",
                                git = TRUE,
                                readme = TRUE) {
+  packagedeps<-match.arg(packagedeps, c("none","packrat","checkpoint"))
   dir.create(name)
   devtools::setup(name,check = FALSE)
   file.remove(file.path(name,"NAMESPACE"))
@@ -27,10 +28,15 @@ createBasicProject <- function(name,
   if (travis)
     devtools::use_travis(name)
 
-  if (packrat) {
+  if (packagedeps == "packrat") {
     devtools::use_package("packrat", pkg = name)
     packrat:::augmentRprofile(name)
     packrat::init(name, enter = FALSE)
+  }
+
+  if (packagedeps == "checkpoint") {
+    devtools::use_package("checkpoint", pkg = name)
+    checkpoint::setSnapshot(Sys.Date(), online = TRUE)
   }
 
   if (readme)

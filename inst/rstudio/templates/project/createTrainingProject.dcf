@@ -34,8 +34,8 @@ Label: Use Git
 Default: On
 Position: right
 
-Parameter: packrat
-Widget: CheckboxInput
-Label: Use Packrat
-Default: On
-Position: right
+Parameter: packagedeps
+Widget: SelectInput
+Label: Which reproducibility package fields to use
+Default: packrat
+Fields: none, packrat, checkpoint
