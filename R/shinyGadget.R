@@ -20,7 +20,7 @@ projectGadget <- function() {
           shiny::checkboxInput("readme", "Create README", value = TRUE),
           shiny::checkboxInput("git", "Use Git", value = TRUE),
           shiny::checkboxInput("travis", "Use Travis", value = TRUE),
-          shiny::dropdownInput("packagedeps", c("none","packrat","checkpoint"), value = "packrat")
+          shiny::selectInput("packagedeps",label="Use a package for handling reproducibility",choices =  c("none","packrat","checkpoint"), selected = "packrat")
         )
       )
     )
