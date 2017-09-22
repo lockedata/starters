@@ -22,6 +22,7 @@ Imports: devtools,
     shiny,
     miniUI,
     methods,
-    checkpoint
+    checkpoint,
+    bookdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
