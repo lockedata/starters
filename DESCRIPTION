@@ -24,6 +24,7 @@ Imports: devtools,
     packrat,
     shiny,
     miniUI,
-    checkpoint
+    checkpoint,
+    knitr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
