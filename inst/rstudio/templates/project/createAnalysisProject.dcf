@@ -22,6 +22,7 @@ Position: right
 
 Parameter: packagedeps
 Widget: SelectInput
-Label: Which reproducibility package fields to use
+Label: Reproducibility
 Default: packrat
 Fields: none, packrat, checkpoint
+Position: left
