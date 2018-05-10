@@ -2,6 +2,7 @@ pRojects
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Build Status](https://travis-ci.org/lockedata/pRojects.svg?branch=master)](https://travis-ci.org/lockedata/pRojects) [![Coverage Status](https://img.shields.io/coveralls/lockedata/pRojects.svg)](https://coveralls.io/r/lockedata/pRojects?branch=master)
 
 This package is designed to take away some grunt work around setting up new projects.
