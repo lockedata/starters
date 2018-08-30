@@ -37,7 +37,8 @@ createTrainingProject <- function(name,
 
   # Handouts prep
   if ("handouts" %in% dirs) {
-    devtools:::add_desc_package(name, "Imports", handoutEngine)
+    usethis::use_package(package = handoutEngine,
+                         type = "Imports")
 
     if (handoutEngine != "rmarkdown") {
       message(paste(handoutEngine, "demo added"))
