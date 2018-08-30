@@ -1,3 +1,5 @@
+^_pkgdown\.yml$
+^docs$
 ^\.github$
 ^CODE_OF_CONDUCT\.md$
 ^.*\.Rproj$
