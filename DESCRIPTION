@@ -12,7 +12,11 @@ Authors@R:
              email = "jonmcalder@gmail.com"),
       person(given = "Locke Data",
              role = "fnd",
-             comment = "https://itsalocke.com"))
+             comment = "https://itsalocke.com"),
+      person(given = "Maëlle",
+             family = "Salmon",
+             role = "ctb",
+             email = "maelle.salmon@yahoo.se"))
 Description: Setting up R project directories for teaching, presenting, analysis,
             package development can be a pain. pRojects shortcuts this by creating
             folder structures and setting good defaults for you.
@@ -31,7 +35,12 @@ Imports:
     shiny,
     miniUI,
     methods,
-    usethis
+    usethis,
+    whoami,
+    humaniformat,
+    glue
+Remotes:
+    r-lib/whoami
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 URL: https://github.com/lockedata/pRojects, https://itsalocke.com/pRojects/

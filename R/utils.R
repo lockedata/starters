@@ -59,8 +59,21 @@ createdirs <- function(rootdir, dirs) {
 #'
 #' @param name Package / project
 createdesc <- function(name) {
-  desc <- devtools:::build_description(
-    devtools:::extract_package_name(name)
-  )
-  devtools:::write_dcf(file.path(name,"DESCRIPTION"),desc)
+
+  usethis::use_description(fields = list("Authors@R" = get_whoami_author()))
+}
+
+
+# using whoami
+get_whoami_author <- function(){
+  author <- whoami::whoami()
+
+  fullname <-  iconv(author["fullname"], from = "UTF-8", to = "LATIN1")
+  author_name <- humaniformat::parse_names(fullname)
+
+  middle <- ifelse(is.na(author_name$middle), "",
+                   glue::glue("middle = '{author_name$middle}',"))
+
+  author_person <- glue::glue("person(given ='{author_name$first}', {middle}family ='{author_name$last_name}', email = '{author['email_address']}', role = c('aut', 'cre'))")
+  author_person
 }

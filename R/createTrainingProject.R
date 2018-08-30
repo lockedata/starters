@@ -54,7 +54,8 @@ createTrainingProject <- function(name,
 
   # Slides prep
   if ("slides" %in% dirs) {
-    devtools:::add_desc_package(name, "Imports", slideEngine)
+    usethis::use_package(package = slideEngine,
+                         type = "Imports")
 
     if (slideEngine != "rmarkdown") {
       message(paste(slideEngine, "demo added"))
