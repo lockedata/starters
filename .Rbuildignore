@@ -8,3 +8,4 @@
 ^README-.*\.png$
 ^packrat/
 ^\.Rprofile$
+^images/
