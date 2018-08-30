@@ -5,8 +5,8 @@
 \title{Create a package the devtools way with a number of infrastructure
 commands executed to save you hassle}
 \usage{
-createPackageProject(name, bestPractices = TRUE, coverage = c("codecov",
-  "coveralls"))
+createPackageProject(name, bestPractices = TRUE,
+  coverage = c("codecov", "coveralls"))
 }
 \arguments{
 \item{name}{Project / package name}
