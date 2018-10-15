@@ -16,7 +16,17 @@
 createAnalysisProject <- function(name,
                                   dirs = c("data", "analysis", "outputs"),
                                   ...) {
+  cran <- available::available_on_cran(name)
+  gh <- available::available_on_github(name)
+  if(cran == FALSE){
+    stop('package name is taken on CRAN')
+  }
+  if(gh$available == FALSE){
+    stop('package name is taken on Github')
+  }
   createBasicProject(name, ...)
   createdirs(name, dirs)
   invisible(TRUE)
+
+  
 }

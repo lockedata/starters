@@ -20,6 +20,14 @@ createTrainingProject <- function(name,
                                   handoutEngine = "rmarkdown",
                                   slideEngine = "rmarkdown",
                                   ...) {
+  cran <- available::available_on_cran(name)
+  gh <- available::available_on_github(name)
+  if(cran == FALSE){
+    stop('package name is taken on CRAN')
+  }
+  if(gh$available == FALSE){
+    stop('package name is taken on Github')
+  }
   # Supported packages
   handoutEngine <- match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
   slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs", "xaringan"))

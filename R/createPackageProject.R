@@ -17,6 +17,14 @@
 createPackageProject <- function(name,
                                  bestPractices = TRUE,
                                  coverage = c("codecov", "coveralls")) {
+  cran <- available::available_on_cran(name)
+  gh <- available::available_on_github(name)
+  if(cran == FALSE){
+    stop('package name is taken on CRAN')
+  }
+  if(gh$available == FALSE){
+    stop('package name is taken on Github')
+  }
   devtools::create(name)
   if (bestPractices) {
     devtools::use_travis(name)

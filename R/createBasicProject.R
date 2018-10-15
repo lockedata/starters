@@ -20,6 +20,15 @@ createBasicProject <- function(name,
                                packrat = TRUE,
                                git = TRUE,
                                readme = TRUE) {
+
+  cran <- available::available_on_cran(name)
+  gh <- available::available_on_github(name)
+  if(cran == FALSE){
+    stop('package name is taken on CRAN')
+  }
+  if(gh$available == FALSE){
+    stop('package name is taken on Github')
+  }
   dir.create(name)
   devtools::setup(name,check = FALSE)
   file.remove(file.path(name,"NAMESPACE"))
@@ -38,6 +47,5 @@ createBasicProject <- function(name,
 
   if (git)
     devtools::use_git(pkg = name)
-
   invisible(TRUE)
 }
