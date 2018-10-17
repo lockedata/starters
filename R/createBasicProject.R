@@ -20,32 +20,25 @@ createBasicProject <- function(name,
                                packrat = TRUE,
                                git = TRUE,
                                readme = TRUE) {
+  if(is_available(name)){
+    dir.create(name)
+    devtools::setup(name,check = FALSE)
+    file.remove(file.path(name,"NAMESPACE"))
 
-  cran <- available::available_on_cran(name)
-  gh <- available::available_on_github(name)
-  if(cran == FALSE){
-    stop('package name is taken on CRAN')
+    if (travis)
+      devtools::use_travis(name)
+
+    if (packrat) {
+      devtools::use_package("packrat", pkg = name)
+      packrat:::augmentRprofile(name)
+      packrat::init(name, enter = FALSE)
+    }
+
+    if (readme)
+      use_readme_rmd(name)
+
+    if (git)
+      devtools::use_git(pkg = name)
   }
-  if(gh$available == FALSE){
-    stop('package name is taken on Github')
-  }
-  dir.create(name)
-  devtools::setup(name,check = FALSE)
-  file.remove(file.path(name,"NAMESPACE"))
-
-  if (travis)
-    devtools::use_travis(name)
-
-  if (packrat) {
-    devtools::use_package("packrat", pkg = name)
-    packrat:::augmentRprofile(name)
-    packrat::init(name, enter = FALSE)
-  }
-
-  if (readme)
-    use_readme_rmd(name)
-
-  if (git)
-    devtools::use_git(pkg = name)
   invisible(TRUE)
 }
