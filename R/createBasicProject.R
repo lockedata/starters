@@ -20,24 +20,25 @@ createBasicProject <- function(name,
                                packrat = TRUE,
                                git = TRUE,
                                readme = TRUE) {
-  dir.create(name)
-  devtools::setup(name,check = FALSE)
-  file.remove(file.path(name,"NAMESPACE"))
+  if(is_available(name)){
+    dir.create(name)
+    devtools::setup(name,check = FALSE)
+    file.remove(file.path(name,"NAMESPACE"))
 
-  if (travis)
-    devtools::use_travis(name)
+    if (travis)
+      devtools::use_travis(name)
 
-  if (packrat) {
-    devtools::use_package("packrat", pkg = name)
-    packrat:::augmentRprofile(name)
-    packrat::init(name, enter = FALSE)
+    if (packrat) {
+      devtools::use_package("packrat", pkg = name)
+      packrat:::augmentRprofile(name)
+      packrat::init(name, enter = FALSE)
+    }
+
+    if (readme)
+      use_readme_rmd(name)
+
+    if (git)
+      devtools::use_git(pkg = name)
   }
-
-  if (readme)
-    use_readme_rmd(name)
-
-  if (git)
-    devtools::use_git(pkg = name)
-
   invisible(TRUE)
 }
