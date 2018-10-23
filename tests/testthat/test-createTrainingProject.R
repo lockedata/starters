@@ -1,4 +1,15 @@
 context("createTrainingProject")
+tmp <- tempdir(check = TRUE)
+cur <- getwd()
+
+setup({
+  setwd(tmp)
+})
+teardown({
+  fs::dir_delete(tmp)
+  setwd(cur)
+})
+
 
 project_name <- "trainingProject2"
 
@@ -27,7 +38,7 @@ unlink(project_name, recursive = TRUE, force = TRUE)
 test_that("createTrainingProject() creates as expected when using bookdown and revealjs",{
 
   proj <- try(
-    createTrainingProject(project_name, 
+    createTrainingProject(project_name,
       handoutEngine = "bookdown", slideEngine = "revealjs")
     )
   if(!inherits(proj, 'try-error')){
@@ -51,7 +62,7 @@ unlink(project_name, recursive = TRUE, force = TRUE)
 test_that("createTrainingProject() creates as expected when using tufte and xaringan",{
 
   proj <- try(
-    createTrainingProject(project_name, 
+    createTrainingProject(project_name,
       handoutEngine = "tufte", slideEngine = "xaringan")
     )
 

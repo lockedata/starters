@@ -20,6 +20,8 @@ createPackageProject <- function(name,
   tryCatch({
     if (is_available(name)) {
       usethis::create_package(name, open = FALSE)
+      fs::file_chmod(file.path(name, "DESCRIPTION"),
+                     "rwx")
       usethis::proj_set(file.path(name))
       if (bestPractices) {
         usethis::use_template("travis.yml",
@@ -33,7 +35,7 @@ createPackageProject <- function(name,
         usethis::use_package_doc()
         usethis::use_readme_rmd(open = FALSE)
         usethis::use_testthat()
-        usethis::use_vignette(name, open = FALSE)
+        usethis::use_vignette(name)
         usethis::use_git()
       }
     }

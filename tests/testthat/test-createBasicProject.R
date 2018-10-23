@@ -1,5 +1,15 @@
 context("createBasicProject")
 
+tmp <- tempdir(check = TRUE)
+cur <- getwd()
+
+setup({
+  setwd(tmp)
+})
+teardown({
+  fs::dir_delete(tmp)
+  setwd(cur)
+})
 project_name <- "basicProject"
 
 test_that("createBasicProject() creates as expected when using defaults", {
