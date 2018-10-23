@@ -6,7 +6,7 @@ test_that("createBasicProject() creates as expected when using defaults", {
 
   createBasicProject(project_name)
 
-  expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
+  #expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(project_name, "R")))
   expect_true(file.exists(file.path(project_name, "README.Rmd")))
