@@ -64,3 +64,22 @@ createdesc <- function(name) {
   )
   devtools:::write_dcf(file.path(name,"DESCRIPTION"),desc)
 }
+
+
+#' Check availability
+#'
+#' @param name Package / project
+
+is_available <- function(name) {
+  cran <- available::available_on_cran(name)
+  gh <- available::available_on_github(name)
+  if(cran == FALSE){
+    stop('package name is taken on CRAN')
+  }
+  if(gh$available == FALSE){
+    stop('package name is taken on Github')
+  }
+  invisible(TRUE)
+}
+
+

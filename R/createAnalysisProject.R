@@ -19,4 +19,6 @@ createAnalysisProject <- function(name,
   createBasicProject(name, ...)
   createdirs(name, dirs)
   invisible(TRUE)
+
+  
 }
