@@ -37,7 +37,10 @@ Imports:
     miniUI,
     methods,
     usethis,
-    rmarkdown
+    rmarkdown,
+    travis
+Remotes:
+    ropenscilabs/travis
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 URL: https://github.com/lockedata/pRojects, https://itsalocke.com/pRojects/
