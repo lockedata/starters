@@ -12,7 +12,11 @@ Authors@R:
              email = "jonmcalder@gmail.com"),
       person(given = "Locke Data",
              role = "fnd",
-             comment = "https://itsalocke.com"))
+             comment = "https://itsalocke.com"),
+      person(given = "Jas",
+             family = "Sohi",
+             role = "ctb",
+             email = "contact@jassohi.com"))
 Description: Setting up R project directories for teaching, presenting, analysis,
             package development can be a pain. pRojects shortcuts this by creating
             folder structures and setting good defaults for you.
