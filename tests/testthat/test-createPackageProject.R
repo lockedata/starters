@@ -24,3 +24,8 @@ test_that("createPackageProject() creates as expected when using defaults",{
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
+
+test_that("createPackageProject() cleans if there was an error", {
+    expect_message(createPackageProject("pRojects"),
+                   "Oops")
+})
