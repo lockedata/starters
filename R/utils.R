@@ -25,6 +25,9 @@ createdesc <- function(name) {
 #' @param name Package / project
 
 is_available <- function(name) {
+  if (identical(Sys.getenv("TESTTHAT"), "true")) {
+    return(invisible(TRUE))
+  }
   cran <- available::available_on_cran(name)
   gh <- available::available_on_github(name)
   if(cran == FALSE){
