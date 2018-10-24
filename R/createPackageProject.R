@@ -19,7 +19,8 @@ createPackageProject <- function(name,
                                  coverage = "codecov") {
   tryCatch({
     if (is_available(name)) {
-      usethis::create_package(name, open = FALSE)
+      usethis::create_package(name, open = FALSE,
+                              fields = list(License = "MIT + file LICENSE"))
       fs::file_chmod(file.path(name, "DESCRIPTION"),
                      "rwx")
       usethis::proj_set(file.path(name))
@@ -27,10 +28,20 @@ createPackageProject <- function(name,
         usethis::use_template("travis.yml",
                               ".travis.yml",
                               ignore = TRUE)
-        usethis::use_code_of_conduct(name)
+        usethis::use_code_of_conduct()
         #usethis::use_coverage(type = coverage)
         # needs GH sorry
-        usethis::use_mit_license(whoami::fullname())
+        usethis::use_template("license-mit.md",
+                              "LICENSE.md",
+                              ignore = TRUE,
+                              data = list(year = format(Sys.Date(), "%Y"),
+                                          name = whoami::fullname(),
+                                          project = name))
+        usethis::use_template("license-MIT.txt",
+                              "LICENSE",
+                              data = list(year = format(Sys.Date(), "%Y"),
+                                          name = whoami::fullname(),
+                                          project = name))
         usethis::use_news_md(open = FALSE)
         usethis::use_package_doc()
         usethis::use_readme_rmd(open = FALSE)
