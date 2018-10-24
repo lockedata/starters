@@ -4,6 +4,7 @@
 #' @param name Project / package name
 #' @param bestPractices Run additional best practice commands
 #' @param coverage What code coverage platform to use, "codecov" or "coveralls".
+#' @param private Whether to create the GH repo as private
 #'
 #' @export
 #'
@@ -16,7 +17,8 @@
 #' }
 createPackageProject <- function(name,
                                  bestPractices = TRUE,
-                                 coverage = "codecov") {
+                                 coverage = "codecov",
+                                 private = TRUE) {
   tryCatch({
     if (is_available(name)) {
       usethis::create_package(name, open = FALSE,
@@ -31,16 +33,23 @@ createPackageProject <- function(name,
         usethis::use_code_of_conduct()
         #usethis::use_coverage(type = coverage)
         # needs GH sorry
+
+        maintainer <- try(whoami::fullname(), silent = TRUE)
+
+        if(inherits(maintainer, "try-error")){
+          maintainer <- "Jane Doe"
+        }
+
         usethis::use_template("license-mit.md",
                               "LICENSE.md",
                               ignore = TRUE,
                               data = list(year = format(Sys.Date(), "%Y"),
-                                          name = whoami::fullname(),
+                                          name = maintainer,
                                           project = name))
         usethis::use_template("license-MIT.txt",
                               "LICENSE",
                               data = list(year = format(Sys.Date(), "%Y"),
-                                          name = whoami::fullname(),
+                                          name = maintainer,
                                           project = name))
         usethis::use_news_md(open = FALSE)
         usethis::use_package_doc()
@@ -48,6 +57,7 @@ createPackageProject <- function(name,
         usethis::use_testthat()
         usethis::use_vignette(name)
         usethis::use_git()
+        #use_github(private = private)
       }
     }
   }

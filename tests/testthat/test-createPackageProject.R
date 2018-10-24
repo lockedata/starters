@@ -4,6 +4,12 @@ cur <- getwd()
 
 setup({
   setwd(tmp)
+  options(usethis.description = list(usethis.name = "Jane Doe",
+                                     usethis.description = list(
+                                       `Authors@R` = 'person("Jane", "Doe", email = "jane@example.com", role = c("aut", "cre"))',
+                                       License = "MIT + file LICENSE",
+                                       Version = "0.0.0.9000"
+                                     )))
 })
 teardown({
   fs::dir_delete(tmp)

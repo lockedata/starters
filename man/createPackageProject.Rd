@@ -5,7 +5,8 @@
 \title{Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle}
 \usage{
-createPackageProject(name, bestPractices = TRUE, coverage = "codecov")
+createPackageProject(name, bestPractices = TRUE, coverage = "codecov",
+  private = TRUE)
 }
 \arguments{
 \item{name}{Project / package name}
@@ -13,6 +14,8 @@ createPackageProject(name, bestPractices = TRUE, coverage = "codecov")
 \item{bestPractices}{Run additional best practice commands}
 
 \item{coverage}{What code coverage platform to use, "codecov" or "coveralls".}
+
+\item{private}{Whether to create the GH repo as private}
 }
 \description{
 Create a package the usethis way with a number of infrastructure
