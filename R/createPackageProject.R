@@ -45,7 +45,7 @@ createPackageProject <- function(name,
                               data = list(year = format(Sys.Date(), "%Y"),
                                           name = maintainer,
                                           project = name))
-        usethis::use_template("license-MIT.txt",
+        usethis::use_template("license-mit.txt",
                               "LICENSE",
                               data = list(year = format(Sys.Date(), "%Y"),
                                           name = maintainer,
@@ -63,10 +63,8 @@ createPackageProject <- function(name,
   ,
   error = function(e) {
     e
-    print(e)
     # delete folder created earlier
     unlink(name, recursive = TRUE)
-    cat("ERROR")
     message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
   }
   )
