@@ -40,7 +40,9 @@ Imports:
     rmarkdown,
     whoami,
     fs,
-    desc
+    desc,
+    gh,
+    git2r
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0.9000
 URL: https://github.com/lockedata/pRojects, https://itsalocke.com/pRojects/
