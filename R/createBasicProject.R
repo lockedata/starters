@@ -24,7 +24,7 @@ createBasicProject <- function(name,
   packagedeps<-match.arg(packagedeps, c("none","packrat","checkpoint"))
   
   tryCatch({
-    if (available::is_available(name)) {
+    if (is_available(name)) {
       dir.create(name)
       usethis::create_project(name, open = FALSE)
       usethis::proj_set(file.path(name))
