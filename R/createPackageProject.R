@@ -63,8 +63,10 @@ createPackageProject <- function(name,
   ,
   error = function(e) {
     e
+    cat(e)
     # delete folder created earlier
     unlink(name, recursive = TRUE)
+    cat("ERROR")
     message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
   }
   )
