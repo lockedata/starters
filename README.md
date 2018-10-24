@@ -26,7 +26,7 @@ All projects get setup with Git and Travis by default.
 
 ## Install `pRojects`
 
-    devtools::install_github("stephlocke/pRojects")
+    remotes::install_github("lockedata/pRojects")
 
 ## RStudio gadget
 
