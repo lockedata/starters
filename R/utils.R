@@ -25,7 +25,12 @@ createdesc <- function(name) {
 #' @param name Package / project
 
 is_available <- function(name) {
-  if (identical(Sys.getenv("TESTTHAT"), "true")) {
+  if (identical(Sys.getenv("TESTTHAT"), "true")&&
+      name == "blablabla") {
+    stop('package name is taken on Github')
+  }
+  if (identical(Sys.getenv("TESTTHAT"), "true")&&
+      name != "blablabla") {
     return(invisible(TRUE))
   }
   cran <- available::available_on_cran(name)
@@ -34,7 +39,7 @@ is_available <- function(name) {
     stop('package name is taken on CRAN')
   }
   if(gh$available == FALSE){
-    stop('package name is taken on Github')
+    stop('package name is taken on GitHub')
   }
   invisible(TRUE)
 }

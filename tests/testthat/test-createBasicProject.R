@@ -30,7 +30,7 @@ test_that("createBasicProject() creates as expected when using defaults", {
 unlink(project_name, recursive = TRUE, force = TRUE)
 
 test_that("createBasicProject() cleans if there was an error", {
-  expect_message(createBasicProject("pRojects"),
+  expect_message(createBasicProject("blablabla"),
                  "Oops")
 })
 
