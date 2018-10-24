@@ -16,8 +16,7 @@ project_name <- "trainingProject2"
 test_that("createTrainingProject() creates as expected when using defaults",{
 
 
-  proj <- try(createTrainingProject(project_name,
-                                    packrat = FALSE))
+  proj <- try(createTrainingProject(project_name))
 
   if(!inherits(proj, 'try-error')){
     expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
