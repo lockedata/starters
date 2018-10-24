@@ -63,7 +63,7 @@ createPackageProject <- function(name,
   ,
   error = function(e) {
     e
-    cat(e)
+    print(e)
     # delete folder created earlier
     unlink(name, recursive = TRUE)
     cat("ERROR")
