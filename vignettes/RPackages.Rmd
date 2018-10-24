@@ -25,19 +25,7 @@ Best practices include:
 - Developing the package subject to a Code of Conduct 
 
 
-```{r eval=FALSE}
-  devtools::use_travis(name)
-  devtools::use_code_of_conduct(name)
-  devtools::use_coverage(name, coverage)
-  devtools::use_mit_license(name)
-  use_news_md(name)
-  use_package_doc(name)
-  use_readme_rmd(name)
-  devtools::use_testthat(name)
-  devtools::use_vignette(name, name)
-  devtools::use_git(pkg = name)
-```
-
+UPDATE
 
 ## Make your own
 You could either make a wrapper around `createPackageProject()` to add additional setup steps, or you could make an alternative version of the function.

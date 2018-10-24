@@ -1,48 +1,3 @@
-#' Revised function to not try to open file
-#'
-#' @param pkg See [devtools::use_news_md()]
-#'
-use_news_md <- function(pkg = ".") {
-  pkg <- devtools::as.package(pkg)
-  devtools:::use_template("NEWS.md", data = pkg, pkg = pkg)
-}
-
-#' Revised function to not try to open file
-#'
-#' @param pkg See [devtools::use_package_doc()]
-#'
-use_package_doc <- function(pkg = ".") {
-  pkg <- devtools::as.package(pkg)
-
-  devtools:::use_template(
-    "packagename-package.r",
-    file.path("R", paste(pkg$package, "-package.r", sep = "")),
-    data = list(name = pkg$package),
-    pkg = pkg
-  )
-}
-
-#' Revised function to not try to open file
-#'
-#' @param pkg See [devtools::use_readme_rmd()]
-#'
-use_readme_rmd <- function(pkg = ".") {
-  pkg <- devtools::as.package(pkg)
-  if (packageVersion("devtools") >= "1.12.0.9000") {
-    devtools:::use_template("omni-README", save_as = "README.Rmd", ignore = TRUE,  pkg = pkg)
-  }
-  else {
-    devtools:::use_template("README.Rmd", ignore = TRUE,  pkg = pkg)
-  }
-  devtools::use_build_ignore("^README-.*\\.png$", escape = FALSE, pkg = pkg)
-  if (devtools:::uses_git(pkg$path) && !file.exists(pkg$path, ".git",
-                                         "hooks", "pre-commit")) {
-    message("* Adding pre-commit hook")
-    devtools::use_git_hook("pre-commit", devtools:::render_template("readme-rmd-pre-commit.sh"),
-                 pkg = pkg)
-  }
-  invisible(TRUE)
-}
 
 #' Create directories
 #'
@@ -59,8 +14,74 @@ createdirs <- function(rootdir, dirs) {
 #'
 #' @param name Package / project
 createdesc <- function(name) {
-  desc <- devtools:::build_description(
-    devtools:::extract_package_name(name)
-  )
-  devtools:::write_dcf(file.path(name,"DESCRIPTION"),desc)
+  desc <- desc::desc("!new")
+  desc$add_me(role = "cre")
+  desc$write(file.path(name, "DESCRIPTION"))
 }
+
+
+#' Check availability
+#'
+#' @param name Package / project
+
+is_available <- function(name) {
+  cran <- available::available_on_cran(name)
+  gh <- available::available_on_github(name)
+  if(cran == FALSE){
+    stop('package name is taken on CRAN')
+  }
+  if(gh$available == FALSE){
+    stop('package name is taken on Github')
+  }
+  invisible(TRUE)
+}
+
+# from usethis since pushing doesn't work yet,
+# removed pushing
+use_github <- function (organisation = NULL, private = TRUE,
+                        protocol = "ssh",
+                        host = NULL)
+{
+  browser()
+  auth_token <- usethis:::gh_token()
+  usethis:::check_gh_token(auth_token)
+
+  pkg <- usethis:::project_data()
+  repo_name <- pkg$Project %||% gsub("\n", " ", pkg$Package)
+  repo_desc <- pkg$Title %||% ""
+
+
+  usethis:::done("Creating GitHub repository")
+  if (is.null(organisation)) {
+    create <- gh::gh("POST /user/repos", name = repo_name,
+                     description = repo_desc, private = private, .api_url = host,
+                     .token = auth_token)
+  }
+  else {
+    create <- gh::gh("POST /orgs/:org/repos", org = organisation,
+                     name = repo_name, description = repo_desc, private = private,
+                     .api_url = host, .token = auth_token)
+  }
+  usethis:::done("Adding GitHub remote")
+  r <- git2r::repository(usethis::proj_get())
+  protocol <- match.arg(protocol)
+  origin_url <- switch(protocol, https = create$clone_url,
+                       ssh = create$ssh_url)
+  git2r::remote_add(r, "origin", origin_url)
+  if (usethis:::is_package()) {
+    usethis:::done("Adding GitHub links to DESCRIPTION")
+    use_github_links(auth_token = auth_token, host = host)
+    if (git_uncommitted()) {
+      git2r::add(r, "DESCRIPTION")
+      git2r::commit(r, "Add GitHub links to DESCRIPTION")
+    }
+  }
+  usethis:::done("Setting remote tracking branch")
+
+  git2r::branch_set_upstream(git2r::repository_head(r), "origin/master")
+  view_url(create$html_url)
+  invisible(NULL)
+}
+# https://github.com/r-lib/usethis/blob/1e3c6a66e8b2d2790ee6d7e6d5651c52fb61abfc/R/utils.R#L100
+"%||%" <- function(a, b) if (!is.null(a)) a else b
+

@@ -2,21 +2,23 @@
 % Please edit documentation in R/createPackageProject.R
 \name{createPackageProject}
 \alias{createPackageProject}
-\title{Create a package the devtools way with a number of infrastructure
+\title{Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle}
 \usage{
-createPackageProject(name, bestPractices = TRUE, coverage = c("codecov",
-  "coveralls"))
+createPackageProject(name, bestPractices = TRUE, coverage = "codecov",
+  private = TRUE)
 }
 \arguments{
 \item{name}{Project / package name}
 
-\item{bestPractices}{Run the additional \code{\link[devtools:infrastructure]{devtools::infrastructure()}} commands}
+\item{bestPractices}{Run additional best practice commands}
 
-\item{coverage}{What code coverage platform to use}
+\item{coverage}{What code coverage platform to use, "codecov" or "coveralls".}
+
+\item{private}{Whether to create the GH repo as private}
 }
 \description{
-Create a package the devtools way with a number of infrastructure
+Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle
 }
 \examples{

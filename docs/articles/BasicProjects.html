@@ -15,7 +15,7 @@
 <![endif]--><link href="../lockedata.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -24,12 +24,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pRojects</a>
+      <a class="navbar-brand" href="../index.html"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -59,7 +59,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/lockedata/pRojects">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -69,17 +76,20 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Basic Projects</h1>
                         <h4 class="author">Steph Locke</h4>
             
-            <h4 class="date">2017-08-04</h4>
-          </div>
+            <h4 class="date">2018-08-30</h4>
+      
+      <small class="dont-index">Source: <a href="https://github.com/lockedata/pRojects/blob/master/vignettes/BasicProjects.Rmd"><code>vignettes/BasicProjects.Rmd</code></a></small>
+      <div class="hidden name"><code>BasicProjects.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p>A basic project that’s created with <code><a href="../reference/createBasicProject.html">createBasicProject()</a></code> is the fundamental building block for the various flavours of projects you might build with <code>pRojects</code>.</p>
 <p>A basic project contains a minimal package structure to allow you an easy way to:</p>
 <ul>
@@ -132,14 +142,13 @@
 <a href="#make-your-own" class="anchor"></a>Make your own</h2>
 <p>We think <code><a href="../reference/createBasicProject.html">createBasicProject()</a></code> provides a strong foundation for creating project templates.</p>
 <p>To use it as a base for your own internal functions, you will need to import the package and then do something like this as a function wrapper:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">createAnalysisProject &lt;-<span class="st"> </span>function(name,
-                                  <span class="dt">dirs =</span> <span class="kw">c</span>(<span class="st">"data"</span>, <span class="st">"analysis"</span>, <span class="st">"outputs"</span>),
-                                  ...) {
-  <span class="kw"><a href="../reference/createBasicProject.html">createBasicProject</a></span>(name, ...)
-  <span class="kw"><a href="../reference/createdirs.html">createdirs</a></span>(name, dirs)
-  <span class="kw">invisible</span>(<span class="ot">TRUE</span>)
-}</code></pre></div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">createAnalysisProject &lt;-<span class="st"> </span><span class="cf">function</span>(name,</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">                                  <span class="dt">dirs =</span> <span class="kw">c</span>(<span class="st">"data"</span>, <span class="st">"analysis"</span>, <span class="st">"outputs"</span>),</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">                                  ...) {</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="kw"><a href="../reference/createBasicProject.html">createBasicProject</a></span>(name, ...)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="kw"><a href="../reference/createdirs.html">createdirs</a></span>(name, dirs)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="kw">invisible</span>(<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">}</a></code></pre></div>
 </div>
   </div>
 
@@ -158,7 +167,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Steph Locke, Jon Calder.</p>
+  <p>Developed by Steph Locke, Jon Calder, Locke Data.</p>
 </div>
 
 <div class="pkgdown">
@@ -167,6 +176,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

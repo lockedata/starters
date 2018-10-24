@@ -15,7 +15,7 @@
 <![endif]--><link href="lockedata.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -24,12 +24,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">pRojects</a>
+      <a class="navbar-brand" href="index.html"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="/index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -59,7 +59,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/lockedata/pRojects">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -69,12 +76,15 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     
 
     
     
-<div class="contents">
+<div id="projects" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#projects" class="anchor"></a>pRojects <img src="reference/figures/logo.png" align="right" height="140/">
+</h1></div>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <p>This package is designed to take away some grunt work around setting up new projects.</p>
@@ -95,35 +105,67 @@
 <a href="#rstudio-gadget" class="anchor"></a>RStudio gadget</h2>
 <p>If you want to set up a pRoject without using the R functions, <a href="https://github.com/jonmcalder">@jonmcalder</a> made a nifty <a href="https://rstudio.github.io/rstudioaddins/">RStudio addin</a> for making pRojects. Install the package to get it added to your RStudio instance.</p>
 </div>
-<div id="up-for-grabs" class="section level2">
+<div id="contributing" class="section level2">
 <h2 class="hasAnchor">
-<a href="#up-for-grabs" class="anchor"></a>Up for grabs</h2>
-<p>Make sure to check out the <a href="https://github.com/stephlocke/pRojects/issues">Issues tab in GitHub</a>! We’re making this project a great place to start contributing to R packages. We will help you through the process, especially if you pick up one of the <a href="https://github.com/stephlocke/pRojects/issues?q=is%3Aissue+is%3Aopen+label%3Afirst-timers-only">first-timers-only issues</a>. All work done on <code>pRojects</code> is subject to our <a href="./CONDUCT.md">Code of Conduct</a>.</p>
+<a href="#contributing" class="anchor"></a>Contributing</h2>
+<div id="general-info" class="section level3">
+<h3 class="hasAnchor">
+<a href="#general-info" class="anchor"></a>General info</h3>
+<p>Wanna report a bug or suggest a feature? Great stuff! For more information on how to contribute check out <a href="CONTRIBUTING.html">our contributing guide</a>.</p>
+<p>Please note that this R package is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this package project you agree to abide by its terms.</p>
+</div>
+<div id="up-for-grabs" class="section level3">
+<h3 class="hasAnchor">
+<a href="#up-for-grabs" class="anchor"></a>Up for grabs</h3>
+<p>Make sure to check out the <a href="https://github.com/stephlocke/pRojects/issues">Issues tab in GitHub</a>! We’re making this project a great place to start contributing to R packages. We will help you through the process.</p>
+</div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Browse source code at <br><a href="https://github.com/lockedata/pRojects">https://​github.com/​lockedata/​pRojects</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/lockedata/pRojects/issues">https://​github.com/​lockedata/​pRojects/​issues</a>
+</li>
+</ul>
+</div>
+<div class="license">
+<h2>License</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
+</ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Steph Locke <br><small class="roles"> Author, maintainer </small> </li>
-<li>Jon Calder <br><small class="roles"> Author </small> </li>
+<li>Steph Locke <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Jon Calder <br><small class="roles"> Author </small>  </li>
+<li>Locke Data <br><small class="roles"> Funder </small>  <br><small>(https://itsalocke.com)</small>
+</li>
 </ul>
+</div>
+
+      <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
 <li><a href="https://travis-ci.org/lockedata/pRojects"><img src="https://travis-ci.org/lockedata/pRojects.svg?branch=master" alt="Build Status"></a></li>
 <li><a href="https://coveralls.io/r/lockedata/pRojects?branch=master"><img src="https://img.shields.io/coveralls/lockedata/pRojects.svg" alt="Coverage Status"></a></li>
 </ul>
+</div>
 </div>
 
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Steph Locke, Jon Calder.</p>
+  <p>Developed by Steph Locke, Jon Calder, Locke Data.</p>
 </div>
 
 <div class="pkgdown">
@@ -132,6 +174,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

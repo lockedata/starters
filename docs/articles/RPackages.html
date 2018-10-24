@@ -15,7 +15,7 @@
 <![endif]--><link href="../lockedata.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -24,12 +24,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pRojects</a>
+      <a class="navbar-brand" href="../index.html"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -59,7 +59,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/lockedata/pRojects">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -69,17 +76,20 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Package Projects</h1>
                         <h4 class="author">Steph Locke</h4>
             
-            <h4 class="date">2017-08-04</h4>
-          </div>
+            <h4 class="date">2018-08-30</h4>
+      
+      <small class="dont-index">Source: <a href="https://github.com/lockedata/pRojects/blob/master/vignettes/RPackages.Rmd"><code>vignettes/RPackages.Rmd</code></a></small>
+      <div class="hidden name"><code>RPackages.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p>The function <code><a href="../reference/createPackageProject.html">createPackageProject()</a></code> aims to facilitate your package development by setting up a best practices template project.</p>
 <div id="setup" class="section level2">
 <h2 class="hasAnchor">
@@ -95,23 +105,22 @@
 <li>Using <a href="https://git-scm.com/">Git</a> source control</li>
 <li>Developing the package subject to a Code of Conduct</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  devtools::<span class="kw">use_travis</span>(name)
-  devtools::<span class="kw">use_code_of_conduct</span>(name)
-  devtools::<span class="kw">use_coverage</span>(name, coverage)
-  devtools::<span class="kw">use_mit_license</span>(name)
-  <span class="kw"><a href="../reference/use_news_md.html">use_news_md</a></span>(name)
-  <span class="kw"><a href="../reference/use_package_doc.html">use_package_doc</a></span>(name)
-  <span class="kw"><a href="../reference/use_readme_rmd.html">use_readme_rmd</a></span>(name)
-  devtools::<span class="kw">use_testthat</span>(name)
-  devtools::<span class="kw">use_vignette</span>(name, name)
-  devtools::<span class="kw">use_git</span>(<span class="dt">pkg =</span> name)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">  devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/infrastructure">use_travis</a></span>(name)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/infrastructure">use_code_of_conduct</a></span>(name)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/infrastructure">use_coverage</a></span>(name, coverage)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/infrastructure">use_mit_license</a></span>(name)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="kw"><a href="../reference/use_news_md.html">use_news_md</a></span>(name)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="kw"><a href="../reference/use_package_doc.html">use_package_doc</a></span>(name)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="kw"><a href="../reference/use_readme_rmd.html">use_readme_rmd</a></span>(name)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/infrastructure">use_testthat</a></span>(name)</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">  devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/infrastructure">use_vignette</a></span>(name, name)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">  devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/use_git">use_git</a></span>(<span class="dt">pkg =</span> name)</a></code></pre></div>
 </div>
 <div id="make-your-own" class="section level2">
 <h2 class="hasAnchor">
 <a href="#make-your-own" class="anchor"></a>Make your own</h2>
 <p>You could either make a wrapper around <code><a href="../reference/createPackageProject.html">createPackageProject()</a></code> to add additional setup steps, or you could make an alternative version of the function.</p>
 <p>If you make your own, we’d be interested to hear about what you change/add and why. Please let us know on our <a href="https://github.com/lockedata/pRojects/issues">GitHub Issues</a>.</p>
-</div>
 </div>
   </div>
 
@@ -130,7 +139,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Steph Locke, Jon Calder.</p>
+  <p>Developed by Steph Locke, Jon Calder, Locke Data.</p>
 </div>
 
 <div class="pkgdown">
@@ -139,6 +148,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

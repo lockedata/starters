@@ -1,9 +1,10 @@
-#' Create a package the devtools way with a number of infrastructure
+#' Create a package the usethis way with a number of infrastructure
 #' commands executed to save you hassle
 #'
 #' @param name Project / package name
-#' @param bestPractices Run the additional [devtools::infrastructure()] commands
-#' @param coverage What code coverage platform to use
+#' @param bestPractices Run additional best practice commands
+#' @param coverage What code coverage platform to use, "codecov" or "coveralls".
+#' @param private Whether to create the GH repo as private
 #'
 #' @export
 #'
@@ -16,19 +17,57 @@
 #' }
 createPackageProject <- function(name,
                                  bestPractices = TRUE,
-                                 coverage = c("codecov", "coveralls")) {
-  devtools::create(name)
-  if (bestPractices) {
-    devtools::use_travis(name)
-    devtools::use_code_of_conduct(name)
-    devtools::use_coverage(name, coverage)
-    devtools::use_mit_license(name)
-    use_news_md(name)
-    use_package_doc(name)
-    use_readme_rmd(name)
-    devtools::use_testthat(name)
-    devtools::use_vignette(name, name)
-    devtools::use_git(pkg = name)
+                                 coverage = "codecov",
+                                 private = TRUE) {
+  tryCatch({
+    if (is_available(name)) {
+      usethis::create_package(name, open = FALSE,
+                              fields = list(License = "MIT + file LICENSE"))
+
+      usethis::proj_set(file.path(name))
+      if (bestPractices) {
+        usethis::use_template("travis.yml",
+                              ".travis.yml",
+                              ignore = TRUE)
+        usethis::use_code_of_conduct()
+        #usethis::use_coverage(type = coverage)
+        # needs GH sorry
+
+        maintainer <- try(whoami::fullname(), silent = TRUE)
+
+        if(inherits(maintainer, "try-error")){
+          maintainer <- "Jane Doe"
+        }
+
+        usethis::use_template("license-mit.md",
+                              "LICENSE.md",
+                              ignore = TRUE,
+                              data = list(year = format(Sys.Date(), "%Y"),
+                                          name = maintainer,
+                                          project = name))
+        usethis::use_template("license-mit.txt",
+                              "LICENSE",
+                              data = list(year = format(Sys.Date(), "%Y"),
+                                          name = maintainer,
+                                          project = name))
+        usethis::use_news_md(open = FALSE)
+        usethis::use_package_doc()
+        usethis::use_readme_rmd(open = FALSE)
+        usethis::use_testthat()
+        usethis::use_vignette(name)
+        usethis::use_git()
+        #use_github(private = private)
+      }
+    }
   }
+  ,
+  error = function(e) {
+    e
+    # delete folder created earlier
+    unlink(name, recursive = TRUE)
+    message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
+  }
+  )
+
   invisible(TRUE)
 }

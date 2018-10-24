@@ -1,3 +1,8 @@
+^LICENSE\.md$
+^_pkgdown\.yml$
+^docs$
+^\.github$
+^CODE_OF_CONDUCT\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^CONDUCT\.md$
@@ -6,3 +11,4 @@
 ^README-.*\.png$
 ^packrat/
 ^\.Rprofile$
+^images/

@@ -38,8 +38,9 @@ createTrainingProject <- function(name,
 
   # Handouts prep
   if ("handouts" %in% dirs) {
-    devtools::use_package(handoutEngine, pkg=name)
-
+    desc::desc_set_dep(package = handoutEngine,
+                       type = "Imports",
+                       file = usethis::proj_get())
     if (handoutEngine != "rmarkdown") {
       message(paste(handoutEngine, "demo added"))
       file.copy(
@@ -54,7 +55,9 @@ createTrainingProject <- function(name,
 
   # Slides prep
   if ("slides" %in% dirs) {
-    devtools::use_package(slideEngine, pkg=name)
+    desc::desc_set_dep(package = slideEngine,
+                       type = "Imports",
+                       file = usethis::proj_get())
 
     if (slideEngine != "rmarkdown") {
       message(paste(slideEngine, "demo added"))
