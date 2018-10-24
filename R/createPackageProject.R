@@ -23,8 +23,7 @@ createPackageProject <- function(name,
     if (is_available(name)) {
       usethis::create_package(name, open = FALSE,
                               fields = list(License = "MIT + file LICENSE"))
-      fs::file_chmod(file.path(name, "DESCRIPTION"),
-                     "rwx")
+
       usethis::proj_set(file.path(name))
       if (bestPractices) {
         usethis::use_template("travis.yml",

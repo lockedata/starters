@@ -51,7 +51,7 @@ use_github <- function (organisation = NULL, private = TRUE,
   repo_desc <- pkg$Title %||% ""
 
 
-  usethis::done("Creating GitHub repository")
+  usethis:::done("Creating GitHub repository")
   if (is.null(organisation)) {
     create <- gh::gh("POST /user/repos", name = repo_name,
                      description = repo_desc, private = private, .api_url = host,
@@ -62,26 +62,25 @@ use_github <- function (organisation = NULL, private = TRUE,
                      name = repo_name, description = repo_desc, private = private,
                      .api_url = host, .token = auth_token)
   }
-  usethis::done("Adding GitHub remote")
-  r <- git2r::repository(proj_get())
+  usethis:::done("Adding GitHub remote")
+  r <- git2r::repository(usethis::proj_get())
   protocol <- match.arg(protocol)
   origin_url <- switch(protocol, https = create$clone_url,
                        ssh = create$ssh_url)
   git2r::remote_add(r, "origin", origin_url)
-  if (is_package()) {
-    usethis::done("Adding GitHub links to DESCRIPTION")
+  if (usethis:::is_package()) {
+    usethis:::done("Adding GitHub links to DESCRIPTION")
     use_github_links(auth_token = auth_token, host = host)
     if (git_uncommitted()) {
       git2r::add(r, "DESCRIPTION")
       git2r::commit(r, "Add GitHub links to DESCRIPTION")
     }
   }
-  usethis::done("Setting remote tracking branch")
+  usethis:::done("Setting remote tracking branch")
 
   git2r::branch_set_upstream(git2r::repository_head(r), "origin/master")
   view_url(create$html_url)
   invisible(NULL)
 }
-# usethis too
 # https://github.com/r-lib/usethis/blob/1e3c6a66e8b2d2790ee6d7e6d5651c52fb61abfc/R/utils.R#L100
 "%||%" <- function(a, b) if (!is.null(a)) a else b
