@@ -4,15 +4,15 @@
 \alias{createBasicProject}
 \title{Create a very basic project directory}
 \usage{
-createBasicProject(name, travis = TRUE, packrat = TRUE, git = TRUE,
-  readme = TRUE)
+createBasicProject(name, travis = TRUE, packagedeps = "packrat",
+  git = TRUE, readme = TRUE)
 }
 \arguments{
 \item{name}{Project}
 
 \item{travis}{Configure Travis-CI}
 
-\item{packrat}{Configure Packrat}
+\item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
 

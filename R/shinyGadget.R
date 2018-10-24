@@ -20,7 +20,7 @@ projectGadget <- function() {
           shiny::checkboxInput("readme", "Create README", value = TRUE),
           shiny::checkboxInput("git", "Use Git", value = TRUE),
           shiny::checkboxInput("travis", "Use Travis", value = TRUE),
-          shiny::checkboxInput("packrat", "Use Packrat", value = TRUE)
+          shiny::selectInput("packagedeps",label="Use a package for handling reproducibility",choices =  c("none","packrat","checkpoint"), selected = "packrat")
         )
       )
     )
@@ -75,12 +75,12 @@ projectGadget <- function() {
         "Basic"    = createBasicProject(
                         name = input$name, readme = input$readme,
                         git = input$git, travis = input$travis,
-                        packrat = input$packrat),
+                        packagedeps = input$packagedeps),
 
         "Analysis" = createAnalysisProject(
                         name = input$name, dirs = input$dirs,
                         readme = input$readme, git = input$git,
-                        travis = input$travis, packrat = input$packrat),
+                        travis = input$travis, packagedeps = input$packagedeps),
 
         "Package" = createPackageProject(
                         name = input$name, bestPractices = input$bestPractices,
@@ -91,7 +91,7 @@ projectGadget <- function() {
                         handoutEngine = input$handoutE,
                         slideEngine = input$slideE,
                         readme = input$readme, git = input$git,
-                        travis = input$travis, packrat = input$packrat)
+                        travis = input$travis, packagedeps = input$packagedeps)
 
       )
 

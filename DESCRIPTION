@@ -27,14 +27,20 @@ LazyData: true
 Suggests: 
     covr,
     testthat,
-    knitr,
-    available
+    rmarkdown,
+    xaringan,
+    tufte,
+    revealjs,
+    bookdown
 VignetteBuilder: knitr
 Imports: 
     devtools,
     packrat,
     shiny,
     miniUI,
+    checkpoint,
+    knitr,
+    available,
     methods,
     usethis,
     rmarkdown,

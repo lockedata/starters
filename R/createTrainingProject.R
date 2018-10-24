@@ -24,11 +24,12 @@ createTrainingProject <- function(name,
   handoutEngine <- match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
   slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs", "xaringan"))
 
-  # Installation dir
-  usePackrat <- !methods::hasArg("packrat")
-  if (!usePackrat)
-    usePackrat <- list(...)[["packrat"]]
-  installDir <- ifelse(usePackrat, name, .libPaths())
+  if(!requireNamespace(handoutEngine, quietly = TRUE)){
+    stop("You need to install ",handoutEngine, " first")
+  }
+  if(!requireNamespace(slideEngine, quietly = TRUE)){
+    stop("You need to install ",slideEngine, " first")
+  }
 
   # Skeleton
   message("Creating skeleton")
@@ -40,7 +41,6 @@ createTrainingProject <- function(name,
     desc::desc_set_dep(package = handoutEngine,
                        type = "Imports",
                        file = usethis::proj_get())
-
     if (handoutEngine != "rmarkdown") {
       message(paste(handoutEngine, "demo added"))
       file.copy(
@@ -71,9 +71,13 @@ createTrainingProject <- function(name,
 
   }
 
-  if (usePackrat) {
-    packrat::snapshot(name)
-    packrat::restore(name)
+  # Perform some basic packrat initialisation
+  if("packagedeps" %in% names(list(...))){
+    pkgdeps <- list(...)[["packagedeps"]]
+    if(pkgdeps == "packrat"){
+      packrat::snapshot(name)
+      packrat::restore(name)
+    }
   }
 
   invisible(TRUE)

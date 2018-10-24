@@ -2,7 +2,7 @@
 #'
 #' @param name Project
 #' @param travis Configure Travis-CI
-#' @param packrat Configure Packrat
+#' @param packagedeps Set a tool for package reproducibility
 #' @param git Configure Git
 #' @param readme Include a README
 #'
@@ -17,9 +17,12 @@
 #' }
 createBasicProject <- function(name,
                                travis = TRUE,
-                               packrat = TRUE,
+                               packagedeps = "packrat",
                                git = TRUE,
                                readme = TRUE) {
+
+  packagedeps<-match.arg(packagedeps, c("none","packrat","checkpoint"))
+  
   tryCatch({
     if (is_available(name)) {
       dir.create(name)
@@ -35,20 +38,23 @@ createBasicProject <- function(name,
         #placeholder, BADGE stuff
       }
 
-      if (packrat) {
+
+  if (packagedeps == "packrat") {
         desc::desc_set_dep(package = "packrat",
                            type = "Imports",
                            file = usethis::proj_get())
-        packrat::init(file.path(getwd(),
-                                name), enter = FALSE)
-      }
-      if (readme) {
-        usethis::use_readme_rmd(open = FALSE)
-      }
+    packrat::init(name, enter = FALSE)
+  }
 
-      if (git) {
-        usethis::use_git()
-      }
+  if (packagedeps == "checkpoint") {
+        desc::desc_set_dep(package = "checkpoint",
+                           type = "Imports",
+                           file = usethis::proj_get())
+    checkpoint::setSnapshot(Sys.Date(), online = TRUE)
+  }
+
+  if (readme) usethis::use_readme_rmd(open = FALSE)
+  if (git) usethis::use_git()
     }
   }
   ,
