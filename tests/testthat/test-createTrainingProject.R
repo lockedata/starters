@@ -64,8 +64,7 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 
   proj <- try(
     createTrainingProject(project_name,
-      handoutEngine = "tufte", slideEngine = "xaringan",
-      packrat = FALSE)
+      handoutEngine = "tufte", slideEngine = "xaringan", packagedeps = "none")
     )
 
   if(!inherits(proj, 'try-error')){
