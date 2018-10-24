@@ -36,7 +36,9 @@ createBasicProject <- function(name,
       }
 
       if (packrat) {
-        usethis::use_package("packrat")
+        desc::desc_set_dep(package = "packrat",
+                           type = "Imports",
+                           file = usethis::proj_get())
         packrat::init(file.path(getwd(),
                                 name), enter = FALSE)
       }

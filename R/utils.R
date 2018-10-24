@@ -84,3 +84,4 @@ use_github <- function (organisation = NULL, private = TRUE,
 }
 # https://github.com/r-lib/usethis/blob/1e3c6a66e8b2d2790ee6d7e6d5651c52fb61abfc/R/utils.R#L100
 "%||%" <- function(a, b) if (!is.null(a)) a else b
+
