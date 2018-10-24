@@ -19,6 +19,11 @@ createPackageProject <- function(name,
                                  bestPractices = TRUE,
                                  coverage = "codecov",
                                  private = TRUE) {
+  #  Validate name
+  if(!validateName(name)){
+    stop("Failed name validation: The name should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot.")
+  }
+
   tryCatch({
     if (is_available(name)) {
       usethis::create_package(name, open = FALSE,

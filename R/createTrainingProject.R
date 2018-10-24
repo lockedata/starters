@@ -20,6 +20,11 @@ createTrainingProject <- function(name,
                                   handoutEngine = "rmarkdown",
                                   slideEngine = "rmarkdown",
                                   ...) {
+  #  Validate name
+  if(!validateName(name)){
+    stop("Failed name validation: The name should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot.")
+  }
+
   # Supported packages
   handoutEngine <- match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
   slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs", "xaringan"))

@@ -20,9 +20,14 @@ createBasicProject <- function(name,
                                packagedeps = "packrat",
                                git = TRUE,
                                readme = TRUE) {
+  #  Validate name
+  if(!validateName(name)){
+    stop("Failed name validation: The name should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot.")
+  }
+
 
   packagedeps<-match.arg(packagedeps, c("none","packrat","checkpoint"))
-  
+
   tryCatch({
     if (is_available(name)) {
       dir.create(name)
