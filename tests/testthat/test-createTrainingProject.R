@@ -16,7 +16,8 @@ project_name <- "trainingProject2"
 test_that("createTrainingProject() creates as expected when using defaults",{
 
 
-  proj <- try(createTrainingProject(project_name))
+  proj <- try(createTrainingProject(project_name,
+                                    packrat = FALSE))
 
   if(!inherits(proj, 'try-error')){
     expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
@@ -39,7 +40,8 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
 
   proj <- try(
     createTrainingProject(project_name,
-      handoutEngine = "bookdown", slideEngine = "revealjs")
+      handoutEngine = "bookdown", slideEngine = "revealjs",
+      packrat = FALSE)
     )
   if(!inherits(proj, 'try-error')){
     expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
@@ -63,7 +65,8 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 
   proj <- try(
     createTrainingProject(project_name,
-      handoutEngine = "tufte", slideEngine = "xaringan")
+      handoutEngine = "tufte", slideEngine = "xaringan",
+      packrat = FALSE)
     )
 
   if(!inherits(proj, 'try-error')){
