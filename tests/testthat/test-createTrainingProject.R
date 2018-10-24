@@ -34,7 +34,6 @@ test_that("createTrainingProject() creates as expected when using defaults",{
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd())
 
 test_that("createTrainingProject() creates as expected when using bookdown and revealjs",{
 
@@ -59,7 +58,6 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd())
 
 test_that("createTrainingProject() creates as expected when using tufte and xaringan",{
 
