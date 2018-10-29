@@ -82,3 +82,6 @@ createTrainingProject <- function(name,
 
   invisible(TRUE)
 }
+
+#' @describeIn createTrainingProject
+create_training_project = createTrainingProject

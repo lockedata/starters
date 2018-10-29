@@ -20,5 +20,7 @@ createAnalysisProject <- function(name,
   createdirs(name, dirs)
   invisible(TRUE)
 
-  
 }
+
+#' @describeIn createAnalysisProject
+create_analysis_project = createAnalysisProject

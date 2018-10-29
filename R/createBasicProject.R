@@ -22,7 +22,7 @@ createBasicProject <- function(name,
                                readme = TRUE) {
 
   packagedeps<-match.arg(packagedeps, c("none","packrat","checkpoint"))
-  
+
   tryCatch({
     if (is_available(name)) {
       dir.create(name)
@@ -67,3 +67,6 @@ createBasicProject <- function(name,
   )
   invisible(TRUE)
 }
+
+#' @describeIn createBasicProject
+create_basic_project = createBasicProject

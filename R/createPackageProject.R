@@ -71,3 +71,6 @@ createPackageProject <- function(name,
 
   invisible(TRUE)
 }
+
+#' @describeIn createPackageProject
+create_package_project = createPackageProject
