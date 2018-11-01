@@ -22,6 +22,6 @@ test_that("createAnalysisProject() creates as expected when using defaults",{
 
 })
 
-unlink(project_name, recursive = TRUE, force = TRUE)
+unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd())

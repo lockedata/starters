@@ -32,7 +32,7 @@ test_that("createPackageProject() creates as expected when using defaults",{
 
 })
 
-unlink(project_name, recursive = TRUE, force = TRUE)
+unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd())
 
 test_that("createPackageProject() cleans if there was an error", {
@@ -43,6 +43,6 @@ test_that("createPackageProject() cleans if there was an error", {
   })
 })
 
-unlink(project_name, recursive = TRUE, force = TRUE)
+unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd())
