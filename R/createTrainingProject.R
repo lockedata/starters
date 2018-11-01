@@ -21,7 +21,7 @@ createTrainingProject <- function(name,
                                   handoutEngine = "rmarkdown",
                                   slideEngine = "rmarkdown",
                                   travis = TRUE,
-                                  packagedeps = "checkpoint",
+                                  packagedeps = "packrat",
                                   git = TRUE,
                                   readme = TRUE) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
@@ -47,7 +47,7 @@ createTrainingProject <- function(name,
                      packagedeps = "none",
                      git = git,
                      readme = readme)
-  createdirs(name, dirs)
+  createdirs(dirs)
 
   # Handouts prep
   if ("handouts" %in% dirs) {

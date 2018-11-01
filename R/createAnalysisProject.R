@@ -14,7 +14,7 @@
 #' }
 createAnalysisProject <- function(name,
                                   travis = TRUE,
-                                  packagedeps = "checkpoint",
+                                  packagedeps = "packrat",
                                   git = TRUE,
                                   readme = TRUE,
                                   dirs = c("data", "analysis", "outputs")) {
@@ -24,7 +24,7 @@ createAnalysisProject <- function(name,
                      packagedeps = packagedeps,
                      git = git,
                      readme = readme)
-  createdirs(name, dirs)
+  createdirs(dirs)
   invisible(TRUE)
 
 

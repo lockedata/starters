@@ -6,7 +6,7 @@
 \usage{
 createTrainingProject(name, dirs = c("data", "handouts", "slides"),
   handoutEngine = "rmarkdown", slideEngine = "rmarkdown",
-  travis = TRUE, packagedeps = "checkpoint", git = TRUE,
+  travis = TRUE, packagedeps = "packrat", git = TRUE,
   readme = TRUE)
 }
 \arguments{

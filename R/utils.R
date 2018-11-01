@@ -27,9 +27,9 @@ setup_dep_system <- function(packagedeps){
 #' @param rootdir Project
 #' @param dirs Subfolders
 #'
-createdirs <- function(rootdir, dirs) {
+createdirs <- function(dirs) {
   stopifnot(length(dirs) > 0)
-  dirstocreate <- file.path(rootdir, dirs)
+  dirstocreate <- file.path(usethis::proj_get(), dirs)
   lapply(dirstocreate, function(x){if(!dir.exists(x)) dir.create(x)})
 }
 

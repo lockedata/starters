@@ -24,7 +24,7 @@ test_that("createPackageProject() creates as expected when using defaults",{
 
   createPackageProject(project_name)
   expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
-  expect_true(file.exists(file.path(project_name, "codecov.yml")))
+  #expect_true(file.exists(file.path(project_name, "codecov.yml")))
   expect_true(file.exists(file.path(project_name, "CODE_OF_CONDUCT.md")))
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(project_name, "LICENSE")))
@@ -43,6 +43,9 @@ test_that("createPackageProject() creates as expected when using defaults",{
 unlink(project_name, recursive = TRUE, force = TRUE)
 
 test_that("createPackageProject() cleans if there was an error", {
+  m <- mockery::mock(stop())
+  with_mock(is_available = m, {
     expect_message(createPackageProject("blablabla"),
                    "Oops")
+  })
 })

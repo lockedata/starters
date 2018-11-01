@@ -4,12 +4,12 @@
 \alias{createdirs}
 \title{Create directories}
 \usage{
-createdirs(rootdir, dirs)
+createdirs(dirs)
 }
 \arguments{
-\item{rootdir}{Project}
-
 \item{dirs}{Subfolders}
+
+\item{rootdir}{Project}
 }
 \description{
 Create directories

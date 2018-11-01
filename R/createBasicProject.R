@@ -17,7 +17,7 @@
 #' }
 createBasicProject <- function(name,
                                travis = TRUE,
-                               packagedeps = "checkpoint",
+                               packagedeps = "packrat",
                                git = TRUE,
                                readme = TRUE) {
 
