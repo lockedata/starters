@@ -59,7 +59,7 @@ createTrainingProject <- function(name, folder = getwd(),
       message(paste(handoutEngine, "demo added"))
       file.copy(
         list.files(system.file("templates", handoutEngine, package = "pRojects"), full.names = TRUE),
-        file.path(name,"handouts"),
+        file.path(folder, name,"handouts"),
         overwrite = TRUE,
         recursive = TRUE
       )
@@ -77,7 +77,7 @@ createTrainingProject <- function(name, folder = getwd(),
       message(paste(slideEngine, "demo added"))
       file.copy(
         list.files(system.file("templates", slideEngine, package = "pRojects"), full.names = TRUE),
-        file.path(name, "slides"),
+        file.path(folder, name, "slides"),
         overwrite = TRUE,
         recursive = TRUE
       )
