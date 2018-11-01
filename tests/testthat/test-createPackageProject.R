@@ -1,5 +1,7 @@
 context("createPackageProject")
-tmp <- tempdir(check = TRUE)
+tmp <- tempfile(pattern = "aaa",
+                tempdir(check = TRUE))
+fs::dir_create(tmp)
 
 setup({
   options(usethis.description = list(usethis.name = "Jane Doe",

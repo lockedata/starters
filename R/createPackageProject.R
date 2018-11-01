@@ -22,14 +22,12 @@ createPackageProject <- function(name, folder = getwd(),
                                  private = TRUE) {
   tryCatch({
     if (is_available(name)) {
+      fs::dir_create(file.path(folder, name))
+      usethis::proj_set(file.path(folder, name),
+                        force = TRUE)
       usethis::create_package(file.path(folder, name), open = FALSE,
                               fields = list(License = "MIT + file LICENSE"))
-      proj <- fs::dir_ls(file.path(folder, name),
-                         regexp = "*.Rproj")
-      file.rename(proj,
-                  file.path(folder, name,
-                            glue::glue(name, ".Rproj")))
-      usethis::proj_set(file.path(folder, name))
+
       if (bestPractices) {
         usethis::use_template("travis.yml",
                               ".travis.yml",

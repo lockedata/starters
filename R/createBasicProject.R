@@ -27,16 +27,13 @@ createBasicProject <- function(name, folder = getwd(),
   tryCatch({
     if (is_available(name)) {
       dir.create(file.path(folder, name))
+
+
+      usethis::proj_set(file.path(folder, name),
+                        force = TRUE)
+
       usethis::create_project(file.path(folder, name), open = FALSE)
 
-      proj <- fs::dir_ls(file.path(folder, name),
-                         regexp = "*.Rproj")
-      file.rename(proj,
-                  file.path(folder, name,
-                            glue::glue(name, ".Rproj")))
-
-
-      usethis::proj_set(file.path(folder, name))
       usethis::use_description()
 
       if (travis) {
