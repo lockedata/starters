@@ -4,11 +4,13 @@
 \alias{createBasicProject}
 \title{Create a very basic project directory}
 \usage{
-createBasicProject(name, travis = TRUE, packagedeps = "packrat",
-  git = TRUE, readme = TRUE)
+createBasicProject(name, folder = getwd(), travis = TRUE,
+  packagedeps = "packrat", git = TRUE, readme = TRUE)
 }
 \arguments{
 \item{name}{Project}
+
+\item{folder}{Folder under which to create the project}
 
 \item{travis}{Configure Travis-CI}
 

@@ -4,11 +4,14 @@
 \alias{createAnalysisProject}
 \title{Create a project laid out for an analysis project}
 \usage{
-createAnalysisProject(name, travis = TRUE, packagedeps = "packrat",
-  git = TRUE, readme = TRUE, dirs = c("data", "analysis", "outputs"))
+createAnalysisProject(name, folder = getwd(), travis = TRUE,
+  packagedeps = "packrat", git = TRUE, readme = TRUE,
+  dirs = c("data", "analysis", "outputs"))
 }
 \arguments{
 \item{name}{Project}
+
+\item{folder}{Folder under which to create the project}
 
 \item{travis}{Configure Travis-CI}
 

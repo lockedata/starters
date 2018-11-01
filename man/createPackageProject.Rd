@@ -5,11 +5,13 @@
 \title{Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle}
 \usage{
-createPackageProject(name, bestPractices = TRUE, coverage = "codecov",
-  private = TRUE)
+createPackageProject(name, folder = getwd(), bestPractices = TRUE,
+  coverage = "codecov", private = TRUE)
 }
 \arguments{
 \item{name}{Project / package name}
+
+\item{folder}{Folder under which to create the project}
 
 \item{bestPractices}{Run additional best practice commands}
 

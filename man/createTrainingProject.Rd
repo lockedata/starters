@@ -4,13 +4,15 @@
 \alias{createTrainingProject}
 \title{Create a training project}
 \usage{
-createTrainingProject(name, dirs = c("data", "handouts", "slides"),
-  handoutEngine = "rmarkdown", slideEngine = "rmarkdown",
-  travis = TRUE, packagedeps = "packrat", git = TRUE,
-  readme = TRUE)
+createTrainingProject(name, folder = getwd(), dirs = c("data",
+  "handouts", "slides"), handoutEngine = "rmarkdown",
+  slideEngine = "rmarkdown", travis = TRUE, packagedeps = "packrat",
+  git = TRUE, readme = TRUE)
 }
 \arguments{
 \item{name}{Project}
+
+\item{folder}{Folder under which to create the project}
 
 \item{dirs}{Directories to create}
 
