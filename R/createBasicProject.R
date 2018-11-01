@@ -27,6 +27,14 @@ createBasicProject <- function(name,
     if (is_available(name)) {
       dir.create(name)
       usethis::create_project(name, open = FALSE)
+
+      proj <- fs::dir_ls(file.path(name),
+                         regexp = "*.Rproj")
+      file.rename(proj,
+                  file.path(name,
+                            glue::glue(name, ".Rproj")))
+
+
       usethis::proj_set(file.path(name))
       usethis::use_description()
 
@@ -41,8 +49,9 @@ createBasicProject <- function(name,
 
   setup_dep_system(packagedeps)
 
-  if (readme) usethis::use_readme_rmd(open = FALSE)
+
   if (git) usethis::use_git()
+  if (readme) usethis::use_readme_rmd(open = FALSE)
     }
   }
   ,

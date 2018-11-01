@@ -14,11 +14,12 @@ setup_dep_system <- function(packagedeps){
     desc::desc_set_dep(package = "checkpoint",
                        type = "Imports",
                        file = usethis::proj_get())
+
     checkpoint::checkpoint(Sys.Date(),
                            project = usethis::proj_get(),
                            checkpointLocation = usethis::proj_get(),
                            forceProject = TRUE,
-                           verbose = TRUE)
+                           verbose = FALSE)
   }
 }
 
@@ -73,7 +74,6 @@ use_github <- function (organisation = NULL, private = TRUE,
                         protocol = "ssh",
                         host = NULL)
 {
-  browser()
   auth_token <- usethis:::gh_token()
   usethis:::check_gh_token(auth_token)
 

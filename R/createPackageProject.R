@@ -23,7 +23,11 @@ createPackageProject <- function(name,
     if (is_available(name)) {
       usethis::create_package(name, open = FALSE,
                               fields = list(License = "MIT + file LICENSE"))
-
+      proj <- fs::dir_ls(file.path(name),
+                         regexp = "*.Rproj")
+      file.rename(proj,
+                  file.path(name,
+                            glue::glue(name, ".Rproj")))
       usethis::proj_set(file.path(name))
       if (bestPractices) {
         usethis::use_template("travis.yml",
