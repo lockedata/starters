@@ -39,7 +39,7 @@ usethis::proj_set(getwd())
 
 test_that("createPackageProject() cleans if there was an error", {
   m <- mockery::mock(stop())
-  with_mock(is_available = m, {
+  with_mock(dir.create = m, {
     expect_message(createPackageProject("blablabla"),
                    "Oops")
   })

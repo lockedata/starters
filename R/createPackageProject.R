@@ -22,7 +22,7 @@ createPackageProject <- function(name, folder = getwd(),
                                  private = TRUE) {
   tryCatch({
     if (is_available(name)) {
-      fs::dir_create(file.path(folder, name))
+      dir.create(file.path(folder, name))
       usethis::proj_set(file.path(folder, name),
                         force = TRUE)
       usethis::create_package(file.path(folder, name), open = FALSE,
