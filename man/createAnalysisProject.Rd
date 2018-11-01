@@ -4,7 +4,7 @@
 \alias{createAnalysisProject}
 \title{Create a project laid out for an analysis project}
 \usage{
-createAnalysisProject(name, travis = TRUE, packagedeps = "packrat",
+createAnalysisProject(name, travis = TRUE, packagedeps = "checkpoint",
   git = TRUE, readme = TRUE, dirs = c("data", "analysis", "outputs"))
 }
 \arguments{

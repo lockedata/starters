@@ -14,7 +14,7 @@
 #' }
 createAnalysisProject <- function(name,
                                   travis = TRUE,
-                                  packagedeps = "packrat",
+                                  packagedeps = "checkpoint",
                                   git = TRUE,
                                   readme = TRUE,
                                   dirs = c("data", "analysis", "outputs")) {

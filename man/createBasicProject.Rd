@@ -4,7 +4,7 @@
 \alias{createBasicProject}
 \title{Create a very basic project directory}
 \usage{
-createBasicProject(name, travis = TRUE, packagedeps = "packrat",
+createBasicProject(name, travis = TRUE, packagedeps = "checkpoint",
   git = TRUE, readme = TRUE)
 }
 \arguments{
