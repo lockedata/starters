@@ -7,7 +7,7 @@ setup_dep_system <- function(packagedeps){
     desc::desc_set_dep(package = "packrat",
                        type = "Imports",
                        file = usethis::proj_get())
-    packrat::init(name, enter = FALSE)
+    packrat::init(usethis::proj_get(), enter = FALSE)
   }
 
   if (packagedeps == "checkpoint") {
@@ -15,8 +15,8 @@ setup_dep_system <- function(packagedeps){
                        type = "Imports",
                        file = usethis::proj_get())
     checkpoint::checkpoint(Sys.Date(),
-                           project = proj_get(),
-                           checkpointLocation = proj_get(),
+                           project = usethis::proj_get(),
+                           checkpointLocation = usethis::proj_get(),
                            forceProject = TRUE,
                            verbose = TRUE)
   }
