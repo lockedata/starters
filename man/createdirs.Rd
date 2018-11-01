@@ -8,8 +8,6 @@ createdirs(dirs)
 }
 \arguments{
 \item{dirs}{Subfolders}
-
-\item{rootdir}{Project}
 }
 \description{
 Create directories

@@ -25,7 +25,6 @@ setup_dep_system <- function(packagedeps){
 
 #' Create directories
 #'
-#' @param rootdir Project
 #' @param dirs Subfolders
 #'
 createdirs <- function(dirs) {
