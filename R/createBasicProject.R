@@ -59,7 +59,7 @@ createBasicProject <- function(name, folder = getwd(),
   error = function(e) {
     e
     # delete folder created earlier
-    unlink(name, recursive = TRUE)
+    unlink(file.path(folder, name), recursive = TRUE)
     message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
   }
   )

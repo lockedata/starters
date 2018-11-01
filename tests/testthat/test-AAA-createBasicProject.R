@@ -1,6 +1,9 @@
 context("createBasicProject")
 
-tmp <- tempdir(check = TRUE)
+tmp <- tempfile(pattern = "aaa",
+                 tempdir(check = TRUE))
+fs::dir_create(tmp)
+
 project_name <- "basicProject"
 
 test_that("createBasicProject() creates as expected when using defaults", {
