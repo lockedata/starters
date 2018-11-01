@@ -21,8 +21,8 @@ createBasicProject <- function(name,
                                git = TRUE,
                                readme = TRUE) {
 
-  packagedeps<-match.arg(packagedeps, c("none","packrat","checkpoint"))
-  
+  packagedeps <- match.arg(packagedeps, okpackagedeps())
+
   tryCatch({
     if (is_available(name)) {
       dir.create(name)
@@ -39,19 +39,7 @@ createBasicProject <- function(name,
       }
 
 
-  if (packagedeps == "packrat") {
-        desc::desc_set_dep(package = "packrat",
-                           type = "Imports",
-                           file = usethis::proj_get())
-    packrat::init(name, enter = FALSE)
-  }
-
-  if (packagedeps == "checkpoint") {
-        desc::desc_set_dep(package = "checkpoint",
-                           type = "Imports",
-                           file = usethis::proj_get())
-    checkpoint::setSnapshot(Sys.Date(), online = TRUE)
-  }
+  setup_dep_system(packagedeps)
 
   if (readme) usethis::use_readme_rmd(open = FALSE)
   if (git) usethis::use_git()

@@ -2,7 +2,7 @@
 % Please edit documentation in R/createTrainingProject.R
 \name{createTrainingProject}
 \alias{createTrainingProject}
-\title{Create a project laid out for producing training materials}
+\title{Create a training project}
 \usage{
 createTrainingProject(name, dirs = c("data", "handouts", "slides"),
   handoutEngine = "rmarkdown", slideEngine = "rmarkdown",

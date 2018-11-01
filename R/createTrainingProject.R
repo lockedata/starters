@@ -1,4 +1,6 @@
-#' Create a project laid out for producing training materials
+#' @title Create a training project
+#'
+#' @description Create a project laid out for producing training materials
 #'
 #' @inheritParams createBasicProject
 #' @param dirs Directories to create
@@ -22,22 +24,27 @@ createTrainingProject <- function(name,
                                   packagedeps = "packrat",
                                   git = TRUE,
                                   readme = TRUE) {
+  packagedeps <- match.arg(packagedeps, okpackagedeps())
+
   # Supported packages
-  handoutEngine <- match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
-  slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs", "xaringan"))
+  handoutEngine <- match.arg(handoutEngine,
+                             handoutEngine())
+
+  slideEngine <- match.arg(slideEngine,
+                           slideEngine())
 
   if(!requireNamespace(handoutEngine, quietly = TRUE)){
-    stop("You need to install ",handoutEngine, " first")
+    stop("You need to install ", handoutEngine, " first")
   }
   if(!requireNamespace(slideEngine, quietly = TRUE)){
-    stop("You need to install ",slideEngine, " first")
+    stop("You need to install ", slideEngine, " first")
   }
 
   # Skeleton
   message("Creating skeleton")
   createBasicProject(name,
                      travis = travis,
-                     packagedeps = packagedeps,
+                     packagedeps = "none",
                      git = git,
                      readme = readme)
   createdirs(name, dirs)
@@ -77,13 +84,16 @@ createTrainingProject <- function(name,
 
   }
 
-  # Perform some basic packrat initialisation
-
-    if(pkgdeps == "packrat"){
-      packrat::snapshot(name)
-      packrat::restore(name)
-    }
+  setup_dep_system(packagedeps)
 
 
   invisible(TRUE)
+}
+
+handoutEngine <- function(){
+  c("rmarkdown", "bookdown", "tufte")
+}
+
+slideEngine <- function(){
+  c("rmarkdown", "revealjs", "xaringan")
 }
