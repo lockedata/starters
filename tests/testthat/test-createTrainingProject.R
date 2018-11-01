@@ -15,8 +15,10 @@ project_name <- "trainingProject2"
 
 test_that("createTrainingProject() creates as expected when using defaults",{
 
-
-  createTrainingProject(project_name)
+  createTrainingProject(project_name,
+                        packagedeps = "none",
+                        git = FALSE,
+                        readme = FALSE)
   expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(project_name, "R")))
@@ -36,7 +38,9 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
 
   createTrainingProject(project_name,
       handoutEngine = "bookdown", slideEngine = "revealjs",
-      packrat = FALSE)
+      packagedeps = "none",
+      git = FALSE,
+      readme = FALSE)
   expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(project_name, "R")))
@@ -55,7 +59,10 @@ unlink(project_name, recursive = TRUE, force = TRUE)
 
 test_that("createTrainingProject() creates as expected when using tufte and xaringan",{
  createTrainingProject(project_name,
-      handoutEngine = "tufte", slideEngine = "xaringan", packagedeps = "none")
+      handoutEngine = "tufte", slideEngine = "xaringan",
+      packagedeps = "none",
+      git = FALSE,
+      readme = FALSE)
 
   expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
