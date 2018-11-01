@@ -32,7 +32,8 @@ createBasicProject <- function(name, folder = getwd(),
       usethis::proj_set(file.path(folder, name),
                         force = TRUE)
 
-      usethis::create_project(file.path(folder, name), open = FALSE)
+      usethis::create_project(file.path(folder, name), open = FALSE,
+                              rstudio = TRUE)
 
       usethis::use_description()
 

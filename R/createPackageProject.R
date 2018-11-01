@@ -26,6 +26,7 @@ createPackageProject <- function(name, folder = getwd(),
       usethis::proj_set(file.path(folder, name),
                         force = TRUE)
       usethis::create_package(file.path(folder, name), open = FALSE,
+                              rstudio = TRUE,
                               fields = list(License = "MIT + file LICENSE"))
 
       if (bestPractices) {

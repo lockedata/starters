@@ -22,7 +22,7 @@ test_that("createTrainingProject() creates as expected when using defaults",{
 
 })
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
+fs::dir_delete(file.path(tmp, project_name))
 usethis::proj_set(getwd())
 
 test_that("createTrainingProject() creates as expected when using bookdown and revealjs",{
