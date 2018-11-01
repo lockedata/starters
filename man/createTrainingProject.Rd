@@ -5,7 +5,9 @@
 \title{Create a project laid out for producing training materials}
 \usage{
 createTrainingProject(name, dirs = c("data", "handouts", "slides"),
-  handoutEngine = "rmarkdown", slideEngine = "rmarkdown", ...)
+  handoutEngine = "rmarkdown", slideEngine = "rmarkdown",
+  travis = TRUE, packagedeps = "packrat", git = TRUE,
+  readme = TRUE)
 }
 \arguments{
 \item{name}{Project}
@@ -16,7 +18,13 @@ createTrainingProject(name, dirs = c("data", "handouts", "slides"),
 
 \item{slideEngine}{Package for building slides}
 
-\item{...}{Pass to \code{\link[=createBasicProject]{createBasicProject()}}}
+\item{travis}{Configure Travis-CI}
+
+\item{packagedeps}{Set a tool for package reproducibility}
+
+\item{git}{Configure Git}
+
+\item{readme}{Include a README}
 }
 \description{
 Create a project laid out for producing training materials

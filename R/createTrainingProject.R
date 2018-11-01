@@ -1,10 +1,9 @@
 #' Create a project laid out for producing training materials
 #'
-#' @param name Project
+#' @inheritParams createBasicProject
 #' @param dirs Directories to create
 #' @param handoutEngine Package for building handouts
 #' @param slideEngine Package for building slides
-#' @param ... Pass to [createBasicProject()]
 #'
 #' @export
 #'
@@ -19,7 +18,10 @@ createTrainingProject <- function(name,
                                   dirs = c("data", "handouts", "slides"),
                                   handoutEngine = "rmarkdown",
                                   slideEngine = "rmarkdown",
-                                  ...) {
+                                  travis = TRUE,
+                                  packagedeps = "packrat",
+                                  git = TRUE,
+                                  readme = TRUE) {
   # Supported packages
   handoutEngine <- match.arg(handoutEngine, c("rmarkdown", "bookdown", "tufte"))
   slideEngine <- match.arg(slideEngine, c("rmarkdown", "revealjs", "xaringan"))
@@ -33,7 +35,11 @@ createTrainingProject <- function(name,
 
   # Skeleton
   message("Creating skeleton")
-  createBasicProject(name, ...)
+  createBasicProject(name,
+                     travis = travis,
+                     packagedeps = packagedeps,
+                     git = git,
+                     readme = readme)
   createdirs(name, dirs)
 
   # Handouts prep
