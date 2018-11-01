@@ -78,13 +78,12 @@ createTrainingProject <- function(name,
   }
 
   # Perform some basic packrat initialisation
-  if("packagedeps" %in% names(list(...))){
-    pkgdeps <- list(...)[["packagedeps"]]
+
     if(pkgdeps == "packrat"){
       packrat::snapshot(name)
       packrat::restore(name)
     }
-  }
+
 
   invisible(TRUE)
 }
