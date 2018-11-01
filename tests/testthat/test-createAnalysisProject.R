@@ -1,14 +1,9 @@
 context("createAnalysisProject")
 
 tmp <- tempdir(check = TRUE)
-cur <- getwd()
 
-setup({
-  setwd(tmp)
-})
 teardown({
   fs::dir_delete(tmp)
-  setwd(cur)
 })
 
 
@@ -16,7 +11,7 @@ project_name <- "analysisProject"
 
 test_that("createAnalysisProject() creates as expected when using defaults",{
 
-  createAnalysisProject(project_name)
+  createAnalysisProject(project_name, folder = tmp)
 
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))

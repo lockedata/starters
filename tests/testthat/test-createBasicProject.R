@@ -1,20 +1,14 @@
 context("createBasicProject")
 
 tmp <- tempdir(check = TRUE)
-cur <- getwd()
-
-setup({
-  setwd(tmp)
-})
 teardown({
   fs::dir_delete(tmp)
-  setwd(cur)
 })
 project_name <- "basicProject"
 
 test_that("createBasicProject() creates as expected when using defaults", {
 
-  createBasicProject(project_name,
+  createBasicProject(project_name, folder = tmp,
                      packagedeps = "packrat")
 
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
@@ -32,7 +26,7 @@ unlink(project_name, recursive = TRUE, force = TRUE)
 
 test_that("createBasicProject() creates as expected when using checkpoint", {
 
-  createBasicProject(project_name,
+  createBasicProject(project_name, folder = tmp,
                      packagedeps = "checkpoint")
 
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))

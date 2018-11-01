@@ -1,9 +1,7 @@
 context("createPackageProject")
 tmp <- tempdir(check = TRUE)
-cur <- getwd()
 
 setup({
-  setwd(tmp)
   options(usethis.description = list(usethis.name = "Jane Doe",
                                      usethis.description = list(
                                        `Authors@R` = 'person("Jane", "Doe", email = "jane@example.com", role = c("aut", "cre"))',
@@ -13,7 +11,6 @@ setup({
 })
 teardown({
   fs::dir_delete(tmp)
-  setwd(cur)
 })
 
 
@@ -22,7 +19,7 @@ project_name <- "packageProject2"
 
 test_that("createPackageProject() creates as expected when using defaults",{
 
-  createPackageProject(project_name)
+  createPackageProject(project_name, folder = tmp)
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   #expect_true(file.exists(file.path(tmp, project_name, "codecov.yml")))
   expect_true(file.exists(file.path(tmp, project_name, "CODE_OF_CONDUCT.md")))

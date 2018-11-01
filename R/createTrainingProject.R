@@ -16,7 +16,7 @@
 #' list.files(proj)
 #' unlink(proj)
 #' }
-createTrainingProject <- function(name,
+createTrainingProject <- function(name, folder = getwd(),
                                   dirs = c("data", "handouts", "slides"),
                                   handoutEngine = "rmarkdown",
                                   slideEngine = "rmarkdown",
@@ -43,6 +43,7 @@ createTrainingProject <- function(name,
   # Skeleton
   message("Creating skeleton")
   createBasicProject(name,
+                     folder = folder,
                      travis = travis,
                      packagedeps = "none",
                      git = git,

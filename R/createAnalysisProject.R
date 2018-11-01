@@ -12,7 +12,7 @@
 #' list.files(proj)
 #' unlink(proj)
 #' }
-createAnalysisProject <- function(name,
+createAnalysisProject <- function(name, folder = getwd(),
                                   travis = TRUE,
                                   packagedeps = "packrat",
                                   git = TRUE,
@@ -20,6 +20,7 @@ createAnalysisProject <- function(name,
                                   dirs = c("data", "analysis", "outputs")) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
   createBasicProject(name,
+                     folder = folder,
                      travis = travis,
                      packagedeps = packagedeps,
                      git = git,
