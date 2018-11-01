@@ -2,10 +2,6 @@ context("createAnalysisProject")
 
 tmp <- tempdir(check = TRUE)
 
-teardown({
-  fs::dir_delete(tmp)
-})
-
 
 project_name <- "analysisProject"
 
@@ -27,3 +23,5 @@ test_that("createAnalysisProject() creates as expected when using defaults",{
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
+fs::dir_delete(tmp)
+usethis::proj_set(getwd())

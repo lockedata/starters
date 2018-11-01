@@ -1,9 +1,5 @@
 context("createTrainingProject")
 tmp <- tempdir(check = TRUE)
-teardown({
-  fs::dir_delete(tmp)
-})
-
 
 project_name <- "trainingProject2"
 
@@ -25,6 +21,7 @@ test_that("createTrainingProject() creates as expected when using defaults",{
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
+usethis::proj_set(getwd())
 
 test_that("createTrainingProject() creates as expected when using bookdown and revealjs",{
 
@@ -46,6 +43,7 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
+usethis::proj_set(getwd())
 
 test_that("createTrainingProject() creates as expected when using tufte and xaringan",{
  createTrainingProject(project_name, folder = tmp,
@@ -67,3 +65,5 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
+fs::dir_delete(tmp)
+usethis::proj_set(getwd())

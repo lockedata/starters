@@ -23,6 +23,7 @@ test_that("createBasicProject() creates as expected when using defaults", {
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
+usethis::proj_set(getwd())
 
 test_that("createBasicProject() creates as expected when using checkpoint", {
 
@@ -41,7 +42,7 @@ test_that("createBasicProject() creates as expected when using checkpoint", {
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
-
+usethis::proj_set(getwd())
 
 test_that("createBasicProject() cleans if there was an error", {
   m <- mockery::mock(stop())
@@ -52,3 +53,6 @@ test_that("createBasicProject() cleans if there was an error", {
 
 })
 
+unlink(project_name, recursive = TRUE, force = TRUE)
+fs::dir_delete(tmp)
+usethis::proj_set(getwd())

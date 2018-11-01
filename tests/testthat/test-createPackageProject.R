@@ -9,11 +9,6 @@ setup({
                                        Version = "0.0.0.9000"
                                      )))
 })
-teardown({
-  fs::dir_delete(tmp)
-})
-
-
 
 project_name <- "packageProject2"
 
@@ -38,6 +33,7 @@ test_that("createPackageProject() creates as expected when using defaults",{
 })
 
 unlink(project_name, recursive = TRUE, force = TRUE)
+usethis::proj_set(getwd())
 
 test_that("createPackageProject() cleans if there was an error", {
   m <- mockery::mock(stop())
@@ -46,3 +42,7 @@ test_that("createPackageProject() cleans if there was an error", {
                    "Oops")
   })
 })
+
+unlink(project_name, recursive = TRUE, force = TRUE)
+fs::dir_delete(tmp)
+usethis::proj_set(getwd())
