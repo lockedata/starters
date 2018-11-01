@@ -17,14 +17,14 @@ test_that("createBasicProject() creates as expected when using defaults", {
   createBasicProject(project_name,
                      packagedeps = "packrat")
 
-  expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
-  expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
-  expect_true(file.exists(file.path(project_name, "R")))
-  expect_true(file.exists(file.path(project_name, "README.Rmd")))
-  expect_true(file.exists(file.path(project_name, "packrat")))
-  expect_true(file.exists(file.path(project_name, ".git")))
-  expect_true(file.exists(file.path(project_name, ".gitignore")))
-  expect_true(file.exists(file.path(project_name, ".travis.yml")))
+  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
+  expect_true(file.exists(file.path(tmp, project_name, "R")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
+  expect_true(file.exists(file.path(tmp, project_name, "packrat")))
+  expect_true(file.exists(file.path(tmp, project_name, ".git")))
+  expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
+  expect_true(file.exists(file.path(tmp, project_name, ".travis.yml")))
 
 })
 
@@ -35,14 +35,14 @@ test_that("createBasicProject() creates as expected when using checkpoint", {
   createBasicProject(project_name,
                      packagedeps = "checkpoint")
 
-  expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
-  expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
-  expect_true(file.exists(file.path(project_name, "R")))
-  expect_true(file.exists(file.path(project_name, "README.Rmd")))
-  expect_true(file.exists(file.path(project_name, "packrat")))
-  expect_true(file.exists(file.path(project_name, ".git")))
-  expect_true(file.exists(file.path(project_name, ".gitignore")))
-  expect_true(file.exists(file.path(project_name, ".travis.yml")))
+  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
+  expect_true(file.exists(file.path(tmp, project_name, "R")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
+  expect_true(file.exists(file.path(tmp, project_name, "packrat")))
+  expect_true(file.exists(file.path(tmp, project_name, ".git")))
+  expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
+  expect_true(file.exists(file.path(tmp, project_name, ".travis.yml")))
 
 })
 
