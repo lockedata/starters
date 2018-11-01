@@ -31,7 +31,8 @@ Suggests:
     xaringan,
     tufte,
     revealjs,
-    bookdown
+    bookdown,
+    mockery
 VignetteBuilder: knitr
 Imports: 
     devtools,

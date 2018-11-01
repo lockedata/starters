@@ -31,8 +31,11 @@ test_that("createBasicProject() creates as expected when using defaults", {
 unlink(project_name, recursive = TRUE, force = TRUE)
 
 test_that("createBasicProject() cleans if there was an error", {
-  expect_message(createBasicProject("blablabla",
-                                    packagedeps = "lalala"),
-                 "Oops")
+  m <- mockery::mock(stop())
+  with_mock(dir.create = m, {
+    expect_message(createBasicProject("blablabla"),
+                   "Oops")
+  })
+
 })
 
