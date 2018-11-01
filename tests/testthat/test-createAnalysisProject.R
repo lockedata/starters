@@ -22,7 +22,6 @@ test_that("createAnalysisProject() creates as expected when using defaults",{
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(project_name, "R")))
   expect_true(file.exists(file.path(project_name, "README.Rmd")))
-  expect_true(file.exists(file.path(project_name, "packrat")))
   expect_true(file.exists(file.path(project_name, ".git")))
   expect_true(file.exists(file.path(project_name, ".gitignore")))
   expect_true(file.exists(file.path(project_name, ".travis.yml")))

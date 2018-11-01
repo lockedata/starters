@@ -23,8 +23,8 @@ project_name <- "packageProject2"
 test_that("createPackageProject() creates as expected when using defaults",{
 
   createPackageProject(project_name)
-    #expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
-    #expect_true(file.exists(file.path(project_name, "codecov.yml")))
+  expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(project_name, "codecov.yml")))
   expect_true(file.exists(file.path(project_name, "CODE_OF_CONDUCT.md")))
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(project_name, "LICENSE")))

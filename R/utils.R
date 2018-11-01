@@ -14,7 +14,11 @@ setup_dep_system <- function(packagedeps){
     desc::desc_set_dep(package = "checkpoint",
                        type = "Imports",
                        file = usethis::proj_get())
-    checkpoint::setSnapshot(Sys.Date(), online = TRUE)
+    checkpoint::checkpoint(Sys.Date(),
+                           project = proj_get(),
+                           checkpointLocation = proj_get(),
+                           forceProject = TRUE,
+                           verbose = TRUE)
   }
 }
 

@@ -14,7 +14,8 @@ project_name <- "basicProject"
 
 test_that("createBasicProject() creates as expected when using defaults", {
 
-  createBasicProject(project_name)
+  createBasicProject(project_name,
+                     packagedeps = "packrat")
 
   #expect_true(file.exists(file.path(project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(project_name, "DESCRIPTION")))
