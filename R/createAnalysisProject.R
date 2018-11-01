@@ -1,8 +1,7 @@
 #' Create a project laid out for an analysis project
 #'
-#' @param name Project
+#' @inheritParams createBasicProject
 #' @param dirs Directories to create
-#' @param ... Pass to [createBasicProject()]
 #'
 #' @export
 #'
@@ -14,11 +13,19 @@
 #' unlink(proj)
 #' }
 createAnalysisProject <- function(name,
-                                  dirs = c("data", "analysis", "outputs"),
-                                  ...) {
-  createBasicProject(name, ...)
+                                  travis = TRUE,
+                                  packagedeps = "packrat",
+                                  git = TRUE,
+                                  readme = TRUE,
+                                  dirs = c("data", "analysis", "outputs")) {
+  packagedeps <- match.arg(packagedeps, okpackagedeps())
+  createBasicProject(name,
+                     travis = travis,
+                     packagedeps = packagedeps,
+                     git = git,
+                     readme = readme)
   createdirs(name, dirs)
   invisible(TRUE)
 
-  
+
 }

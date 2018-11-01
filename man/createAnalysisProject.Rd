@@ -4,14 +4,21 @@
 \alias{createAnalysisProject}
 \title{Create a project laid out for an analysis project}
 \usage{
-createAnalysisProject(name, dirs = c("data", "analysis", "outputs"), ...)
+createAnalysisProject(name, travis = TRUE, packagedeps = "packrat",
+  git = TRUE, readme = TRUE, dirs = c("data", "analysis", "outputs"))
 }
 \arguments{
 \item{name}{Project}
 
-\item{dirs}{Directories to create}
+\item{travis}{Configure Travis-CI}
 
-\item{...}{Pass to \code{\link[=createBasicProject]{createBasicProject()}}}
+\item{packagedeps}{Set a tool for package reproducibility}
+
+\item{git}{Configure Git}
+
+\item{readme}{Include a README}
+
+\item{dirs}{Directories to create}
 }
 \description{
 Create a project laid out for an analysis project
