@@ -11,7 +11,6 @@
 #'                If NULL, no GitHub repo is created.
 #' @param private whether to make the created GitHub repo private
 #' @param protocol "ssh" or "https", protocol to use for GitHub
-#' @param readme Include a README
 #' @param reset whether to reset the project to current project
 #'
 #' @export
@@ -32,7 +31,6 @@ createBasicProject <- function(name,
                                github = gh::gh_whoami()$login,
                                private = FALSE,
                                protocol = "ssh",
-                               readme = TRUE,
                                reset = TRUE) {
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
@@ -67,9 +65,10 @@ createBasicProject <- function(name,
 
   setup_dep_system(packagedeps)
 
+  usethis::use_readme_md(open = FALSE)
 
   if (git) usethis::use_git(message = cool_first_commit())
-  if (readme) usethis::use_readme_rmd(open = FALSE)
+
   if (!is.null(github)) setup_repo(username = github,
                                    private = private,
                                    protocol = protocol,

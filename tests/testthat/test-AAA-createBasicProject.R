@@ -15,7 +15,7 @@ test_that("createBasicProject() creates as expected when using defaults", {
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
-  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.md")))
   expect_true(dir.exists(file.path(tmp, project_name, "packrat")))
   expect_true(file.exists(file.path(tmp, project_name, ".git")))
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))

@@ -8,7 +8,7 @@ createTrainingProject(name, folder = getwd(), dirs = c("data",
   "handouts", "slides"), handoutEngine = "rmarkdown",
   slideEngine = "rmarkdown", travis = TRUE, packagedeps = "packrat",
   git = TRUE, github = gh::gh_whoami()$login, private = FALSE,
-  protocol = "ssh", readme = TRUE, title = NULL)
+  protocol = "ssh", title = NULL)
 }
 \arguments{
 \item{name}{Project}
@@ -33,8 +33,6 @@ If NULL, no GitHub repo is created.}
 \item{private}{whether to make the created GitHub repo private}
 
 \item{protocol}{"ssh" or "https", protocol to use for GitHub}
-
-\item{readme}{Include a README}
 
 \item{title}{"What the Project Does (One Line, Title Case)"
 If NULL, a random one will be generated.}
