@@ -4,13 +4,16 @@
 \alias{createBasicProject}
 \title{Create a very basic project directory}
 \usage{
-createBasicProject(name, folder = getwd(), travis = TRUE,
-  packagedeps = "packrat", git = TRUE,
+createBasicProject(name, title = NULL, folder = getwd(),
+  travis = TRUE, packagedeps = "packrat", git = TRUE,
   github = gh::gh_whoami()$login, private = FALSE, protocol = "ssh",
   readme = TRUE, reset = TRUE)
 }
 \arguments{
 \item{name}{Project}
+
+\item{title}{"What the Project Does (One Line, Title Case)"
+If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
 

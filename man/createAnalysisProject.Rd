@@ -7,7 +7,8 @@
 createAnalysisProject(name, folder = getwd(), travis = TRUE,
   packagedeps = "packrat", git = TRUE,
   github = gh::gh_whoami()$login, private = FALSE, protocol = "ssh",
-  readme = TRUE, dirs = c("data", "analysis", "outputs"))
+  readme = TRUE, dirs = c("data", "analysis", "outputs"),
+  title = NULL)
 }
 \arguments{
 \item{name}{Project}
@@ -30,6 +31,9 @@ If NULL, no GitHub repo is created.}
 \item{readme}{Include a README}
 
 \item{dirs}{Directories to create}
+
+\item{title}{"What the Project Does (One Line, Title Case)"
+If NULL, a random one will be generated.}
 }
 \description{
 Create a project laid out for an analysis project

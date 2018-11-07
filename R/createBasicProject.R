@@ -1,6 +1,8 @@
 #' Create a very basic project directory
 #'
 #' @param name Project
+#' @param title "What the Project Does (One Line, Title Case)"
+#'              If NULL, a random one will be generated.
 #' @param folder Folder under which to create the project
 #' @param travis Configure Travis-CI
 #' @param packagedeps Set a tool for package reproducibility
@@ -21,7 +23,9 @@
 #' list.files(proj)
 #' unlink(proj)
 #' }
-createBasicProject <- function(name, folder = getwd(),
+createBasicProject <- function(name,
+                               title = NULL,
+                               folder = getwd(),
                                travis = TRUE,
                                packagedeps = "packrat",
                                git = TRUE,
@@ -33,6 +37,11 @@ createBasicProject <- function(name, folder = getwd(),
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
   check_github_name(github, name)
+
+  if(is.null(title)){
+    title <- cool_stuff()
+  }
+
   current_proj <- get_current_proj()
   tryCatch({
       dir.create(file.path(folder, name))
@@ -53,6 +62,8 @@ createBasicProject <- function(name, folder = getwd(),
         #placeholder, BADGE stuff
       }
 
+  desc::desc_set("Title", title,
+                 file = usethis::proj_get())
 
   setup_dep_system(packagedeps)
 
@@ -60,7 +71,9 @@ createBasicProject <- function(name, folder = getwd(),
   if (git) usethis::use_git()
   if (readme) usethis::use_readme_rmd(open = FALSE)
   if (!is.null(github)) setup_repo(username = github,
-                                   private, protocol)
+                                   private = private,
+                                   protocol = protocol,
+                                   title = title)
 
   }
   ,

@@ -20,7 +20,8 @@ createAnalysisProject <- function(name, folder = getwd(),
                                   private = FALSE,
                                   protocol = "ssh",
                                   readme = TRUE,
-                                  dirs = c("data", "analysis", "outputs")) {
+                                  dirs = c("data", "analysis", "outputs"),
+                                  title = NULL) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
   check_github_name(github, name)
   current_proj <- get_current_proj()
@@ -33,7 +34,8 @@ createAnalysisProject <- function(name, folder = getwd(),
                      private = private,
                      protocol = protocal,
                      readme = readme,
-                     reset = FALSE)
+                     reset = FALSE,
+                     title = title)
   createdirs(dirs)
   reset_proj(current_proj)
   invisible(TRUE)

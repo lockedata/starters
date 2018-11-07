@@ -74,8 +74,8 @@ is_org <- function(username){
 }
 
 # very much inspired by usethis!
-setup_repo <- function(username, private, protocol){
-  browser()
+setup_repo <- function(username, private, protocol,
+                       title){
   # create repo
   if(is_org(username)){
     endpoint <- "POST /orgs/:org/repos"
@@ -86,8 +86,7 @@ setup_repo <- function(username, private, protocol){
          org = username,
          name = as.character(
            fs::path_file(usethis::proj_get())),
-         description = as.character(
-           desc::desc(usethis::proj_get())$get("Title")),
+         description = title,
          private = private)
 
   r <- git2r::repository(usethis::proj_get())
@@ -141,4 +140,9 @@ check_github_name <- function(github, name){
       return(invisible(TRUE))
     }
   }
+}
+
+
+cool_stuff <- function(){
+  praise::praise("New ${adjective} project!")
 }

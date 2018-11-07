@@ -7,7 +7,7 @@ commands executed to save you hassle}
 \usage{
 createPackageProject(name, folder = getwd(), bestPractices = TRUE,
   coverage = "codecov", github = gh::gh_whoami()$login,
-  private = FALSE, protocol = "ssh")
+  private = FALSE, protocol = "ssh", title = NULL)
 }
 \arguments{
 \item{name}{Project / package name}
@@ -24,6 +24,9 @@ If NULL, no GitHub repo is created.}
 \item{private}{whether to make the created GitHub repo private}
 
 \item{protocol}{"ssh" or "https", protocol to use for GitHub}
+
+\item{title}{"What the Project Does (One Line, Title Case)"
+If NULL, a random one will be generated.}
 }
 \description{
 Create a package the usethis way with a number of infrastructure

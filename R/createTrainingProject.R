@@ -26,7 +26,8 @@ createTrainingProject <- function(name, folder = getwd(),
                                   github = gh::gh_whoami()$login,
                                   private = FALSE,
                                   protocol = "ssh",
-                                  readme = TRUE) {
+                                  readme = TRUE,
+                                  title = NULL) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
   check_github_name(github, name)
   # Supported packages
@@ -55,7 +56,8 @@ createTrainingProject <- function(name, folder = getwd(),
                      protocol = protocal,
                      git = git,
                      readme = readme,
-                     reset = FALSE)
+                     reset = FALSE,
+                     title = title)
   createdirs(dirs)
 
 

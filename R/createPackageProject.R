@@ -9,6 +9,8 @@
 #'                If NULL, no GitHub repo is created.
 #' @param private whether to make the created GitHub repo private
 #' @param protocol "ssh" or "https", protocol to use for GitHub
+#' @param title "What the Project Does (One Line, Title Case)"
+#'              If NULL, a random one will be generated.
 #'
 #' @export
 #'
@@ -24,7 +26,12 @@ createPackageProject <- function(name, folder = getwd(),
                                  coverage = "codecov",
                                  github = gh::gh_whoami()$login,
                                  private = FALSE,
-                                 protocol = "ssh") {
+                                 protocol = "ssh",
+                                 title = NULL) {
+  check_github_name(github, name)
+  if(is.null(title)){
+    title <- cool_stuff()
+  }
   if (is_available(name)) {
     current_proj <- get_current_proj()
     tryCatch({
@@ -35,7 +42,8 @@ createPackageProject <- function(name, folder = getwd(),
       usethis::create_package(file.path(folder, name), open = FALSE,
                               rstudio = TRUE,
                               fields = list(License = "MIT + file LICENSE"))
-
+      desc::desc_set("Title", title,
+                     file = usethis::proj_get())
       if (bestPractices) {
         usethis::use_template("travis.yml",
                               ".travis.yml",
@@ -68,7 +76,9 @@ createPackageProject <- function(name, folder = getwd(),
         usethis::use_vignette(name)
         usethis::use_git()
         if (!is.null(github)) setup_repo(username = github,
-                                         private, protocol)
+                                         private = private,
+                                         protocol = protocol,
+                                         title = title)
       }
 
   }
