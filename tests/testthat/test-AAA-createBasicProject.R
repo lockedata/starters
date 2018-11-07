@@ -63,8 +63,8 @@ test_that("createBasicProject() cleans if there was an error", {
                        folder = tmp)
 
     expect_true(repo_exists("chibimaelle", "test"))
-    #gh::gh("DELETE /repos/:owner/:repo",
-     #      owner = "chibimaelle", repo = "test")
+    gh::gh("DELETE /repos/:owner/:repo",
+           owner = "chibimaelle", repo = "test")
     })
 
 })
