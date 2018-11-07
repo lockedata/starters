@@ -75,6 +75,7 @@ is_org <- function(username){
 
 # very much inspired by usethis!
 setup_repo <- function(username, private, protocol){
+  browser()
   # create repo
   if(is_org(username)){
     endpoint <- "POST /orgs/:org/repos"
@@ -87,7 +88,7 @@ setup_repo <- function(username, private, protocol){
            fs::path_file(usethis::proj_get())),
          description = as.character(
            desc::desc(usethis::proj_get())$get("Title")),
-         private = tolower(as.character(private)))
+         private = private)
 
   r <- git2r::repository(usethis::proj_get())
   origin_url <- switch(protocol, https = create$clone_url,

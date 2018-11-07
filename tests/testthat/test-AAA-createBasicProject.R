@@ -55,11 +55,12 @@ test_that("createBasicProject() cleans if there was an error", {
 
   test_that("createBasicProject() can create a GitHub repo", {
     skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
-    expect_silent(createBasicProject(github = "chibimaelle",
-                                     name = "test",
-                                     private = FALSE,
-                                     packagedeps = "none",
-                                     protocol = "ssh"))
+    createBasicProject(github = "chibimaelle",
+                       name = "test",
+                       private = FALSE,
+                       packagedeps = "none",
+                       protocol = "ssh",
+                       folder = tmp)
 
     expect_true(repo_exists("chibimaelle", "test"))
     #gh::gh("DELETE /repos/:owner/:repo",
