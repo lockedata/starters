@@ -7,7 +7,8 @@
 createTrainingProject(name, folder = getwd(), dirs = c("data",
   "handouts", "slides"), handoutEngine = "rmarkdown",
   slideEngine = "rmarkdown", travis = TRUE, packagedeps = "packrat",
-  git = TRUE, readme = TRUE)
+  git = TRUE, github = gh::gh_whoami()$login, private = FALSE,
+  protocol = "ssh", readme = TRUE)
 }
 \arguments{
 \item{name}{Project}
@@ -25,6 +26,13 @@ createTrainingProject(name, folder = getwd(), dirs = c("data",
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
+
+\item{github}{username or organization name to use for GitHub.
+If NULL, no GitHub repo is created.}
+
+\item{private}{whether to make the created GitHub repo private}
+
+\item{protocol}{"ssh" or "https", protocol to use for GitHub}
 
 \item{readme}{Include a README}
 }

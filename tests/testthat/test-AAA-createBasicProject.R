@@ -9,7 +9,8 @@ project_name <- "basicProject"
 test_that("createBasicProject() creates as expected when using defaults", {
 
   createBasicProject(project_name, folder = tmp,
-                     packagedeps = "packrat")
+                     packagedeps = "packrat",
+                     github = NULL)
 
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
@@ -46,7 +47,8 @@ usethis::proj_set(getwd())
 test_that("createBasicProject() cleans if there was an error", {
   m <- mockery::mock(stop())
   with_mock(dir.create = m, {
-    expect_message(createBasicProject("blablabla"),
+    expect_message(createBasicProject("blablabla",
+                                      github = NULL),
                    "Oops")
   })
 

@@ -5,7 +5,10 @@
 #' @param folder Folder under which to create the project
 #' @param bestPractices Run additional best practice commands
 #' @param coverage What code coverage platform to use, "codecov" or "coveralls".
-#' @param private Whether to create the GH repo as private
+#' @param github username or organization name to use for GitHub.
+#'                If NULL, no GitHub repo is created.
+#' @param private whether to make the created GitHub repo private
+#' @param protocol "ssh" or "https", protocol to use for GitHub
 #'
 #' @export
 #'
@@ -19,7 +22,9 @@
 createPackageProject <- function(name, folder = getwd(),
                                  bestPractices = TRUE,
                                  coverage = "codecov",
-                                 private = TRUE) {
+                                 github = gh::gh_whoami()$login,
+                                 private = FALSE,
+                                 protocol = "ssh") {
   if (is_available(name)) {
     tryCatch({
 
@@ -61,7 +66,8 @@ createPackageProject <- function(name, folder = getwd(),
         usethis::use_testthat()
         usethis::use_vignette(name)
         usethis::use_git()
-        #use_github(private = private)
+        if (!is.null(github)) setup_repo(username = github,
+                                         private, protocol)
       }
 
   }

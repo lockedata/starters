@@ -16,6 +16,9 @@ createAnalysisProject <- function(name, folder = getwd(),
                                   travis = TRUE,
                                   packagedeps = "packrat",
                                   git = TRUE,
+                                  github = gh::gh_whoami()$login,
+                                  private = FALSE,
+                                  protocol = "ssh",
                                   readme = TRUE,
                                   dirs = c("data", "analysis", "outputs")) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
@@ -24,6 +27,9 @@ createAnalysisProject <- function(name, folder = getwd(),
                      travis = travis,
                      packagedeps = packagedeps,
                      git = git,
+                     github = github,
+                     private = private,
+                     protocol = protocal,
                      readme = readme)
   createdirs(dirs)
   invisible(TRUE)

@@ -16,7 +16,8 @@ project_name <- "packageProject2"
 
 test_that("createPackageProject() creates as expected when using defaults",{
 
-  createPackageProject(project_name, folder = tmp)
+  createPackageProject(project_name, folder = tmp,
+                       github = NULL)
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   #expect_true(file.exists(file.path(tmp, project_name, "codecov.yml")))
   expect_true(file.exists(file.path(tmp, project_name, "CODE_OF_CONDUCT.md")))
@@ -40,7 +41,8 @@ usethis::proj_set(getwd())
 test_that("createPackageProject() cleans if there was an error", {
   m <- mockery::mock(stop())
   with_mock(dir.create = m, {
-    expect_message(createPackageProject("blablabla"),
+    expect_message(createPackageProject("reallynotapkgnameplease",
+                                      github = NULL),
                    "Oops")
   })
 })

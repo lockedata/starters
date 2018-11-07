@@ -5,6 +5,10 @@
 #' @param travis Configure Travis-CI
 #' @param packagedeps Set a tool for package reproducibility
 #' @param git Configure Git
+#' @param github username or organization name to use for GitHub.
+#'                If NULL, no GitHub repo is created.
+#' @param private whether to make the created GitHub repo private
+#' @param protocol "ssh" or "https", protocol to use for GitHub
 #' @param readme Include a README
 #'
 #' @export
@@ -20,6 +24,9 @@ createBasicProject <- function(name, folder = getwd(),
                                travis = TRUE,
                                packagedeps = "packrat",
                                git = TRUE,
+                               github = gh::gh_whoami()$login,
+                               private = FALSE,
+                               protocol = "ssh",
                                readme = TRUE) {
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
@@ -50,6 +57,8 @@ createBasicProject <- function(name, folder = getwd(),
 
   if (git) usethis::use_git()
   if (readme) usethis::use_readme_rmd(open = FALSE)
+  if (!is.null(github)) setup_repo(username = github,
+                                   private, protocol)
 
   }
   ,

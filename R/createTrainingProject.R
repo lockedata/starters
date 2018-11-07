@@ -23,6 +23,9 @@ createTrainingProject <- function(name, folder = getwd(),
                                   travis = TRUE,
                                   packagedeps = "packrat",
                                   git = TRUE,
+                                  github = gh::gh_whoami()$login,
+                                  private = FALSE,
+                                  protocol = "ssh",
                                   readme = TRUE) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
@@ -46,6 +49,9 @@ createTrainingProject <- function(name, folder = getwd(),
                      folder = folder,
                      travis = travis,
                      packagedeps = "none",
+                     github = github,
+                     private = private,
+                     protocol = protocal,
                      git = git,
                      readme = readme)
   createdirs(dirs)

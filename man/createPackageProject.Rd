@@ -6,7 +6,8 @@
 commands executed to save you hassle}
 \usage{
 createPackageProject(name, folder = getwd(), bestPractices = TRUE,
-  coverage = "codecov", private = TRUE)
+  coverage = "codecov", github = gh::gh_whoami()$login,
+  private = FALSE, protocol = "ssh")
 }
 \arguments{
 \item{name}{Project / package name}
@@ -17,7 +18,12 @@ createPackageProject(name, folder = getwd(), bestPractices = TRUE,
 
 \item{coverage}{What code coverage platform to use, "codecov" or "coveralls".}
 
-\item{private}{Whether to create the GH repo as private}
+\item{github}{username or organization name to use for GitHub.
+If NULL, no GitHub repo is created.}
+
+\item{private}{whether to make the created GitHub repo private}
+
+\item{protocol}{"ssh" or "https", protocol to use for GitHub}
 }
 \description{
 Create a package the usethis way with a number of infrastructure

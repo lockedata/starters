@@ -67,51 +67,38 @@ is_available <- function(name) {
   invisible(TRUE)
 }
 
-# from usethis since pushing doesn't work yet,
-# removed pushing
-use_github <- function (organisation = NULL, private = TRUE,
-                        protocol = "ssh",
-                        host = NULL)
-{
-  auth_token <- usethis:::gh_token()
-  usethis:::check_gh_token(auth_token)
 
-  pkg <- usethis:::project_data()
-  repo_name <- pkg$Project %||% gsub("\n", " ", pkg$Package)
-  repo_desc <- pkg$Title %||% ""
+is_org <- function(username){
+  info <- gh::gh("GET /users/:username", username = username)
+  info$type == "Organization"
+}
 
-
-  usethis:::done("Creating GitHub repository")
-  if (is.null(organisation)) {
-    create <- gh::gh("POST /user/repos", name = repo_name,
-                     description = repo_desc, private = private, .api_url = host,
-                     .token = auth_token)
+# very much inspired by usethis!
+setup_repo <- function(username, private, protocol){
+  # create repo
+  if(is_org(username)){
+    endpoint <- "POST /orgs/:org/repos"
+  }else{
+    endpoint <- "POST /user/repos"
   }
-  else {
-    create <- gh::gh("POST /orgs/:org/repos", org = organisation,
-                     name = repo_name, description = repo_desc, private = private,
-                     .api_url = host, .token = auth_token)
-  }
-  usethis:::done("Adding GitHub remote")
+  create <- gh::gh(endpoint,
+         org = username,
+         name = as.character(
+           fs::path_file(usethis::proj_get())),
+         description = as.character(
+           desc::desc(usethis::proj_get())$get("Title")),
+         private = tolower(as.character(private)))
+
   r <- git2r::repository(usethis::proj_get())
-  protocol <- match.arg(protocol)
   origin_url <- switch(protocol, https = create$clone_url,
                        ssh = create$ssh_url)
   git2r::remote_add(r, "origin", origin_url)
-  if (usethis:::is_package()) {
-    usethis:::done("Adding GitHub links to DESCRIPTION")
-    use_github_links(auth_token = auth_token, host = host)
-    if (git_uncommitted()) {
-      git2r::add(r, "DESCRIPTION")
-      git2r::commit(r, "Add GitHub links to DESCRIPTION")
-    }
-  }
-  usethis:::done("Setting remote tracking branch")
-
-  git2r::branch_set_upstream(git2r::repository_head(r), "origin/master")
-  view_url(create$html_url)
-  invisible(NULL)
+  git2r::checkout(r, "master")
+  #git2r::branch_set_upstream(git2r::repository_head(r),
+  #                           "origin/master")
+  desc::desc_set("URL", create$html_url,
+                 file = usethis::proj_get())
+  desc::desc_set("BugReports",
+                 paste0(create$html_url, "/issues"),
+                 file = usethis::proj_get())
 }
-# https://github.com/r-lib/usethis/blob/1e3c6a66e8b2d2790ee6d7e6d5651c52fb61abfc/R/utils.R#L100
-"%||%" <- function(a, b) if (!is.null(a)) a else b
-

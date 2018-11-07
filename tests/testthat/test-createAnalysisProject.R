@@ -8,7 +8,8 @@ project_name <- "analysisProject"
 
 test_that("createAnalysisProject() creates as expected when using defaults",{
 
-  createAnalysisProject(project_name, folder = tmp)
+  createAnalysisProject(project_name, folder = tmp,
+                        github = NULL)
 
   #expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))

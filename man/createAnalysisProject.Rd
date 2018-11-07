@@ -5,8 +5,9 @@
 \title{Create a project laid out for an analysis project}
 \usage{
 createAnalysisProject(name, folder = getwd(), travis = TRUE,
-  packagedeps = "packrat", git = TRUE, readme = TRUE,
-  dirs = c("data", "analysis", "outputs"))
+  packagedeps = "packrat", git = TRUE,
+  github = gh::gh_whoami()$login, private = FALSE, protocol = "ssh",
+  readme = TRUE, dirs = c("data", "analysis", "outputs"))
 }
 \arguments{
 \item{name}{Project}
@@ -18,6 +19,13 @@ createAnalysisProject(name, folder = getwd(), travis = TRUE,
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
+
+\item{github}{username or organization name to use for GitHub.
+If NULL, no GitHub repo is created.}
+
+\item{private}{whether to make the created GitHub repo private}
+
+\item{protocol}{"ssh" or "https", protocol to use for GitHub}
 
 \item{readme}{Include a README}
 
