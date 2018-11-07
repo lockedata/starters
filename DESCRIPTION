@@ -50,7 +50,8 @@ Imports:
     desc,
     gh,
     git2r,
-    glue
+    glue,
+    praise
 Remotes:
     r-lib/usethis
 Roxygen: list(markdown = TRUE)
