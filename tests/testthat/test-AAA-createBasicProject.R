@@ -19,7 +19,6 @@ test_that("createBasicProject() creates as expected when using defaults", {
   expect_true(dir.exists(file.path(tmp, project_name, "packrat")))
   expect_true(file.exists(file.path(tmp, project_name, ".git")))
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
-  expect_true(file.exists(file.path(tmp, project_name, ".travis.yml")))
 
 })
 

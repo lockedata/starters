@@ -31,7 +31,6 @@ test_that("createPackageProject() creates as expected when using defaults",{
   expect_true(file.exists(file.path(tmp, project_name, "vignettes")))
   expect_true(file.exists(file.path(tmp, project_name, ".git")))
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
-  expect_true(file.exists(file.path(tmp, project_name, ".travis.yml")))
 
 })
 

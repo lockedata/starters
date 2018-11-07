@@ -52,13 +52,7 @@ createBasicProject <- function(name,
 
       usethis::use_description()
 
-      if (travis) {
-        usethis::use_template("travis.yml",
-                              ".travis.yml",
-                              ignore = TRUE)
-        #travis::travis_enable() needs GH repo
-        #placeholder, BADGE stuff
-      }
+
 
   desc::desc_set("Title", title,
                  file = usethis::proj_get())
@@ -67,12 +61,18 @@ createBasicProject <- function(name,
 
   usethis::use_readme_md(open = FALSE)
 
+
   if (git) usethis::use_git(message = cool_first_commit())
 
-  if (!is.null(github)) setup_repo(username = github,
-                                   private = private,
-                                   protocol = protocol,
-                                   title = title)
+  if (!is.null(github)){
+    setup_repo(username = github,
+               private = private,
+               protocol = protocol,
+               title = title)
+    if (travis) {
+        setup_travis(github, name)
+    }
+  }
 
   }
   ,

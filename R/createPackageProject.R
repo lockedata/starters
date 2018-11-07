@@ -75,10 +75,15 @@ createPackageProject <- function(name, folder = getwd(),
         usethis::use_testthat()
         usethis::use_vignette(name)
         usethis::use_git(message = cool_first_commit())
-        if (!is.null(github)) setup_repo(username = github,
-                                         private = private,
-                                         protocol = protocol,
-                                         title = title)
+        if (!is.null(github)){
+          setup_repo(username = github,
+                     private = private,
+                     protocol = protocol,
+                     title = title)
+          if (travis) {
+            setup_travis(github, name)
+          }
+        }
       }
 
   }
