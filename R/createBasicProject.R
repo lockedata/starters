@@ -25,7 +25,6 @@ createBasicProject <- function(name, folder = getwd(),
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   tryCatch({
-    if (is_available(name)) {
       dir.create(file.path(folder, name))
 
 
@@ -51,7 +50,7 @@ createBasicProject <- function(name, folder = getwd(),
 
   if (git) usethis::use_git()
   if (readme) usethis::use_readme_rmd(open = FALSE)
-    }
+
   }
   ,
   error = function(e) {
