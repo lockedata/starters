@@ -32,6 +32,7 @@ createBasicProject <- function(name, folder = getwd(),
                                reset = TRUE) {
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
+  check_github_name(github, name)
   current_proj <- get_current_proj()
   tryCatch({
       dir.create(file.path(folder, name))

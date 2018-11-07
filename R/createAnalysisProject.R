@@ -22,6 +22,7 @@ createAnalysisProject <- function(name, folder = getwd(),
                                   readme = TRUE,
                                   dirs = c("data", "analysis", "outputs")) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
+  check_github_name(github, name)
   current_proj <- get_current_proj()
   createBasicProject(name,
                      folder = folder,

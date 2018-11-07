@@ -120,3 +120,24 @@ reset_proj <- function(current_proj){
     usethis::proj_set(current_proj, force = TRUE)
   }
 }
+
+repo_exists <- function(owner, repo){
+  !inherits(try(gh::gh("GET /repos/:owner/:repo",
+                      owner = owner,
+                      repo = repo),
+               silent = TRUE),
+           "try-error")
+}
+
+check_github_name <- function(github, name){
+  if(is.null(github)){
+    return(invisible(TRUE))
+  }else{
+    if(repo_exists(github, name)){
+      stop(glue::glue("There is already a GitHub repo named {name} for the {github} account"),
+           call. = FALSE)
+    }else{
+      return(invisible(TRUE))
+    }
+  }
+}

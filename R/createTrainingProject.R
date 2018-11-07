@@ -28,7 +28,7 @@ createTrainingProject <- function(name, folder = getwd(),
                                   protocol = "ssh",
                                   readme = TRUE) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
-
+  check_github_name(github, name)
   # Supported packages
   handoutEngine <- match.arg(handoutEngine,
                              handoutEngine())
