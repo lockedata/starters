@@ -17,7 +17,6 @@ projectGadget <- function() {
         shiny::inputPanel(
           shiny::h4("Best Practices"),
           shiny::br(),
-          shiny::checkboxInput("readme", "Create README", value = TRUE),
           shiny::checkboxInput("git", "Use Git", value = TRUE),
           shiny::checkboxInput("travis", "Use Travis", value = TRUE),
           shiny::selectInput("packagedeps",label="Use a package for handling reproducibility",choices =  c("none","packrat","checkpoint"), selected = "packrat")
@@ -73,13 +72,13 @@ projectGadget <- function() {
       switch(input$projectType,
 
         "Basic"    = createBasicProject(
-                        name = input$name, readme = input$readme,
+                        name = input$name,
                         git = input$git, travis = input$travis,
                         packagedeps = input$packagedeps),
 
         "Analysis" = createAnalysisProject(
                         name = input$name, dirs = input$dirs,
-                        readme = input$readme, git = input$git,
+                        git = input$git,
                         travis = input$travis, packagedeps = input$packagedeps),
 
         "Package" = createPackageProject(
@@ -90,7 +89,7 @@ projectGadget <- function() {
                         name = input$name, dirs = input$dirs,
                         handoutEngine = input$handoutE,
                         slideEngine = input$slideE,
-                        readme = input$readme, git = input$git,
+                        git = input$git,
                         travis = input$travis, packagedeps = input$packagedeps)
 
       )
