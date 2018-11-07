@@ -146,3 +146,7 @@ check_github_name <- function(github, name){
 cool_stuff <- function(){
   praise::praise("New ${adjective} project!")
 }
+
+cool_first_commit <- function(){
+  praise::praise("First commit of this ${adjective} project, ${exclamation}!")
+}

@@ -68,7 +68,7 @@ createBasicProject <- function(name,
   setup_dep_system(packagedeps)
 
 
-  if (git) usethis::use_git()
+  if (git) usethis::use_git(message = cool_first_commit())
   if (readme) usethis::use_readme_rmd(open = FALSE)
   if (!is.null(github)) setup_repo(username = github,
                                    private = private,

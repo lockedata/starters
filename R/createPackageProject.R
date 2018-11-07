@@ -74,7 +74,7 @@ createPackageProject <- function(name, folder = getwd(),
         usethis::use_readme_rmd(open = FALSE)
         usethis::use_testthat()
         usethis::use_vignette(name)
-        usethis::use_git()
+        usethis::use_git(message = cool_first_commit())
         if (!is.null(github)) setup_repo(username = github,
                                          private = private,
                                          protocol = protocol,
