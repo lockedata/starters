@@ -26,6 +26,7 @@ createPackageProject <- function(name, folder = getwd(),
                                  private = FALSE,
                                  protocol = "ssh") {
   if (is_available(name)) {
+    current_proj <- get_current_proj()
     tryCatch({
 
       dir.create(file.path(folder, name))
@@ -80,5 +81,6 @@ createPackageProject <- function(name, folder = getwd(),
   }
   )
   }
+  reset_proj(current_proj)
   invisible(TRUE)
 }

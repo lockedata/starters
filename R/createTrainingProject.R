@@ -45,6 +45,7 @@ createTrainingProject <- function(name, folder = getwd(),
 
   # Skeleton
   message("Creating skeleton")
+  current_proj <- get_current_proj()
   createBasicProject(name,
                      folder = folder,
                      travis = travis,
@@ -53,8 +54,10 @@ createTrainingProject <- function(name, folder = getwd(),
                      private = private,
                      protocol = protocal,
                      git = git,
-                     readme = readme)
+                     readme = readme,
+                     reset = FALSE)
   createdirs(dirs)
+
 
   # Handouts prep
   if ("handouts" %in% dirs) {
@@ -93,7 +96,7 @@ createTrainingProject <- function(name, folder = getwd(),
 
   setup_dep_system(packagedeps)
 
-
+  reset_proj(current_proj)
   invisible(TRUE)
 }
 

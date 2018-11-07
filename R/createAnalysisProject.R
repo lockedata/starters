@@ -22,6 +22,7 @@ createAnalysisProject <- function(name, folder = getwd(),
                                   readme = TRUE,
                                   dirs = c("data", "analysis", "outputs")) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
+  current_proj <- get_current_proj()
   createBasicProject(name,
                      folder = folder,
                      travis = travis,
@@ -30,8 +31,10 @@ createAnalysisProject <- function(name, folder = getwd(),
                      github = github,
                      private = private,
                      protocol = protocal,
-                     readme = readme)
+                     readme = readme,
+                     reset = FALSE)
   createdirs(dirs)
+  reset_proj(current_proj)
   invisible(TRUE)
 
 

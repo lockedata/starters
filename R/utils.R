@@ -102,3 +102,21 @@ setup_repo <- function(username, private, protocol){
                  paste0(create$html_url, "/issues"),
                  file = usethis::proj_get())
 }
+
+
+get_current_proj <- function(){
+  current_proj <- try(usethis::proj_get(),
+                      silent = TRUE)
+  if(inherits(current_proj, "try-error")){
+    current_proj <- NULL
+  }
+  return(current_proj)
+}
+
+reset_proj <- function(current_proj){
+  if(is.null(current_proj)){
+    usethis::proj_set(getwd(), force = TRUE)
+  }else{
+    usethis::proj_set(current_proj, force = TRUE)
+  }
+}

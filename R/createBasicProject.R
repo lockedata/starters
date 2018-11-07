@@ -10,6 +10,7 @@
 #' @param private whether to make the created GitHub repo private
 #' @param protocol "ssh" or "https", protocol to use for GitHub
 #' @param readme Include a README
+#' @param reset whether to reset the project to current project
 #'
 #' @export
 #'
@@ -27,13 +28,13 @@ createBasicProject <- function(name, folder = getwd(),
                                github = gh::gh_whoami()$login,
                                private = FALSE,
                                protocol = "ssh",
-                               readme = TRUE) {
+                               readme = TRUE,
+                               reset = TRUE) {
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
-
+  current_proj <- get_current_proj()
   tryCatch({
       dir.create(file.path(folder, name))
-
 
       usethis::proj_set(file.path(folder, name),
                         force = TRUE)
@@ -69,5 +70,9 @@ createBasicProject <- function(name, folder = getwd(),
     message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
   }
   )
+  if(reset){
+    reset_proj(current_proj)
+  }
+
   invisible(TRUE)
 }
