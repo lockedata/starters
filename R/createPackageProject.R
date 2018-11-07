@@ -20,8 +20,9 @@ createPackageProject <- function(name, folder = getwd(),
                                  bestPractices = TRUE,
                                  coverage = "codecov",
                                  private = TRUE) {
-  tryCatch({
-    if (is_available(name)) {
+  if (is_available(name)) {
+    tryCatch({
+
       dir.create(file.path(folder, name))
       usethis::proj_set(file.path(folder, name),
                         force = TRUE)
@@ -62,7 +63,7 @@ createPackageProject <- function(name, folder = getwd(),
         usethis::use_git()
         #use_github(private = private)
       }
-    }
+
   }
   ,
   error = function(e) {
@@ -72,6 +73,6 @@ createPackageProject <- function(name, folder = getwd(),
     message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
   }
   )
-
+  }
   invisible(TRUE)
 }
