@@ -5,9 +5,10 @@
 \title{Create a very basic project directory}
 \usage{
 createBasicProject(name, title = NULL, folder = getwd(),
-  travis = TRUE, packagedeps = "packrat", git = TRUE,
-  github = gh::gh_whoami()$login, private = FALSE, protocol = "ssh",
-  reset = TRUE)
+  packagedeps = "checkpoint", git = TRUE,
+  external_setup = list(git_service = "GitHub", login =
+  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+  "tic"), reset = TRUE)
 }
 \arguments{
 \item{name}{Project}
@@ -17,18 +18,22 @@ If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
 
-\item{travis}{Configure Travis-CI}
-
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
 
-\item{github}{username or organization name to use for GitHub.
-If NULL, no GitHub repo is created.}
-
-\item{private}{whether to make the created GitHub repo private}
-
-\item{protocol}{"ssh" or "https", protocol to use for GitHub}
+\item{external_setup}{How to do the partly interactive setup
+of online git, CI and coverage platforms. If NULL, no setup.
+\itemize{
+\item \code{git_service} Only "GitHub" is supported at the moment.
+\item \code{login} username or organization name to use for the git service.
+If NULL, no GitHub repo is created.
+\item \code{private} whether to make the created repo private
+\item \code{protocol} "ssh" or "https", protocol to use for GitHub
+\item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
+"travis" means calling \code{usethis::use_travis()} and adding the Travis
+badge to the README.
+}}
 
 \item{reset}{whether to reset the project to current project}
 }
@@ -37,9 +42,13 @@ Create a very basic project directory
 }
 \examples{
 \dontrun{
-proj<-"basicproj"
-createBasicProject(proj)
-list.files(proj)
-unlink(proj)
+folder <- tempdir()
+createBasicProject(name = "doggos", title = "Counting cute dogs",
+                   folder = folder,
+                   packagedeps = "none",
+                   git = TRUE, external_setup = NULL,
+                   reset = TRUE)
+list.files(file.path(folder, "doggos"))
+unlink(file.path(folder, "doggos"))
 }
 }

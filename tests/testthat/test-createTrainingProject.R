@@ -9,7 +9,7 @@ test_that("createTrainingProject() creates as expected when using defaults",{
 
   createTrainingProject(project_name, folder = tmp,
                         packagedeps = "none",
-                        github = NULL)
+                        external_setup = NULL)
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
@@ -30,7 +30,7 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
   createTrainingProject(project_name, folder = tmp,
       handoutEngine = "bookdown", slideEngine = "revealjs",
       packagedeps = "none",
-      github = NULL)
+      external_setup = NULL)
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
@@ -51,7 +51,7 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
  createTrainingProject(project_name, folder = tmp,
       handoutEngine = "tufte", slideEngine = "xaringan",
       packagedeps = "none",
-      github = NULL)
+      external_setup = NULL)
 
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))

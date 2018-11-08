@@ -11,24 +11,31 @@
 #'
 #' @examples
 #' \dontrun{
-#' proj<-"trainingproj"
-#' createTrainingProject(proj)
-#' list.files(proj)
-#' unlink(proj)
+#' folder <- tempdir()
+#' createTrainingProject(name = "doggos", title = "Learning how to count cute dogs",
+#'                    folder = folder,
+#'                    dirs = c("data", "handouts", "slides", "dogs"),
+#'                    packagedeps = "none",
+#'                    git = TRUE, external_setup = NULL,
+#'                    reset = TRUE)
+#' list.files(file.path(folder, "doggos"))
+#' unlink(file.path(folder, "doggos"))
 #' }
 createTrainingProject <- function(name, folder = getwd(),
                                   dirs = c("data", "handouts", "slides"),
                                   handoutEngine = "rmarkdown",
                                   slideEngine = "rmarkdown",
-                                  travis = TRUE,
                                   packagedeps = "packrat",
                                   git = TRUE,
-                                  github = gh::gh_whoami()$login,
-                                  private = FALSE,
-                                  protocol = "ssh",
-                                  title = NULL) {
+                                  external_setup = list(
+                                    git_service = "GitHub",
+                                    login = gh::gh_whoami()$login,
+                                    private = FALSE,
+                                    protocol = "ssh",
+                                    ci_activation = "tic"),
+                                  title = NULL,
+                                  reset = TRUE) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
-  check_github_name(github, name)
   # Supported packages
   handoutEngine <- match.arg(handoutEngine,
                              handoutEngine())
@@ -46,16 +53,13 @@ createTrainingProject <- function(name, folder = getwd(),
   # Skeleton
   message("Creating skeleton")
   current_proj <- get_current_proj()
-  createBasicProject(name,
+  createBasicProject(name = name,
+                     title = title,
                      folder = folder,
-                     travis = travis,
-                     packagedeps = "none",
-                     github = github,
-                     private = private,
-                     protocol = protocal,
+                     packagedeps = packagedeps,
                      git = git,
-                     reset = FALSE,
-                     title = title)
+                     external_setup = external_setup,
+                     reset = FALSE)
   createdirs(dirs)
 
 

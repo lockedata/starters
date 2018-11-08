@@ -73,13 +73,13 @@ projectGadget <- function() {
 
         "Basic"    = createBasicProject(
                         name = input$name,
-                        git = input$git, travis = input$travis,
+                        git = input$git,
                         packagedeps = input$packagedeps),
 
         "Analysis" = createAnalysisProject(
                         name = input$name, dirs = input$dirs,
                         git = input$git,
-                        travis = input$travis, packagedeps = input$packagedeps),
+                        packagedeps = input$packagedeps),
 
         "Package" = createPackageProject(
                         name = input$name, bestPractices = input$bestPractices,
@@ -90,7 +90,7 @@ projectGadget <- function() {
                         handoutEngine = input$handoutE,
                         slideEngine = input$slideE,
                         git = input$git,
-                        travis = input$travis, packagedeps = input$packagedeps)
+                        packagedeps = input$packagedeps)
 
       )
 
