@@ -4,75 +4,98 @@
 #' @param title "What the Project Does (One Line, Title Case)"
 #'              If NULL, a random one will be generated.
 #' @param folder Folder under which to create the project
-#' @param travis Configure Travis-CI
 #' @param packagedeps Set a tool for package reproducibility
 #' @param git Configure Git
-#' @param github username or organization name to use for GitHub.
+#' @param external_setup How to do the partly interactive setup
+#'  of online git, CI and coverage platforms. If NULL, no setup.
+#'  \itemize{
+#'  \item \code{git_service} Only "GitHub" is supported at the moment.
+#'  \item \code{login} username or organization name to use for the git service.
 #'                If NULL, no GitHub repo is created.
-#' @param private whether to make the created GitHub repo private
-#' @param protocol "ssh" or "https", protocol to use for GitHub
+#'  \item \code{private} whether to make the created repo private
+#'  \item \code{protocol} "ssh" or "https", protocol to use for GitHub
+#'  \item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
+#'  "travis" means calling \code{usethis::use_travis()} and adding the Travis
+#'  badge to the README.
+#'  }
 #' @param reset whether to reset the project to current project
 #'
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' proj<-"basicproj"
-#' createBasicProject(proj)
-#' list.files(proj)
-#' unlink(proj)
+#' folder <- tempdir()
+#' createBasicProject(name = "doggos", title = "Counting cute dogs",
+#'                    folder = folder,
+#'                    packagedeps = "none",
+#'                    git = TRUE, external_setup = NULL,
+#'                    reset = TRUE)
+#' list.files(file.path(folder, "doggos"))
+#' unlink(file.path(folder, "doggos"))
 #' }
 createBasicProject <- function(name,
                                title = NULL,
                                folder = getwd(),
-                               travis = TRUE,
-                               packagedeps = "packrat",
+                               packagedeps = "checkpoint",
                                git = TRUE,
-                               github = gh::gh_whoami()$login,
-                               private = FALSE,
-                               protocol = "ssh",
+                               external_setup = list(
+                                 git_service = "GitHub",
+                                 login = gh::gh_whoami()$login,
+                                 private = FALSE,
+                                 protocol = "ssh",
+                                 ci_activation = "tic"),
                                reset = TRUE) {
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
-  check_github_name(github, name)
 
+  # random title if needed
   if(is.null(title)){
     title <- cool_stuff()
   }
 
+  # for later resetting the project
   current_proj <- get_current_proj()
+
   tryCatch({
+      # create folder
       dir.create(file.path(folder, name))
 
+      # set the active project to that folder
       usethis::proj_set(file.path(folder, name),
                         force = TRUE)
 
-      usethis::create_project(file.path(folder, name), open = FALSE,
+      # create the project
+      usethis::create_project(file.path(folder, name),
+                              open = FALSE,
                               rstudio = TRUE)
 
+      # add DESCRIPTION file and fill title
       usethis::use_description()
+      desc::desc_set("Title", title,
+                     file = usethis::proj_get())
 
 
+      # setup system for dependencies management
+      setup_dep_system(packagedeps)
 
-  desc::desc_set("Title", title,
-                 file = usethis::proj_get())
+      # add README
+      usethis::use_readme_md(open = FALSE)
 
-  setup_dep_system(packagedeps)
+      # git setup
+      if (git){
+        usethis::use_git(message = cool_first_commit())
+      }
 
-  usethis::use_readme_md(open = FALSE)
-
-
-  if (git) usethis::use_git(message = cool_first_commit())
-
-  if (!is.null(github)){
-    setup_repo(username = github,
-               private = private,
-               protocol = protocol,
-               title = title)
-    if (travis) {
-        setup_travis(github, name)
-    }
-  }
+      if (!is.null(external_setup)){
+        setup_repo(
+          name = name,
+          title = title,
+          git_service = external_setup$git_service,
+          login = external_setup$login,
+          private = external_setup$private,
+          protocol = external_setup$protocol,
+          ci_activation = external_setup$ci_activation)
+      }
 
   }
   ,

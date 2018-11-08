@@ -7,33 +7,38 @@
 #'
 #' @examples
 #' \dontrun{
-#' proj<-"analysisproj"
-#' createAnalysisProject(proj)
-#' list.files(proj)
-#' unlink(proj)
+#' folder <- tempdir()
+#' createAnalysisProject(name = "doggos", title = "Counting cute dogs",
+#'                    folder = folder,
+#'                    packagedeps = "none",
+#'                    git = TRUE, external_setup = NULL,
+#'                    reset = TRUE,
+#'                    dirs = c("cats", "dogs"))
+#' list.files(file.path(folder, "doggos"))
+#' unlink(file.path(folder, "doggos"))
 #' }
-createAnalysisProject <- function(name, folder = getwd(),
-                                  travis = TRUE,
+createAnalysisProject <- function(name, title = NULL,
+                                  folder = getwd(),
                                   packagedeps = "packrat",
                                   git = TRUE,
-                                  github = gh::gh_whoami()$login,
-                                  private = FALSE,
-                                  protocol = "ssh",
-                                  dirs = c("data", "analysis", "outputs"),
-                                  title = NULL) {
+                                  reset = TRUE,
+                                  external_setup = list(
+                                    git_service = "GitHub",
+                                    login = gh::gh_whoami()$login,
+                                    private = FALSE,
+                                    protocol = "ssh",
+                                    ci_activation = "tic"),
+                                  dirs = c("data", "analysis", "outputs")) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
-  check_github_name(github, name)
+
   current_proj <- get_current_proj()
-  createBasicProject(name,
+  createBasicProject(name = name,
+                     title = title,
                      folder = folder,
-                     travis = travis,
                      packagedeps = packagedeps,
                      git = git,
-                     github = github,
-                     private = private,
-                     protocol = protocal,
-                     reset = FALSE,
-                     title = title)
+                     external_setup = external_setup,
+                     reset = FALSE)
   createdirs(dirs)
   reset_proj(current_proj)
   invisible(TRUE)

@@ -1,3 +1,7 @@
+#####################################
+# Dependencies management
+#####################################
+
 okpackagedeps <- function(){
   c("none", "packrat", "checkpoint")
 }
@@ -67,42 +71,9 @@ is_available <- function(name) {
   invisible(TRUE)
 }
 
-
-is_org <- function(username){
-  info <- gh::gh("GET /users/:username", username = username)
-  info$type == "Organization"
-}
-
-# very much inspired by usethis!
-setup_repo <- function(username, private, protocol,
-                       title){
-  # create repo
-  if(is_org(username)){
-    endpoint <- "POST /orgs/:org/repos"
-  }else{
-    endpoint <- "POST /user/repos"
-  }
-  create <- gh::gh(endpoint,
-         org = username,
-         name = as.character(
-           fs::path_file(usethis::proj_get())),
-         description = title,
-         private = private)
-
-  r <- git2r::repository(usethis::proj_get())
-  origin_url <- switch(protocol, https = create$clone_url,
-                       ssh = create$ssh_url)
-  git2r::remote_add(r, "origin", origin_url)
-  git2r::checkout(r, "master")
-  #git2r::branch_set_upstream(git2r::repository_head(r),
-  #                           "origin/master")
-  desc::desc_set("URL", create$html_url,
-                 file = usethis::proj_get())
-  desc::desc_set("BugReports",
-                 paste0(create$html_url, "/issues"),
-                 file = usethis::proj_get())
-}
-
+#####################################
+# Project resetting
+#####################################
 
 get_current_proj <- function(){
   current_proj <- try(usethis::proj_get(),
@@ -121,27 +92,9 @@ reset_proj <- function(current_proj){
   }
 }
 
-repo_exists <- function(owner, repo){
-  !inherits(try(gh::gh("GET /repos/:owner/:repo",
-                      owner = owner,
-                      repo = repo),
-               silent = TRUE),
-           "try-error")
-}
-
-check_github_name <- function(github, name){
-  if(is.null(github)){
-    return(invisible(TRUE))
-  }else{
-    if(repo_exists(github, name)){
-      stop(glue::glue("There is already a GitHub repo named {name} for the {github} account"),
-           call. = FALSE)
-    }else{
-      return(invisible(TRUE))
-    }
-  }
-}
-
+#####################################
+# Encouraging phrases
+#####################################
 
 cool_stuff <- function(){
   praise::praise("New ${adjective} project!")
@@ -151,27 +104,3 @@ cool_first_commit <- function(){
   praise::praise("First commit of this ${adjective} project, ${exclamation}!")
 }
 
-setup_travis <- function(github, name){
-  usethis::use_template("travis.yml",
-                        ".travis.yml",
-                        ignore = TRUE)
-  if(fs::file_exists(file.path(usethis::proj_get(), "README.Rmd"))){
-    readme_path <- file.path(usethis::proj_get(), "README.Rmd")
-  }else{
-    readme_path <- file.path(usethis::proj_get(), "README.md")
-  }
-
-  readme <- readLines(file.path(usethis::proj_get(), "README.md"))
-  readme_title <- which(grepl("#", readme))[1]
-  if(readme_title > 1){
-    first <- 1:readme_title
-  }else{
-    first <- readme_title
-  }
-
-  readme <- c(readme[first], "",
-              glue::glue("[![Build
-Status](https://travis-ci.org/{github}/{name}.svg?branch=master)](https://travis-ci.org/{github}/{name})"),
-              readme[(readme_title+1):length(readme)])
-  writeLines(readme, readme_path)
-}
