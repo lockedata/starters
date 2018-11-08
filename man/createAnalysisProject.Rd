@@ -4,13 +4,17 @@
 \alias{createAnalysisProject}
 \title{Create a project laid out for an analysis project}
 \usage{
-createAnalysisProject(name, folder = getwd(), travis = TRUE,
+createAnalysisProject(name, title, folder = getwd(),
   packagedeps = "packrat", git = TRUE,
-  github = gh::gh_whoami()$login, private = FALSE, protocol = "ssh",
-  dirs = c("data", "analysis", "outputs"), title = NULL)
+  external_setup = list(git_service = "GitHub", login =
+  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+  "tic"), dirs = c("data", "analysis", "outputs"))
 }
 \arguments{
 \item{name}{Project}
+
+\item{title}{"What the Project Does (One Line, Title Case)"
+If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
 
@@ -18,19 +22,34 @@ createAnalysisProject(name, folder = getwd(), travis = TRUE,
 
 \item{git}{Configure Git}
 
-\item{dirs}{Directories to create}
+\item{external_setup}{How to do the partly interactive setup
+of online git, CI and coverage platforms. If NULL, no setup.
+\itemize{
+\item \code{git_service} Only "GitHub" is supported at the moment.
+\item \code{login} username or organization name to use for the git service.
+If NULL, no GitHub repo is created.
+\item \code{private} whether to make the created repo private
+\item \code{protocol} "ssh" or "https", protocol to use for GitHub
+\item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
+"travis" means calling \code{usethis::use_travis()} and adding the Travis
+badge to the README.
+}}
 
-\item{title}{"What the Project Does (One Line, Title Case)"
-If NULL, a random one will be generated.}
+\item{dirs}{Directories to create}
 }
 \description{
 Create a project laid out for an analysis project
 }
 \examples{
 \dontrun{
-proj<-"analysisproj"
-createAnalysisProject(proj)
-list.files(proj)
-unlink(proj)
+folder <- tempdir()
+createAnalysisProject(name = "doggos", title = "Counting cute dogs",
+                   folder = folder,
+                   packagedeps = "none",
+                   git = TRUE, external_setup = NULL,
+                   reset = TRUE,
+                   dirs = c("cats", "dogs"))
+list.files(file.path(folder, "doggos"))
+unlink(file.path(folder, "doggos"))
 }
 }

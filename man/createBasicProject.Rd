@@ -30,8 +30,9 @@ of online git, CI and coverage platforms. If NULL, no setup.
 If NULL, no GitHub repo is created.
 \item \code{private} whether to make the created repo private
 \item \code{protocol} "ssh" or "https", protocol to use for GitHub
-\item \code{ci_activation} Only NULL, and "tic" are supported at the moment.
-"tic" means calling \code{travis::use_tic()}.
+\item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
+"travis" means calling \code{usethis::use_travis()} and adding the Travis
+badge to the README.
 }}
 
 \item{reset}{whether to reset the project to current project}
