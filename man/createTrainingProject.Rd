@@ -21,14 +21,9 @@ createTrainingProject(name, folder = getwd(), dirs = c("data",
 
 \item{slideEngine}{Package for building slides}
 
-\item{travis}{Configure Travis-CI}
-
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
-
-\item{github}{username or organization name to use for GitHub.
-If NULL, no GitHub repo is created.}
 
 \item{private}{whether to make the created GitHub repo private}
 

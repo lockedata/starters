@@ -14,14 +14,9 @@ createAnalysisProject(name, folder = getwd(), travis = TRUE,
 
 \item{folder}{Folder under which to create the project}
 
-\item{travis}{Configure Travis-CI}
-
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
-
-\item{github}{username or organization name to use for GitHub.
-If NULL, no GitHub repo is created.}
 
 \item{private}{whether to make the created GitHub repo private}
 

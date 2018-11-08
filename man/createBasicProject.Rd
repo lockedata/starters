@@ -5,9 +5,10 @@
 \title{Create a very basic project directory}
 \usage{
 createBasicProject(name, title = NULL, folder = getwd(),
-  travis = TRUE, packagedeps = "packrat", git = TRUE,
-  github = gh::gh_whoami()$login, private = FALSE, protocol = "ssh",
-  reset = TRUE)
+  packagedeps = "checkpoint", git = TRUE,
+  external_setup = list(git_service = "github", login =
+  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+  "tic"), reset = TRUE)
 }
 \arguments{
 \item{name}{Project}
@@ -17,20 +18,22 @@ If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
 
-\item{travis}{Configure Travis-CI}
-
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
 
-\item{github}{username or organization name to use for GitHub.
-If NULL, no GitHub repo is created.}
+\item{external_setup}{How to do the partly interactive setup
+of online git, CI and coverage platforms. If NULL, no setup.
+\itemize{
+\item @param login username or organization name to use for the git service.
+If NULL, no GitHub repo is created.
+}}
+
+\item{reset}{whether to reset the project to current project}
 
 \item{private}{whether to make the created GitHub repo private}
 
 \item{protocol}{"ssh" or "https", protocol to use for GitHub}
-
-\item{reset}{whether to reset the project to current project}
 }
 \description{
 Create a very basic project directory
