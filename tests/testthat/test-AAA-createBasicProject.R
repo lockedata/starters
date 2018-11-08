@@ -27,7 +27,7 @@ unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd())
 
 test_that("createBasicProject() creates as expected when using checkpoint", {
-testthat::skip()
+testthat::skip_on_travis()
   createBasicProject(project_name, folder = tmp,
                      packagedeps = "checkpoint",
                      external_setup = NULL,
@@ -58,9 +58,9 @@ test_that("createBasicProject() cleans if there was an error", {
                        external_setup = list(
                          git_service = "GitHub",
                          login = "chibimaelle",
-                         private = TRUE,
+                         private = FALSE,
                          protocol = "ssh",
-                         ci_activation = "travis"),
+                         ci_activation = NULL),
                        folder = tmp)
 
     expect_true(repo_exists("chibimaelle", "test"))
