@@ -16,7 +16,12 @@ Authors@R:
       person(given = "Jas",
              family = "Sohi",
              role = "ctb",
-             email = "contact@jassohi.com"))
+             email = "contact@jassohi.com"),
+      person(given = "Maëlle",
+             family = "Salmon",
+             role = "ctb",
+             email = "maelle.salmon@yahoo.se",
+             comment = c(ORCID = "0000-0002-2815-0399")))
 Description: Setting up R project directories for teaching, presenting, analysis,
             package development can be a pain. pRojects shortcuts this by creating
             folder structures and setting good defaults for you.
