@@ -9,7 +9,7 @@ createTrainingProject(name, folder = getwd(), dirs = c("data",
   slideEngine = "rmarkdown", packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "tic"), title = NULL)
+  "tic"), title = NULL, reset = TRUE)
 }
 \arguments{
 \item{name}{Project}
@@ -41,6 +41,8 @@ badge to the README.
 
 \item{title}{"What the Project Does (One Line, Title Case)"
 If NULL, a random one will be generated.}
+
+\item{reset}{whether to reset the project to current project}
 }
 \description{
 Create a project laid out for producing training materials

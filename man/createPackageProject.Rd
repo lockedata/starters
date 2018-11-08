@@ -5,9 +5,11 @@
 \title{Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle}
 \usage{
-createPackageProject(name, folder = getwd(), bestPractices = TRUE,
-  coverage = "codecov", github = gh::gh_whoami()$login,
-  private = FALSE, protocol = "ssh", title = NULL)
+createPackageProject(name, title = NULL, folder = getwd(),
+  bestPractices = TRUE, coverage = "codecov",
+  external_setup = list(git_service = "GitHub", login =
+  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+  "tic"))
 }
 \arguments{
 \item{name}{Project / package name}
@@ -18,14 +20,18 @@ createPackageProject(name, folder = getwd(), bestPractices = TRUE,
 
 \item{coverage}{What code coverage platform to use, "codecov" or "coveralls".}
 
-\item{github}{username or organization name to use for GitHub.
-If NULL, no GitHub repo is created.}
-
-\item{private}{whether to make the created GitHub repo private}
-
-\item{protocol}{"ssh" or "https", protocol to use for GitHub}
-
-\item{title}{"What the Project Does (One Line, Title Case)"
+\item{external_setup}{How to do the partly interactive setup
+of online git, CI and coverage platforms. If NULL, no setup.
+\itemize{
+\item \code{git_service} Only "GitHub" is supported at the moment.
+\item \code{login} username or organization name to use for the git service.
+If NULL, no GitHub repo is created.
+\item \code{private} whether to make the created repo private
+\item \code{protocol} "ssh" or "https", protocol to use for GitHub
+\item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
+"travis" means calling \code{usethis::use_travis()} and adding the Travis
+badge to the README.
+}#' @param title "What the Project Does (One Line, Title Case)"
 If NULL, a random one will be generated.}
 }
 \description{
@@ -34,9 +40,11 @@ commands executed to save you hassle
 }
 \examples{
 \dontrun{
-proj<-"packageproj"
-createPackageProject(proj)
-list.files(proj)
-unlink(proj)
+folder <- tempdir()
+createPackageProject(name = "doggos", title = "Counting cute dogs",
+                   folder = folder,
+                   git = TRUE, external_setup = NULL)
+list.files(file.path(folder, "doggos"))
+unlink(file.path(folder, "doggos"))
 }
 }
