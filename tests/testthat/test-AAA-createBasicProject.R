@@ -55,6 +55,7 @@ test_that("createBasicProject() cleans if there was an error", {
   test_that("createBasicProject() can create a GitHub repo", {
     skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
     createBasicProject(name = "test",
+                       packagedeps = "none",
                        external_setup = list(
                          git_service = "GitHub",
                          login = "chibimaelle",
