@@ -1,9 +1,0 @@
-pandoc: 2.1.3
-pkgdown: 1.1.0
-pkgdown_sha: ~
-articles:
-  AnalysisProjects: AnalysisProjects.html
-  BasicProjects: BasicProjects.html
-  RPackages: RPackages.html
-  TrainingProjects: TrainingProjects.html
-
