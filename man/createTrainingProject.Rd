@@ -6,9 +6,10 @@
 \usage{
 createTrainingProject(name, folder = getwd(), dirs = c("data",
   "handouts", "slides"), handoutEngine = "rmarkdown",
-  slideEngine = "rmarkdown", travis = TRUE, packagedeps = "packrat",
-  git = TRUE, github = gh::gh_whoami()$login, private = FALSE,
-  protocol = "ssh", title = NULL)
+  slideEngine = "rmarkdown", packagedeps = "packrat", git = TRUE,
+  external_setup = list(git_service = "GitHub", login =
+  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+  "tic"), title = NULL)
 }
 \arguments{
 \item{name}{Project}
@@ -25,6 +26,19 @@ createTrainingProject(name, folder = getwd(), dirs = c("data",
 
 \item{git}{Configure Git}
 
+\item{external_setup}{How to do the partly interactive setup
+of online git, CI and coverage platforms. If NULL, no setup.
+\itemize{
+\item \code{git_service} Only "GitHub" is supported at the moment.
+\item \code{login} username or organization name to use for the git service.
+If NULL, no GitHub repo is created.
+\item \code{private} whether to make the created repo private
+\item \code{protocol} "ssh" or "https", protocol to use for GitHub
+\item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
+"travis" means calling \code{usethis::use_travis()} and adding the Travis
+badge to the README.
+}}
+
 \item{title}{"What the Project Does (One Line, Title Case)"
 If NULL, a random one will be generated.}
 }
@@ -33,9 +47,14 @@ Create a project laid out for producing training materials
 }
 \examples{
 \dontrun{
-proj<-"trainingproj"
-createTrainingProject(proj)
-list.files(proj)
-unlink(proj)
+folder <- tempdir()
+createTrainingProject(name = "doggos", title = "Learning how to count cute dogs",
+                   folder = folder,
+                   dirs = c("data", "handouts", "slides", "dogs"),
+                   packagedeps = "none",
+                   git = TRUE, external_setup = NULL,
+                   reset = TRUE)
+list.files(file.path(folder, "doggos"))
+unlink(file.path(folder, "doggos"))
 }
 }

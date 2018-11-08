@@ -4,8 +4,8 @@
 \alias{createAnalysisProject}
 \title{Create a project laid out for an analysis project}
 \usage{
-createAnalysisProject(name, title, folder = getwd(),
-  packagedeps = "packrat", git = TRUE,
+createAnalysisProject(name, title = NULL, folder = getwd(),
+  packagedeps = "packrat", git = TRUE, reset = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
   "tic"), dirs = c("data", "analysis", "outputs"))
@@ -21,6 +21,8 @@ If NULL, a random one will be generated.}
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
+
+\item{reset}{whether to reset the project to current project}
 
 \item{external_setup}{How to do the partly interactive setup
 of online git, CI and coverage platforms. If NULL, no setup.
