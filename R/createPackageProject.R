@@ -2,7 +2,10 @@
 #' commands executed to save you hassle
 #'
 #' @param name Project / package name
+#' @param title "What the Project Does (One Line, Title Case)"
+#'              If NULL, a random one will be generated.
 #' @param folder Folder under which to create the project
+#' @param git Configure Git
 #' @param bestPractices Run additional best practice commands
 #' @param coverage What code coverage platform to use, "codecov" or "coveralls".
 #' @param external_setup How to do the partly interactive setup
@@ -87,7 +90,9 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_readme_rmd(open = FALSE)
         usethis::use_testthat()
         usethis::use_vignette(name)
-        usethis::use_git(message = cool_first_commit())
+        if(git){
+          usethis::use_git(message = cool_first_commit())
+        }
 
         if (!is.null(external_setup)){
           setup_repo(

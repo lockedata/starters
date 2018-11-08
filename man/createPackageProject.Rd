@@ -14,11 +14,16 @@ createPackageProject(name, title = NULL, folder = getwd(),
 \arguments{
 \item{name}{Project / package name}
 
+\item{title}{"What the Project Does (One Line, Title Case)"
+If NULL, a random one will be generated.}
+
 \item{folder}{Folder under which to create the project}
 
 \item{bestPractices}{Run additional best practice commands}
 
 \item{coverage}{What code coverage platform to use, "codecov" or "coveralls".}
+
+\item{git}{Configure Git}
 
 \item{external_setup}{How to do the partly interactive setup
 of online git, CI and coverage platforms. If NULL, no setup.
