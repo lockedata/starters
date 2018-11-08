@@ -25,10 +25,6 @@ createTrainingProject(name, folder = getwd(), dirs = c("data",
 
 \item{git}{Configure Git}
 
-\item{private}{whether to make the created GitHub repo private}
-
-\item{protocol}{"ssh" or "https", protocol to use for GitHub}
-
 \item{title}{"What the Project Does (One Line, Title Case)"
 If NULL, a random one will be generated.}
 }

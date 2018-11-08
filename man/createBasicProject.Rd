@@ -6,7 +6,7 @@
 \usage{
 createBasicProject(name, title = NULL, folder = getwd(),
   packagedeps = "checkpoint", git = TRUE,
-  external_setup = list(git_service = "github", login =
+  external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
   "tic"), reset = TRUE)
 }
@@ -25,24 +25,29 @@ If NULL, a random one will be generated.}
 \item{external_setup}{How to do the partly interactive setup
 of online git, CI and coverage platforms. If NULL, no setup.
 \itemize{
-\item @param login username or organization name to use for the git service.
+\item \code{git_service} Only "GitHub" is supported at the moment.
+\item \code{login} username or organization name to use for the git service.
 If NULL, no GitHub repo is created.
+\item \code{private} whether to make the created repo private
+\item \code{protocol} "ssh" or "https", protocol to use for GitHub
+\item \code{ci_activation} Only NULL, and "tic" are supported at the moment.
+"tic" means calling \code{travis::use_tic()}.
 }}
 
 \item{reset}{whether to reset the project to current project}
-
-\item{private}{whether to make the created GitHub repo private}
-
-\item{protocol}{"ssh" or "https", protocol to use for GitHub}
 }
 \description{
 Create a very basic project directory
 }
 \examples{
 \dontrun{
-proj<-"basicproj"
-createBasicProject(proj)
-list.files(proj)
-unlink(proj)
+folder <- tempdir()
+createBasicProject(name = "doggos", title = "Counting cute dogs",
+                   folder = folder,
+                   packagedeps = "none",
+                   git = TRUE, external_setup = NULL,
+                   reset = TRUE)
+list.files(file.path(folder, "doggos"))
+unlink(file.path(folder, "doggos"))
 }
 }

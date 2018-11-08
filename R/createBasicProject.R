@@ -14,8 +14,9 @@
 #'                If NULL, no GitHub repo is created.
 #'  \item \code{private} whether to make the created repo private
 #'  \item \code{protocol} "ssh" or "https", protocol to use for GitHub
-#'  \item \code{ci_activation} Only NULL, and "tic" are supported at the moment.
-#'  "tic" means calling \code{travis::use_tic()}.
+#'  \item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
+#'  "travis" means calling \code{usethis::use_travis()} and adding the Travis
+#'  badge to the README.
 #'  }
 #' @param reset whether to reset the project to current project
 #'
@@ -86,15 +87,14 @@ createBasicProject <- function(name,
       }
 
       if (!is.null(external_setup)){
-        check_github_name(github, name)
         setup_repo(
           name = name,
           title = title,
-          git_service = git_service,
-          login = login,
-          private = private,
-          protocol = protocol,
-          ci_activation = ci_activation)
+          git_service = external_setup$git_service,
+          login = external_setup$login,
+          private = external_setup$private,
+          protocol = external_setup$protocol,
+          ci_activation = external_setup$ci_activation)
       }
 
   }

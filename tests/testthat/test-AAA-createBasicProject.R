@@ -6,11 +6,12 @@ fs::dir_create(tmp)
 
 project_name <- "basicProject"
 
-test_that("createBasicProject() creates as expected when using defaults", {
+test_that("createBasicProject() creates as expected", {
 
   createBasicProject(project_name, folder = tmp,
                      packagedeps = "packrat",
-                     github = NULL)
+                     git = TRUE,
+                     external_setup = NULL)
 
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
@@ -25,20 +26,19 @@ test_that("createBasicProject() creates as expected when using defaults", {
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd())
 
-# test_that("createBasicProject() creates as expected when using checkpoint", {
-#
-#   createBasicProject(project_name, folder = tmp,
-#                      packagedeps = "checkpoint")
-#
-#   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
-#   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
-#   expect_true(dir.exists(file.path(tmp, project_name, "R")))
-#   expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
-#   expect_true(file.exists(file.path(tmp, project_name, ".git")))
-#   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
-#   expect_true(file.exists(file.path(tmp, project_name, ".travis.yml")))
-#
-# })
+test_that("createBasicProject() creates as expected when using checkpoint", {
+
+  createBasicProject(project_name, folder = tmp,
+                     packagedeps = "checkpoint",
+                     external_setup = NULL,
+                     git = FALSE)
+
+  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
+  expect_true(dir.exists(file.path(tmp, project_name, "R")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.md")))
+
+})
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd())
@@ -47,18 +47,20 @@ test_that("createBasicProject() cleans if there was an error", {
   m <- mockery::mock(stop())
   with_mock(dir.create = m, {
     expect_message(createBasicProject("blablabla",
-                                      github = NULL),
+                                      external_setup = NULL),
                    "Oops")
   })
 
 
   test_that("createBasicProject() can create a GitHub repo", {
     skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
-    createBasicProject(github = "chibimaelle",
-                       name = "test",
-                       private = FALSE,
-                       packagedeps = "none",
-                       protocol = "ssh",
+    createBasicProject(name = "test",
+                       external_setup = list(
+                         git_service = "GitHub",
+                         login = "chibimaelle",
+                         private = TRUE,
+                         protocol = "ssh",
+                         ci_activation = "travis"),
                        folder = tmp)
 
     expect_true(repo_exists("chibimaelle", "test"))

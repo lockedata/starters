@@ -18,10 +18,6 @@ createAnalysisProject(name, folder = getwd(), travis = TRUE,
 
 \item{git}{Configure Git}
 
-\item{private}{whether to make the created GitHub repo private}
-
-\item{protocol}{"ssh" or "https", protocol to use for GitHub}
-
 \item{dirs}{Directories to create}
 
 \item{title}{"What the Project Does (One Line, Title Case)"
