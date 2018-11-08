@@ -35,7 +35,7 @@ test_that("createPackageProject() creates as expected when using defaults",{
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd())
+usethis::proj_set(getwd(), force = TRUE)
 
 test_that("createPackageProject() cleans if there was an error", {
   m <- mockery::mock(stop())
@@ -48,4 +48,4 @@ test_that("createPackageProject() cleans if there was an error", {
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
-usethis::proj_set(getwd())
+usethis::proj_set(getwd(), force = TRUE)
