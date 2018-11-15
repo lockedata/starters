@@ -23,6 +23,15 @@ test_that("createAnalysisProject() creates as expected when using defaults",{
 
 })
 
+test_that("createAnalysisProject() cleans if there was an error", {
+  expect_message(createAnalysisProject(project_name, folder = tmp,
+                                       external_setup = NULL,
+                                       dirs = 1,
+                                       packagedeps = NULL),
+                   "Oops")
+
+})
+
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)

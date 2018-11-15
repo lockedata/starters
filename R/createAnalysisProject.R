@@ -32,14 +32,25 @@ createAnalysisProject <- function(name, title = NULL,
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   current_proj <- get_current_proj()
-  createBasicProject(name = name,
-                     title = title,
-                     folder = folder,
-                     packagedeps = packagedeps,
-                     git = git,
-                     external_setup = external_setup,
-                     reset = FALSE)
-  createdirs(dirs)
+  tryCatch({
+    createBasicProject(name = name,
+                       title = title,
+                       folder = folder,
+                       packagedeps = packagedeps,
+                       git = git,
+                       external_setup = external_setup,
+                       reset = FALSE)
+    createdirs(dirs)
+  }
+  ,
+  error = function(e) {
+    message(paste("Error:", e$message))
+    e
+    # delete folder created earlier
+    unlink(file.path(folder, name), recursive = TRUE)
+    message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
+  }
+  )
   reset_proj(current_proj)
   invisible(TRUE)
 

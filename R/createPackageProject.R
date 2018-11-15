@@ -117,6 +117,7 @@ createPackageProject <- function(name, title = NULL,
   }
   ,
   error = function(e) {
+    message(paste("Error:", e$message))
     e
     # delete folder created earlier
     unlink(file.path(folder, name), recursive = TRUE)

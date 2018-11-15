@@ -52,24 +52,26 @@ test_that("createBasicProject() cleans if there was an error", {
   })
 
 
-  test_that("createBasicProject() can create a GitHub repo", {
-    skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
-    createBasicProject(name = "test",
-                       packagedeps = "none",
-                       external_setup = list(
-                         git_service = "GitHub",
-                         login = "chibimaelle",
-                         private = FALSE,
-                         protocol = "ssh",
-                         ci_activation = NULL),
-                       folder = tmp)
-
-    expect_true(repo_exists("chibimaelle", "test"))
-    gh::gh("DELETE /repos/:owner/:repo",
-           owner = "chibimaelle", repo = "test")
-    })
 
 })
+
+test_that("createBasicProject() can create a GitHub repo", {
+  skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
+  createBasicProject(name = "test",
+                     packagedeps = "none",
+                     external_setup = list(
+                       git_service = "GitHub",
+                       login = "chibimaelle",
+                       private = FALSE,
+                       protocol = "ssh",
+                       ci_activation = NULL),
+                     folder = tmp)
+
+  expect_true(repo_exists("chibimaelle", "test"))
+  gh::gh("DELETE /repos/:owner/:repo",
+         owner = "chibimaelle", repo = "test")
+})
+
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)

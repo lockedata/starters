@@ -66,6 +66,15 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 
 })
 
+test_that("createAnalysisProject() cleans if there was an error", {
+  expect_message(createTrainingProject(project_name, folder = tmp,
+                                       handoutEngine = "tuffte", slideEngine = "xaringan",
+                                       packagedeps = "none",
+                                       external_setup = NULL),
+                 "Oops")
+
+})
+
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)
