@@ -1,5 +1,5 @@
 Package: pRojects
-Title: Manage Project Directories for R Projects
+Title: One-Liners to Setup R Projects
 Version: 0.0.1.9003
 Authors@R: 
     c(person(given = "Steph",
