@@ -7,7 +7,7 @@ commands executed to save you hassle}
 \usage{
 createPackageProject(name, title = NULL, folder = getwd(),
   bestPractices = TRUE, coverage = "codecov", git = TRUE,
-  external_setup = list(git_service = "GitHub", login =
+  pkgdown = TRUE, external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
   "tic"))
 }
@@ -24,6 +24,8 @@ If NULL, a random one will be generated.}
 \item{coverage}{What code coverage platform to use, "codecov" or "coveralls".}
 
 \item{git}{Configure Git}
+
+\item{pkgdown}{Add a pkgdown config file}
 
 \item{external_setup}{How to do the partly interactive setup
 of online git, CI and coverage platforms. If NULL, no setup.
