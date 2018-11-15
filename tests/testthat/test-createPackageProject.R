@@ -20,6 +20,7 @@ test_that("createPackageProject() creates as expected when using defaults",{
                        external_setup = NULL)
   expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   #expect_true(file.exists(file.path(tmp, project_name, "codecov.yml")))
+  expect_true(file.exists(file.path(tmp, project_name, "_pkgdown.yml")))
   expect_true(file.exists(file.path(tmp, project_name, "CODE_OF_CONDUCT.md")))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "LICENSE")))

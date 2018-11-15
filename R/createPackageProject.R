@@ -6,6 +6,7 @@
 #'              If NULL, a random one will be generated.
 #' @param folder Folder under which to create the project
 #' @param git Configure Git
+#' @param pkgdown Add a pkgdown config file
 #' @param bestPractices Run additional best practice commands
 #' @param coverage What code coverage platform to use, "codecov" or "coveralls".
 #' @param external_setup How to do the partly interactive setup
@@ -38,6 +39,7 @@ createPackageProject <- function(name, title = NULL,
                                  bestPractices = TRUE,
                                  coverage = "codecov",
                                  git = TRUE,
+                                 pkgdown = TRUE,
                                  external_setup = list(
                                    git_service = "GitHub",
                                    login = gh::gh_whoami()$login,
@@ -92,6 +94,12 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_vignette(name)
         if(git){
           usethis::use_git(message = cool_first_commit())
+        }
+
+        if(pkgdown){
+          usethis::use_pkgdown()
+          fs::dir_delete(file.path(usethis::proj_get(),
+                                   "docs"))
         }
 
         if (!is.null(external_setup)){
