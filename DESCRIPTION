@@ -35,8 +35,8 @@ Suggests:
     rmarkdown,
     xaringan,
     tufte,
-    revealjs,
     bookdown,
+    revealjs,
     mockery
 VignetteBuilder: knitr
 Imports: 
