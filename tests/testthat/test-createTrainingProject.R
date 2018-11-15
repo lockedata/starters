@@ -67,12 +67,14 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 })
 
 test_that("createAnalysisProject() cleans if there was an error", {
+  m <- mockery::mock(stop("Nooo"))
+  with_mock(createBasicProject = m, {
   expect_message(createTrainingProject(project_name, folder = tmp,
                                        handoutEngine = "tuffte", slideEngine = "xaringan",
                                        packagedeps = "none",
                                        external_setup = NULL),
                  "Oops")
-
+  })
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)

@@ -24,12 +24,13 @@ test_that("createAnalysisProject() creates as expected when using defaults",{
 })
 
 test_that("createAnalysisProject() cleans if there was an error", {
-  expect_message(createAnalysisProject(project_name, folder = tmp,
+  m <- mockery::mock(stop("Nooo"))
+  with_mock(createBasicProject = m, {  expect_message(createAnalysisProject(project_name, folder = tmp,
                                        external_setup = NULL,
                                        dirs = 1,
                                        packagedeps = NULL),
                    "Oops")
-
+  })
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
