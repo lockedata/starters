@@ -66,11 +66,11 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 
 })
 
-test_that("createAnalysisProject() cleans if there was an error", {
+test_that("createTrainingProject() cleans if there was an error", {
   m <- mockery::mock(stop("Nooo"))
   with_mock(createBasicProject = m, {
   expect_message(createTrainingProject(project_name, folder = tmp,
-                                       handoutEngine = "tuffte", slideEngine = "xaringan",
+                                       handoutEngine = "tufte", slideEngine = "xaringan",
                                        packagedeps = "none",
                                        external_setup = NULL),
                  "Oops")
