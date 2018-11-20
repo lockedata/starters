@@ -2,6 +2,7 @@ add_package_checks()
 
 get_stage("after_success") %>%
   add_code_step(covr::codecov()) %>%
+  add_code_step(devtools::install()) %>%
   add_code_step(covrpage::covrpage_ci())
 
 if (Sys.getenv("id_rsa") != "") {
@@ -16,11 +17,6 @@ if (Sys.getenv("id_rsa") != "") {
   if (ci()$get_branch() == "master" || ci()$is_tag()) {
   get_stage("deploy") %>%
     add_step(step_build_pkgdown()) %>%
-    add_step(step_push_deploy(path = "docs", branch = "gh-pages")) %>%
-      add_step(step_push_deploy(path = "tests/README.md"))
-  }else{
-    get_stage("deploy") %>%
-      add_step(step_push_deploy(path = "tests/README.md"))
-
+    add_step(step_push_deploy(path = "docs", branch = "gh-pages"))
   }
 }
