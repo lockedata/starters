@@ -1,0 +1,21 @@
+---
+title: "Project health"
+date: "`r format(Sys.time(), '%d %B, %Y %H:%M:%S')`"
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+# Good practice
+
+```{r}
+checks <- goodpractice::all_checks()
+goodpractice::gp(checks[!grepl("rcmdcheck", checks)])
+```
+
+# Typos
+
+```{r}
+devtools::spell_check()
+```
