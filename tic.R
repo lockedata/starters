@@ -16,7 +16,6 @@ if (Sys.getenv("id_rsa") != "") {
 
   if (ci()$get_branch() == "master" || ci()$is_tag()) {
   get_stage("deploy") %>%
-    add_code_step(covrpage::covrpage()) %>%
     add_step(step_push_deploy(commit_paths = "tests/README.md")) %>%
     add_step(step_build_pkgdown()) %>%
     add_step(step_push_deploy(path = "docs", branch = "gh-pages"))
