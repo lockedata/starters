@@ -14,8 +14,10 @@ if (Sys.getenv("id_rsa") != "") {
     add_step(step_setup_ssh())
   
   get_stage("deploy") %>%
+    add_code_step(pRojects::get_project_health()) %>% # will use latest master version
+    add_code_step(devtools::install()) %>%
     add_code_step(covrpage::covrpage_ci()) %>%
-    add_step(step_push_deploy(commit_paths = "tests/README.md"))
+    add_step(step_push_deploy(commit_paths = c("tests/README.md", "health/README.md")))
   
   if (ci()$get_branch() == "master") {
     get_stage("deploy") %>%
