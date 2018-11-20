@@ -8,8 +8,9 @@ if (Sys.getenv("id_rsa") != "") {
   # - `Sys.getenv("TRAVIS_EVENT_TYPE") == "cron"`: Only for Travis cron jobs
   get_stage("before_deploy") %>%
     add_step(step_setup_ssh())
-
+  if (ci()$get_branch() == "master" || ci()$is_tag()) {
   get_stage("deploy") %>%
     add_step(step_build_pkgdown()) %>%
     add_step(step_push_deploy(path = "docs", branch = "gh-pages"))
 }
+    }
