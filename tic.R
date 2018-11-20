@@ -1,5 +1,9 @@
 add_package_checks()
 
+get_stage("after_success") %>%
+  add_step(tic::step_run_code(covr::codecov())) %>%
+  add_step(tic::step_run_code(covrpage::covrpage_ci()))
+
 if (Sys.getenv("id_rsa") != "") {
   # pkgdown documentation can be built optionally. Other example criteria:
   # - `inherits(ci(), "TravisCI")`: Only for Travis CI
