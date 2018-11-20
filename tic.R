@@ -17,7 +17,7 @@ if (Sys.getenv("id_rsa") != "") {
       add_code_step(covrpage::covrpage_ci()) %>%
     add_step(step_build_pkgdown()) %>%
     add_step(step_push_deploy(path = "docs", branch = "gh-pages")) %>%
-      add_step(get_project_health()) %>%
+      add_step(pRojects::get_project_health()) %>%
       add_step(step_push_deploy(path = "health", branch = "project-health"))
   }else{
     get_stage("deploy")  %>%
