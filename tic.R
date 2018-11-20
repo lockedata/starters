@@ -1,7 +1,10 @@
 add_package_checks()
 
 get_stage("after_success") %>%
+  add_code_step(devtools::spell_check()) %>%
   add_code_step(covr::codecov()) %>%
+  add_code_step(goodpractice::gp(goodpractice::all_checks()[!grepl("rcmdcheck",
+                                                                   goodpractice::all_checks())])) %>%
   add_code_step(devtools::install()) %>%
   add_code_step(covrpage::covrpage_ci())
 
