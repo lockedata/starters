@@ -14,7 +14,7 @@ if (Sys.getenv("id_rsa") != "") {
   get_stage("before_deploy") %>%
     add_step(step_setup_ssh())
 
-  if (ci()$get_branch() == "master" || ci()$is_tag()) {
+  if (ci()$get_branch() == "master") {
   get_stage("deploy") %>%
     add_step(step_push_deploy(commit_paths = "tests/README.md")) %>%
     add_step(step_build_pkgdown()) %>%
