@@ -1,8 +1,8 @@
 add_package_checks()
 
 get_stage("after_success") %>%
-  add_code_step(covr::codecov(quiet = FALSE) %>%
-  add_code_step(covr::coveralls(quiet = FALSE)
+  add_code_step(covr::codecov(quiet = FALSE)) %>%
+  add_code_step(covr::coveralls(quiet = FALSE))
 
 if (Sys.getenv("id_rsa") != "") {
   # pkgdown documentation can be built optionally. Other example criteria:
@@ -16,7 +16,7 @@ if (Sys.getenv("id_rsa") != "") {
   get_stage("deploy") %>%
     add_code_step(covrpage::covrpage_ci()) %>%
     add_step(step_push_deploy(commit_paths = "tests/README.md"))
-
+  
   if (ci()$get_branch() == "master") {
     get_stage("deploy") %>%
       add_step(step_build_pkgdown()) %>%
