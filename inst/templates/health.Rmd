@@ -16,6 +16,6 @@ goodpractice::gp(checks[!grepl("rcmdcheck", checks)])
 
 # Typos
 
-```{r}
-devtools::spell_check()
+```{r, error=TRUE}
+devtools::spell_check("pRojects")
 ```
