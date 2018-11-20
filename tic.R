@@ -1,7 +1,7 @@
 add_package_checks()
 
 get_stage("after_success") %>%
-  add_code_step(covr::codecov()) %>%                         goodpractice::all_checks())])) %>%
+  add_code_step(covr::codecov()) %>%
   add_code_step(devtools::install()) %>%
   add_code_step(covrpage::covrpage_ci())
 
