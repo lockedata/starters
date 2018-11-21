@@ -5,8 +5,8 @@
 \title{Create a project laid out for an analysis project}
 \usage{
 createAnalysisProject(name, title = NULL, folder = getwd(),
-  packagedeps = "packrat", git = TRUE, reset = TRUE,
-  external_setup = list(git_service = "GitHub", login =
+  initial_status = "wip", packagedeps = "packrat", git = TRUE,
+  reset = TRUE, external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
   "tic"), dirs = c("data", "analysis", "outputs"))
 }
@@ -17,6 +17,9 @@ createAnalysisProject(name, title = NULL, folder = getwd(),
 If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
+
+\item{initial_status}{initial repostatus.org status for the project,
+whose badge will be added to the README.}
 
 \item{packagedeps}{Set a tool for package reproducibility}
 

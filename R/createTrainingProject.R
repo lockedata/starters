@@ -22,6 +22,7 @@
 #' unlink(file.path(folder, "doggos"))
 #' }
 createTrainingProject <- function(name, folder = getwd(),
+                                  initial_status = "wip",
                                   dirs = c("data", "handouts", "slides"),
                                   handoutEngine = "rmarkdown",
                                   slideEngine = "rmarkdown",
@@ -57,6 +58,7 @@ createTrainingProject <- function(name, folder = getwd(),
     createBasicProject(name = name,
                        title = title,
                        folder = folder,
+                       initial_status = initial_status,
                        packagedeps = packagedeps,
                        git = git,
                        external_setup = external_setup,

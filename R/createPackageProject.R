@@ -5,6 +5,8 @@
 #' @param title "What the Project Does (One Line, Title Case)"
 #'              If NULL, a random one will be generated.
 #' @param folder Folder under which to create the project
+#' @param initial_status initial repostatus.org status for the project,
+#'                       whose badge will be added to the README.
 #' @param git Configure Git
 #' @param pkgdown Add a pkgdown config file
 #' @param bestPractices Run additional best practice commands
@@ -36,6 +38,7 @@
 #' }
 createPackageProject <- function(name, title = NULL,
                                  folder = getwd(),
+                                 initial_status = "wip",
                                  bestPractices = TRUE,
                                  coverage = "codecov",
                                  git = TRUE,
@@ -46,29 +49,27 @@ createPackageProject <- function(name, title = NULL,
                                    private = FALSE,
                                    protocol = "ssh",
                                    ci_activation = "tic")) {
-
+  # create title
   if(is.null(title)){
     title <- cool_stuff()
   }
+  # only go on if available pkg name
   if (is_available(name)) {
     current_proj <- get_current_proj()
     tryCatch({
-
+      # create directory
       dir.create(file.path(folder, name))
+      # set active project to directory
       usethis::proj_set(file.path(folder, name),
                         force = TRUE)
+      # create package skeleton
       usethis::create_package(file.path(folder, name), open = FALSE,
                               rstudio = TRUE,
                               fields = list(License = "MIT + file LICENSE"))
       desc::desc_set("Title", title,
                      file = usethis::proj_get())
       if (bestPractices) {
-        usethis::use_template("travis.yml",
-                              ".travis.yml",
-                              ignore = TRUE)
         usethis::use_code_of_conduct()
-        #usethis::use_coverage(type = coverage)
-        # needs GH sorry
 
         maintainer <- try(whoami::fullname(), silent = TRUE)
 
@@ -89,7 +90,15 @@ createPackageProject <- function(name, title = NULL,
                                           project = name))
         usethis::use_news_md(open = FALSE)
         usethis::use_package_doc()
+
+        # README stuff
         usethis::use_readme_rmd(open = FALSE)
+        readme_path <- find_readme()
+        # add badges sign
+        add_badges_sign(readme_path)
+        # status
+        add_repo_status(initial_status)
+
         usethis::use_testthat()
         usethis::use_vignette(name)
         if(git){

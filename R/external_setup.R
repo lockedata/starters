@@ -29,23 +29,10 @@ setup_repo <- function(git_service, login,
 
 
 add_travis_badge <- function(login, name){
-  if(fs::file_exists(file.path(usethis::proj_get(), "README.Rmd"))){
-    readme_path <- file.path(usethis::proj_get(), "README.Rmd")
-  }else{
-    readme_path <- file.path(usethis::proj_get(), "README.md")
-  }
-
-  readme <- readLines(file.path(usethis::proj_get(), "README.md"))
-  readme_title <- which(grepl("#", readme))[1]
-  if(readme_title > 1){
-    first <- 1:readme_title
-  }else{
-    first <- readme_title
-  }
-
-  readme <- c(readme[first], "",
-              glue::glue("[![Build
-                         Status](https://travis-ci.org/{login}/{name}.svg?branch=master)](https://travis-ci.org/{login}/{name})"),
-              readme[(readme_title+1):length(readme)])
+  readme_path <- find_readme()
+  readme <- readLines(readme_path)
+  readme[grepl("<!-- badges -->", readme)] <-
+    paste(readme[grepl("<!-- badges -->", readme)],
+  glue::glue("[![Build Status](https://travis-ci.org/{login}/{name}.svg?branch=master)](https://travis-ci.org/{login}/{name})"))
   writeLines(readme, readme_path)
 }

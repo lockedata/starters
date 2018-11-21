@@ -6,10 +6,10 @@
 commands executed to save you hassle}
 \usage{
 createPackageProject(name, title = NULL, folder = getwd(),
-  bestPractices = TRUE, coverage = "codecov", git = TRUE,
-  pkgdown = TRUE, external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "tic"))
+  initial_status = "wip", bestPractices = TRUE, coverage = "codecov",
+  git = TRUE, pkgdown = TRUE, external_setup = list(git_service =
+  "GitHub", login = gh::gh_whoami()$login, private = FALSE, protocol =
+  "ssh", ci_activation = "tic"))
 }
 \arguments{
 \item{name}{Project / package name}
@@ -18,6 +18,9 @@ createPackageProject(name, title = NULL, folder = getwd(),
 If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
+
+\item{initial_status}{initial repostatus.org status for the project,
+whose badge will be added to the README.}
 
 \item{bestPractices}{Run additional best practice commands}
 

@@ -4,8 +4,8 @@
 \alias{createTrainingProject}
 \title{Create a training project}
 \usage{
-createTrainingProject(name, folder = getwd(), dirs = c("data",
-  "handouts", "slides"), handoutEngine = "rmarkdown",
+createTrainingProject(name, folder = getwd(), initial_status = "wip",
+  dirs = c("data", "handouts", "slides"), handoutEngine = "rmarkdown",
   slideEngine = "rmarkdown", packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
@@ -15,6 +15,9 @@ createTrainingProject(name, folder = getwd(), dirs = c("data",
 \item{name}{Project}
 
 \item{folder}{Folder under which to create the project}
+
+\item{initial_status}{initial repostatus.org status for the project,
+whose badge will be added to the README.}
 
 \item{dirs}{Directories to create}
 

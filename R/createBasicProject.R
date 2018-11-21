@@ -4,6 +4,8 @@
 #' @param title "What the Project Does (One Line, Title Case)"
 #'              If NULL, a random one will be generated.
 #' @param folder Folder under which to create the project
+#' @param initial_status initial repostatus.org status for the project,
+#'                       whose badge will be added to the README.
 #' @param packagedeps Set a tool for package reproducibility
 #' @param git Configure Git
 #' @param external_setup How to do the partly interactive setup
@@ -36,6 +38,7 @@
 createBasicProject <- function(name,
                                title = NULL,
                                folder = getwd(),
+                               initial_status = "wip",
                                packagedeps = "checkpoint",
                                git = TRUE,
                                external_setup = list(
@@ -80,6 +83,12 @@ createBasicProject <- function(name,
 
       # add README
       usethis::use_readme_md(open = FALSE)
+      readme_path <- find_readme()
+      # add badges sign
+      add_badges_sign(readme_path)
+
+      # status
+      add_repo_status(initial_status)
 
       # git setup
       if (git){

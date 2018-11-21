@@ -5,7 +5,7 @@
 \title{Create a very basic project directory}
 \usage{
 createBasicProject(name, title = NULL, folder = getwd(),
-  packagedeps = "checkpoint", git = TRUE,
+  initial_status = "wip", packagedeps = "checkpoint", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
   "tic"), reset = TRUE)
@@ -17,6 +17,9 @@ createBasicProject(name, title = NULL, folder = getwd(),
 If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
+
+\item{initial_status}{initial repostatus.org status for the project,
+whose badge will be added to the README.}
 
 \item{packagedeps}{Set a tool for package reproducibility}
 
