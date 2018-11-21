@@ -53,12 +53,14 @@ Create a project laid out for producing training materials
 \examples{
 \dontrun{
 folder <- tempdir()
-createTrainingProject(name = "doggos", title = "Learning how to count cute dogs",
-                   folder = folder,
-                   dirs = c("data", "handouts", "slides", "dogs"),
-                   packagedeps = "none",
-                   git = TRUE, external_setup = NULL,
-                   reset = TRUE)
+createTrainingProject(
+  name = "doggos", title = "Learning how to count cute dogs",
+  folder = folder,
+  dirs = c("data", "handouts", "slides", "dogs"),
+  packagedeps = "none",
+  git = TRUE, external_setup = NULL,
+  reset = TRUE
+)
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))
 }

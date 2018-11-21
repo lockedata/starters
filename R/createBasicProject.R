@@ -27,11 +27,13 @@
 #' @examples
 #' \dontrun{
 #' folder <- tempdir()
-#' createBasicProject(name = "doggos", title = "Counting cute dogs",
-#'                    folder = folder,
-#'                    packagedeps = "none",
-#'                    git = TRUE, external_setup = NULL,
-#'                    reset = TRUE)
+#' createBasicProject(
+#'   name = "doggos", title = "Counting cute dogs",
+#'   folder = folder,
+#'   packagedeps = "none",
+#'   git = TRUE, external_setup = NULL,
+#'   reset = TRUE
+#' )
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
 #' }
@@ -46,13 +48,13 @@ createBasicProject <- function(name,
                                  login = gh::gh_whoami()$login,
                                  private = FALSE,
                                  protocol = "ssh",
-                                 ci_activation = "tic"),
+                                 ci_activation = "tic"
+                               ),
                                reset = TRUE) {
-
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   # random title if needed
-  if(is.null(title)){
+  if (is.null(title)) {
     title <- cool_stuff()
   }
 
@@ -60,54 +62,56 @@ createBasicProject <- function(name,
   current_proj <- get_current_proj()
 
   tryCatch({
-      # create folder
-      dir.create(file.path(folder, name))
+    # create folder
+    dir.create(file.path(folder, name))
 
-      # set the active project to that folder
-      usethis::proj_set(file.path(folder, name),
-                        force = TRUE)
+    # set the active project to that folder
+    usethis::proj_set(file.path(folder, name),
+      force = TRUE
+    )
 
-      # create the project
-      usethis::create_project(file.path(folder, name),
-                              open = FALSE,
-                              rstudio = TRUE)
+    # create the project
+    usethis::create_project(file.path(folder, name),
+      open = FALSE,
+      rstudio = TRUE
+    )
 
-      # add DESCRIPTION file and fill title
-      usethis::use_description()
-      desc::desc_set("Title", title,
-                     file = usethis::proj_get())
+    # add DESCRIPTION file and fill title
+    usethis::use_description()
+    desc::desc_set("Title", title,
+      file = usethis::proj_get()
+    )
 
 
-      # setup system for dependencies management
-      setup_dep_system(packagedeps)
+    # setup system for dependencies management
+    setup_dep_system(packagedeps)
 
-      # add README
-      usethis::use_readme_md(open = FALSE)
-      readme_path <- find_readme()
-      # add badges sign
-      add_badges_sign(readme_path)
+    # add README
+    usethis::use_readme_md(open = FALSE)
+    readme_path <- find_readme()
+    # add badges sign
+    add_badges_sign(readme_path)
 
-      # status
-      add_repo_status(initial_status)
+    # status
+    add_repo_status(initial_status)
 
-      # git setup
-      if (git){
-        usethis::use_git(message = cool_first_commit())
-      }
+    # git setup
+    if (git) {
+      usethis::use_git(message = cool_first_commit())
+    }
 
-      if (!is.null(external_setup)){
-        setup_repo(
-          name = name,
-          title = title,
-          git_service = external_setup$git_service,
-          login = external_setup$login,
-          private = external_setup$private,
-          protocol = external_setup$protocol,
-          ci_activation = external_setup$ci_activation)
-      }
-
-  }
-  ,
+    if (!is.null(external_setup)) {
+      setup_repo(
+        name = name,
+        title = title,
+        git_service = external_setup$git_service,
+        login = external_setup$login,
+        private = external_setup$private,
+        protocol = external_setup$protocol,
+        ci_activation = external_setup$ci_activation
+      )
+    }
+  },
   error = function(e) {
     message(paste("Error:", e$message))
     e
@@ -116,7 +120,7 @@ createBasicProject <- function(name,
     message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
   }
   )
-  if(reset){
+  if (reset) {
     reset_proj(current_proj)
   }
 

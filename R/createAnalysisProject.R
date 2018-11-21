@@ -8,12 +8,14 @@
 #' @examples
 #' \dontrun{
 #' folder <- tempdir()
-#' createAnalysisProject(name = "doggos", title = "Counting cute dogs",
-#'                    folder = folder,
-#'                    packagedeps = "none",
-#'                    git = TRUE, external_setup = NULL,
-#'                    reset = TRUE,
-#'                    dirs = c("cats", "dogs"))
+#' createAnalysisProject(
+#'   name = "doggos", title = "Counting cute dogs",
+#'   folder = folder,
+#'   packagedeps = "none",
+#'   git = TRUE, external_setup = NULL,
+#'   reset = TRUE,
+#'   dirs = c("cats", "dogs")
+#' )
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
 #' }
@@ -28,23 +30,25 @@ createAnalysisProject <- function(name, title = NULL,
                                     login = gh::gh_whoami()$login,
                                     private = FALSE,
                                     protocol = "ssh",
-                                    ci_activation = "tic"),
+                                    ci_activation = "tic"
+                                  ),
                                   dirs = c("data", "analysis", "outputs")) {
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   current_proj <- get_current_proj()
   tryCatch({
-    createBasicProject(name = name,
-                       title = title,
-                       folder = folder,
-                       initial_status = initial_status,
-                       packagedeps = packagedeps,
-                       git = git,
-                       external_setup = external_setup,
-                       reset = FALSE)
+    createBasicProject(
+      name = name,
+      title = title,
+      folder = folder,
+      initial_status = initial_status,
+      packagedeps = packagedeps,
+      git = git,
+      external_setup = external_setup,
+      reset = FALSE
+    )
     createdirs(dirs)
-  }
-  ,
+  },
   error = function(e) {
     message(paste("Error:", e$message))
     e
@@ -55,6 +59,4 @@ createAnalysisProject <- function(name, title = NULL,
   )
   reset_proj(current_proj)
   invisible(TRUE)
-
-
 }

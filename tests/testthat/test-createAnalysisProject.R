@@ -1,17 +1,20 @@
 context("createAnalysisProject")
 
-tmp <- tempfile(pattern = "aaa",
-                tempdir(check = TRUE))
+tmp <- tempfile(
+  pattern = "aaa",
+  tempdir(check = TRUE)
+)
 fs::dir_create(tmp)
 
 project_name <- "analysisProject"
 
-test_that("createAnalysisProject() creates as expected when using defaults",{
+test_that("createAnalysisProject() creates as expected when using defaults", {
+  createAnalysisProject(project_name,
+    folder = tmp,
+    external_setup = NULL
+  )
 
-  createAnalysisProject(project_name, folder = tmp,
-                        external_setup = NULL)
-
-  #expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  # expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))
@@ -20,16 +23,20 @@ test_that("createAnalysisProject() creates as expected when using defaults",{
   expect_true(file.exists(file.path(tmp, project_name, "data")))
   expect_true(file.exists(file.path(tmp, project_name, "analysis")))
   expect_true(file.exists(file.path(tmp, project_name, "outputs")))
-
 })
 
 test_that("createAnalysisProject() cleans if there was an error", {
   m <- mockery::mock(stop("Nooo"))
-  with_mock(createBasicProject = m, {  expect_message(createAnalysisProject(project_name, folder = tmp,
-                                       external_setup = NULL,
-                                       dirs = 1,
-                                       packagedeps = NULL),
-                   "Oops")
+  with_mock(createBasicProject = m, {
+    expect_message(
+      createAnalysisProject(project_name,
+        folder = tmp,
+        external_setup = NULL,
+        dirs = 1,
+        packagedeps = NULL
+      ),
+      "Oops"
+    )
   })
 })
 

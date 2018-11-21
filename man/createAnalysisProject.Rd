@@ -48,12 +48,14 @@ Create a project laid out for an analysis project
 \examples{
 \dontrun{
 folder <- tempdir()
-createAnalysisProject(name = "doggos", title = "Counting cute dogs",
-                   folder = folder,
-                   packagedeps = "none",
-                   git = TRUE, external_setup = NULL,
-                   reset = TRUE,
-                   dirs = c("cats", "dogs"))
+createAnalysisProject(
+  name = "doggos", title = "Counting cute dogs",
+  folder = folder,
+  packagedeps = "none",
+  git = TRUE, external_setup = NULL,
+  reset = TRUE,
+  dirs = c("cats", "dogs")
+)
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))
 }

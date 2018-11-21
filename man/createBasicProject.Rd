@@ -46,11 +46,13 @@ Create a very basic project directory
 \examples{
 \dontrun{
 folder <- tempdir()
-createBasicProject(name = "doggos", title = "Counting cute dogs",
-                   folder = folder,
-                   packagedeps = "none",
-                   git = TRUE, external_setup = NULL,
-                   reset = TRUE)
+createBasicProject(
+  name = "doggos", title = "Counting cute dogs",
+  folder = folder,
+  packagedeps = "none",
+  git = TRUE, external_setup = NULL,
+  reset = TRUE
+)
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))
 }

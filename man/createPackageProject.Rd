@@ -51,9 +51,11 @@ commands executed to save you hassle
 \examples{
 \dontrun{
 folder <- tempdir()
-createPackageProject(name = "doggos", title = "Counting cute dogs",
-                   folder = folder,
-                   git = TRUE, external_setup = NULL)
+createPackageProject(
+  name = "doggos", title = "Counting cute dogs",
+  folder = folder,
+  git = TRUE, external_setup = NULL
+)
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))
 }

@@ -30,9 +30,11 @@
 #' @examples
 #' \dontrun{
 #' folder <- tempdir()
-#' createPackageProject(name = "doggos", title = "Counting cute dogs",
-#'                    folder = folder,
-#'                    git = TRUE, external_setup = NULL)
+#' createPackageProject(
+#'   name = "doggos", title = "Counting cute dogs",
+#'   folder = folder,
+#'   git = TRUE, external_setup = NULL
+#' )
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
 #' }
@@ -48,9 +50,10 @@ createPackageProject <- function(name, title = NULL,
                                    login = gh::gh_whoami()$login,
                                    private = FALSE,
                                    protocol = "ssh",
-                                   ci_activation = "tic")) {
+                                   ci_activation = "tic"
+                                 )) {
   # create title
-  if(is.null(title)){
+  if (is.null(title)) {
     title <- cool_stuff()
   }
   # only go on if available pkg name
@@ -61,33 +64,43 @@ createPackageProject <- function(name, title = NULL,
       dir.create(file.path(folder, name))
       # set active project to directory
       usethis::proj_set(file.path(folder, name),
-                        force = TRUE)
+        force = TRUE
+      )
       # create package skeleton
-      usethis::create_package(file.path(folder, name), open = FALSE,
-                              rstudio = TRUE,
-                              fields = list(License = "MIT + file LICENSE"))
+      usethis::create_package(file.path(folder, name),
+        open = FALSE,
+        rstudio = TRUE,
+        fields = list(License = "MIT + file LICENSE")
+      )
       desc::desc_set("Title", title,
-                     file = usethis::proj_get())
+        file = usethis::proj_get()
+      )
       if (bestPractices) {
         usethis::use_code_of_conduct()
 
         maintainer <- try(whoami::fullname(), silent = TRUE)
 
-        if(inherits(maintainer, "try-error")){
+        if (inherits(maintainer, "try-error")) {
           maintainer <- "Jane Doe"
         }
 
         usethis::use_template("license-mit.md",
-                              "LICENSE.md",
-                              ignore = TRUE,
-                              data = list(year = format(Sys.Date(), "%Y"),
-                                          name = maintainer,
-                                          project = name))
+          "LICENSE.md",
+          ignore = TRUE,
+          data = list(
+            year = format(Sys.Date(), "%Y"),
+            name = maintainer,
+            project = name
+          )
+        )
         usethis::use_template("license-mit.txt",
-                              "LICENSE",
-                              data = list(year = format(Sys.Date(), "%Y"),
-                                          name = maintainer,
-                                          project = name))
+          "LICENSE",
+          data = list(
+            year = format(Sys.Date(), "%Y"),
+            name = maintainer,
+            project = name
+          )
+        )
         usethis::use_news_md(open = FALSE)
         usethis::use_package_doc()
 
@@ -101,17 +114,19 @@ createPackageProject <- function(name, title = NULL,
 
         usethis::use_testthat()
         usethis::use_vignette(name)
-        if(git){
+        if (git) {
           usethis::use_git(message = cool_first_commit())
         }
 
-        if(pkgdown){
+        if (pkgdown) {
           usethis::use_pkgdown()
-          fs::dir_delete(file.path(usethis::proj_get(),
-                                   "docs"))
+          fs::dir_delete(file.path(
+            usethis::proj_get(),
+            "docs"
+          ))
         }
 
-        if (!is.null(external_setup)){
+        if (!is.null(external_setup)) {
           setup_repo(
             name = name,
             title = title,
@@ -119,20 +134,19 @@ createPackageProject <- function(name, title = NULL,
             login = external_setup$login,
             private = external_setup$private,
             protocol = external_setup$protocol,
-            ci_activation = external_setup$ci_activation)
+            ci_activation = external_setup$ci_activation
+          )
         }
       }
-
-  }
-  ,
-  error = function(e) {
-    message(paste("Error:", e$message))
-    e
-    # delete folder created earlier
-    unlink(file.path(folder, name), recursive = TRUE)
-    message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
-  }
-  )
+    },
+    error = function(e) {
+      message(paste("Error:", e$message))
+      e
+      # delete folder created earlier
+      unlink(file.path(folder, name), recursive = TRUE)
+      message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
+    }
+    )
   }
   reset_proj(current_proj)
   invisible(TRUE)
