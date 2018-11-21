@@ -1,3 +1,12 @@
+#' Set up the repo for the project
+#' @param git_service git platform to use
+#' @param login login for the git platform
+#' @param protocol protocol to use
+#' @param ci_activation how to activate CI stuff
+#' @param project project name (repo name)
+#' @param title project title (repo description)
+#' @noRd
+
 setup_repo <- function(git_service, login,
                        private, protocol,
                        ci_activation,
@@ -32,7 +41,11 @@ setup_repo <- function(git_service, login,
   }
 }
 
-
+#' Add Travis badge to the README
+#' @param login login (assumed to be the same for the git
+#' platform and Travis)
+#' @param name project name (repo name)
+#' @noRd
 add_travis_badge <- function(login, name) {
   readme_path <- find_readme()
   readme <- readLines(readme_path)

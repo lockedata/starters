@@ -23,8 +23,9 @@ repo_exists <- function(username, repo) {
 }
 
 #' check whether the repo name is ok i.e. not used
-#' @username account name
-#' @name repo name
+#' @param username account name
+#' @param name repo name
+#' @noRd
 check_github_name <- function(username, name) {
   if (is.null(username)) {
     return(invisible(TRUE))

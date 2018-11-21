@@ -1,4 +1,6 @@
 # nolint start
+#' Available repostatus.org statuses
+#' @noRd
 statuses <- function() {
   structure(list(status = c(
     "abandoned", "active", "concept", "inactive",
@@ -39,6 +41,10 @@ statuses <- function() {
   ))
 }
 # nolint end
+
+#' Add status badge to README of current project
+#' @param status repostatus.org status
+#' @noRd
 add_repo_status <- function(status) {
   statuses <- statuses()
   if (!status %in% statuses$status) {

@@ -1,5 +1,9 @@
 #' Create project health report under health
 #'
+#' @details for current working directory.
+#' Aimed at use on CI. It currently includes \code{goodpractice}
+#' and \code{devtools::spell_check()} output.
+#'
 #' @export
 #'
 get_project_health <- function() {
