@@ -9,7 +9,7 @@ setup({
   options(usethis.description = list(
     usethis.name = "Jane Doe",
     usethis.description = list(
-      `Authors@R` = 'person("Jane", "Doe", email = "jane@example.com", role = c("aut", "cre"))',
+      `Authors@R` = 'person("Jane", "Doe", email = "jane@example.com", role = c("aut", "cre"))', # nolint
       License = "MIT + file LICENSE",
       Version = "0.0.0.9000"
     )
@@ -23,7 +23,8 @@ test_that("createPackageProject() creates as expected when using defaults", {
     folder = tmp,
     external_setup = NULL
   )
-  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name,
+                                    paste0(project_name, ".Rproj"))))
   # expect_true(file.exists(file.path(tmp, project_name, "codecov.yml")))
   expect_true(file.exists(file.path(tmp, project_name, "_pkgdown.yml")))
   expect_true(file.exists(file.path(tmp, project_name, "CODE_OF_CONDUCT.md")))

@@ -16,7 +16,8 @@ test_that("createBasicProject() creates as expected", {
     external_setup = NULL
   )
 
-  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name,
+                                    paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))
@@ -37,7 +38,8 @@ test_that("createBasicProject() creates as expected when using checkpoint", {
     git = FALSE
   )
 
-  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name,
+                                    paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))

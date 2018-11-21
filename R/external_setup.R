@@ -39,7 +39,7 @@ add_travis_badge <- function(login, name) {
   readme[grepl("<!-- badges -->", readme)] <-
     paste(
       readme[grepl("<!-- badges -->", readme)],
-      glue::glue("[![Build Status](https://travis-ci.org/{login}/{name}.svg?branch=master)](https://travis-ci.org/{login}/{name})")
+      glue::glue("[![Build Status](https://travis-ci.org/{login}/{name}.svg?branch=master)](https://travis-ci.org/{login}/{name})") # nolint
     )
   writeLines(readme, readme_path)
 }

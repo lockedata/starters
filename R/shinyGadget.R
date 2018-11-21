@@ -19,7 +19,10 @@ projectGadget <- function() {
           shiny::br(),
           shiny::checkboxInput("git", "Use Git", value = TRUE),
           shiny::checkboxInput("travis", "Use Travis", value = TRUE),
-          shiny::selectInput("packagedeps", label = "Use a package for handling reproducibility", choices = c("none", "packrat", "checkpoint"), selected = "packrat")
+          shiny::selectInput("packagedeps",
+                          label = "Use a package for handling reproducibility",
+                          choices = c("none", "packrat", "checkpoint"),
+                          selected = "packrat")
         )
       )
     )

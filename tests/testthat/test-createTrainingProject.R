@@ -13,7 +13,8 @@ test_that("createTrainingProject() creates as expected when using defaults", {
     packagedeps = "none",
     external_setup = NULL
   )
-  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name,
+                                    paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))
@@ -27,14 +28,15 @@ test_that("createTrainingProject() creates as expected when using defaults", {
 fs::dir_delete(file.path(tmp, project_name))
 usethis::proj_set(getwd(), force = TRUE)
 
-test_that("createTrainingProject() creates as expected when using bookdown and revealjs", {
+test_that("createTrainingProject() creates as expected when using bookdown and revealjs", { # nolint
   createTrainingProject(project_name,
     folder = tmp,
     handoutEngine = "bookdown", slideEngine = "revealjs",
     packagedeps = "none",
     external_setup = NULL
   )
-  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name,
+                                    paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))
@@ -42,14 +44,16 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
   expect_true(file.exists(file.path(tmp, project_name, "data")))
   expect_true(file.exists(file.path(tmp, project_name, "handouts")))
-  expect_true(file.exists(file.path(tmp, project_name, "handouts", "index.Rmd")))
-  expect_true(file.exists(file.path(tmp, project_name, "slides", "revealjs_slides.Rmd")))
+  expect_true(file.exists(file.path(tmp, project_name, "handouts",
+                                    "index.Rmd")))
+  expect_true(file.exists(file.path(tmp, project_name, "slides",
+                                    "revealjs_slides.Rmd")))
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd(), force = TRUE)
 
-test_that("createTrainingProject() creates as expected when using tufte and xaringan", {
+test_that("createTrainingProject() creates as expected when using tufte and xaringan", { # nolint
   createTrainingProject(project_name,
     folder = tmp,
     handoutEngine = "tufte", slideEngine = "xaringan",
@@ -57,7 +61,8 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
     external_setup = NULL
   )
 
-  expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name,
+                                    paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))
@@ -65,8 +70,10 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
   expect_true(file.exists(file.path(tmp, project_name, "data")))
   expect_true(file.exists(file.path(tmp, project_name, "handouts")))
-  expect_true(file.exists(file.path(tmp, project_name, "handouts", "tufte_handout.Rmd")))
-  expect_true(file.exists(file.path(tmp, project_name, "slides", "xaringan_slides.Rmd")))
+  expect_true(file.exists(file.path(tmp, project_name, "handouts",
+                                    "tufte_handout.Rmd")))
+  expect_true(file.exists(file.path(tmp, project_name, "slides",
+                                    "xaringan_slides.Rmd")))
 })
 
 test_that("createTrainingProject() cleans if there was an error", {

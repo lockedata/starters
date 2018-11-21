@@ -14,7 +14,8 @@ test_that("createAnalysisProject() creates as expected when using defaults", {
     external_setup = NULL
   )
 
-  # expect_true(file.exists(file.path(tmp, project_name, paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(tmp, project_name,
+                          paste0(project_name, ".Rproj"))))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))

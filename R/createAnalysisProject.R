@@ -54,7 +54,7 @@ createAnalysisProject <- function(name, title = NULL,
     e
     # delete folder created earlier
     unlink(file.path(folder, name), recursive = TRUE)
-    message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
+    message(sprintf("Oops! An error was found and the `%s` directory was deleted", name)) # nolint
   }
   )
   reset_proj(current_proj)

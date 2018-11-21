@@ -1,3 +1,4 @@
+# nolint start
 statuses <- function() {
   structure(list(status = c(
     "abandoned", "active", "concept", "inactive",
@@ -37,7 +38,7 @@ statuses <- function() {
     "tbl", "data.frame"
   ))
 }
-
+# nolint end
 add_repo_status <- function(status) {
   statuses <- statuses()
   if (!status %in% statuses$status) {

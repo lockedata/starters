@@ -85,7 +85,9 @@ createTrainingProject <- function(name, folder = getwd(),
       if (handoutEngine != "rmarkdown") {
         message(paste(handoutEngine, "demo added"))
         file.copy(
-          list.files(system.file("templates", handoutEngine, package = "pRojects"), full.names = TRUE),
+          list.files(system.file("templates", handoutEngine,
+                                 package = "pRojects"),
+                     full.names = TRUE),
           file.path(folder, name, "handouts"),
           overwrite = TRUE,
           recursive = TRUE
@@ -104,7 +106,9 @@ createTrainingProject <- function(name, folder = getwd(),
       if (slideEngine != "rmarkdown") {
         message(paste(slideEngine, "demo added"))
         file.copy(
-          list.files(system.file("templates", slideEngine, package = "pRojects"), full.names = TRUE),
+          list.files(system.file("templates", slideEngine,
+                                 package = "pRojects"),
+                     full.names = TRUE),
           file.path(folder, name, "slides"),
           overwrite = TRUE,
           recursive = TRUE
@@ -128,7 +132,7 @@ createTrainingProject <- function(name, folder = getwd(),
     e
     # delete folder created earlier
     unlink(file.path(folder, name), recursive = TRUE)
-    message(sprintf("Oops! An error was found and the `%s` directory was deleted", name))
+    message(sprintf("Oops! An error was found and the `%s` directory was deleted", name)) # nolint
   }
   )
   setup_dep_system(packagedeps)
