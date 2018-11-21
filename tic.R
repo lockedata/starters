@@ -1,5 +1,7 @@
 add_package_checks()
 
+get_stage("after_success") %>%
+  add_code_step(covr::coveralls(quiet = FALSE))
 
 if (Sys.getenv("id_rsa") != "") {
   # pkgdown documentation can be built optionally. Other example criteria:
