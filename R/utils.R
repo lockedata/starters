@@ -2,10 +2,18 @@
 # Dependencies management
 #####################################
 
+#' supported package dependency tools
+#'
+#' @noRd
 okpackagedeps <- function() {
   c("none", "packrat", "checkpoint")
 }
 
+#' set up dependencies management
+#'
+#' @param packagedeps package dependency tool
+#'
+#' @noRd
 setup_dep_system <- function(packagedeps) {
   if (packagedeps == "packrat") {
     desc::desc_set_dep(
@@ -36,6 +44,8 @@ setup_dep_system <- function(packagedeps) {
 #'
 #' @param dirs Subfolders
 #'
+#' @noRd
+#'
 createdirs <- function(dirs) {
   stopifnot(length(dirs) > 0)
   dirstocreate <- file.path(usethis::proj_get(), dirs)
@@ -47,6 +57,8 @@ createdirs <- function(dirs) {
 #' Make DESCRIPTION
 #'
 #' @param name Package / project
+#'
+#' @noRd
 createdesc <- function(name) {
   desc <- desc::desc("!new")
   desc$add_me(role = "cre")
@@ -57,6 +69,8 @@ createdesc <- function(name) {
 #' Check availability
 #'
 #' @param name Package / project
+#'
+#' @noRd
 
 is_available <- function(name) {
   if (identical(Sys.getenv("TESTTHAT"), "true") &&
@@ -82,6 +96,8 @@ is_available <- function(name) {
 # Project resetting
 #####################################
 
+#' Get current project
+#' @noRd
 get_current_proj <- function() {
   current_proj <- try(usethis::proj_get(),
     silent = TRUE
@@ -92,6 +108,8 @@ get_current_proj <- function() {
   return(current_proj)
 }
 
+#' Reset project to what it was before
+#' @noRd
 reset_proj <- function(current_proj) {
   if (is.null(current_proj)) {
     usethis::proj_set(getwd(), force = TRUE)
@@ -104,14 +122,23 @@ reset_proj <- function(current_proj) {
 # Encouraging phrases
 #####################################
 
+#' Create a random positive project title
+#' @noRd
 cool_stuff <- function() {
   praise::praise("New ${adjective} project!")
 }
 
+#' Create a random positive first commit
+#' @noRd
 cool_first_commit <- function() {
   praise::praise("First commit of this ${adjective} project, ${exclamation}!")
 }
 
+##########################
+# README
+##########################
+#' find readme of the active project
+#' @noRd
 find_readme <- function() {
   if (fs::file_exists(file.path(usethis::proj_get(), "README.Rmd"))) {
     readme_path <- file.path(usethis::proj_get(), "README.Rmd")
@@ -121,6 +148,8 @@ find_readme <- function() {
   return(readme_path)
 }
 
+#' Add a badge place-holder in the readme
+#' @noRd
 add_badges_sign <- function(readme_path) {
   readme <- readLines(readme_path)
   readme_title <- which(grepl("#", readme))[1]

@@ -1,8 +1,15 @@
+#' Determine whether the account is a GitHub org
+#' @param username account name
+#' @noRd
 is_org <- function(username) {
   info <- gh::gh("GET /users/:username", username = username)
   info$type == "Organization"
 }
 
+#' Determin whether the repo already exists
+#' @param username account name
+#' @param repo repo name
+#' @noRd
 repo_exists <- function(username, repo) {
   !inherits(
     try(gh::gh("GET /repos/:owner/:repo",
@@ -15,6 +22,9 @@ repo_exists <- function(username, repo) {
   )
 }
 
+#' check whether the repo name is ok i.e. not used
+#' @username account name
+#' @name repo name
 check_github_name <- function(username, name) {
   if (is.null(username)) {
     return(invisible(TRUE))
@@ -29,7 +39,14 @@ check_github_name <- function(username, name) {
   }
 }
 
-# very much inspired by usethis!
+#' Set up GitHub repo
+#' @param username account name
+#' @param private whether to make the repo private
+#' @param protocol protocol to use (ssh or https)
+#' @param title project title (repo description)
+#' @param name project name (repo name)
+#' @details very much inspired by usethis!
+#' @noRd
 setup_gh_repo <- function(username, private, protocol,
                           title, name) {
   check_github_name(
