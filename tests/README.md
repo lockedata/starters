@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-21 November, 2018 14:09:51
+21 November, 2018 14:47:59
 
 This output is created by
 [covrpage](https://github.com/yonicd/covrpage).
@@ -33,34 +33,34 @@ Unit Test summary is created using the
 [testthat](https://github.com/r-lib/testthat)
 package.
 
-| file                                                                    |  n |  time | error | failed | skipped | warning | icon |
-| :---------------------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: | :--- |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R) | 10 | 8.448 |     0 |      0 |       1 |       0 | 🔶    |
-| [test-check\_github\_name.R](testthat/test-check_github_name.R)         |  3 | 0.233 |     0 |      0 |       0 |       0 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R)   | 10 | 6.217 |     0 |      0 |       0 |       0 |      |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R)     | 14 | 0.710 |     0 |      0 |       0 |       0 |      |
-| [test-createTrainingProject.R](testthat/test-createTrainingProject.R)   | 33 | 1.025 |     0 |      0 |       0 |       3 | ⚠️   |
+| file                                                                    |  n |   time | error | failed | skipped | warning | icon |
+| :---------------------------------------------------------------------- | -: | -----: | ----: | -----: | ------: | ------: | :--- |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R) | 10 | 14.511 |     0 |      0 |       1 |       0 | 🔶    |
+| [test-check\_github\_name.R](testthat/test-check_github_name.R)         |  3 |  0.247 |     0 |      0 |       0 |       0 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R)   | 10 |  9.550 |     0 |      0 |       0 |       0 |      |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R)     | 14 |  0.713 |     0 |      0 |       0 |       0 |      |
+| [test-createTrainingProject.R](testthat/test-createTrainingProject.R)   | 33 |  1.348 |     0 |      0 |       0 |       3 | ⚠️   |
 
 <details open>
 
 <summary> Show Detailed Test Results
 </summary>
 
-| file                                                                            | context                  | test                                                                         | status  |  n |  time | icon |
-| :------------------------------------------------------------------------------ | :----------------------- | :--------------------------------------------------------------------------- | :------ | -: | ----: | :--- |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L19_L20) | createBasicProject       | createBasicProject() creates as expected                                     | PASS    |  7 | 7.072 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L33)     | createBasicProject       | createBasicProject() creates as expected when using checkpoint               | SKIPPED |  1 | 0.001 | 🔶    |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L53_L60) | createBasicProject       | createBasicProject() cleans if there was an error                            | PASS    |  1 | 0.012 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L78)     | createBasicProject       | createBasicProject() can create a GitHub repo                                | PASS    |  1 | 1.363 |      |
-| [test-check\_github\_name.R](testthat/test-check_github_name.R#L4)              | test-check\_github\_name | check\_github\_name works                                                    | PASS    |  3 | 0.233 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L17_L18)   | createAnalysisProject    | createAnalysisProject() creates as expected when using defaults              | PASS    |  9 | 6.197 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L31_L41)   | createAnalysisProject    | createAnalysisProject() cleans if there was an error                         | PASS    |  1 | 0.020 |      |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L26_L27)     | createPackageProject     | createPackageProject() creates as expected when using defaults               | PASS    | 13 | 0.701 |      |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L48_L55)     | createPackageProject     | createPackageProject() cleans if there was an error                          | PASS    |  1 | 0.009 |      |
-| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L11_L15)   | createTrainingProject    | createTrainingProject() creates as expected when using defaults              | WARNING | 10 | 0.337 | ⚠️   |
-| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L32_L37)   | createTrainingProject    | createTrainingProject() creates as expected when using bookdown and revealjs | WARNING | 11 | 0.336 | ⚠️   |
-| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L57_L62)   | createTrainingProject    | createTrainingProject() creates as expected when using tufte and xaringan    | WARNING | 11 | 0.344 | ⚠️   |
-| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L81_L91)   | createTrainingProject    | createTrainingProject() cleans if there was an error                         | PASS    |  1 | 0.008 |      |
+| file                                                                            | context                  | test                                                                         | status  |  n |   time | icon |
+| :------------------------------------------------------------------------------ | :----------------------- | :--------------------------------------------------------------------------- | :------ | -: | -----: | :--- |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L19_L20) | createBasicProject       | createBasicProject() creates as expected                                     | PASS    |  7 | 11.602 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L33)     | createBasicProject       | createBasicProject() creates as expected when using checkpoint               | SKIPPED |  1 |  0.002 | 🔶    |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L53_L60) | createBasicProject       | createBasicProject() cleans if there was an error                            | PASS    |  1 |  0.028 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L78)     | createBasicProject       | createBasicProject() can create a GitHub repo                                | PASS    |  1 |  2.879 |      |
+| [test-check\_github\_name.R](testthat/test-check_github_name.R#L4)              | test-check\_github\_name | check\_github\_name works                                                    | PASS    |  3 |  0.247 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L17_L18)   | createAnalysisProject    | createAnalysisProject() creates as expected when using defaults              | PASS    |  9 |  9.525 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L31_L41)   | createAnalysisProject    | createAnalysisProject() cleans if there was an error                         | PASS    |  1 |  0.025 |      |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L26_L27)     | createPackageProject     | createPackageProject() creates as expected when using defaults               | PASS    | 13 |  0.702 |      |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L48_L55)     | createPackageProject     | createPackageProject() cleans if there was an error                          | PASS    |  1 |  0.011 |      |
+| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L11_L15)   | createTrainingProject    | createTrainingProject() creates as expected when using defaults              | WARNING | 10 |  0.405 | ⚠️   |
+| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L32_L37)   | createTrainingProject    | createTrainingProject() creates as expected when using bookdown and revealjs | WARNING | 11 |  0.478 | ⚠️   |
+| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L57_L62)   | createTrainingProject    | createTrainingProject() creates as expected when using tufte and xaringan    | WARNING | 11 |  0.452 | ⚠️   |
+| [test-createTrainingProject.R](testthat/test-createTrainingProject.R#L81_L91)   | createTrainingProject    | createTrainingProject() cleans if there was an error                         | PASS    |  1 |  0.013 |      |
 
 | Failed | Warning | Skipped |
 | :----- | :------ | :------ |
@@ -76,7 +76,7 @@ package.
 | Field    | Value                         |                                                                                                                                                                                                              |
 | :------- | :---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Version  | R version 3.5.1 (2017-01-27)  |                                                                                                                                                                                                              |
-| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://travis-ci.org/lockedata/pRojects/jobs/457955839" target="_blank"><span title="Built on Travis">![](https://github.com/yonicd/covrpage/blob/master/inst/logo/travis.png?raw=true)</span></a> |
+| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://travis-ci.org/lockedata/pRojects/jobs/457974025" target="_blank"><span title="Built on Travis">![](https://github.com/yonicd/covrpage/blob/master/inst/logo/travis.png?raw=true)</span></a> |
 | Running  | Ubuntu 14.04.5 LTS            |                                                                                                                                                                                                              |
 | Language | en\_US                        |                                                                                                                                                                                                              |
 | Timezone | UTC                           |                                                                                                                                                                                                              |
