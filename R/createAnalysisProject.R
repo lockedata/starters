@@ -60,3 +60,6 @@ createAnalysisProject <- function(name, title = NULL,
   reset_proj(current_proj)
   invisible(TRUE)
 }
+
+#' @describeIn createAnalysisProject
+create_analysis_project = createAnalysisProject

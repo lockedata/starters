@@ -148,3 +148,6 @@ handoutEngine <- function() {
 slideEngine <- function() {
   c("rmarkdown", "revealjs", "xaringan")
 }
+
+#' @describeIn createTrainingProject
+create_training_project = createTrainingProject

@@ -151,3 +151,6 @@ createPackageProject <- function(name, title = NULL,
   reset_proj(current_proj)
   invisible(TRUE)
 }
+
+#' @describeIn createPackageProject
+create_package_project = createPackageProject

@@ -126,3 +126,6 @@ createBasicProject <- function(name,
 
   invisible(TRUE)
 }
+
+#' @describeIn createBasicProject
+create_basic_project = createBasicProject
