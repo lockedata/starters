@@ -35,7 +35,16 @@ setup_repo <- function(git_service, login,
     }
 
     if (ci_activation == "travis") {
-      usethis::use_travis()
+      usethis::use_template("dot-travis.yml",
+                            target = ".travis.yml",
+                            package = "travis")
+      travis::travis_enable()
+      # copy custom tic depending on proj
+      # if sthg
+      travis::use_travis_deploy()
+      # in all cases
+      travis::travis_set_pat()
+
       add_travis_badge(login, name)
     }
   }
