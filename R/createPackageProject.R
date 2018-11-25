@@ -52,6 +52,9 @@ createPackageProject <- function(name, title = NULL,
                                    protocol = "ssh",
                                    ci_activation = "tic"
                                  )) {
+  if(missing(name)) stop("name is required")
+  if(!is.character(name)) stop("name has to be a character")
+
   # create title
   if (is.null(title)) {
     title <- cool_stuff()
