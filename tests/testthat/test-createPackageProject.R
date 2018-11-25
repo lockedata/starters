@@ -18,6 +18,24 @@ setup({
 
 project_name <- "packageProject2"
 
+test_that("createPackageProject() errors if name missing or not correct", {
+  expect_error(createPackageProject(folder = tmp,
+                                     packagedeps = "packrat",
+                                     git = TRUE,
+                                     external_setup = NULL
+  ))
+
+  expect_error(createPackageProject(name = 1,
+                                     folder = tmp,
+                                     packagedeps = "packrat",
+                                     git = TRUE,
+                                     external_setup = NULL
+  ))
+
+
+})
+
+
 test_that("createPackageProject() creates as expected when using defaults", {
   createPackageProject(project_name,
     folder = tmp,

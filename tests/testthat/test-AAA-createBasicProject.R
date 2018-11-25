@@ -8,6 +8,24 @@ fs::dir_create(tmp)
 
 project_name <- "basicProject"
 
+test_that("createBasicProject() errors if name missing or not correct", {
+  expect_error(createBasicProject(folder = tmp,
+                     packagedeps = "packrat",
+                     git = TRUE,
+                     external_setup = NULL
+  ))
+
+  expect_error(createBasicProject(name = 1,
+                                  folder = tmp,
+                                  packagedeps = "packrat",
+                                  git = TRUE,
+                                  external_setup = NULL
+  ))
+
+
+  })
+
+
 test_that("createBasicProject() creates as expected", {
   createBasicProject(project_name,
     folder = tmp,

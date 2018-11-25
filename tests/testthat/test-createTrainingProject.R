@@ -7,6 +7,24 @@ fs::dir_create(tmp)
 
 project_name <- "trainingProject2"
 
+test_that("createTrainingProject() errors if name missing or not correct", {
+  expect_error(createTrainingProject(folder = tmp,
+                                     packagedeps = "packrat",
+                                     git = TRUE,
+                                     external_setup = NULL
+  ))
+
+  expect_error(createTrainingProject(name = 1,
+                                     folder = tmp,
+                                     packagedeps = "packrat",
+                                     git = TRUE,
+                                     external_setup = NULL
+  ))
+
+
+})
+
+
 test_that("createTrainingProject() creates as expected when using defaults", {
   createTrainingProject(project_name,
     folder = tmp,

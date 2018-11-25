@@ -39,6 +39,10 @@ createTrainingProject <- function(name, folder = getwd(),
                                   ),
                                   title = NULL,
                                   reset = TRUE) {
+
+  if(missing(name)) stop("name is required")
+  if(!is.character(name)) stop("name has to be a character")
+
   packagedeps <- match.arg(packagedeps, okpackagedeps())
   # Supported packages
   handoutEngine <- match.arg(
