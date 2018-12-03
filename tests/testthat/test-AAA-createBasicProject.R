@@ -9,21 +9,21 @@ fs::dir_create(tmp)
 project_name <- "basicProject"
 
 test_that("createBasicProject() errors if name missing or not correct", {
-  expect_error(createBasicProject(folder = tmp,
-                     packagedeps = "packrat",
-                     git = TRUE,
-                     external_setup = NULL
+  expect_error(createBasicProject(
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
   ))
 
-  expect_error(createBasicProject(name = 1,
-                                  folder = tmp,
-                                  packagedeps = "packrat",
-                                  git = TRUE,
-                                  external_setup = NULL
+  expect_error(createBasicProject(
+    name = 1,
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
   ))
-
-
-  })
+})
 
 
 test_that("createBasicProject() creates as expected", {
@@ -34,8 +34,10 @@ test_that("createBasicProject() creates as expected", {
     external_setup = NULL
   )
 
-  expect_true(file.exists(file.path(tmp, project_name,
-                                    paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(
+    tmp, project_name,
+    paste0(project_name, ".Rproj")
+  )))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))
@@ -56,8 +58,10 @@ test_that("createBasicProject() creates as expected when using checkpoint", {
     git = FALSE
   )
 
-  expect_true(file.exists(file.path(tmp, project_name,
-                                    paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(
+    tmp, project_name,
+    paste0(project_name, ".Rproj")
+  )))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.md")))

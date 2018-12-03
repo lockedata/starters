@@ -33,8 +33,8 @@ createAnalysisProject <- function(name, title = NULL,
                                     ci_activation = "tic"
                                   ),
                                   dirs = c("data", "analysis", "outputs")) {
-  if(missing(name)) stop("name is required")
-  if(!is.character(name)) stop("name has to be a character")
+  if (missing(name)) stop("name is required")
+  if (!is.character(name)) stop("name has to be a character")
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
