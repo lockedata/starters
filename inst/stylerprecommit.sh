@@ -1,3 +1,2 @@
 #!/bin/bash
-Rscript source(file.path("inst",
-                         "precommit.R"))
+Rscript .git/hooks/precommit.R

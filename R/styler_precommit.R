@@ -1,9 +1,14 @@
 add_styler_hook <- function(){
-  usethis::use_git_hook("pre-commit",
-                        system.file("stylerprecommit.sh",
-                                    package = "pRojects"))
+  fs::dir_create(file.path(usethis::proj_get(),
+                           ".git", "hooks"))
+  fs::file_copy(system.file("stylerprecommit.sh",
+                            package = "pRojects"),
+                file.path(usethis::proj_get(),
+                          ".git", "hooks",
+                          "pre-commit"))
   fs::file_copy(system.file("precommit.R",
                             package = "pRojects"),
-                file.path(".git", "hooks",
+                file.path(usethis::proj_get(),
+                          ".git", "hooks",
                           "precommit.R"))
 }
