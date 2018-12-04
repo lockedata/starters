@@ -62,6 +62,6 @@ Remotes:
     r-lib/usethis,
     yonicd/covrpage
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0.9000
+RoxygenNote: 6.1.1
 URL: https://github.com/lockedata/pRojects, https://itsalocke.com/pRojects/
 BugReports: https://github.com/lockedata/pRojects/issues
