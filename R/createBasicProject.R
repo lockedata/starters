@@ -78,6 +78,9 @@ createBasicProject <- function(name,
       open = FALSE,
       rstudio = TRUE
     )
+    usethis::proj_set(file.path(folder, name),
+                      force = TRUE
+    )
 
     # add DESCRIPTION file and fill title
     usethis::use_description()
