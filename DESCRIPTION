@@ -1,45 +1,16 @@
 Package: pRojects
 Title: One-Liners to Setup R Projects
 Version: 0.0.1.9003
-Authors@R: 
-    c(person(given = "Steph",
-             family = "Locke",
-             role = c("aut", "cre"),
-             email = "steph@itsalocke.com"),
-      person(given = "Jon",
-             family = "Calder",
-             role = "aut",
-             email = "jonmcalder@gmail.com"),
-      person(given = "Locke Data",
-             role = "fnd",
-             comment = "https://itsalocke.com"),
-      person(given = "Jas",
-             family = "Sohi",
-             role = "ctb",
-             email = "contact@jassohi.com"),
-      person(given = "Maëlle",
-             family = "Salmon",
-             role = "ctb",
-             email = "maelle.salmon@yahoo.se",
-             comment = c(ORCID = "0000-0002-2815-0399")))
-Description: Setting up R project directories for teaching, presenting, analysis,
-            package development can be a pain. pRojects shortcuts this by creating
-            folder structures and setting good defaults for you.
-Depends: R (>= 3.3.0)
+Description: Setting up R project directories for teaching,
+    presenting, analysis, package development can be a pain. pRojects
+    shortcuts this by creating folder structures and setting good defaults
+    for you.
 License: GPL-3
-Encoding: UTF-8
-LazyData: true
-Suggests: 
-    covr,
-    covrpage,
-    testthat,
-    rmarkdown,
-    xaringan,
-    tufte,
-    bookdown,
-    revealjs,
-    mockery
-VignetteBuilder: knitr
+URL: https://github.com/lockedata/pRojects,
+    https://itsalocke.com/pRojects/
+BugReports: https://github.com/lockedata/pRojects/issues
+Depends: 
+    R (>= 3.3.0)
 Imports: 
     devtools,
     packrat,
@@ -58,10 +29,21 @@ Imports:
     git2r,
     glue,
     praise
+Suggests: 
+    covr,
+    covrpage,
+    testthat,
+    xaringan,
+    tufte,
+    bookdown,
+    revealjs,
+    mockery
+VignetteBuilder: 
+    knitr
 Remotes:
     r-lib/usethis,
     yonicd/covrpage
+Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0.9000
-URL: https://github.com/lockedata/pRojects, https://itsalocke.com/pRojects/
-BugReports: https://github.com/lockedata/pRojects/issues
