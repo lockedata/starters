@@ -19,20 +19,20 @@ setup({
 project_name <- "packageProject2"
 
 test_that("createPackageProject() errors if name missing or not correct", {
-  expect_error(createPackageProject(folder = tmp,
-                                     packagedeps = "packrat",
-                                     git = TRUE,
-                                     external_setup = NULL
+  expect_error(createPackageProject(
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
   ))
 
-  expect_error(createPackageProject(name = 1,
-                                     folder = tmp,
-                                     packagedeps = "packrat",
-                                     git = TRUE,
-                                     external_setup = NULL
+  expect_error(createPackageProject(
+    name = 1,
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
   ))
-
-
 })
 
 
@@ -41,8 +41,10 @@ test_that("createPackageProject() creates as expected when using defaults", {
     folder = tmp,
     external_setup = NULL
   )
-  expect_true(file.exists(file.path(tmp, project_name,
-                                    paste0(project_name, ".Rproj"))))
+  expect_true(file.exists(file.path(
+    tmp, project_name,
+    paste0(project_name, ".Rproj")
+  )))
   # expect_true(file.exists(file.path(tmp, project_name, "codecov.yml")))
   expect_true(file.exists(file.path(tmp, project_name, "_pkgdown.yml")))
   expect_true(file.exists(file.path(tmp, project_name, "CODE_OF_CONDUCT.md")))

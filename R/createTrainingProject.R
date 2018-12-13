@@ -39,9 +39,8 @@ createTrainingProject <- function(name, folder = getwd(),
                                   ),
                                   title = NULL,
                                   reset = TRUE) {
-
-  if(missing(name)) stop("name is required")
-  if(!is.character(name)) stop("name has to be a character")
+  if (missing(name)) stop("name is required")
+  if (!is.character(name)) stop("name has to be a character")
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
   # Supported packages
@@ -90,8 +89,10 @@ createTrainingProject <- function(name, folder = getwd(),
         message(paste(handoutEngine, "demo added"))
         file.copy(
           list.files(system.file("templates", handoutEngine,
-                                 package = "pRojects"),
-                     full.names = TRUE),
+            package = "pRojects"
+          ),
+          full.names = TRUE
+          ),
           file.path(folder, name, "handouts"),
           overwrite = TRUE,
           recursive = TRUE
@@ -111,8 +112,10 @@ createTrainingProject <- function(name, folder = getwd(),
         message(paste(slideEngine, "demo added"))
         file.copy(
           list.files(system.file("templates", slideEngine,
-                                 package = "pRojects"),
-                     full.names = TRUE),
+            package = "pRojects"
+          ),
+          full.names = TRUE
+          ),
           file.path(folder, name, "slides"),
           overwrite = TRUE,
           recursive = TRUE
