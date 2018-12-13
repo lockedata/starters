@@ -124,7 +124,9 @@ createPackageProject <- function(name, title = NULL,
           usethis::use_git(message = cool_first_commit())
         }
 
-        usethis::use_news_md(open = FALSE)
+       usethis::use_template("NEWS.md",
+                             data = usethis:::package_data(),
+                             open = FALSE)
         if (pkgdown) {
           usethis::use_pkgdown()
         }
