@@ -51,9 +51,8 @@ createBasicProject <- function(name,
                                  ci_activation = "tic"
                                ),
                                reset = TRUE) {
-
-  if(missing(name)) stop("name is required")
-  if(!is.character(name)) stop("name has to be a character")
+  if (missing(name)) stop("name is required")
+  if (!is.character(name)) stop("name has to be a character")
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
