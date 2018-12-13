@@ -75,6 +75,11 @@ createPackageProject <- function(name, title = NULL,
         rstudio = TRUE,
         fields = list(License = "MIT + file LICENSE")
       )
+
+      usethis::proj_set(file.path(folder, name),
+                        force = TRUE
+      )
+
       desc::desc_set("Title", title,
         file = usethis::proj_get()
       )
@@ -104,9 +109,7 @@ createPackageProject <- function(name, title = NULL,
             project = name
           )
         )
-        usethis::use_news_md(open = FALSE)
         usethis::use_package_doc()
-
         # README stuff
         usethis::use_readme_rmd(open = FALSE)
         readme_path <- find_readme()
@@ -121,12 +124,9 @@ createPackageProject <- function(name, title = NULL,
           usethis::use_git(message = cool_first_commit())
         }
 
+        usethis::use_news_md(open = FALSE)
         if (pkgdown) {
           usethis::use_pkgdown()
-          fs::dir_delete(file.path(
-            usethis::proj_get(),
-            "docs"
-          ))
         }
 
         if (!is.null(external_setup)) {
