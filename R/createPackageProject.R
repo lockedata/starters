@@ -67,13 +67,13 @@ createPackageProject <- function(name, title = NULL,
       dir.create(file.path(folder, name))
       # set active project to directory
       usethis::proj_set(file.path(folder, name),
-        force = TRUE
+                        force = TRUE
       )
       # create package skeleton
       usethis::create_package(file.path(folder, name),
-        open = FALSE,
-        rstudio = TRUE,
-        fields = list(License = "MIT + file LICENSE")
+                              open = FALSE,
+                              rstudio = TRUE,
+                              fields = list(License = "MIT + file LICENSE")
       )
 
       usethis::proj_set(file.path(folder, name),
@@ -81,7 +81,7 @@ createPackageProject <- function(name, title = NULL,
       )
 
       desc::desc_set("Title", title,
-        file = usethis::proj_get()
+                     file = usethis::proj_get()
       )
       if (bestPractices) {
         usethis::use_code_of_conduct()
@@ -93,25 +93,25 @@ createPackageProject <- function(name, title = NULL,
         }
 
         usethis::use_template("license-mit.md",
-          "LICENSE.md",
-          ignore = TRUE,
-          data = list(
-            year = format(Sys.Date(), "%Y"),
-            name = maintainer,
-            project = name
-          )
+                              "LICENSE.md",
+                              ignore = TRUE,
+                              data = list(
+                                year = format(Sys.Date(), "%Y"),
+                                name = maintainer,
+                                project = name
+                              )
         )
         usethis::use_template("license-mit.txt",
-          "LICENSE",
-          data = list(
-            year = format(Sys.Date(), "%Y"),
-            name = maintainer,
-            project = name
-          )
+                              "LICENSE",
+                              data = list(
+                                year = format(Sys.Date(), "%Y"),
+                                name = maintainer,
+                                project = name
+                              )
         )
         usethis::use_package_doc()
         # README stuff
-        usethis::use_readme_rmd(open = FALSE)
+        use_readme(name)
         # status
         add_repo_status(initial_status)
 
@@ -119,11 +119,13 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_vignette(name)
         if (git) {
           usethis::use_git(message = cool_first_commit())
+          add_styler_hook()
         }
 
-       usethis::use_template("NEWS.md",
-                             data = usethis:::package_data(),
-                             open = FALSE)
+        usethis::use_template("NEWS.md",
+                              data = usethis:::package_data(),
+                              open = FALSE)
+
         if (pkgdown) {
           file.create(file.path(usethis::proj_get(),
                                 "_pkgdown.yml"))
@@ -140,7 +142,10 @@ createPackageProject <- function(name, title = NULL,
             ci_activation = external_setup$ci_activation
           )
         }
-      }
+
+        # README
+        knit_readme()
+             }
     },
     error = function(e) {
       message(paste("Error:", e$message))
