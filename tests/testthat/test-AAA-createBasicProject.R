@@ -40,7 +40,7 @@ test_that("createBasicProject() creates as expected", {
   )))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
-  expect_true(file.exists(file.path(tmp, project_name, "README.md")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
   expect_true(dir.exists(file.path(tmp, project_name, "packrat")))
   expect_true(file.exists(file.path(tmp, project_name, ".git")))
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
@@ -64,7 +64,7 @@ test_that("createBasicProject() creates as expected when using checkpoint", {
   )))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
-  expect_true(file.exists(file.path(tmp, project_name, "README.md")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)

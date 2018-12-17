@@ -134,16 +134,3 @@ cool_first_commit <- function() {
   praise::praise("First commit of this ${adjective} project, ${exclamation}!")
 }
 
-##########################
-# README
-##########################
-#' find readme of the active project
-#' @noRd
-find_readme <- function() {
-  if (fs::file_exists(file.path(usethis::proj_get(), "README.Rmd"))) {
-    readme_path <- file.path(usethis::proj_get(), "README.Rmd")
-  } else {
-    readme_path <- file.path(usethis::proj_get(), "README.md")
-  }
-  return(readme_path)
-}
