@@ -35,7 +35,7 @@ createTrainingProject <- function(name, folder = getwd(),
                                     login = gh::gh_whoami()$login,
                                     private = FALSE,
                                     protocol = "ssh",
-                                    ci_activation = "tic"
+                                    ci_activation = "travis"
                                   ),
                                   title = NULL,
                                   reset = TRUE) {
