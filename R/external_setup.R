@@ -36,23 +36,7 @@ setup_repo <- function(git_service, login,
 
     if (ci_activation == "travis") {
       usethis::use_travis()
-      add_travis_badge(login, name)
     }
   }
 }
 
-#' Add Travis badge to the README
-#' @param login login (assumed to be the same for the git
-#' platform and Travis)
-#' @param name project name (repo name)
-#' @noRd
-add_travis_badge <- function(login, name) {
-  readme_path <- find_readme()
-  readme <- readLines(readme_path)
-  readme[grepl("<!-- badges -->", readme)] <-
-    paste(
-      readme[grepl("<!-- badges -->", readme)],
-      glue::glue("[![Build Status](https://travis-ci.org/{login}/{name}.svg?branch=master)](https://travis-ci.org/{login}/{name})") # nolint
-    )
-  writeLines(readme, readme_path)
-}

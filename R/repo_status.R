@@ -53,13 +53,8 @@ add_repo_status <- function(status) {
     )
   }
 
-  badge <- statuses$md_code[statuses$status == status]
-  readme_path <- find_readme()
-  readme <- readLines(readme_path)
-  readme[grepl("<!-- badges -->", readme)] <-
-    paste(
-      readme[grepl("<!-- badges -->", readme)],
-      badge
-    )
-  writeLines(readme, readme_path)
+  badge <- statuses[statuses$status == status,]
+  usethis::use_badge(badge_name = badge$name,
+                     href = badge$href,
+                     src = badge$src)
 }
