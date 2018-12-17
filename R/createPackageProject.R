@@ -125,6 +125,7 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_template("NEWS.md",
                               data = usethis:::package_data(),
                               open = FALSE)
+
         if (pkgdown) {
           file.create(file.path(usethis::proj_get(),
                                 "_pkgdown.yml"))

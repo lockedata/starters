@@ -3,13 +3,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: start -->
+
 [![Build
 Status](https://travis-ci.org/lockedata/pRojects.svg?branch=master)](https://travis-ci.org/lockedata/pRojects)
 [![Coverage
-Status](https://img.shields.io/coveralls/lockedata/pRojects.svg)](https://coveralls.io/r/lockedata/pRojects?branch=master) [![Locke Data Slack](https://img.shields.io/badge/Slack-discuss-blue.svg?logo=slack&longCache=true&style=flat)](https://join.slack.com/t/lockedata/shared_invite/enQtMjkwNjY3ODkwMzg2LTI1OGU1NTM3ZGIyZGFiNTdlODI3MzU2N2ZlNDczMjM4M2U2OWVmNDMzZTQ1ZGNlZDQ3MGM2MGVjMjI2MWIyMjI)
+Status](https://img.shields.io/coveralls/lockedata/pRojects.svg)](https://coveralls.io/r/lockedata/pRojects?branch=master)
+[![Locke Data
+Slack](https://img.shields.io/badge/Slack-discuss-blue.svg?logo=slack&longCache=true&style=flat)](https://join.slack.com/t/lockedata/shared_invite/enQtMjkwNjY3ODkwMzg2LTI1OGU1NTM3ZGIyZGFiNTdlODI3MzU2N2ZlNDczMjM4M2U2OWVmNDMzZTQ1ZGNlZDQ3MGM2MGVjMjI2MWIyMjI)
+[![Project Status: Active - The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: end -->
 
 This package is designed to take away some grunt work around setting up
 new projects.
@@ -26,7 +31,7 @@ All projects get setup with Git and Travis by default.
 
 ## Install `pRojects`
 
-    remotes::install_github("lockedata/pRojects")
+    devtools::install_github("stephlocke/pRojects")
 
 ## RStudio gadget
 
