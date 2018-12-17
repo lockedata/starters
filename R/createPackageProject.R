@@ -124,11 +124,12 @@ createPackageProject <- function(name, title = NULL,
           usethis::use_git(message = cool_first_commit())
         }
 
-      # usethis::use_template("NEWS.md",
-            #                 data = usethis:::package_data(),
-            #                 open = FALSE)
+       usethis::use_template("NEWS.md",
+                             data = usethis:::package_data(),
+                             open = FALSE)
         if (pkgdown) {
-          usethis::use_pkgdown()
+          file.create(file.path(usethis::proj_get(),
+                                "_pkgdown.yml"))
         }
 
         if (!is.null(external_setup)) {
