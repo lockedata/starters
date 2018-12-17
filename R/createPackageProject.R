@@ -145,6 +145,11 @@ createPackageProject <- function(name, title = NULL,
 
         # README
         knit_readme()
+
+        # add everything
+        repo <- git2r::init(usethis::proj_get())
+        git2r::add(repo, path = dir(usethis::proj_get()))
+        git2r::commit(repo, message = "add infrastructure")
              }
     },
     error = function(e) {
