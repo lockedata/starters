@@ -101,6 +101,7 @@ createBasicProject <- function(name,
     # git setup
     if (git) {
       usethis::use_git(message = cool_first_commit())
+      add_styler_hook()
     }
 
     if (!is.null(external_setup)) {
