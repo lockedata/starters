@@ -123,16 +123,6 @@ createTrainingProject <- function(name, folder = getwd(),
       }
     }
 
-    createBasicProject(
-      name = name,
-      title = title,
-      folder = folder,
-      packagedeps = packagedeps,
-      git = git,
-      external_setup = external_setup,
-      reset = FALSE
-    )
-    createdirs(dirs)
   },
   error = function(e) {
     message(paste("Error:", e$message))
