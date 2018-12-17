@@ -38,7 +38,7 @@ test_that("createAnalysisProject() creates as expected when using defaults", {
   )))
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
-  expect_true(file.exists(file.path(tmp, project_name, "README.md")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
   expect_true(file.exists(file.path(tmp, project_name, ".git")))
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
   expect_true(file.exists(file.path(tmp, project_name, "data")))

@@ -93,8 +93,7 @@ createBasicProject <- function(name,
     setup_dep_system(packagedeps)
 
     # add README
-    usethis::use_readme_md(open = FALSE)
-    readme_path <- find_readme()
+    usethis::use_readme_rmd(open = FALSE)
 
     # status
     add_repo_status(initial_status)

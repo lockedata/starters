@@ -112,7 +112,6 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_package_doc()
         # README stuff
         usethis::use_readme_rmd(open = FALSE)
-        readme_path <- find_readme()
         # status
         add_repo_status(initial_status)
 
