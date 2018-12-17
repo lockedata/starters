@@ -11,6 +11,9 @@ knitr::opts_chunk$set(warning = FALSE,
 # Good practice
 
 ```{r}
+if(!require("goodpractice")){
+  install.packages("goodpractice")
+}
 checks <- goodpractice::all_checks()
 gp <- goodpractice::gp(fs::path_dir(getwd()),
                        checks[!grepl("rcmdcheck", checks)])
