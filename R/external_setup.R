@@ -50,6 +50,7 @@ setup_repo <- function(git_service, login,
   }
 }
 
+<<<<<<< HEAD
 #' Add Travis badge to the README
 #' @param login login (assumed to be the same for the git
 #' platform and Travis)
@@ -61,3 +62,5 @@ add_travis_badge <- function(login, name) {
   img <- glue::glue("{url}.svg?branch=master")
   usethis::use_badge("Travis build status", url, img)
 }
+=======
+>>>>>>> simplify code thanks to usethis new badge functionality

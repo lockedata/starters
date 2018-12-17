@@ -113,8 +113,6 @@ createPackageProject <- function(name, title = NULL,
         # README stuff
         usethis::use_readme_rmd(open = FALSE)
         readme_path <- find_readme()
-        # add badges sign
-        add_badges_sign(readme_path)
         # status
         add_repo_status(initial_status)
 
