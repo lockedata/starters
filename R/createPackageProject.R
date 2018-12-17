@@ -50,7 +50,7 @@ createPackageProject <- function(name, title = NULL,
                                    login = gh::gh_whoami()$login,
                                    private = FALSE,
                                    protocol = "ssh",
-                                   ci_activation = "tic"
+                                   ci_activation = "travis"
                                  )) {
   if (missing(name)) stop("name is required")
   if (!is.character(name)) stop("name has to be a character")
@@ -124,9 +124,9 @@ createPackageProject <- function(name, title = NULL,
           usethis::use_git(message = cool_first_commit())
         }
 
-       usethis::use_template("NEWS.md",
-                             data = usethis:::package_data(),
-                             open = FALSE)
+      # usethis::use_template("NEWS.md",
+            #                 data = usethis:::package_data(),
+            #                 open = FALSE)
         if (pkgdown) {
           usethis::use_pkgdown()
         }

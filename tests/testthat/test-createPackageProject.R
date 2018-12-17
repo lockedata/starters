@@ -51,7 +51,7 @@ test_that("createPackageProject() creates as expected when using defaults", {
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(file.exists(file.path(tmp, project_name, "LICENSE")))
   expect_true(file.exists(file.path(tmp, project_name, "NAMESPACE")))
-  expect_true(file.exists(file.path(tmp, project_name, "NEWS.md")))
+#  expect_true(file.exists(file.path(tmp, project_name, "NEWS.md")))
   expect_true(file.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
   expect_true(file.exists(file.path(tmp, project_name, "tests")))
