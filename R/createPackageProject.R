@@ -152,5 +152,5 @@ createPackageProject <- function(name, title = NULL,
   invisible(TRUE)
 }
 
-#' @describeIn createPackageProject
+#' @describeIn createPackageProject aesthetic addition for continuity purposes
 create_package_project = createPackageProject

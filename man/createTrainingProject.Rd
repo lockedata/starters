@@ -2,9 +2,17 @@
 % Please edit documentation in R/createTrainingProject.R
 \name{createTrainingProject}
 \alias{createTrainingProject}
+\alias{create_training_project}
 \title{Create a training project}
 \usage{
 createTrainingProject(name, folder = getwd(), initial_status = "wip",
+  dirs = c("data", "handouts", "slides"), handoutEngine = "rmarkdown",
+  slideEngine = "rmarkdown", packagedeps = "packrat", git = TRUE,
+  external_setup = list(git_service = "GitHub", login =
+  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+  "tic"), title = NULL, reset = TRUE)
+
+create_training_project(name, folder = getwd(), initial_status = "wip",
   dirs = c("data", "handouts", "slides"), handoutEngine = "rmarkdown",
   slideEngine = "rmarkdown", packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
@@ -50,6 +58,11 @@ If NULL, a random one will be generated.}
 \description{
 Create a project laid out for producing training materials
 }
+\section{Functions}{
+\itemize{
+\item \code{create_training_project}: aesthetic addition for continuity purposes
+}}
+
 \examples{
 \dontrun{
 folder <- tempdir()

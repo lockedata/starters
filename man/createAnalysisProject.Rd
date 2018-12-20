@@ -2,9 +2,16 @@
 % Please edit documentation in R/createAnalysisProject.R
 \name{createAnalysisProject}
 \alias{createAnalysisProject}
+\alias{create_analysis_project}
 \title{Create a project laid out for an analysis project}
 \usage{
 createAnalysisProject(name, title = NULL, folder = getwd(),
+  initial_status = "wip", packagedeps = "packrat", git = TRUE,
+  reset = TRUE, external_setup = list(git_service = "GitHub", login =
+  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+  "tic"), dirs = c("data", "analysis", "outputs"))
+
+create_analysis_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", packagedeps = "packrat", git = TRUE,
   reset = TRUE, external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
@@ -45,6 +52,11 @@ badge to the README.
 \description{
 Create a project laid out for an analysis project
 }
+\section{Functions}{
+\itemize{
+\item \code{create_analysis_project}: aesthetic addition for continuity purposes
+}}
+
 \examples{
 \dontrun{
 folder <- tempdir()
