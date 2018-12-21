@@ -135,5 +135,7 @@ createBasicProject <- function(name,
   invisible(TRUE)
 }
 
+#' @export
+
 #' @describeIn createBasicProject aesthetic addition for continuity purposes
 create_basic_project = createBasicProject

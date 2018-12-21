@@ -146,5 +146,7 @@ slideEngine <- function() {
   c("rmarkdown", "revealjs", "xaringan")
 }
 
+#' @export
+
 #' @describeIn createTrainingProject aesthetic addition for continuity purposes
 create_training_project = createTrainingProject
