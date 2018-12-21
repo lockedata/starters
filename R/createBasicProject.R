@@ -54,6 +54,11 @@ createBasicProject <- function(name,
   if (missing(name)) stop("name is required")
   if (!is.character(name)) stop("name has to be a character")
 
+  # Validate name
+  if(!validateName(name)){
+    stop("Failed name validation: The name should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot.")
+  }
+
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   # random title if needed
