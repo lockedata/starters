@@ -65,6 +65,19 @@ createdesc <- function(name) {
   desc$write(file.path(name, "DESCRIPTION"))
 }
 
+# Many thanks to 'archetana' over on Github for her initial work on setting this
+# validate name function up for us!
+
+#' Validate name
+#'
+#' @param name Package / project
+
+validateName <- function(name) {
+  if(nchar(name) >= 2 && grepl("^[A-Za-z](?:\\.?[A-Za-z0-9]+)*[^\\.]$", name)) {
+    return(invisible(TRUE))
+  }
+  invisible(FALSE)
+}
 
 #' Check availability
 #'
