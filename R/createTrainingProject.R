@@ -35,10 +35,13 @@ createTrainingProject <- function(name, folder = getwd(),
                                     login = gh::gh_whoami()$login,
                                     private = FALSE,
                                     protocol = "ssh",
-                                    ci_activation = "tic"
+                                    ci_activation = "travis"
                                   ),
                                   title = NULL,
                                   reset = TRUE) {
+  if (missing(name)) stop("name is required")
+  if (!is.character(name)) stop("name has to be a character")
+
   packagedeps <- match.arg(packagedeps, okpackagedeps())
   # Supported packages
   handoutEngine <- match.arg(
@@ -86,8 +89,10 @@ createTrainingProject <- function(name, folder = getwd(),
         message(paste(handoutEngine, "demo added"))
         file.copy(
           list.files(system.file("templates", handoutEngine,
-                                 package = "pRojects"),
-                     full.names = TRUE),
+            package = "pRojects"
+          ),
+          full.names = TRUE
+          ),
           file.path(folder, name, "handouts"),
           overwrite = TRUE,
           recursive = TRUE
@@ -107,8 +112,10 @@ createTrainingProject <- function(name, folder = getwd(),
         message(paste(slideEngine, "demo added"))
         file.copy(
           list.files(system.file("templates", slideEngine,
-                                 package = "pRojects"),
-                     full.names = TRUE),
+            package = "pRojects"
+          ),
+          full.names = TRUE
+          ),
           file.path(folder, name, "slides"),
           overwrite = TRUE,
           recursive = TRUE
@@ -116,16 +123,6 @@ createTrainingProject <- function(name, folder = getwd(),
       }
     }
 
-    createBasicProject(
-      name = name,
-      title = title,
-      folder = folder,
-      packagedeps = packagedeps,
-      git = git,
-      external_setup = external_setup,
-      reset = FALSE
-    )
-    createdirs(dirs)
   },
   error = function(e) {
     message(paste("Error:", e$message))

@@ -33,7 +33,6 @@ Suggests:
     covr,
     covrpage,
     testthat,
-    rmarkdown,
     xaringan,
     tufte,
     bookdown,

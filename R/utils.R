@@ -134,35 +134,3 @@ cool_first_commit <- function() {
   praise::praise("First commit of this ${adjective} project, ${exclamation}!")
 }
 
-##########################
-# README
-##########################
-#' find readme of the active project
-#' @noRd
-find_readme <- function() {
-  if (fs::file_exists(file.path(usethis::proj_get(), "README.Rmd"))) {
-    readme_path <- file.path(usethis::proj_get(), "README.Rmd")
-  } else {
-    readme_path <- file.path(usethis::proj_get(), "README.md")
-  }
-  return(readme_path)
-}
-
-#' Add a badge place-holder in the readme
-#' @noRd
-add_badges_sign <- function(readme_path) {
-  readme <- readLines(readme_path)
-  readme_title <- which(grepl("#", readme))[1]
-  if (readme_title > 1) {
-    first <- 1:readme_title
-  } else {
-    first <- readme_title
-  }
-
-  readme <- c(
-    readme[first], "",
-    glue::glue("<!-- badges -->"),
-    readme[(readme_title + 1):length(readme)]
-  )
-  writeLines(readme, readme_path)
-}

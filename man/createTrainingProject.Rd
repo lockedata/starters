@@ -10,6 +10,7 @@ createTrainingProject(name, folder = getwd(), initial_status = "wip",
   slideEngine = "rmarkdown", packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
+<<<<<<< HEAD
   "tic"), title = NULL, reset = TRUE)
 
 create_training_project(name, folder = getwd(), initial_status = "wip",
@@ -18,6 +19,9 @@ create_training_project(name, folder = getwd(), initial_status = "wip",
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
   "tic"), title = NULL, reset = TRUE)
+=======
+  "travis"), title = NULL, reset = TRUE)
+>>>>>>> master
 }
 \arguments{
 \item{name}{Project}

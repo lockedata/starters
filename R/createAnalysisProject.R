@@ -30,9 +30,12 @@ createAnalysisProject <- function(name, title = NULL,
                                     login = gh::gh_whoami()$login,
                                     private = FALSE,
                                     protocol = "ssh",
-                                    ci_activation = "tic"
+                                    ci_activation = "travis"
                                   ),
                                   dirs = c("data", "analysis", "outputs")) {
+  if (missing(name)) stop("name is required")
+  if (!is.character(name)) stop("name has to be a character")
+
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   current_proj <- get_current_proj()

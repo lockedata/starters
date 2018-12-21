@@ -48,9 +48,12 @@ createBasicProject <- function(name,
                                  login = gh::gh_whoami()$login,
                                  private = FALSE,
                                  protocol = "ssh",
-                                 ci_activation = "tic"
+                                 ci_activation = "travis"
                                ),
                                reset = TRUE) {
+  if (missing(name)) stop("name is required")
+  if (!is.character(name)) stop("name has to be a character")
+
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   # random title if needed
@@ -67,19 +70,22 @@ createBasicProject <- function(name,
 
     # set the active project to that folder
     usethis::proj_set(file.path(folder, name),
-      force = TRUE
+                      force = TRUE
     )
 
     # create the project
     usethis::create_project(file.path(folder, name),
-      open = FALSE,
-      rstudio = TRUE
+                            open = FALSE,
+                            rstudio = TRUE
+    )
+    usethis::proj_set(file.path(folder, name),
+                      force = TRUE
     )
 
     # add DESCRIPTION file and fill title
     usethis::use_description()
     desc::desc_set("Title", title,
-      file = usethis::proj_get()
+                   file = usethis::proj_get()
     )
 
 
@@ -87,10 +93,7 @@ createBasicProject <- function(name,
     setup_dep_system(packagedeps)
 
     # add README
-    usethis::use_readme_md(open = FALSE)
-    readme_path <- find_readme()
-    # add badges sign
-    add_badges_sign(readme_path)
+    use_readme(name)
 
     # status
     add_repo_status(initial_status)
@@ -98,6 +101,7 @@ createBasicProject <- function(name,
     # git setup
     if (git) {
       usethis::use_git(message = cool_first_commit())
+      add_styler_hook()
     }
 
     if (!is.null(external_setup)) {
@@ -111,6 +115,10 @@ createBasicProject <- function(name,
         ci_activation = external_setup$ci_activation
       )
     }
+
+    # README
+    knit_readme()
+
   },
   error = function(e) {
     message(paste("Error:", e$message))
