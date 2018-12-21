@@ -9,17 +9,13 @@ createBasicProject(name, title = NULL, folder = getwd(),
   initial_status = "wip", packagedeps = "checkpoint", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-<<<<<<< HEAD
-  "tic"), reset = TRUE)
+  "travis"), reset = TRUE)
 
 create_basic_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", packagedeps = "checkpoint", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "tic"), reset = TRUE)
-=======
   "travis"), reset = TRUE)
->>>>>>> master
 }
 \arguments{
 \item{name}{Project}

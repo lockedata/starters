@@ -9,17 +9,13 @@ createAnalysisProject(name, title = NULL, folder = getwd(),
   initial_status = "wip", packagedeps = "packrat", git = TRUE,
   reset = TRUE, external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-<<<<<<< HEAD
-  "tic"), dirs = c("data", "analysis", "outputs"))
+  "travis"), dirs = c("data", "analysis", "outputs"))
 
 create_analysis_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", packagedeps = "packrat", git = TRUE,
   reset = TRUE, external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "tic"), dirs = c("data", "analysis", "outputs"))
-=======
   "travis"), dirs = c("data", "analysis", "outputs"))
->>>>>>> master
 }
 \arguments{
 \item{name}{Project}

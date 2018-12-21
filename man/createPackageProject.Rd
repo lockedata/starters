@@ -10,17 +10,13 @@ createPackageProject(name, title = NULL, folder = getwd(),
   initial_status = "wip", bestPractices = TRUE, coverage = "codecov",
   git = TRUE, pkgdown = TRUE, external_setup = list(git_service =
   "GitHub", login = gh::gh_whoami()$login, private = FALSE, protocol =
-<<<<<<< HEAD
-  "ssh", ci_activation = "tic"))
+  "ssh", ci_activation = "travis"))
 
 create_package_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", bestPractices = TRUE, coverage = "codecov",
   git = TRUE, pkgdown = TRUE, external_setup = list(git_service =
   "GitHub", login = gh::gh_whoami()$login, private = FALSE, protocol =
-  "ssh", ci_activation = "tic"))
-=======
   "ssh", ci_activation = "travis"))
->>>>>>> master
 }
 \arguments{
 \item{name}{Project / package name}
