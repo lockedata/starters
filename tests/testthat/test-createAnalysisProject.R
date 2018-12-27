@@ -23,6 +23,14 @@ test_that("createAnalysisProject() errors if name missing or not correct", {
     git = TRUE,
     external_setup = NULL
   ))
+
+  expect_error(createAnalysisProject(
+    name = "a",
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
+  ))
 })
 
 

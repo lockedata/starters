@@ -54,6 +54,7 @@ createPackageProject <- function(name, title = NULL,
                                  )) {
   if (missing(name)) stop("name is required")
   if (!is.character(name)) stop("name has to be a character")
+  if (nchar(name) < 2) stop("name needs to have at least two characters")
 
   # create title
   if (is.null(title)) {
