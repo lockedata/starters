@@ -22,6 +22,14 @@ test_that("createTrainingProject() errors if name missing or not correct", {
     git = TRUE,
     external_setup = NULL
   ))
+
+  expect_error(createTrainingProject(
+    name = "a",
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
+  ))
 })
 
 
