@@ -33,6 +33,14 @@ test_that("createPackageProject() errors if name missing or not correct", {
     git = TRUE,
     external_setup = NULL
   ))
+
+  expect_error(createPackageProject(
+    name = "a",
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
+  ))
 })
 
 
