@@ -4,15 +4,19 @@
 \alias{createTrainingProject}
 \title{Create a training project}
 \usage{
-createTrainingProject(name, folder = getwd(), initial_status = "wip",
-  dirs = c("data", "handouts", "slides"), handoutEngine = "rmarkdown",
-  slideEngine = "rmarkdown", packagedeps = "packrat", git = TRUE,
+createTrainingProject(name, title = NULL, folder = getwd(),
+  initial_status = "wip", dirs = c("data", "handouts", "slides"),
+  handoutEngine = "rmarkdown", slideEngine = "rmarkdown",
+  packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), title = NULL, reset = TRUE)
+  "travis"), reset = TRUE)
 }
 \arguments{
 \item{name}{Project}
+
+\item{title}{"What the Project Does (One Line, Title Case)"
+If NULL, a random one will be generated.}
 
 \item{folder}{Folder under which to create the project}
 
@@ -41,9 +45,6 @@ If NULL, no GitHub repo is created.
 "travis" means calling \code{usethis::use_travis()} and adding the Travis
 badge to the README.
 }}
-
-\item{title}{"What the Project Does (One Line, Title Case)"
-If NULL, a random one will be generated.}
 
 \item{reset}{whether to reset the project to current project}
 }

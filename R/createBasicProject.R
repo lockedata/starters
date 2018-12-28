@@ -37,8 +37,7 @@
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
 #' }
-createBasicProject <- function(name,
-                               title = NULL,
+createBasicProject <- function(name, title = NULL,
                                folder = getwd(),
                                initial_status = "wip",
                                packagedeps = "checkpoint",

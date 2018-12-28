@@ -5,10 +5,11 @@
 \title{Create a project laid out for an analysis project}
 \usage{
 createAnalysisProject(name, title = NULL, folder = getwd(),
-  initial_status = "wip", packagedeps = "packrat", git = TRUE,
-  reset = TRUE, external_setup = list(git_service = "GitHub", login =
+  initial_status = "wip", dirs = c("data", "analysis", "outputs"),
+  packagedeps = "packrat", git = TRUE,
+  external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), dirs = c("data", "analysis", "outputs"))
+  "travis"), reset = TRUE)
 }
 \arguments{
 \item{name}{Project}
@@ -21,11 +22,11 @@ If NULL, a random one will be generated.}
 \item{initial_status}{initial repostatus.org status for the project,
 whose badge will be added to the README.}
 
+\item{dirs}{Directories to create}
+
 \item{packagedeps}{Set a tool for package reproducibility}
 
 \item{git}{Configure Git}
-
-\item{reset}{whether to reset the project to current project}
 
 \item{external_setup}{How to do the partly interactive setup
 of online git, CI and coverage platforms. If NULL, no setup.
@@ -40,7 +41,7 @@ If NULL, no GitHub repo is created.
 badge to the README.
 }}
 
-\item{dirs}{Directories to create}
+\item{reset}{whether to reset the project to current project}
 }
 \description{
 Create a project laid out for an analysis project
