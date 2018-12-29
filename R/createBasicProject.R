@@ -20,7 +20,7 @@
 #'  "travis" means calling \code{usethis::use_travis()} and adding the Travis
 #'  badge to the README.
 #'  }
-#' @param reset whether to reset the project to current project
+#' @param reset Whether to reset the project to current project
 #'
 #' @export
 #'
