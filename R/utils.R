@@ -163,3 +163,30 @@ gh_retry <- function(quoted_expression){
   }
   return(ok)
 }
+
+#####################################
+# Process inputs in shiny gadget
+#####################################
+
+#' Treat empty string as NULL
+#' @noRd
+empty_as_null <- function(arg) {
+  if(arg == "") return(NULL)
+  arg
+}
+
+#' Create config list for external_setup
+#' @noRd
+ext_setup <- function(input) {
+  if(!input$externalSetup) {
+    NULL
+  } else {
+    list(
+      git_service = input$git_service,
+      private = input$private,
+      protocol = input$protocol,
+      login = input$login,
+      ci_activation = ifelse(input$ci_activation == "", NULL, input$ci_activation)
+    )
+  }
+}

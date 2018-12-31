@@ -30,14 +30,15 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
+    bookdown,
     covr,
     covrpage,
-    testthat,
-    xaringan,
-    tufte,
-    bookdown,
+    mockery,
     revealjs,
-    mockery
+    shinyFiles,
+    testthat,
+    tufte,
+    xaringan
 VignetteBuilder: knitr
 Imports: 
     devtools,
