@@ -27,4 +27,4 @@ At the moment, this facility will set up a basic project with some additional fo
 ## Make your own
 You could either make a wrapper around `createAnalysisProject()` to add additional setup steps, or you could make an alternative version of the function.
 
-If you make your own, we'd be interested to hear about what you change/add and why. Please let us know on our [GitHub Issues](https://github.com/lockedata/pRojects/issues).
+If you make your own, we'd be interested to hear about what you change/add and why. Please let us know on our [GitHub Issues](https://github.com/lockedata/starters/issues).

@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-A basic project that's created with `createBasicProject()` is the fundamental building block for the various flavours of projects you might build with `pRojects`.
+A basic project that's created with `createBasicProject()` is the fundamental building block for the various flavours of projects you might build with `starters`.
 
 A basic project contains a minimal package structure to allow you an easy way to:
 
@@ -58,7 +58,7 @@ A problem with programming using other people's code is that other people's code
 [READ MORE ON CHECKPOINT](https://rdrr.io/cran/checkpoint)
 
 ### What else?
-We're working on what else should be an optional extra for basic projects and we want your opinions. Contribute your opinion on our [GitHub Issues](https://github.com/lockedata/pRojects/issues).
+We're working on what else should be an optional extra for basic projects and we want your opinions. Contribute your opinion on our [GitHub Issues](https://github.com/lockedata/starters/issues).
 
 ## Make your own
 We think `createBasicProject()` provides a strong foundation for creating project templates.
