@@ -22,9 +22,9 @@
 createAnalysisProject <- function(name, title = NULL,
                                   folder = getwd(),
                                   initial_status = "wip",
+                                  dirs = c("data", "analysis", "outputs"),
                                   packagedeps = "packrat",
                                   git = TRUE,
-                                  reset = TRUE,
                                   external_setup = list(
                                     git_service = "GitHub",
                                     login = gh::gh_whoami()$login,
@@ -32,7 +32,7 @@ createAnalysisProject <- function(name, title = NULL,
                                     protocol = "ssh",
                                     ci_activation = "travis"
                                   ),
-                                  dirs = c("data", "analysis", "outputs")) {
+                                  reset = TRUE) {
   if (missing(name)) stop("name is required")
   if (!is.character(name)) stop("name has to be a character")
   if (nchar(name) < 2) stop("name needs to have at least two characters")
@@ -61,6 +61,10 @@ createAnalysisProject <- function(name, title = NULL,
     message(sprintf("Oops! An error was found and the `%s` directory was deleted", name)) # nolint
   }
   )
-  reset_proj(current_proj)
+
+  if (reset) {
+    reset_proj(current_proj)
+  }
+
   invisible(TRUE)
 }

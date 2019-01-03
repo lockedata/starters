@@ -20,7 +20,7 @@
 #'  "travis" means calling \code{usethis::use_travis()} and adding the Travis
 #'  badge to the README.
 #'  }
-#' @param reset whether to reset the project to current project
+#' @param reset Whether to reset the project to current project
 #'
 #' @export
 #'
@@ -37,8 +37,7 @@
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
 #' }
-createBasicProject <- function(name,
-                               title = NULL,
+createBasicProject <- function(name, title = NULL,
                                folder = getwd(),
                                initial_status = "wip",
                                packagedeps = "checkpoint",

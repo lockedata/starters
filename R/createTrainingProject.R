@@ -23,7 +23,8 @@
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
 #' }
-createTrainingProject <- function(name, folder = getwd(),
+createTrainingProject <- function(name, title = NULL,
+                                  folder = getwd(),
                                   initial_status = "wip",
                                   dirs = c("data", "handouts", "slides"),
                                   handoutEngine = "rmarkdown",
@@ -37,7 +38,6 @@ createTrainingProject <- function(name, folder = getwd(),
                                     protocol = "ssh",
                                     ci_activation = "travis"
                                   ),
-                                  title = NULL,
                                   reset = TRUE) {
   if (missing(name)) stop("name is required")
   if (!is.character(name)) stop("name has to be a character")
@@ -135,7 +135,10 @@ createTrainingProject <- function(name, folder = getwd(),
   )
   setup_dep_system(packagedeps)
 
-  reset_proj(current_proj)
+  if (reset) {
+    reset_proj(current_proj)
+  }
+
   invisible(TRUE)
 }
 
