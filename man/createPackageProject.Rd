@@ -9,7 +9,7 @@ createPackageProject(name, title = NULL, folder = getwd(),
   initial_status = "wip", bestPractices = TRUE, coverage = "codecov",
   git = TRUE, pkgdown = TRUE, external_setup = list(git_service =
   "GitHub", login = gh::gh_whoami()$login, private = FALSE, protocol =
-  "ssh", ci_activation = "travis"))
+  "ssh", ci_activation = "travis"), reset = TRUE)
 }
 \arguments{
 \item{name}{Project / package name}
@@ -41,8 +41,9 @@ If NULL, no GitHub repo is created.
 \item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
 "travis" means calling \code{usethis::use_travis()} and adding the Travis
 badge to the README.
-}#' @param title "What the Project Does (One Line, Title Case)"
-If NULL, a random one will be generated.}
+}}
+
+\item{reset}{Whether to reset the project to current project}
 }
 \description{
 Create a package the usethis way with a number of infrastructure
@@ -54,7 +55,8 @@ folder <- tempdir()
 createPackageProject(
   name = "doggos", title = "Counting cute dogs",
   folder = folder,
-  git = TRUE, external_setup = NULL
+  git = TRUE, external_setup = NULL,
+  reset = TRUE
 )
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))
