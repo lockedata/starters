@@ -1,12 +1,12 @@
 projectGadget <- function() {
-
   if (!requireNamespace("shinyFiles", quietly = TRUE)) {
     stop("The shinyFiles package is required for this gadget to work. Please install it.",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   ui <- miniUI::miniPage(
-    miniUI::gadgetTitleBar("Create pRoject"),
+    miniUI::gadgetTitleBar("Create Project"),
     miniUI::miniContentPanel(
       shiny::tags$style("#folder {width: 435px; };",
         type = "text/css"
@@ -32,7 +32,7 @@ projectGadget <- function() {
         shiny::br(),
         shinyFiles::shinyDirButton("folder",
           label = "Choose Folder",
-          title = "Please select a folder",
+          title = "Please choose a project folder",
           class = "btn-primary"
         ),
         shiny::br(),
@@ -43,10 +43,11 @@ projectGadget <- function() {
         condition = "input.externalSetup",
         shiny::inputPanel(
           shiny::radioButtons("git_service",
-                              label = "Git Service",
-                              choices = "GitHub"
+            label = "Git Service",
+            choices = "GitHub"
           ),
-          shiny::radioButtons("private", label = "Repository",
+          shiny::radioButtons("private",
+            label = "Repository",
             choices = c("public" = FALSE, "private" = TRUE)
           ),
           shiny::radioButtons("protocol",
@@ -56,7 +57,7 @@ projectGadget <- function() {
           ),
           shiny::radioButtons("ci_activation",
             label = "Continuous Integration",
-            choices = c("none"="", "travis")
+            choices = c("none" = "", "travis")
           ),
           shiny::textInput("login", label = "Login", value = gh::gh_whoami()$login)
         )
@@ -66,8 +67,8 @@ projectGadget <- function() {
 
   server <- function(input, output, session) {
     volumes <- c(
+      "Working Directory" = getwd(),
       Home = fs::path_home(),
-      "R Installation" = R.home(),
       shinyFiles::getVolumes()()
     )
 
@@ -96,7 +97,10 @@ projectGadget <- function() {
 
         "Basic" = shiny::inputPanel(
           shiny::checkboxInput("git", "Use Git", value = TRUE),
-          shiny::checkboxInput("reset", "Reset Project", value = TRUE),
+          shiny::tags$div(
+            title = "This will reset the active RStudio project after setup completes",
+            shiny::checkboxInput("reset", "Reset Project", value = TRUE)
+          ),
           shiny::checkboxInput("externalSetup", label = "External Setup", value = FALSE),
           shiny::br(),
           shiny::radioButtons("packagedeps",
@@ -107,7 +111,10 @@ projectGadget <- function() {
         ),
         "Analysis" = shiny::inputPanel(
           shiny::checkboxInput("git", "Use Git", value = TRUE),
-          shiny::checkboxInput("reset", "Reset Project", value = TRUE),
+          shiny::tags$div(
+            title = "This will reset the active RStudio project after setup completes",
+            shiny::checkboxInput("reset", "Reset Project", value = TRUE)
+          ),
           shiny::checkboxInput("externalSetup", label = "External Setup", value = FALSE),
           shiny::br(),
           shiny::selectInput("dirs",
@@ -127,7 +134,10 @@ projectGadget <- function() {
         ),
         "Package" = shiny::inputPanel(
           shiny::checkboxInput("git", "Use Git", value = TRUE),
-          shiny::checkboxInput("reset", "Reset Project", value = TRUE),
+          shiny::tags$div(
+            title = "This will reset the active RStudio project after setup completes",
+            shiny::checkboxInput("reset", "Reset Project", value = TRUE)
+          ),
           shiny::checkboxInput("externalSetup", label = "External Setup", value = FALSE),
           shiny::checkboxInput("bestPractices", label = "Run additional best practice commands", value = TRUE),
           shiny::radioButtons("coverage",
@@ -142,7 +152,10 @@ projectGadget <- function() {
         ),
         "Training" = shiny::inputPanel(
           shiny::checkboxInput("git", "Use Git", value = TRUE),
-          shiny::checkboxInput("reset", "Reset Project", value = TRUE),
+          shiny::tags$div(
+            title = "This will reset the active RStudio project after setup completes",
+            shiny::checkboxInput("reset", "Reset Project", value = TRUE)
+          ),
           shiny::checkboxInput("externalSetup", label = "External Setup", value = FALSE),
           shiny::br(),
           shiny::selectInput("dirs",
@@ -232,7 +245,6 @@ projectGadget <- function() {
   }
 
   shiny::runGadget(
-    ui, server,
-    viewer = shiny::dialogViewer("pRojects", width = 1000)
+    ui, server
   )
 }
