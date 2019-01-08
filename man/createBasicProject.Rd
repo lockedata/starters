@@ -45,7 +45,7 @@ If NULL, no GitHub repo is created.
 badge to the README.
 }}
 
-\item{reset}{whether to reset the project to current project}
+\item{reset}{Whether to reset the project to current project}
 }
 \description{
 Create a very basic project directory

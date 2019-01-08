@@ -23,6 +23,14 @@ test_that("createBasicProject() errors if name missing or not correct", {
     git = TRUE,
     external_setup = NULL
   ))
+
+  expect_error(createBasicProject(
+    name = "a",
+    folder = tmp,
+    packagedeps = "packrat",
+    git = TRUE,
+    external_setup = NULL
+  ))
 })
 
 

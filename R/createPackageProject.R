@@ -22,8 +22,8 @@
 #'  \item \code{ci_activation} Only NULL, and "travis" are supported at the moment.
 #'  "travis" means calling \code{usethis::use_travis()} and adding the Travis
 #'  badge to the README.
-#'  }#' @param title "What the Project Does (One Line, Title Case)"
-#'              If NULL, a random one will be generated.
+#'  }
+#' @param reset Whether to reset the project to current project
 #'
 #' @export
 #'
@@ -33,7 +33,8 @@
 #' createPackageProject(
 #'   name = "doggos", title = "Counting cute dogs",
 #'   folder = folder,
-#'   git = TRUE, external_setup = NULL
+#'   git = TRUE, external_setup = NULL,
+#'   reset = TRUE
 #' )
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
@@ -51,9 +52,11 @@ createPackageProject <- function(name, title = NULL,
                                    private = FALSE,
                                    protocol = "ssh",
                                    ci_activation = "travis"
-                                 )) {
+                                 ),
+                                 reset = TRUE) {
   if (missing(name)) stop("name is required")
   if (!is.character(name)) stop("name has to be a character")
+  if (nchar(name) < 2) stop("name needs to have at least two characters")
 
   # create title
   if (is.null(title)) {
@@ -161,7 +164,11 @@ createPackageProject <- function(name, title = NULL,
     }
     )
   }
-  reset_proj(current_proj)
+
+  if (reset) {
+    reset_proj(current_proj)
+  }
+
   invisible(TRUE)
 }
 

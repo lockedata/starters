@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-03 January, 2019 13:35:20
+03 January, 2019 15:27:50
 
 This output is created by
 [covrpage](https://github.com/metrumresearchgroup/covrpage).
@@ -18,15 +18,15 @@ Coverage summary is created using the
 
 | Object                                                    | Coverage (%) |
 | :-------------------------------------------------------- | :----------: |
-| pRojects                                                  |    67.34     |
+| pRojects                                                  |    67.57     |
 | [R/project\_health.R](../R/project_health.R)              |     0.00     |
 | [R/shinyGadget.R](../R/shinyGadget.R)                     |     0.00     |
 | [R/external\_setup.R](../R/external_setup.R)              |    30.00     |
 | [R/utils.R](../R/utils.R)                                 |    51.92     |
 | [R/github.R](../R/github.R)                               |    81.82     |
-| [R/createPackageProject.R](../R/createPackageProject.R)   |    86.21     |
+| [R/createPackageProject.R](../R/createPackageProject.R)   |    85.39     |
 | [R/repo\_status.R](../R/repo_status.R)                    |    93.48     |
-| [R/createTrainingProject.R](../R/createTrainingProject.R) |    97.56     |
+| [R/createTrainingProject.R](../R/createTrainingProject.R) |    97.62     |
 | [R/createAnalysisProject.R](../R/createAnalysisProject.R) |    100.00    |
 | [R/createBasicProject.R](../R/createBasicProject.R)       |    100.00    |
 | [R/styler\_precommit.R](../R/styler_precommit.R)          |    100.00    |
@@ -42,10 +42,10 @@ package.
 
 | file                                                                    |  n |  time | error | failed | skipped | warning | icon |
 | :---------------------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: | :--- |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R) | 12 | 7.205 |     0 |      0 |       1 |       0 | 🔶    |
-| [test-check\_github\_name.R](testthat/test-check_github_name.R)         |  3 | 0.204 |     0 |      0 |       0 |       0 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R)   | 15 | 4.848 |     0 |      9 |       0 |       3 | 🛑⚠️  |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R)     | 16 | 0.412 |     0 |     13 |       0 |       0 | 🛑    |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R) | 13 | 7.123 |     0 |      0 |       1 |       0 | 🔶    |
+| [test-check\_github\_name.R](testthat/test-check_github_name.R)         |  3 | 0.224 |     0 |      0 |       0 |       0 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R)   | 16 | 4.869 |     0 |      9 |       0 |       3 | 🛑⚠️  |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R)     | 17 | 0.423 |     0 |     13 |       0 |       0 | 🛑    |
 
 <details open>
 
@@ -54,18 +54,18 @@ package.
 
 | file                                                                            | context                  | test                                                            | status  |  n |  time | icon |
 | :------------------------------------------------------------------------------ | :----------------------- | :-------------------------------------------------------------- | :------ | -: | ----: | :--- |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L12_L17) | createBasicProject       | createBasicProject() errors if name missing or not correct      | PASS    |  2 | 0.035 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L37_L40) | createBasicProject       | createBasicProject() creates as expected                        | PASS    |  7 | 5.867 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L53)     | createBasicProject       | createBasicProject() creates as expected when using checkpoint  | SKIPPED |  1 | 0.001 | 🔶    |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L75_L82) | createBasicProject       | createBasicProject() cleans if there was an error               | PASS    |  1 | 0.014 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L100)    | createBasicProject       | createBasicProject() can create a GitHub repo                   | PASS    |  1 | 1.288 |      |
-| [test-check\_github\_name.R](testthat/test-check_github_name.R#L4)              | test-check\_github\_name | check\_github\_name works                                       | PASS    |  3 | 0.204 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L12_L17)   | createAnalysisProject    | createAnalysisProject() errors if name missing or not correct   | PASS    |  2 | 0.004 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L30_L33)   | createAnalysisProject    | createAnalysisProject() creates as expected when using defaults | WARNING | 12 | 4.836 | ⚠️   |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L51_L61)   | createAnalysisProject    | createAnalysisProject() cleans if there was an error            | PASS    |  1 | 0.008 |      |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L22_L27)     | createPackageProject     | createPackageProject() errors if name missing or not correct    | PASS    |  2 | 0.003 |      |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L44_L47)     | createPackageProject     | createPackageProject() creates as expected when using defaults  | FAILED  | 13 | 0.402 | 🛑    |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L68_L75)     | createPackageProject     | createPackageProject() cleans if there was an error             | PASS    |  1 | 0.007 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L12_L17) | createBasicProject       | createBasicProject() errors if name missing or not correct      | PASS    |  3 | 0.024 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L45_L48) | createBasicProject       | createBasicProject() creates as expected                        | PASS    |  7 | 5.689 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L61)     | createBasicProject       | createBasicProject() creates as expected when using checkpoint  | SKIPPED |  1 | 0.001 | 🔶    |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L83_L90) | createBasicProject       | createBasicProject() cleans if there was an error               | PASS    |  1 | 0.013 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L108)    | createBasicProject       | createBasicProject() can create a GitHub repo                   | PASS    |  1 | 1.396 |      |
+| [test-check\_github\_name.R](testthat/test-check_github_name.R#L4)              | test-check\_github\_name | check\_github\_name works                                       | PASS    |  3 | 0.224 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L12_L17)   | createAnalysisProject    | createAnalysisProject() errors if name missing or not correct   | PASS    |  3 | 0.005 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L38_L41)   | createAnalysisProject    | createAnalysisProject() creates as expected when using defaults | WARNING | 12 | 4.856 | ⚠️   |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L59_L69)   | createAnalysisProject    | createAnalysisProject() cleans if there was an error            | PASS    |  1 | 0.008 |      |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L22_L27)     | createPackageProject     | createPackageProject() errors if name missing or not correct    | PASS    |  3 | 0.004 |      |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L52_L55)     | createPackageProject     | createPackageProject() creates as expected when using defaults  | FAILED  | 13 | 0.412 | 🛑    |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L76_L83)     | createPackageProject     | createPackageProject() cleans if there was an error             | PASS    |  1 | 0.007 |      |
 
 | Failed | Warning | Skipped |
 | :----- | :------ | :------ |
@@ -81,7 +81,7 @@ package.
 | Field    | Value                         |                                                                                                                                                                                                                           |
 | :------- | :---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version  | R version 3.5.1 (2018-12-12)  |                                                                                                                                                                                                                           |
-| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://travis-ci.org/lockedata/pRojects/jobs/474854522" target="_blank"><span title="Built on Travis">![](https://github.com/metrumresearchgroup/covrpage/blob/master/inst/logo/travis.png?raw=true)</span></a> |
+| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://travis-ci.org/lockedata/pRojects/jobs/474900416" target="_blank"><span title="Built on Travis">![](https://github.com/metrumresearchgroup/covrpage/blob/master/inst/logo/travis.png?raw=true)</span></a> |
 | Running  | Ubuntu 14.04.5 LTS            |                                                                                                                                                                                                                           |
 | Language | en\_US                        |                                                                                                                                                                                                                           |
 | Timezone | UTC                           |                                                                                                                                                                                                                           |
