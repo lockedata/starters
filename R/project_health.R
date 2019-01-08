@@ -10,7 +10,7 @@ get_project_health <- function() {
   fs::dir_create("health")
   file.copy(
     system.file("templates", "health.Rmd",
-      package = "pRojects"
+      package = "starters"
     ),
     "health/README.Rmd"
   )
