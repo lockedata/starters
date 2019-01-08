@@ -21,7 +21,7 @@ if (Sys.getenv("id_rsa") != "") {
       add_step(step_push_deploy(commit_paths = "tests/README.md")) %>%
       add_step(step_build_pkgdown()) %>%
       add_step(step_push_deploy(path = "docs", branch = "gh-pages")) %>%
-      add_code_step(library("pRojects"))%>%
+      add_code_step(library("starters"))%>%
       add_code_step(get_project_health()) %>%
       add_step(step_push_deploy(path = "health", branch = "project-health"))
   }else{

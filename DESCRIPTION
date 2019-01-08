@@ -1,6 +1,6 @@
-Package: pRojects
+Package: starters
 Title: One-Liners to Setup R Projects
-Version: 0.0.1.9003
+Version: 0.0.2
 Authors@R: 
     c(person(given = "Steph",
              family = "Locke",
@@ -23,7 +23,7 @@ Authors@R:
              email = "maelle.salmon@yahoo.se",
              comment = c(ORCID = "0000-0002-2815-0399")))
 Description: Setting up R project directories for teaching, presenting, analysis,
-            package development can be a pain. pRojects shortcuts this by creating
+            package development can be a pain. starters shortcuts this by creating
             folder structures and setting good defaults for you.
 Depends: R (>= 3.3.0)
 License: GPL-3
@@ -62,5 +62,5 @@ Remotes:
     yonicd/covrpage
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-URL: https://github.com/lockedata/pRojects, https://itsalocke.com/pRojects/
-BugReports: https://github.com/lockedata/pRojects/issues
+URL: https://github.com/lockedata/starters, https://itsalocke.com/starters/
+BugReports: https://github.com/lockedata/starters/issues

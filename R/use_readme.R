@@ -1,7 +1,7 @@
 use_readme <- function(name){
   usethis::use_template("README.Rmd",
                         data = list(Package = name),
-                        package = "pRojects")
+                        package = "starters")
 }
 
 

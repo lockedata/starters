@@ -90,7 +90,7 @@ createTrainingProject <- function(name, title = NULL,
         message(paste(handoutEngine, "demo added"))
         file.copy(
           list.files(system.file("templates", handoutEngine,
-            package = "pRojects"
+            package = "starters"
           ),
           full.names = TRUE
           ),
@@ -113,7 +113,7 @@ createTrainingProject <- function(name, title = NULL,
         message(paste(slideEngine, "demo added"))
         file.copy(
           list.files(system.file("templates", slideEngine,
-            package = "pRojects"
+            package = "starters"
           ),
           full.names = TRUE
           ),
