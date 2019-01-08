@@ -171,3 +171,8 @@ createPackageProject <- function(name, title = NULL,
 
   invisible(TRUE)
 }
+
+#' @export
+
+#' @describeIn createPackageProject aesthetic addition for continuity purposes
+create_package_project = createPackageProject

@@ -2,10 +2,17 @@
 % Please edit documentation in R/createPackageProject.R
 \name{createPackageProject}
 \alias{createPackageProject}
+\alias{create_package_project}
 \title{Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle}
 \usage{
 createPackageProject(name, title = NULL, folder = getwd(),
+  initial_status = "wip", bestPractices = TRUE, coverage = "codecov",
+  git = TRUE, pkgdown = TRUE, external_setup = list(git_service =
+  "GitHub", login = gh::gh_whoami()$login, private = FALSE, protocol =
+  "ssh", ci_activation = "travis"), reset = TRUE)
+
+create_package_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", bestPractices = TRUE, coverage = "codecov",
   git = TRUE, pkgdown = TRUE, external_setup = list(git_service =
   "GitHub", login = gh::gh_whoami()$login, private = FALSE, protocol =
@@ -49,6 +56,11 @@ badge to the README.
 Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle
 }
+\section{Functions}{
+\itemize{
+\item \code{create_package_project}: aesthetic addition for continuity purposes
+}}
+
 \examples{
 \dontrun{
 folder <- tempdir()

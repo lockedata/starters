@@ -68,3 +68,8 @@ createAnalysisProject <- function(name, title = NULL,
 
   invisible(TRUE)
 }
+
+#' @export
+
+#' @describeIn createAnalysisProject aesthetic addition for continuity purposes
+create_analysis_project = createAnalysisProject
