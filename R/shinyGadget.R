@@ -11,6 +11,16 @@ projectGadget <- function() {
       shiny::tags$style("#folder {width: 435px; };",
         type = "text/css"
       ),
+      # Custom shiny to javascript binding
+      # scrolls "content" to bottom once called
+      tags$script(
+        "Shiny.addCustomMessageHandler('scrollCallback',
+          function(x) {
+            var content = document.getElementsByClassName('gadget-scroll')[0];
+            content.scrollTop = content.scrollHeight - content.clientHeight;
+          }
+        );"
+      ),
       shiny::inputPanel(
         shiny::selectInput(
           "projectType",
@@ -66,6 +76,12 @@ projectGadget <- function() {
   )
 
   server <- function(input, output, session) {
+
+    # Call custom javascript to scroll window
+    observeEvent(input$externalSetup,
+      if(input$externalSetup) session$sendCustomMessage(type = "scrollCallback", 1)
+    )
+
     volumes <- c(
       "Working Directory" = getwd(),
       Home = fs::path_home(),
