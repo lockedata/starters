@@ -6,3 +6,16 @@ authors:
   Locke Data:
     href: "https://itsalocke.com/"
     html: "<img src='https://github.com/lockedatapublished.png' height=24>"
+
+reference:
+- title: starters
+  desc: ~
+  contents:
+  - '`create_basic_project`'
+  - '`create_analysis_project`'
+  - '`create_package_project`'
+  - '`create_training_project`'
+- title: helper functions
+  desc: ~
+  contents:
+  - '`get_project_health`'
