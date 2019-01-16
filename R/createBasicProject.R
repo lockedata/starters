@@ -151,20 +151,16 @@ createBasicProject <- function(name, title = NULL,
                                  ci_activation = "travis"
                                ),
                                reset = TRUE) {
+  if(!is.null(external_setup)){
+    external_setup$project_type <- "basic"
+  }
   .createBasicProject(name = name, title = title,
                       folder = folder,
                       initial_status = initial_status,
                       packagedeps = packagedeps,
                       git = git,
-                      external_setup = list(
-                        git_service = "GitHub",
-                        login = gh::gh_whoami()$login,
-                        private = FALSE,
-                        protocol = "ssh",
-                        ci_activation = "travis",
-                        project_type = "basic",
-                      ),
-                      reset = TRUE)
+                      external_setup = external_setup,
+                      reset = reset)
 }
 
 #' @export
