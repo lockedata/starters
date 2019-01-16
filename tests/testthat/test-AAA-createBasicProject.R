@@ -92,6 +92,8 @@ test_that("createBasicProject() cleans if there was an error", {
 
 test_that("createBasicProject() can create a GitHub repo", {
   skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
+  testthat::skip_if_not(nzchar(Sys.getenv("GITHUB_PAT")))
+  testthat::skip_if_not(gh::gh_whoami()$name == "chibimaelle")
   createBasicProject(
     name = "test",
     packagedeps = "none",
