@@ -100,7 +100,7 @@ createBasicProject <- function(name, title = NULL,
 
     # git setup
     if (git) {
-      usethis::use_git(message = cool_first_commit())
+      use_git(message = cool_first_commit())
       add_styler_hook()
     }
 

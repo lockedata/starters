@@ -134,3 +134,17 @@ cool_first_commit <- function() {
   praise::praise("First commit of this ${adjective} project, ${exclamation}!")
 }
 
+####################################
+# usethis::use_git for now
+###################################
+# from https://github.com/r-lib/usethis/blob/85bf30af12dc5a99faf20115a0396add72aa6d12/R/git.R#L13
+use_git <- function(message = "Initial commit") {
+  usethis:::ui_done("Initialising Git repo")
+  usethis:::git_init()
+
+  usethis:::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
+  usethis:::git_ask_commit(message)
+
+  invisible(TRUE)
+}
+
