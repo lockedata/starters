@@ -41,7 +41,8 @@ createAnalysisProject <- function(name, title = NULL,
 
   current_proj <- get_current_proj()
   tryCatch({
-    createBasicProject(
+    external_setup$project_type <- "analysis"
+    .createBasicProject(
       name = name,
       title = title,
       folder = folder,

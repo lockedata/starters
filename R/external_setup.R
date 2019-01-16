@@ -5,12 +5,14 @@
 #' @param ci_activation how to activate CI stuff
 #' @param project project name (repo name)
 #' @param title project title (repo description)
+#' @param project_type what kind of project it is
 #' @noRd
 
 setup_repo <- function(git_service, login,
                        private, protocol,
                        ci_activation,
-                       name, title) {
+                       name, title,
+                       project_type) {
   if (tolower(git_service) != "github") {
     stop(glue::glue(
       "Only GitHub is supported at the moment, not {git_service}."

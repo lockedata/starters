@@ -66,7 +66,8 @@ createTrainingProject <- function(name, title = NULL,
   message("Creating skeleton")
   current_proj <- get_current_proj()
   tryCatch({
-    createBasicProject(
+    external_setup$project_type <- "training"
+    .createBasicProject(
       name = name,
       title = title,
       folder = folder,

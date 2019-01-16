@@ -142,7 +142,8 @@ createPackageProject <- function(name, title = NULL,
             login = external_setup$login,
             private = external_setup$private,
             protocol = external_setup$protocol,
-            ci_activation = external_setup$ci_activation
+            ci_activation = external_setup$ci_activation,
+            project_type = "package"
           )
         }
 
