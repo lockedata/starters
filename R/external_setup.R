@@ -35,8 +35,29 @@ setup_repo <- function(git_service, login,
     }
 
     if (ci_activation == "travis") {
-      usethis::use_travis()
+      usethis::use_template("dot-travis.yml",
+                            target = ".travis.yml",
+                            package = "travis")
+      travis::travis_enable()
+      # copy custom tic depending on proj
+      # if sthg
+      travis::use_travis_deploy()
+      # in all cases
+      travis::travis_set_pat()
+
+      add_travis_badge(login, name)
     }
   }
 }
 
+#' Add Travis badge to the README
+#' @param login login (assumed to be the same for the git
+#' platform and Travis)
+#' @param name project name (repo name)
+#' @noRd
+add_travis_badge <- function(login, name) {
+  # from https://github.com/r-lib/usethis/blob/02fc4b20f022b0b98afcb323ef770fd78c00ae5a/R/ci.R#L39
+  url <- glue::glue("https://travis-ci.org/{login}/{name}")
+  img <- glue::glue("{url}.svg?branch=master")
+  usethis::use_badge("Travis build status", url, img)
+}
