@@ -56,12 +56,8 @@ setup_repo <- function(git_service, login,
 #' @param name project name (repo name)
 #' @noRd
 add_travis_badge <- function(login, name) {
-  readme_path <- find_readme()
-  readme <- readLines(readme_path)
-  readme[grepl("<!-- badges -->", readme)] <-
-    paste(
-      readme[grepl("<!-- badges -->", readme)],
-      glue::glue("[![Build Status](https://travis-ci.org/{login}/{name}.svg?branch=master)](https://travis-ci.org/{login}/{name})") # nolint
-    )
-  writeLines(readme, readme_path)
+  # from https://github.com/r-lib/usethis/blob/02fc4b20f022b0b98afcb323ef770fd78c00ae5a/R/ci.R#L39
+  url <- glue::glue("https://travis-ci.org/{login}/{name}")
+  img <- glue::glue("{url}.svg?branch=master")
+  usethis::use_badge("Travis build status", url, img)
 }
