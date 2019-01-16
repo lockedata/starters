@@ -66,7 +66,9 @@ createTrainingProject <- function(name, title = NULL,
   message("Creating skeleton")
   current_proj <- get_current_proj()
   tryCatch({
-    external_setup$project_type <- "training"
+    if(!is.null(external_setup)){
+      external_setup$project_type <- "training"
+    }
     .createBasicProject(
       name = name,
       title = title,

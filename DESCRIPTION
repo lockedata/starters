@@ -56,7 +56,8 @@ Imports:
     gh,
     git2r,
     glue,
-    praise
+    praise,
+    travis
 Remotes:
     r-lib/usethis,
     metrumresearchgroup/covrpage
