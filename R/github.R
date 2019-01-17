@@ -73,7 +73,8 @@ setup_gh_repo <- function(username, private, protocol,
   )
   git2r::remote_add(r, "origin", origin_url)
   git2r::checkout(r, "master")
-  git2r::branch_set_upstream(git2r::repository_head(r), "origin/master")
+  # not possible cf https://github.com/ropensci/git2r/issues/133
+  #git2r::branch_set_upstream(git2r::repository_head(r), "origin/master")
   desc::desc_set("URL", create$html_url,
     file = usethis::proj_get()
   )
