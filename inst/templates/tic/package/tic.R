@@ -14,8 +14,9 @@ if (Sys.getenv("id_rsa") != "") {
 
   if (ci()$get_branch() == "master") {
     get_stage("deploy") %>%
-      add_code_step(covr::codecov()) %>%
-      add_code_step(remotes::install("lockedata/pRojects")) %>%
+      add_code_step(covr::{{coverage_service}}()) %>%
+      add_code_step(remotes::install("lockedata/starters")) %>%
+      add_code_step(remotes::install("metrumresearchgroup/covrpage")) %>%
       add_code_step(install.packages("spelling")) %>%
       add_code_step(covrpage::covrpage_ci()) %>%
       add_step(step_push_deploy(commit_paths = "tests/README.md")) %>%
@@ -26,7 +27,7 @@ if (Sys.getenv("id_rsa") != "") {
       add_step(step_push_deploy(path = "health", branch = "project-health"))
   }else{
     get_stage("deploy") %>%
-      add_code_step(covr::codecov()) %>%
+      add_code_step(covr::{{coverage_service}}()) %>%
       add_code_step(devtools::install()) %>%
       add_code_step(covrpage::covrpage_ci()) %>%
       add_step(step_push_deploy(commit_paths = "tests/README.md"))

@@ -15,7 +15,7 @@ setup_repo <- function(git_service, login,
                        name, title,
                        project_type,
                        coverage = NULL) {
-browser()
+
   if (tolower(git_service) != "github") {
     stop(glue::glue(
       "Only GitHub is supported at the moment, not {git_service}."
@@ -52,6 +52,7 @@ browser()
                             save_as = "tic.R",
                             package = "starters",
                             data = list(coverage_service = coverage))
+      add_coverage_badge(login, name, coverage)
 
       if (project_type != "basic"){
         travis::use_travis_deploy(path = usethis::proj_get())
