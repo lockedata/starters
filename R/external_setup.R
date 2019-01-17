@@ -31,6 +31,9 @@ setup_repo <- function(git_service, login,
   )
 
   # coverage
+  if(!is.null(coverage)){
+    add_coverage_badge(login, name, coverage)
+  }
 
   if (!is.null(ci_activation)) {
     if (ci_activation != "travis") {
@@ -52,7 +55,7 @@ setup_repo <- function(git_service, login,
                             save_as = "tic.R",
                             package = "starters",
                             data = list(coverage_service = coverage))
-      add_coverage_badge(login, name, coverage)
+
 
       if (project_type != "basic"){
         travis::use_travis_deploy(path = usethis::proj_get())
