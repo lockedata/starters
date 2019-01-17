@@ -13,6 +13,7 @@ setup_repo <- function(git_service, login,
                        ci_activation,
                        name, title,
                        project_type) {
+
   if (tolower(git_service) != "github") {
     stop(glue::glue(
       "Only GitHub is supported at the moment, not {git_service}."
@@ -38,14 +39,21 @@ setup_repo <- function(git_service, login,
 
     if (ci_activation == "travis") {
       usethis::use_template("dot-travis.yml",
-                            target = ".travis.yml",
+                            save_as = ".travis.yml",
                             package = "travis")
-      travis::travis_enable()
+      travis::travis_enable(path = usethis::proj_get())
       # copy custom tic depending on proj
-      # if sthg
-      travis::use_travis_deploy()
+      usethis::use_template(file.path("tic", project_type,
+                                      "tic.R"),
+                            save_as = "tic.R",
+                            package = "starters")
+
+      if (project_type != "basic"){
+        travis::use_travis_deploy(path = usethis::proj_get())
+      }
+
       # in all cases
-      travis::travis_set_pat()
+      travis::travis_set_pat(repo = travis::github_repo(path = usethis::proj_get()))
 
       add_travis_badge(login, name)
     }
