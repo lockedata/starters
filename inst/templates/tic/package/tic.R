@@ -29,6 +29,7 @@ if (Sys.getenv("id_rsa") != "") {
     get_stage("deploy") %>%
       add_code_step(covr::{{coverage_service}}()) %>%
       add_code_step(devtools::install()) %>%
+      add_code_step(remotes::install("metrumresearchgroup/covrpage")) %>%
       add_code_step(covrpage::covrpage_ci()) %>%
       add_step(step_push_deploy(commit_paths = "tests/README.md"))
   }
