@@ -151,6 +151,10 @@ createPackageProject <- function(name, title = NULL,
         # README
         knit_readme()
 
+        # dummy test
+        usethis::use_testthat()
+        usethis::use_test(name = "dummy", open = FALSE)
+
         # add everything
         repo <- git2r::init(usethis::proj_get())
         git2r::add(repo, path = dir(usethis::proj_get()))
