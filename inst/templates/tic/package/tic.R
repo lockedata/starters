@@ -10,7 +10,7 @@ if (Sys.getenv("id_rsa") != "") {
   if (ci()$get_branch() == "master") {
     get_stage("deploy") %>%
       add_code_step(covr::{{coverage_service}}()) %>%
-      add_code_step(remotes::install("lockedata/starters")) %>%
+      add_code_step(remotes::install_github("lockedata/starters")) %>%
       add_code_step(install.packages("spelling")) %>%
       add_step(step_build_pkgdown()) %>%
       add_step(step_push_deploy(path = "docs", branch = "gh-pages")) %>%
