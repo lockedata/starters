@@ -132,6 +132,7 @@ createPackageProject <- function(name, title = NULL,
         if (pkgdown) {
           file.create(file.path(usethis::proj_get(),
                                 "_pkgdown.yml"))
+          usethis::use_build_ignore("_pkgdown.yml")
         }
 
         if (!is.null(external_setup)) {

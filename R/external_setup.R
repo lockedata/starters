@@ -48,6 +48,7 @@ setup_repo <- function(git_service, login,
       usethis::use_template("dot-travis.yml",
                             save_as = ".travis.yml",
                             package = "travis")
+      usethis::use_build_ignore(".travis.yml")
       travis::travis_enable(repo = travis::github_repo(path = usethis::proj_get()))
       # copy custom tic depending on proj
       usethis::use_template(file.path("tic", project_type,

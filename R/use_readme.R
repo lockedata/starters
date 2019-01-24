@@ -2,6 +2,7 @@ use_readme <- function(name){
   usethis::use_template("README.Rmd",
                         data = list(Package = name),
                         package = "starters")
+  usethis::use_build_ignore("README.Rmd")
 }
 
 
