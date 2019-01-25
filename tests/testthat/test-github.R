@@ -8,9 +8,23 @@ test_that("setup_gh_repo works", {
                               protocol = "ssh",
                               title, "cool"))
   expect_true(repo_exists("chibimaelle", "cool"))
-  gh::gh("DELETE /repos/:owner/:repo",
+
+  ok <- FALSE
+  i <- 1
+  while (!ok && i < 6){
+
+  delete <- try(gh::gh("DELETE /repos/:owner/:repo",
          owner = "chibimaelle", repo = "cool"
-  )
+  ), silent = TRUE)
+
+  ok <- !inherits(delete, "try-error")
+  i <- i + 1
+  Sys.sleep(2^(i-1))
+  }
+
+  if (!ok){
+    stop("GitHub repo deletion failed.")
+  }
 })
 
 

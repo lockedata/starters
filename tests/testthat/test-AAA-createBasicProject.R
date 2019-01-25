@@ -108,9 +108,23 @@ test_that("createBasicProject() can create a GitHub repo", {
   )
 
   expect_true(repo_exists("chibimaelle", "test"))
-  gh::gh("DELETE /repos/:owner/:repo",
-    owner = "chibimaelle", repo = "test"
-  )
+
+  ok <- FALSE
+  i <- 1
+  while (!ok && i < 6){
+
+    delete <- try(gh::gh("DELETE /repos/:owner/:repo",
+                         owner = "chibimaelle", repo = "test"
+    ), silent = TRUE)
+
+    ok <- !inherits(delete, "try-error")
+    i <- i + 1
+    Sys.sleep(2^(i-1))
+  }
+
+  if (!ok){
+    stop("GitHub repo deletion failed.")
+  }
 })
 
 
