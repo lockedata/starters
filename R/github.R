@@ -60,12 +60,26 @@ setup_gh_repo <- function(username, private, protocol,
   } else {
     endpoint <- "POST /user/repos"
   }
-  create <- gh::gh(endpoint,
-    org = username,
-    name = name,
-    description = title,
-    private = private
-  )
+
+  ok <- FALSE
+  i <- 1
+  while (!ok && i < 6){
+    message(glue::glue(
+      "Trying to create GitHub repo, try {i}"))
+    create <- try(gh::gh(endpoint,
+                         org = username,
+                         name = name,
+                         description = title,
+                         private = private
+    ), silent = TRUE)
+    ok <- !inherits(create, "try-error")
+    i <- i + 1
+    Sys.sleep(2^(i-1))
+  }
+
+  if (!ok){
+    stop("GitHub repo creation failed.")
+  }
 
   r <- git2r::repository(usethis::proj_get())
   origin_url <- switch(protocol, https = create$clone_url,
