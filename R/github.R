@@ -61,22 +61,13 @@ setup_gh_repo <- function(username, private, protocol,
     endpoint <- "POST /user/repos"
   }
 
-  ok <- FALSE
-  i <- 1
-  while (!ok && i < 6){
-    message(glue::glue(
-      "Trying to create GitHub repo, try {i}"))
-    create <- try(gh::gh(endpoint,
-                         org = username,
-                         name = name,
-                         description = title,
-                         private = private
-    ), silent = TRUE)
-    ok <- !inherits(create, "try-error")
-    i <- i + 1
-    Sys.sleep(2^(i-1))
-  }
-
+  quoted_expression <- quote(gh::gh(endpoint,
+                                    org = username,
+                                    name = name,
+                                    description = title,
+                                    private = private
+  ))
+  ok <- gh_retry(quoted_expression)
   if (!ok){
     stop("GitHub repo creation failed.")
   }

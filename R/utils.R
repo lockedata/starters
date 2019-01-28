@@ -148,3 +148,19 @@ use_git <- function(message = "Initial commit") {
   invisible(TRUE)
 }
 
+#####################################
+# retries for gh
+#####################################
+gh_retry <- function(quoted_expression){
+  ok <- FALSE
+  i <- 1
+  while (!ok && i < 6){
+    message(glue::glue(
+      "Trying to create GitHub repo, try {i}"))
+    response <- try(eval(quoted_expression), silent = TRUE)
+    ok <- !inherits(response, "try-error")
+    i <- i + 1
+    Sys.sleep(2^(i-1))
+  }
+  return(ok)
+}
