@@ -29,7 +29,7 @@ All projects get setup with Git and Travis by default.
 ## Install `starters`
 
 ```
-devtools::install_github("stephlocke/starters")
+devtools::install_github("lockedata/starters")
 ```
 
 ## RStudio gadget
