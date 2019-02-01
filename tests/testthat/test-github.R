@@ -14,11 +14,7 @@ test_that("setup_gh_repo works", {
                                     owner = "chibimaelle", repo = "cool"
   ))
 
-  ok <- gh_retry(quoted_expression)
-
-  if (!ok){
-    stop("GitHub repo deletion failed.")
-  }
+  expect_true(gh_retry(quoted_expression))
 })
 
 

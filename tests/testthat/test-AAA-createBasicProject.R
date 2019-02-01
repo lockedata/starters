@@ -112,11 +112,8 @@ test_that("createBasicProject() can create a GitHub repo", {
   quoted_expression <- quote(gh::gh("DELETE /repos/:owner/:repo",
                          owner = "chibimaelle", repo = "test"
     ))
-  ok <- gh_retry(quoted_expression)
 
-  if (!ok){
-    stop("GitHub repo deletion failed.")
-  }
+  expect_true(gh_retry(quoted_expression))
 })
 
 
