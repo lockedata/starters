@@ -19,7 +19,7 @@ Authors@R:
              email = "contact@jassohi.com"),
       person(given = "Maëlle",
              family = "Salmon",
-             role = "ctb",
+             role = "aut",
              email = "maelle.salmon@yahoo.se",
              comment = c(ORCID = "0000-0002-2815-0399")))
 Description: Setting up R project directories for teaching, presenting, analysis,
