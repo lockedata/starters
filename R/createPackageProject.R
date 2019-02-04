@@ -154,7 +154,7 @@ createPackageProject <- function(name, title = NULL,
 
         # dummy test
         usethis::use_testthat()
-        usethis::use_test(name = "dummy", open = FALSE)
+        usethis::use_test(name = "sample", open = FALSE)
 
         # add everything
         repo <- git2r::init(usethis::proj_get())
