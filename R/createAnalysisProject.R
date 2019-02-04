@@ -68,7 +68,6 @@ createAnalysisProject <- function(name, title = NULL,
 
   if (reset) {
     reset_proj(current_proj)
-    browser()
   }
 
   invisible(TRUE)
