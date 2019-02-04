@@ -108,9 +108,12 @@ test_that("createBasicProject() can create a GitHub repo", {
   )
 
   expect_true(repo_exists("chibimaelle", "test"))
-  gh::gh("DELETE /repos/:owner/:repo",
-    owner = "chibimaelle", repo = "test"
-  )
+
+  quoted_expression <- quote(gh::gh("DELETE /repos/:owner/:repo",
+                         owner = "chibimaelle", repo = "test"
+    ))
+
+  expect_true(gh_retry(quoted_expression))
 })
 
 

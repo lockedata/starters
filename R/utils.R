@@ -155,4 +155,21 @@ git_add_infrastructure <- function(){
   repo <- git2r::init(usethis::proj_get())
   git2r::add(repo, path = dir(usethis::proj_get()))
   git2r::commit(repo, message = "add infrastructure")
-}
+  return(ok)
+  }
+
+#####################################
+# retries for gh
+#####################################
+gh_retry <- function(quoted_expression){
+  ok <- FALSE
+  i <- 1
+  while (!ok && i < 6){
+    message(glue::glue(
+      "Trying to create GitHub repo, try {i}"))
+    response <- try(eval(quoted_expression), silent = TRUE)
+    ok <- !inherits(response, "try-error")
+    i <- i + 1
+    Sys.sleep(2^(i-1))
+  }
+
