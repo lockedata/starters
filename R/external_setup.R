@@ -56,6 +56,7 @@ setup_repo <- function(git_service, login,
                             save_as = "tic.R",
                             package = "starters",
                             data = list(coverage_service = coverage))
+      usethis::use_build_ignore("tic.R")
 
 
       if (project_type != "basic"){
