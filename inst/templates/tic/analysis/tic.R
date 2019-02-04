@@ -5,13 +5,16 @@ if (Sys.getenv("id_rsa") != "") {
     add_step(step_setup_ssh())
 
   if (ci()$get_branch() == "master") {
-    if(length(dir(path = "analysis", pattern = "*.[Rr]md")) > 0){
+    # analysis or your folder holding reports
+    reports <- dir(path = "analysis", pattern = "*.[Rr]md",
+                   full.names = TRUE)
+    if(length(reports) > 0){
+      output_dir <- "outputs"
       get_stage("deploy") %>%
-        add_code_step(lapply(dir(path = "analysis", pattern = "*.[Rr]md",
-                                 full.names = TRUE),
+        add_code_step(lapply(reports,
                              rmarkdown::render,
-                             output_dir = "outputs")) %>%
-        add_step(step_push_deploy(path = "outputs", branch = "gh-pages"))
+                             output_dir = output_dir)) %>%
+        add_step(step_push_deploy(path = output_dir, branch = "gh-pages"))
       }
     }
 
