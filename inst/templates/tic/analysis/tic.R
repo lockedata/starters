@@ -7,7 +7,8 @@ if (Sys.getenv("id_rsa") != "") {
   if (ci()$get_branch() == "master") {
     if(length(dir(path = "analysis", pattern = "*.[Rr]md")) > 0){
       get_stage("deploy") %>%
-        add_code_step(lapply(dir(path = "analysis", pattern = "*.[Rr]md"),
+        add_code_step(lapply(dir(path = "analysis", pattern = "*.[Rr]md",
+                                 full.names = TRUE),
                              rmarkdown::render,
                              output_dir = "outputs")) %>%
         add_step(step_push_deploy(path = "outputs", branch = "gh-pages"))
