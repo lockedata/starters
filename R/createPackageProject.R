@@ -157,9 +157,7 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_test(name = "sample", open = FALSE)
 
         # add everything
-        repo <- git2r::init(usethis::proj_get())
-        git2r::add(repo, path = dir(usethis::proj_get()))
-        git2r::commit(repo, message = "add infrastructure")
+        git_add_infrastructure()
              }
     },
     error = function(e) {

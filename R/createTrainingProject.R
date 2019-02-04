@@ -80,6 +80,7 @@ createTrainingProject <- function(name, title = NULL,
       reset = FALSE
     )
     createdirs(dirs)
+    git_add_infrastructure()
 
 
     # Handouts prep

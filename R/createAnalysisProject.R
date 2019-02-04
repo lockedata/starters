@@ -55,6 +55,7 @@ createAnalysisProject <- function(name, title = NULL,
       reset = FALSE
     )
     createdirs(dirs)
+    git_add_infrastructure()
   },
   error = function(e) {
     message(paste("Error:", e$message))
@@ -67,6 +68,7 @@ createAnalysisProject <- function(name, title = NULL,
 
   if (reset) {
     reset_proj(current_proj)
+    browser()
   }
 
   invisible(TRUE)

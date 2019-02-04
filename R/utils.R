@@ -148,3 +148,11 @@ use_git <- function(message = "Initial commit") {
   invisible(TRUE)
 }
 
+####################################
+# add remaining stuff at the end
+###################################
+git_add_infrastructure <- function(){
+  repo <- git2r::init(usethis::proj_get())
+  git2r::add(repo, path = dir(usethis::proj_get()))
+  git2r::commit(repo, message = "add infrastructure")
+}
