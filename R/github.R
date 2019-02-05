@@ -75,8 +75,8 @@ setup_gh_repo <- function(username, private, protocol,
 
   r <- git2r::repository(usethis::proj_get())
   origin_url <- switch(protocol,
-                       https = glue::glue("git@github.com:{username}/{name}.git"),
-                       ssh = glue::glue("https://github.com/{username}/{name}.git")
+                       https = glue::glue("https://github.com/{username}/{name}.git"),
+                       ssh = glue::glue("git@github.com:{username}/{name}.git")
   )
   git2r::remote_add(r, "origin", origin_url)
   git2r::checkout(r, "master")
