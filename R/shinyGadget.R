@@ -45,12 +45,8 @@ projectGadget <- function() {
         "Package" = shiny::inputPanel(
           shiny::h4("Best Practice"),
           shiny::br(),
-          shiny::checkboxInput("bestPractices",
-            label = "Adopt best practice?", value = TRUE
-          ),
           shiny::br(),
           shiny::conditionalPanel(
-            condition = "input.bestPractices",
             shiny::selectInput("coverage",
               label = "Code Coverage",
               choices = c("codecov", "coveralls")
@@ -94,7 +90,7 @@ projectGadget <- function() {
         ),
 
         "Package" = createPackageProject(
-          name = input$name, bestPractices = input$bestPractices,
+          name = input$name,
           coverage = input$coverage
         ),
 
