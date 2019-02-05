@@ -121,7 +121,7 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_testthat()
         usethis::use_vignette(name)
         if (git) {
-          use_git(message = cool_first_commit())
+          usethis::use_git(message = cool_first_commit())
           add_styler_hook()
         }
 

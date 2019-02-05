@@ -62,7 +62,7 @@
 
     # git setup
     if (git) {
-      use_git(message = cool_first_commit())
+      usethis::use_git(message = cool_first_commit())
       add_styler_hook()
     }
 
