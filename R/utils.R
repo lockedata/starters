@@ -155,11 +155,12 @@ git_add_infrastructure <- function(){
   repo <- git2r::init(usethis::proj_get())
   git2r::add(repo, path = dir(usethis::proj_get()))
   git2r::commit(repo, message = "add infrastructure")
-  }
+}
 
 #####################################
 # retries for gh
 #####################################
+gh <- gh::gh
 gh_retry <- function(quoted_expression){
   ok <- FALSE
   i <- 1
@@ -172,5 +173,4 @@ gh_retry <- function(quoted_expression){
     Sys.sleep(2^(i-1))
   }
   return(ok)
-  }
-
+}

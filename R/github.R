@@ -61,30 +61,32 @@ setup_gh_repo <- function(username, private, protocol,
     endpoint <- "POST /user/repos"
   }
 
-  quoted_expression <- quote(gh::gh(endpoint,
-                                    org = username,
-                                    name = name,
-                                    description = title,
-                                    private = private
-  ))
+  quoted_expression <- call("gh",
+                            endpoint = endpoint,
+                            org = username,
+                            name = name,
+                            description = title,
+                            private = private
+                            )
   ok <- gh_retry(quoted_expression)
   if (!ok){
     stop("GitHub repo creation failed.")
   }
 
   r <- git2r::repository(usethis::proj_get())
-  origin_url <- switch(protocol, https = create$clone_url,
-    ssh = create$ssh_url
+  origin_url <- switch(protocol,
+                       https = glue::glue("git@github.com:{username}/{name}.git"),
+                       ssh = glue::glue("https://github.com/{username}/{name}.git")
   )
   git2r::remote_add(r, "origin", origin_url)
   git2r::checkout(r, "master")
   # not possible cf https://github.com/ropensci/git2r/issues/133
   #git2r::branch_set_upstream(git2r::repository_head(r), "origin/master")
-  desc::desc_set("URL", create$html_url,
+  desc::desc_set("URL", glue::glue("https://github.com/{username}/{name}"),
     file = usethis::proj_get()
   )
   desc::desc_set("BugReports",
-    paste0(create$html_url, "/issues"),
+                 glue::glue("https://github.com/{username}/{name}/issues"),
     file = usethis::proj_get()
   )
 }
