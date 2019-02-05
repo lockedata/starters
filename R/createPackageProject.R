@@ -9,7 +9,6 @@
 #'                       whose badge will be added to the README.
 #' @param git Configure Git
 #' @param pkgdown Add a pkgdown config file
-#' @param bestPractices Run additional best practice commands
 #' @param coverage What code coverage platform to use, "codecov" or "coveralls".
 #' @param external_setup How to do the partly interactive setup
 #'  of online git, CI and coverage platforms. If NULL, no setup.
@@ -42,7 +41,6 @@
 createPackageProject <- function(name, title = NULL,
                                  folder = getwd(),
                                  initial_status = "wip",
-                                 bestPractices = TRUE,
                                  coverage = "codecov",
                                  git = TRUE,
                                  pkgdown = TRUE,
@@ -86,79 +84,79 @@ createPackageProject <- function(name, title = NULL,
       desc::desc_set("Title", title,
                      file = usethis::proj_get()
       )
-      if (bestPractices) {
-        usethis::use_code_of_conduct()
 
-        maintainer <- try(whoami::fullname(), silent = TRUE)
+      usethis::use_code_of_conduct()
 
-        if (inherits(maintainer, "try-error")) {
-          maintainer <- "Jane Doe"
-        }
+      maintainer <- try(whoami::fullname(), silent = TRUE)
 
-        usethis::use_template("license-mit.md",
-                              "LICENSE.md",
-                              ignore = TRUE,
-                              data = list(
-                                year = format(Sys.Date(), "%Y"),
-                                name = maintainer,
-                                project = name
-                              )
+      if (inherits(maintainer, "try-error")) {
+        maintainer <- "Jane Doe"
+      }
+
+      usethis::use_template("license-mit.md",
+                            "LICENSE.md",
+                            ignore = TRUE,
+                            data = list(
+                              year = format(Sys.Date(), "%Y"),
+                              name = maintainer,
+                              project = name
+                            )
+      )
+      usethis::use_template("license-mit.txt",
+                            "LICENSE",
+                            data = list(
+                              year = format(Sys.Date(), "%Y"),
+                              name = maintainer,
+                              project = name
+                            )
+      )
+      usethis::use_package_doc()
+      # README stuff
+      use_readme(name)
+      # status
+      add_repo_status(initial_status)
+
+      usethis::use_testthat()
+      usethis::use_vignette(name)
+      if (git) {
+        usethis::use_git(message = cool_first_commit())
+        add_styler_hook()
+      }
+
+      usethis::use_template("NEWS.md",
+                            data = usethis:::package_data(),
+                            open = FALSE)
+
+      if (pkgdown) {
+        file.create(file.path(usethis::proj_get(),
+                              "_pkgdown.yml"))
+        usethis::use_build_ignore("_pkgdown.yml")
+      }
+
+      if (!is.null(external_setup)) {
+        setup_repo(
+          name = name,
+          title = title,
+          git_service = external_setup$git_service,
+          login = external_setup$login,
+          private = external_setup$private,
+          protocol = external_setup$protocol,
+          ci_activation = external_setup$ci_activation,
+          project_type = "package",
+          coverage = coverage
         )
-        usethis::use_template("license-mit.txt",
-                              "LICENSE",
-                              data = list(
-                                year = format(Sys.Date(), "%Y"),
-                                name = maintainer,
-                                project = name
-                              )
-        )
-        usethis::use_package_doc()
-        # README stuff
-        use_readme(name)
-        # status
-        add_repo_status(initial_status)
+      }
 
-        usethis::use_testthat()
-        usethis::use_vignette(name)
-        if (git) {
-          usethis::use_git(message = cool_first_commit())
-          add_styler_hook()
-        }
+      # README
+      knit_readme()
 
-        usethis::use_template("NEWS.md",
-                              data = usethis:::package_data(),
-                              open = FALSE)
+      # dummy test
+      usethis::use_testthat()
+      usethis::use_test(name = "sample", open = FALSE)
 
-        if (pkgdown) {
-          file.create(file.path(usethis::proj_get(),
-                                "_pkgdown.yml"))
-          usethis::use_build_ignore("_pkgdown.yml")
-        }
+      # add everything
+      git_add_infrastructure()
 
-        if (!is.null(external_setup)) {
-          setup_repo(
-            name = name,
-            title = title,
-            git_service = external_setup$git_service,
-            login = external_setup$login,
-            private = external_setup$private,
-            protocol = external_setup$protocol,
-            ci_activation = external_setup$ci_activation,
-            project_type = "package",
-            coverage = coverage
-          )
-        }
-
-        # README
-        knit_readme()
-
-        # dummy test
-        usethis::use_testthat()
-        usethis::use_test(name = "sample", open = FALSE)
-
-        # add everything
-        git_add_infrastructure()
-             }
     },
     error = function(e) {
       message(paste("Error:", e$message))
