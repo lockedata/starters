@@ -132,6 +132,7 @@ createPackageProject <- function(name, title = NULL,
         if (pkgdown) {
           file.create(file.path(usethis::proj_get(),
                                 "_pkgdown.yml"))
+          usethis::use_build_ignore("_pkgdown.yml")
         }
 
         if (!is.null(external_setup)) {
@@ -142,17 +143,21 @@ createPackageProject <- function(name, title = NULL,
             login = external_setup$login,
             private = external_setup$private,
             protocol = external_setup$protocol,
-            ci_activation = external_setup$ci_activation
+            ci_activation = external_setup$ci_activation,
+            project_type = "package",
+            coverage = coverage
           )
         }
 
         # README
         knit_readme()
 
+        # dummy test
+        usethis::use_testthat()
+        usethis::use_test(name = "sample", open = FALSE)
+
         # add everything
-        repo <- git2r::init(usethis::proj_get())
-        git2r::add(repo, path = dir(usethis::proj_get()))
-        git2r::commit(repo, message = "add infrastructure")
+        git_add_infrastructure()
              }
     },
     error = function(e) {

@@ -41,7 +41,10 @@ createAnalysisProject <- function(name, title = NULL,
 
   current_proj <- get_current_proj()
   tryCatch({
-    createBasicProject(
+    if(!is.null(external_setup)){
+      external_setup$project_type <- "analysis"
+    }
+    .createBasicProject(
       name = name,
       title = title,
       folder = folder,
@@ -52,6 +55,7 @@ createAnalysisProject <- function(name, title = NULL,
       reset = FALSE
     )
     createdirs(dirs)
+    git_add_infrastructure()
   },
   error = function(e) {
     message(paste("Error:", e$message))

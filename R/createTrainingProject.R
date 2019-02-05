@@ -66,7 +66,10 @@ createTrainingProject <- function(name, title = NULL,
   message("Creating skeleton")
   current_proj <- get_current_proj()
   tryCatch({
-    createBasicProject(
+    if(!is.null(external_setup)){
+      external_setup$project_type <- "training"
+    }
+    .createBasicProject(
       name = name,
       title = title,
       folder = folder,
@@ -77,6 +80,7 @@ createTrainingProject <- function(name, title = NULL,
       reset = FALSE
     )
     createdirs(dirs)
+    git_add_infrastructure()
 
 
     # Handouts prep

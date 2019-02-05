@@ -19,7 +19,7 @@ Authors@R:
              email = "contact@jassohi.com"),
       person(given = "Maëlle",
              family = "Salmon",
-             role = "ctb",
+             role = "aut",
              email = "maelle.salmon@yahoo.se",
              comment = c(ORCID = "0000-0002-2815-0399")))
 Description: Setting up R project directories for teaching, presenting, analysis,
@@ -56,10 +56,12 @@ Imports:
     gh,
     git2r,
     glue,
-    praise
+    praise,
+    travis
 Remotes:
     r-lib/usethis,
-    metrumresearchgroup/covrpage
+    metrumresearchgroup/covrpage,
+    ropenscilabs/travis
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 URL: https://github.com/lockedata/starters, https://itsalocke.com/starters/
