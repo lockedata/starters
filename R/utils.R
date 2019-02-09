@@ -190,3 +190,15 @@ ext_setup <- function(input) {
     )
   }
 }
+
+#' Capture expression, write to clipboard, evaluate & output as message
+#' @noRd
+capture <- function(x) {
+  str_x <- deparse(x)
+  eval(x)
+  message(
+    "The starters function call is shown below and has been copied to the clipboard:\n\n",
+    str_x
+  )
+  clipr::write_clip(str_x)
+}

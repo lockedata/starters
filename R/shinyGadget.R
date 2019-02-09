@@ -5,6 +5,12 @@ projectGadget <- function() {
     )
   }
 
+  if (!requireNamespace("clipr", quietly = TRUE)) {
+    stop("The clipr package is required for this gadget to work. Please install it.",
+         call. = FALSE
+    )
+  }
+
   ui <- miniUI::miniPage(
     miniUI::gadgetTitleBar("Create Project"),
     miniUI::miniContentPanel(
@@ -13,7 +19,7 @@ projectGadget <- function() {
       ),
       # Custom shiny to javascript binding
       # scrolls "content" to bottom once called
-      tags$script(
+      shiny::tags$script(
         "Shiny.addCustomMessageHandler('scrollCallback',
           function(x) {
             var content = document.getElementsByClassName('gadget-scroll')[0];
@@ -207,53 +213,61 @@ projectGadget <- function() {
 
       switch(input$projectType,
 
-        "Basic" = createBasicProject(
-          name = input$name,
-          title = empty_as_null(input$title),
-          folder = folder(),
-          initial_status = input$initial_status,
-          packagedeps = input$packagedeps,
-          git = input$git,
-          external_setup = ext_setup(input),
-          reset = input$reset
+        "Basic" = capture(
+          call("createBasicProject",
+            name = input$name,
+            title = empty_as_null(input$title),
+            folder = as.character(folder()),
+            initial_status = input$initial_status,
+            packagedeps = input$packagedeps,
+            git = input$git,
+            external_setup = ext_setup(input),
+            reset = input$reset
+          )
         ),
 
-        "Analysis" = createAnalysisProject(
-          name = input$name,
-          title = empty_as_null(input$title),
-          folder = folder(),
-          initial_status = input$initial_status,
-          dirs = input$dirs,
-          git = input$git,
-          packagedeps = input$packagedeps,
-          external_setup = ext_setup(input),
-          reset = input$reset
+        "Analysis" = capture(
+          call("createAnalysisProject",
+            name = input$name,
+            title = empty_as_null(input$title),
+            folder = as.character(folder()),
+            initial_status = input$initial_status,
+            dirs = input$dirs,
+            git = input$git,
+            packagedeps = input$packagedeps,
+            external_setup = ext_setup(input),
+            reset = input$reset
+          )
         ),
 
-        "Package" = createPackageProject(
-          name = input$name,
-          title = empty_as_null(input$title),
-          folder = folder(),
-          initial_status = input$initial_status,
-          coverage = input$coverage,
-          git = input$git,
-          pkgdown = input$pkgdown,
-          external_setup = ext_setup(input),
-          reset = input$reset
+        "Package" = capture(
+          call("createPackageProject",
+            name = input$name,
+            title = empty_as_null(input$title),
+            folder = as.character(folder()),
+            initial_status = input$initial_status,
+            coverage = input$coverage,
+            git = input$git,
+            pkgdown = input$pkgdown,
+            external_setup = ext_setup(input),
+            reset = input$reset
+          )
         ),
 
-        "Training" = createTrainingProject(
-          name = input$name,
-          title = empty_as_null(input$title),
-          folder = folder(),
-          initial_status = input$initial_status,
-          dirs = input$dirs,
-          handoutEngine = input$handoutE,
-          slideEngine = input$slideE,
-          git = input$git,
-          packagedeps = input$packagedeps,
-          external_setup = ext_setup(input),
-          reset = input$reset
+        "Training" = capture(
+          call("createTrainingProject",
+            name = input$name,
+            title = empty_as_null(input$title),
+            folder = as.character(folder()),
+            initial_status = input$initial_status,
+            dirs = input$dirs,
+            handoutEngine = input$handoutE,
+            slideEngine = input$slideE,
+            git = input$git,
+            packagedeps = input$packagedeps,
+            external_setup = ext_setup(input),
+            reset = input$reset
+          )
         )
       )
     })
