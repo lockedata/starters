@@ -8,7 +8,7 @@ projectGadget <- function() {
   ui <- miniUI::miniPage(
     miniUI::gadgetTitleBar("Create Project"),
     miniUI::miniContentPanel(
-      shiny::tags$style("#folder {width: 435px; };",
+      shiny::tags$style("#folder {width: 210px; };",
         type = "text/css"
       ),
       # Custom shiny to javascript binding
@@ -28,24 +28,30 @@ projectGadget <- function() {
           choices = c("Basic", "Package", "Analysis", "Training"),
           selected = "Basic"
         ),
-        shiny::selectInput(
-          "initial_status",
-          label = "Initial Status",
-          choices = statuses()$status,
-          selected = "wip"
+        shiny::tags$div(
+          title = "A badge from repostatus.org will be added to the README.",
+          shiny::selectInput(
+            "initial_status",
+            label = "Initial Status",
+            choices = statuses()$status,
+            selected = "wip"
+          )
         ),
-        shiny::textInput("name", "Project Name", value = NULL),
-        shiny::textInput("title", "Project Title", value = NULL),
+        shiny::tags$div(
+          title = "This will be used as the name for the project.",
+          shiny::textInput("name", "Project Name", value = NULL)
+        ),
+        shiny::tags$div(
+          title = "A description of what the project does.",
+          shiny::textInput("title", "Project Title", value = NULL)
+        ),
         shiny::div("Project Folder", class = "control-label", style = "font-weight: bold;"),
-        shiny::br(),
-        shiny::br(),
         shiny::br(),
         shinyFiles::shinyDirButton("folder",
           label = "Choose Folder",
           title = "Please choose a project folder",
           class = "btn-primary"
         ),
-        shiny::br(),
         shiny::uiOutput("folder")
       ),
       shiny::uiOutput("ui"),
@@ -139,9 +145,6 @@ projectGadget <- function() {
             selected = c("data", "analysis", "output"),
             multiple = TRUE
           ),
-          shiny::br(),
-          shiny::br(),
-          shiny::br(),
           shiny::radioButtons("packagedeps",
             label = "Dependency Management",
             choices = okpackagedeps(),
@@ -155,7 +158,7 @@ projectGadget <- function() {
             shiny::checkboxInput("reset", "Reset Project", value = TRUE)
           ),
           shiny::checkboxInput("externalSetup", label = "External Setup", value = FALSE),
-          shiny::checkboxInput("bestPractices", label = "Run additional best practice commands", value = TRUE),
+          shiny::br(),
           shiny::radioButtons("coverage",
             label = "Code Coverage",
             choices = c("codecov", "coveralls"),
@@ -180,9 +183,6 @@ projectGadget <- function() {
             selected = c("data", "handouts", "slides"),
             multiple = TRUE
           ),
-          shiny::br(),
-          shiny::br(),
-          shiny::br(),
           shiny::radioButtons("packagedeps",
             label = "Dependency Management",
             choices = okpackagedeps(),
@@ -235,7 +235,6 @@ projectGadget <- function() {
           title = empty_as_null(input$title),
           folder = folder(),
           initial_status = input$initial_status,
-          bestPractices = input$bestPractices,
           coverage = input$coverage,
           git = input$git,
           pkgdown = input$pkgdown,
@@ -260,7 +259,5 @@ projectGadget <- function() {
     })
   }
 
-  shiny::runGadget(
-    ui, server
-  )
+  shiny::runGadget(ui, server)
 }
