@@ -36,7 +36,7 @@ start_here <- function(){
   }
 
   usethis::ui_line("Checking default description values...")
-  if(is.null(getOption("usethis.descriptioon"))){
+  if(is.null(getOption("usethis.description"))){
     usethis::ui_code_block(options(
       usethis.description = list(
         `Authors@R` = 'person("Jane", "Doe", email = "jane@example.com", role = c("aut", "cre"),
