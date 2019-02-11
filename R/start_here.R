@@ -49,7 +49,7 @@ start_here <- function(){
     usethis::ui_todo("DESCRIPTION defaults not set yet. Amend and paste the code above (copied to clipboard) to your .Rprofile via running usethis::edit_r_profile().")
     usethis::ui_stop("Set DESCRIPTION default then run starters::start_here() again.")
   } else{
-    usethis::ui_done("GITHUB_PAT is already set!")
+    usethis::ui_done("DESCRIPTION defaults are already set!")
   }
 
 
