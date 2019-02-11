@@ -7,6 +7,9 @@ test_that("validate_name works", {
                "Failed name validation: The name needs to have at least two characters.")
   expect_error(validate_name(1),
                "Failed name validation: The name has to be a character.")
+  expect_error(validate_name(c("Icannotchoose", "betweennames")),
+    "Failed name validation: Please only provide one name."
+  )
   expect_error(validate_name("2eee"),
                "Failed name validation")
   expect_error(validate_name("y-eee"),
