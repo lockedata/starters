@@ -163,3 +163,42 @@ gh_retry <- function(quoted_expression){
   }
   return(ok)
 }
+
+#####################################
+# Process inputs in shiny gadget
+#####################################
+
+#' Treat empty string as NULL
+#' @noRd
+empty_as_null <- function(arg) {
+  if(arg == "") return(NULL)
+  arg
+}
+
+#' Create config list for external_setup
+#' @noRd
+ext_setup <- function(input) {
+  if(!input$externalSetup) {
+    NULL
+  } else {
+    list(
+      git_service = input$git_service,
+      private = input$private,
+      protocol = input$protocol,
+      login = input$login,
+      ci_activation = ifelse(input$ci_activation == "", NULL, input$ci_activation)
+    )
+  }
+}
+
+#' Capture expression, write to clipboard, evaluate & output as message
+#' @noRd
+capture <- function(x) {
+  str_x <- deparse(x)
+  eval(x)
+  message(
+    "The starters function call is shown below and has been copied to the clipboard:\n\n",
+    str_x
+  )
+  clipr::write_clip(str_x)
+}
