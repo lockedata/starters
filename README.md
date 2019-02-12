@@ -29,6 +29,12 @@ All projects get setup with Git and Travis by default.
     training that often involves handouts and presentation materials. It
     includes packrat to help with reproducibility.
 
+All functions implement name validation based on the guidance in
+[“Writing R
+Extensions”](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file),
+“\[The name\] should contain only (ASCII) letters, numbers and dot, have
+at least two characters and start with a letter and not end in a dot”.
+
 ## Install `starters`
 
     devtools::install_github("lockedata/starters")
