@@ -55,7 +55,7 @@ start_here <- function(){
 
   usethis::ui_line("Checking build tools are available...")
   if(!pkgbuild::has_build_tools()){
-    browseURL("https://usethis.r-lib.org/articles/articles/usethis-setup.html#prepare-your-system-to-build-packages-from-source")
+    utils::browseURL("https://usethis.r-lib.org/articles/articles/usethis-setup.html#prepare-your-system-to-build-packages-from-source")
     usethis::ui_stop("Your system lacks a few tools, see link opened. https://usethis.r-lib.org/articles/articles/usethis-setup.html#prepare-your-system-to-build-packages-from-source")
   } else{
     usethis::ui_done("Build tools are available!")

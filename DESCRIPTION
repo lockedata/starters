@@ -59,7 +59,8 @@ Imports:
     git2r,
     glue,
     praise,
-    travis
+    travis,
+    pkgbuild
 Remotes:
     r-lib/usethis,
     metrumresearchgroup/covrpage,
