@@ -202,3 +202,27 @@ capture <- function(x) {
   )
   clipr::write_clip(str_x)
 }
+
+####################
+# name validation
+####################
+#' Validate name
+#'
+#' @param name Package / project
+
+validate_name <- function(name) {
+  if (missing(name)) stop("Failed name validation: The name is required.",
+                          call. = FALSE)
+  if (!is.character(name)) stop("Failed name validation: The name has to be a character.",
+                                call. = FALSE)
+  if(length(name) > 1) stop("Failed name validation: Please only provide one name.")
+  if (nchar(name) < 2) stop("Failed name validation: The name needs to have at least two characters.",
+                            call. = FALSE)
+  #  Validate name
+  if(!grepl("^[A-Za-z](?:\\.?[A-Za-z0-9]+)*[^\\.]$", name)) {
+
+    stop("Failed name validation: The name should contain only (ASCII) letters, numbers and dot,start with a letter and not end in a dot.",# nolint
+         call. = FALSE)
+  }
+  invisible(TRUE)
+}
