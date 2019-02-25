@@ -1,3 +1,7 @@
+#' Check your setup before using starters
+#'
+#' @export
+#'
 start_here <- function(){
   usethis::ui_line("Checking GitHub account can be guessed...")
   gh_username <- try(whoami::gh_username(), silent = TRUE)

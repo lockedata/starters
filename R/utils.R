@@ -207,7 +207,7 @@ capture <- function(x) {
 # name validation
 ####################
 #' Validate name
-#'
+#' @noRd
 #' @param name Package / project
 
 validate_name <- function(name) {
