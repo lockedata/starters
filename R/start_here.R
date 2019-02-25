@@ -17,8 +17,9 @@ start_here <- function(){
 
   usethis::ui_line("Checking gitconfig...")
   gitconfig <- usethis::use_git_config()
-  if(!all(names(git2r::config()$global) ==
-          c("user.email", "user.name"))){
+  if(!all(c("user.email", "user.name") %in%
+           names(git2r::config()$global)
+          )){
     clipr::write_clip("use_git_config(user.name = 'Jane Doe', user.email = 'jane@example.com')")
     usethis::ui_todo("gitconfig not set yet. Use this code (copied to clipboard): use_git_config(user.name = 'Jane Doe', user.email = 'jane@example.com')")
     usethis::ui_stop("Set your gitconfig then run starters::start_here() again.")
