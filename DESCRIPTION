@@ -21,7 +21,11 @@ Authors@R:
              family = "Salmon",
              role = "aut",
              email = "maelle.salmon@yahoo.se",
-             comment = c(ORCID = "0000-0002-2815-0399")))
+             comment = structure("0000-0002-2815-0399", .Names = "ORCID")),
+      person(given = "Matthew J.",
+             family = "Oldach",
+             role = "ctb",
+             email = "moldach@ucalgary.ca"))
 Description: Setting up R project directories for teaching, presenting, analysis,
             package development can be a pain. starters shortcuts this by creating
             folder structures and setting good defaults for you.
