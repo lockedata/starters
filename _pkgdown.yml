@@ -8,6 +8,9 @@ authors:
     html: "<img src='https://github.com/lockedatapublished.png' height=24>"
 
 reference:
+- title: setup
+  contents:
+  - '`start_here`'
 - title: starters
   desc: ~
   contents:

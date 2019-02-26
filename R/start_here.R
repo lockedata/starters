@@ -1,5 +1,10 @@
 #' Check your setup before using starters
 #'
+#' @details This function checks different aspects of your setup,
+#'  that will help automatic steps later on. Most of these aspects
+#'  are inspired from \code{usethis} setup article,
+#'  https://usethis.r-lib.org/articles/articles/usethis-setup.html.
+#'
 #' @export
 #'
 start_here <- function(){
