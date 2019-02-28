@@ -62,12 +62,6 @@ createPackageProject <- function(name, title = NULL,
   if (is_available(name)) {
     current_proj <- get_current_proj()
     tryCatch({
-      # create directory
-      dir.create(file.path(folder, name))
-      # set active project to directory
-      usethis::proj_set(file.path(folder, name),
-                        force = TRUE
-      )
       # create package skeleton
       usethis::create_package(file.path(folder, name),
                               open = FALSE,
