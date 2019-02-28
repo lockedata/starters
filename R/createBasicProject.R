@@ -25,13 +25,6 @@
   current_proj <- get_current_proj()
 
   tryCatch({
-    # create folder
-    dir.create(file.path(folder, name))
-
-    # set the active project to that folder
-    usethis::proj_set(file.path(folder, name),
-                      force = TRUE
-    )
 
     # create the project
     usethis::create_project(file.path(folder, name),

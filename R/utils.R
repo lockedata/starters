@@ -111,11 +111,7 @@ get_current_proj <- function() {
 #' Reset project to what it was before
 #' @noRd
 reset_proj <- function(current_proj) {
-  if (is.null(current_proj)) {
-    usethis::proj_set(getwd(), force = TRUE)
-  } else {
-    usethis::proj_set(current_proj, force = TRUE)
-  }
+  usethis::proj_set(current_proj, force = TRUE)
 }
 
 #####################################
