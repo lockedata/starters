@@ -49,9 +49,6 @@
     )
 
 
-    # setup system for dependencies management
-    setup_dep_system(packagedeps)
-
     # add README
     use_readme(name)
 
@@ -79,6 +76,9 @@
 
     # README
     knit_readme()
+
+    # setup system for dependencies management
+    setup_dep_system(packagedeps)
 
   },
   error = function(e) {
