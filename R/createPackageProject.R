@@ -33,7 +33,8 @@
 #'   name = "doggos", title = "Counting cute dogs",
 #'   folder = folder,
 #'   git = TRUE, external_setup = NULL,
-#'   reset = TRUE
+#'   reset = TRUE,
+#'   open = FALSE
 #' )
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
@@ -51,7 +52,8 @@ createPackageProject <- function(name, title = NULL,
                                    protocol = "ssh",
                                    ci_activation = "travis"
                                  ),
-                                 reset = TRUE) {
+                                 reset = TRUE,
+                                 open = FALSE) {
   validate_name(name)
 
   # create title
@@ -149,6 +151,9 @@ createPackageProject <- function(name, title = NULL,
       # add everything
       git_add_infrastructure()
 
+      if (open) {
+        rstudioapi::openProject(file.path(folder, name), newSession=TRUE)
+      }
     },
     error = function(e) {
       message(paste("Error:", e$message))

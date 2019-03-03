@@ -11,7 +11,7 @@ createTrainingProject(name, title = NULL, folder = getwd(),
   packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE)
+  "travis"), reset = TRUE, open = FALSE)
 
 create_training_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", dirs = c("data", "handouts", "slides"),
@@ -19,7 +19,7 @@ create_training_project(name, title = NULL, folder = getwd(),
   packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE)
+  "travis"), reset = TRUE, open = FALSE)
 }
 \arguments{
 \item{name}{Project}
@@ -74,7 +74,8 @@ createTrainingProject(
   dirs = c("data", "handouts", "slides", "dogs"),
   packagedeps = "none",
   git = TRUE, external_setup = NULL,
-  reset = TRUE
+  reset = TRUE,
+  open = FALSE
 )
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))

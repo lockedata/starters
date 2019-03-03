@@ -10,13 +10,13 @@ createPackageProject(name, title = NULL, folder = getwd(),
   initial_status = "wip", coverage = "codecov", git = TRUE,
   pkgdown = TRUE, external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE)
+  "travis"), reset = TRUE, open = FALSE)
 
 create_package_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", coverage = "codecov", git = TRUE,
   pkgdown = TRUE, external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE)
+  "travis"), reset = TRUE, open = FALSE)
 }
 \arguments{
 \item{name}{Project / package name}
@@ -66,7 +66,8 @@ createPackageProject(
   name = "doggos", title = "Counting cute dogs",
   folder = folder,
   git = TRUE, external_setup = NULL,
-  reset = TRUE
+  reset = TRUE,
+  open = FALSE
 )
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))
