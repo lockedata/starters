@@ -10,14 +10,14 @@ createAnalysisProject(name, title = NULL, folder = getwd(),
   packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE)
+  "travis"), reset = TRUE, open = FALSE)
 
 create_analysis_project(name, title = NULL, folder = getwd(),
   initial_status = "wip", dirs = c("data", "analysis", "outputs"),
   packagedeps = "packrat", git = TRUE,
   external_setup = list(git_service = "GitHub", login =
   gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE)
+  "travis"), reset = TRUE, open = FALSE)
 }
 \arguments{
 \item{name}{Project}
@@ -68,7 +68,8 @@ createAnalysisProject(
   packagedeps = "none",
   git = TRUE, external_setup = NULL,
   reset = TRUE,
-  dirs = c("cats", "dogs")
+  dirs = c("cats", "dogs"),
+  open = FALSE
 )
 list.files(file.path(folder, "doggos"))
 unlink(file.path(folder, "doggos"))
