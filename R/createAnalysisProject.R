@@ -14,7 +14,8 @@
 #'   packagedeps = "none",
 #'   git = TRUE, external_setup = NULL,
 #'   reset = TRUE,
-#'   dirs = c("cats", "dogs")
+#'   dirs = c("cats", "dogs"),
+#'   open = FALSE
 #' )
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
@@ -32,7 +33,8 @@ createAnalysisProject <- function(name, title = NULL,
                                     protocol = "ssh",
                                     ci_activation = "travis"
                                   ),
-                                  reset = TRUE) {
+                                  reset = TRUE,
+                                  open = FALSE) {
   if (missing(name)) stop("name is required")
   if (!is.character(name)) stop("name has to be a character")
   if (nchar(name) < 2) stop("name needs to have at least two characters")
@@ -56,6 +58,10 @@ createAnalysisProject <- function(name, title = NULL,
     )
     createdirs(dirs)
     git_add_infrastructure()
+
+    if (open) {
+      rstudioapi::openProject(file.path(folder, name), newSession=TRUE)
+    }
   },
   error = function(e) {
     message(paste("Error:", e$message))

@@ -11,7 +11,8 @@
                                  ci_activation = "travis",
                                  project_type = "basic",
                                ),
-                               reset = TRUE) {
+                               reset = TRUE,
+                               open = TRUE) {
   validate_name(name)
 
   packagedeps <- match.arg(packagedeps, okpackagedeps())
@@ -113,6 +114,7 @@
 #'  badge to the README.
 #'  }
 #' @param reset Whether to reset the project to current project
+#' @param open Whether to open the newly created project (in another RStudio session)
 #'
 #' @export
 #'
@@ -124,7 +126,8 @@
 #'   folder = folder,
 #'   packagedeps = "none",
 #'   git = TRUE, external_setup = NULL,
-#'   reset = TRUE
+#'   reset = TRUE,
+#'   open = FALSE
 #' )
 #' list.files(file.path(folder, "doggos"))
 #' unlink(file.path(folder, "doggos"))
@@ -141,7 +144,8 @@ createBasicProject <- function(name, title = NULL,
                                  protocol = "ssh",
                                  ci_activation = "travis"
                                ),
-                               reset = TRUE) {
+                               reset = TRUE,
+                               open = FALSE) {
   if(!is.null(external_setup)){
     external_setup$project_type <- "basic"
   }
@@ -152,6 +156,10 @@ createBasicProject <- function(name, title = NULL,
                       git = git,
                       external_setup = external_setup,
                       reset = reset)
+
+  if (open) {
+    rstudioapi::openProject(file.path(folder, name), newSession=TRUE)
+  }
 }
 
 #' @export
