@@ -23,6 +23,7 @@
 #'  badge to the README.
 #'  }
 #' @param reset Whether to reset the project to current project
+#' @param open Whether to open the newly created project (in another RStudio session)
 #'
 #' @export
 #'

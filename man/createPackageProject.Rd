@@ -49,6 +49,8 @@ badge to the README.
 }}
 
 \item{reset}{Whether to reset the project to current project}
+
+\item{open}{Whether to open the newly created project (in another RStudio session)}
 }
 \description{
 Create a package the usethis way with a number of infrastructure
