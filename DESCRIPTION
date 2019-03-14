@@ -64,7 +64,8 @@ Imports:
     glue,
     praise,
     travis,
-    pkgbuild
+    pkgbuild,
+    rstudioapi
 Remotes:
     r-lib/usethis,
     metrumresearchgroup/covrpage,
