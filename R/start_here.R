@@ -47,14 +47,14 @@ start_here <- function(){
 
   usethis::ui_line("Checking default description values...")
   if(is.null(getOption("usethis.description"))){
-    usethis::ui_code_block(options(
-      usethis.description = list(
-        `Authors@R` = 'person("Jane", "Doe", email = "jane@example.com", role = c("aut", "cre"),
-                          comment = c(ORCID = "YOUR-ORCID-ID"))',
-        License = "MIT + file LICENSE",
-        Language =  "es"
-      )
-    ))
+    usethis::ui_code_block("options(
+    usethis.description = list(
+      `Authors@R` = 'person(\"Jane\", \"Doe\", email = \"jane@example.com\", role = c(\"aut\", \"cre\"),
+      comment = c(ORCID = \"YOUR-ORCID-ID\"))',
+      License = \"MIT + file LICENSE\",
+      Language =  \"es\"
+  )
+  )")
 
     usethis::ui_todo("DESCRIPTION defaults not set yet. Amend and paste the code above (copied to clipboard) to your .Rprofile via running usethis::edit_r_profile().")
     usethis::ui_stop("Set DESCRIPTION default then run starters::start_here() again.")
