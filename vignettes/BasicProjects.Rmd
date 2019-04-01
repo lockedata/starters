@@ -38,11 +38,24 @@ As all the projects are created with an RStudio project, you should be able to w
 
 `create_basic_project()` will by default help setting up your project on both 
 GitHub (Git platform) and Travis (for continuous integration). If you want to 
-opt out of those, use `external_setup = NULL`.
+opt out of those, use `external_setup = NULL`. By default, the `external_setup` argument is a named list,
+
+```r
+external_setup = list(
+                     git_service = "GitHub",
+                     login = gh::gh_whoami()$login,
+                     private = FALSE,
+                     protocol = "ssh",
+                     ci_activation = "travis",
+                     project_type = "basic",
+                               )
+```                  
 
 #### GitHub
 
-The function is able to 
+GitHub is the only supported Git platform at the moment. A GitHub repo of the same name as the project will be created. Its description will use the `title` 
+argument of the `create_basic_project()` function. The account used will be 
+the one provided as `login`, if none is provided `gh::gh_whoami()$login`. You can opt out of "ssh" in favour of "https" via the `git_protocol` element of the `external_setup` argument.
 
 #### Travis
 [Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and training projects as you can use it to build your reproducible documentation and host it for free on GitHub.
