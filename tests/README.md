@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-07 March, 2019 17:06:32
+01 April, 2019 09:29:22
 
 This output is created by
 [covrpage](https://github.com/metrumresearchgroup/covrpage).
@@ -43,9 +43,9 @@ package.
 
 | file                                                                    |  n |  time | error | failed | skipped | warning | icon |
 | :---------------------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: | :--- |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R) | 13 | 6.231 |     0 |      0 |       2 |       0 | 🔶    |
-| [test-check\_github\_name.R](testthat/test-check_github_name.R)         |  3 | 0.275 |     0 |      0 |       0 |       0 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R)   | 17 | 0.273 |     0 |      9 |       0 |       4 | 🛑⚠️  |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R) | 13 | 6.164 |     0 |      0 |       2 |       0 | 🔶    |
+| [test-check\_github\_name.R](testthat/test-check_github_name.R)         |  3 | 0.220 |     0 |      0 |       0 |       0 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R)   | 17 | 0.298 |     0 |      9 |       0 |       4 | 🛑⚠️  |
 | [test-createPackageProject.R](testthat/test-createPackageProject.R)     | 17 | 0.441 |     0 |     13 |       0 |       0 | 🛑    |
 
 <details open>
@@ -55,18 +55,18 @@ package.
 
 | file                                                                            | context                  | test                                                            | status  |  n |  time | icon |
 | :------------------------------------------------------------------------------ | :----------------------- | :-------------------------------------------------------------- | :------ | -: | ----: | :--- |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L12_L17) | createBasicProject       | createBasicProject() errors if name missing or not correct      | PASS    |  3 | 0.039 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L45_L48) | createBasicProject       | createBasicProject() creates as expected                        | PASS    |  7 | 6.047 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L61)     | createBasicProject       | createBasicProject() creates as expected when using checkpoint  | SKIPPED |  1 | 0.002 | 🔶    |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L83_L90) | createBasicProject       | createBasicProject() cleans if there was an error               | PASS    |  1 | 0.023 |      |
-| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L96)     | createBasicProject       | createBasicProject() can create a GitHub repo                   | SKIPPED |  1 | 0.120 | 🔶    |
-| [test-check\_github\_name.R](testthat/test-check_github_name.R#L4)              | test-check\_github\_name | check\_github\_name works                                       | PASS    |  3 | 0.275 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L12_L17)   | createAnalysisProject    | createAnalysisProject() errors if name missing or not correct   | PASS    |  3 | 0.006 |      |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L38_L41)   | createAnalysisProject    | createAnalysisProject() creates as expected when using defaults | WARNING | 12 | 0.138 | ⚠️   |
-| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L59_L69)   | createAnalysisProject    | createAnalysisProject() cleans if there was an error            | WARNING |  2 | 0.129 | ⚠️   |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L22_L27)     | createPackageProject     | createPackageProject() errors if name missing or not correct    | PASS    |  3 | 0.004 |      |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L52_L55)     | createPackageProject     | createPackageProject() creates as expected when using defaults  | FAILED  | 13 | 0.412 | 🛑    |
-| [test-createPackageProject.R](testthat/test-createPackageProject.R#L76_L83)     | createPackageProject     | createPackageProject() cleans if there was an error             | PASS    |  1 | 0.025 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L12_L17) | createBasicProject       | createBasicProject() errors if name missing or not correct      | PASS    |  3 | 0.025 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L45_L48) | createBasicProject       | createBasicProject() creates as expected                        | PASS    |  7 | 5.973 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L61)     | createBasicProject       | createBasicProject() creates as expected when using checkpoint  | SKIPPED |  1 | 0.001 | 🔶    |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L83_L90) | createBasicProject       | createBasicProject() cleans if there was an error               | PASS    |  1 | 0.022 |      |
+| [test-AAA-createBasicProject.R](testthat/test-AAA-createBasicProject.R#L96)     | createBasicProject       | createBasicProject() can create a GitHub repo                   | SKIPPED |  1 | 0.143 | 🔶    |
+| [test-check\_github\_name.R](testthat/test-check_github_name.R#L4)              | test-check\_github\_name | check\_github\_name works                                       | PASS    |  3 | 0.220 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L12_L17)   | createAnalysisProject    | createAnalysisProject() errors if name missing or not correct   | PASS    |  3 | 0.005 |      |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L38_L41)   | createAnalysisProject    | createAnalysisProject() creates as expected when using defaults | WARNING | 12 | 0.152 | ⚠️   |
+| [test-createAnalysisProject.R](testthat/test-createAnalysisProject.R#L59_L69)   | createAnalysisProject    | createAnalysisProject() cleans if there was an error            | WARNING |  2 | 0.141 | ⚠️   |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L22_L27)     | createPackageProject     | createPackageProject() errors if name missing or not correct    | PASS    |  3 | 0.005 |      |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L52_L55)     | createPackageProject     | createPackageProject() creates as expected when using defaults  | FAILED  | 13 | 0.420 | 🛑    |
+| [test-createPackageProject.R](testthat/test-createPackageProject.R#L76_L83)     | createPackageProject     | createPackageProject() cleans if there was an error             | PASS    |  1 | 0.016 |      |
 
 | Failed | Warning | Skipped |
 | :----- | :------ | :------ |
@@ -82,7 +82,7 @@ package.
 | Field    | Value                         |                                                                                                                                                                                                                           |
 | :------- | :---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version  | R version 3.5.2 (2017-01-27)  |                                                                                                                                                                                                                           |
-| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://travis-ci.org/lockedata/starters/jobs/503199890" target="_blank"><span title="Built on Travis">![](https://github.com/metrumresearchgroup/covrpage/blob/master/inst/logo/travis.png?raw=true)</span></a> |
+| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://travis-ci.org/lockedata/starters/jobs/514046402" target="_blank"><span title="Built on Travis">![](https://github.com/metrumresearchgroup/covrpage/blob/master/inst/logo/travis.png?raw=true)</span></a> |
 | Running  | Ubuntu 14.04.5 LTS            |                                                                                                                                                                                                                           |
 | Language | en\_US                        |                                                                                                                                                                                                                           |
 | Timezone | UTC                           |                                                                                                                                                                                                                           |
