@@ -23,8 +23,10 @@ All projects get setup with Git, GitHub and Travis by default.
 
   - Use `createPackageProject` to setup a project with code coverage,
     vignettes, unit testing etc. out of the box
+
   - Use `createAnalysisProject` to get a project ready for a typical
     analysis project. It includes packrat to help with reproducibility.
+
   - Use `createTrainingProject` to get a project ready for delivering
     training that often involves handouts and presentation materials. It
     includes packrat to help with reproducibility.

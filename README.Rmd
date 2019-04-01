@@ -23,7 +23,9 @@ This package is designed to take away some grunt work around setting up new proj
 All projects get setup with Git, GitHub and Travis by default.
 
 - Use `createPackageProject` to setup a project with code coverage, vignettes, unit testing etc. out of the box
+
 - Use `createAnalysisProject` to get a project ready for a typical analysis project. It includes packrat to help with reproducibility.
+
 - Use `createTrainingProject` to get a project ready for delivering training that often involves handouts and presentation materials. It includes packrat to help with reproducibility.
 
 All functions implement name validation based on the guidance in ["Writing R Extensions"](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file), "[The name] should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot".
