@@ -19,10 +19,10 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 This package is designed to take away some grunt work around setting up
 new projects.
 
-All projects get setup with Git and Travis by default.
+All projects get setup with Git, GitHub and Travis by default.
 
   - Use `createPackageProject` to setup a project with code coverage,
-    vignettes, unit testing etc out of the box
+    vignettes, unit testing etc. out of the box
   - Use `createAnalysisProject` to get a project ready for a typical
     analysis project. It includes packrat to help with reproducibility.
   - Use `createTrainingProject` to get a project ready for delivering
@@ -35,9 +35,27 @@ Extensions”](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-
 “\[The name\] should contain only (ASCII) letters, numbers and dot, have
 at least two characters and start with a letter and not end in a dot”.
 
-## Install `starters`
+## Setup for `starters`
 
-    devtools::install_github("lockedata/starters")
+### Installation
+
+    remotes::install_github("lockedata/starters")
+
+### `start_here()` function
+
+Run
+
+``` r
+starters::start_here()
+```
+
+This function checks different aspects of your setup (git installation,
+gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username
+guessing), that will help automatic steps later on. Most of these
+aspects are inspired from [`usethis` setup
+article](https://usethis.r-lib.org/articles/articles/usethis-setup.html).
+For each aspect, if your setup needs improvements an informative error
+message will be thrown so you might be able to know how to proceed.
 
 ## RStudio gadget
 

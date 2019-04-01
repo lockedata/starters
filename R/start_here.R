@@ -1,9 +1,13 @@
 #' Check your setup before using starters
 #'
-#' @details This function checks different aspects of your setup,
+#' @details This function checks different aspects of your setup
+#' (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values,
+#'  GitHub username guessing),
 #'  that will help automatic steps later on. Most of these aspects
 #'  are inspired from \code{usethis} setup article,
 #'  https://usethis.r-lib.org/articles/articles/usethis-setup.html.
+#'  For each aspect, if your setup needs improvements an informative error
+#'  message will be thrown so you might be able to know how to proceed.
 #'
 #' @export
 #'
@@ -11,7 +15,7 @@ start_here <- function(){
   usethis::ui_line("Checking GitHub account can be guessed...")
   gh_username <- try(whoami::gh_username(), silent = TRUE)
   if(inherits(gh_username, "try-error")){
-    usethis::ui_stop("No GitHub account could be identified. Maybe you have not created a GitHub account yet? Or your email address is not public and you have not created a GIHUB_USERNAME variable via usethis::edit_r_environ()?")
+    usethis::ui_stop("No GitHub account could be identified. Maybe you have not created a GitHub account yet? Or your email address is not public and you have not created a GITHUB_USERNAME variable via usethis::edit_r_environ()?")
   } else{
     usethis::ui_done(glue::glue("Your GitHub username is {gh_username}."))
   }
