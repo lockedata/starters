@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-A basic project that's created with `createBasicProject()` is the fundamental building block for the various flavours of projects you might build with `starters`.
+A basic project that's created with `create_basic_project()` is the fundamental building block for various flavours of projects you might build with `starters`.
 
 A basic project contains a minimal package structure to allow you an easy way to:
 
@@ -17,28 +17,34 @@ A basic project contains a minimal package structure to allow you an easy way to
  - list packages needed for easy dependency management
  - build your outputs using mechanisms aimed at packages
  
-All basic projects contain a DESCRIPTION file, an `R/` directory, and an RStudio project file.
+All basic projects contain:
+
+* a DESCRIPTION file
+* an `R/` directory
+* an RStudio project file
+* a README.Rmd. A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. We will create a README.Rmd so that you can write R Markdown and produce a README.md suitable for GitHub. This enables you to show off your functions, your test results, etc. In the README created, there will be a [repostatus.org badge indicating the status of your project](https://www.repostatus.org/). By default the initial status is WIP, change it via the `initial_status` argument. 
 
 ## Optional extras
-We take the opinion that you should have these things by default but they can always be turned off by using the parameters in the creation of a project.
-
-### README.Rmd
-A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. 
-
-We will create a README.Rmd so that you can write R Markdown and produce a README.md suitable for GitHub. 
-
-This enables you to show off your functions, your test results, etc
+We take the opinion that your project should feature the following things by default but they can always be turned off by using the parameters in the creation of a project.
 
 ### Git
-We take the stance that you should be using source control and that the source control technology you should be using is [Git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). For the most part, we expect your Git repositories to live on [GitHub](https://github.com).
+We take the stance that you should be using source control and that the source control technology you should be using is [Git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). For the most part, we expect your Git repositories to live on [GitHub](https://github.com). To learn more about git and GitHub we recommend reading [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs, Jim Hester.
 
 When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
 
 As all the projects are created with an RStudio project, you should be able to work with the source control aspects within RStudio. You can also use your preferred shell or GUI to interact with it.
 
-[READ MORE ON GIT](https://git-scm.com/)
+### External setup
 
-### Travis
+`create_basic_project()` will by default help setting up your project on both 
+GitHub (Git platform) and Travis (for continuous integration). If you want to 
+opt out of those, use `external_setup = NULL`.
+
+#### GitHub
+
+The function is able to 
+
+#### Travis
 [Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and training projects as you can use it to build your reproducible documentation and host it for free on GitHub.
 
 The basic project contains a [`.travis.yml` file](https://docs.travis-ci.com/user/customizing-the-build), which holds instructions for Travis. It won't interfere in any way with your development process, and to fully enable Travis you need to [turn on Travis-CI](https://travis-ci.org/getting_started) for the package. 
@@ -54,24 +60,29 @@ A problem with programming using other people's code is that other people's code
 
 [`checkpoint`](https://rdrr.io/cran/checkpoint) moves away from using your default CRAN repository and points to a specific repository that has daily snapshots. You then work with CRAN as of a specific date (by default the date you created the project). This is lighter weight than `packrat` but does not help with non-CRAN packages.
 
-
 [READ MORE ON CHECKPOINT](https://rdrr.io/cran/checkpoint)
 
 ### What else?
 We're working on what else should be an optional extra for basic projects and we want your opinions. Contribute your opinion on our [GitHub Issues](https://github.com/lockedata/starters/issues).
 
 ## Make your own
-We think `createBasicProject()` provides a strong foundation for creating project templates.
+We think `create_basic_project()` provides a strong foundation for creating project templates.
 
 To use it as a base for your own internal functions, you will need to import the package and then do something like this as a function wrapper:
 
 ```{r}
-createAnalysisProject <- function(name,
+create_analysis_project <- function(name,
                                   dirs = c("data", "analysis", "outputs"),
                                   ...) {
-  createBasicProject(name, ...)
+  create_basic_project(name, ...)
   createdirs(name, dirs)
   invisible(TRUE)
 }
 
 ```
+
+You can browse [`starters`' source code](https://github.com/lockedata/starters/) for inspiration.
+
+## Camel or snake?
+
+`create_basic_project()` (snake case) used to be named `createBasicProject()` (lower camel case). One can still use any of these names to call the function.
