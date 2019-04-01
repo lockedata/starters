@@ -9,11 +9,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This package is designed to take away some grunt work around setting up new projects. All projects get setup with Git, GitHub and Travis by default.
+> **`starters` is designed to take away some grunt work around setting up new projects.**
 
-# Start here!
+# Principles
 
-Run
+## Setup: `start_here()`
+
+Before using `starters` for the first time, run
 
 ```r
 starters::start_here()
@@ -21,7 +23,23 @@ starters::start_here()
 
 This function checks different aspects of your setup (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). For each aspect, if your setup needs improvements an informative error message will be thrown so you might be able to know how to proceed.
 
-# Camel or snake?
+## Best practice: Git, GitHub, Continuous Integration
+
+By default, `starters` function encourage the combined use of Git, GitHub and Travis for version control, project sharing, continuous checks and deliveries. 
+
+* We take the stance that you should be using source control and that the source control technology you should be using is [Git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). 
+* For the most part, we expect your Git repositories to live on [GitHub](https://github.com). **To learn more about git and GitHub we recommend reading [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs, Jim Hester.**
+
+* For continuous integration, we only support Travis at the moment, via the [`tic`](https://ropenscilabs.github.io/tic/) and [`travis`](https://ropenscilabs.github.io/travis/) packages. If you're new to Travis, read [Julia Silge's great intro](https://juliasilge.com/blog/beginners-guide-to-travis/), and create a Travis account linked to your GitHub account.
+
+_You can opt out of git by setting the `git` argument of `starters` function to `FALSE`, and of GitHub as well as Travis by setting their `external_setup` argument to `NULL`_
+
+When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
+
+As all the projects are created with an RStudio project, you should be able to work with the source control aspects within RStudio. You can also use your preferred shell or GUI to interact with it.
+
+
+## Camel or snake?
 
 All project-creating functions in `starters` have both a snake case name, and a lower camel case name (for historical reasons). E.g. `create_basic_project()` (snake case) used to be named `createBasicProject()` (lower camel case). One can use any of these names to call the functions.
 
@@ -46,12 +64,7 @@ All basic projects contain:
 ### Optional extras
 We take the opinion that your project should feature the following things by default but they can always be turned off by using the parameters in the creation of a project.
 
-#### Git
-We take the stance that you should be using source control and that the source control technology you should be using is [Git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). For the most part, we expect your Git repositories to live on [GitHub](https://github.com). To learn more about git and GitHub we recommend reading [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs, Jim Hester.
 
-When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
-
-As all the projects are created with an RStudio project, you should be able to work with the source control aspects within RStudio. You can also use your preferred shell or GUI to interact with it.
 
 #### External setup
 
@@ -69,6 +82,8 @@ external_setup = list(
                      project_type = "basic",
                                )
 ```                  
+
+
 
 ##### GitHub
 
