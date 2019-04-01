@@ -15,7 +15,7 @@ vignette: >
 
 ## Setup: `start_here()`
 
-Before using `starters` for the first time, run `starters::start_here()`.
+Before using `starters` for the first time, run `start_here()`.
 
 This function checks different aspects of your setup (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). 
 
@@ -250,4 +250,4 @@ Package projects contain
 
 External setup is controlled [like for basic projects](#git-github-travis) with a supplementary argument `coverage`, either NULL, "codecov" or "coveralls" to control which code coverage, if any, is to be used.
 
-The tic.R of package projects will check the package, build the pkgdown website and deploy it to a gh-pages branch, compute a project health report (see `starters::get_project_health()`) and deploy it to a project-health branch.
+The tic.R of package projects will check the package, build the pkgdown website and deploy it to a gh-pages branch, compute a project health report (see `get_project_health()`) and deploy it to a project-health branch.
