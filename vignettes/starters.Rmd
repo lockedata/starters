@@ -176,7 +176,7 @@ At the moment, this function will set up a **basic project with some additional 
 
 ### Travis
 
-By default, these projects' tic.R will knit the R Markdown files contained in analysis/ and deploy them to a gh-pages branch. Note that GitHub pages websites are public
+By default, these projects' tic.R will knit the R Markdown files contained in analysis/ and deploy them to a gh-pages branch. Note that GitHub pages websites are public.
 
 ## Training projects
 
