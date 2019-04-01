@@ -15,24 +15,57 @@ vignette: >
 
 ## Setup: `start_here()`
 
-Before using `starters` for the first time, run
+Before using `starters` for the first time, run `starters::start_here()`.
+
+This function checks different aspects of your setup (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). 
 
 ```r
 starters::start_here()
+#> Checking GitHub account can be guessed...
+#> ✔ Your GitHub username is maelle.
+#> Checking git is installed...
+#> ✔ git seems to be installed!
+#> Checking gitconfig...
+#> ✔ gitconfig is already set!
+#> Checking GITHUB_PAT...
+#> ✔ GITHUB_PAT is already set!
+#> Checking default description values...
+#> ✔ DESCRIPTION defaults are already set!
+#> Checking build tools are available...
+#> ✔ Build tools are available!
+#> ✔ All set now!
 ```
 
-This function checks different aspects of your setup (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). For each aspect, if your setup needs improvements an informative error message will be thrown so you might be able to know how to proceed.
+For each aspect, if your setup needs improvements an informative error message will be thrown so you might be able to know how to proceed.
+
+```r
+starters::start_here()
+#> Checking GitHub account can be guessed...
+#> ✔ Your GitHub username is maelle.
+#> Checking git is installed...
+#> ✔ git seems to be installed!
+#> Checking gitconfig...
+#> ✔ gitconfig is already set!
+#> Checking GITHUB_PAT...
+#> ● GITHUB_PAT not set yet. Use this code (copied to clipboard): usethis::browse_github_pat()
+#>  Error: Set your GITHUB_PAT then run starters::start_here() again. 
+```
+
+## RStudio 
+
+All the projects are created with an RStudio project, but you could use `starters` outside of RStudio. For RStudio addins fans who want to set up a pRoject without using the R functions, [\@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for setting up projects with `starters`.
 
 ## Best practice: Git, GitHub, Continuous Integration
 
-By default, `starters` function encourage the combined use of Git, GitHub and Travis for version control, project sharing, continuous checks and deliveries. 
+By default, `starters` functions encourage the combined use of Git, GitHub and Travis for version control, project sharing, continuous checks and deliveries. 
 
 * We take the stance that you should be using source control and that the source control technology you should be using is [Git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). 
+
 * For the most part, we expect your Git repositories to live on [GitHub](https://github.com). **To learn more about git and GitHub we recommend reading [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs, Jim Hester.**
 
 * For continuous integration, we only support Travis at the moment, via the [`tic`](https://ropenscilabs.github.io/tic/) and [`travis`](https://ropenscilabs.github.io/travis/) packages. If you're new to Travis, read [Julia Silge's great intro](https://juliasilge.com/blog/beginners-guide-to-travis/), and create a Travis account linked to your GitHub account.
 
-_You can opt out of git by setting the `git` argument of `starters` function to `FALSE`, and of GitHub as well as Travis by setting their `external_setup` argument to `NULL`_
+_You can opt out of git by setting the `git` argument of `starters` function to `FALSE`, and of GitHub as well as Travis by setting their `external_setup` argument to `NULL`._
 
 When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
 
@@ -43,28 +76,53 @@ As all the projects are created with an RStudio project, you should be able to w
 
 All project-creating functions in `starters` have both a snake case name, and a lower camel case name (for historical reasons). E.g. `create_basic_project()` (snake case) used to be named `createBasicProject()` (lower camel case). One can use any of these names to call the functions.
 
+## Your own adventure
+
+[All feedback, bug reports and feature requests, are welcome](https://itsalocke.com/starters/#contributing). Furthermore, if you want to create your own project-creating functions, you could browse [`starters`' source code](https://github.com/lockedata/starters/) for inspiration.
+
 # `create_basic_project()` and its extensions
 
 ## Basic projects
 
-A basic project that's created with `create_basic_project()` is the fundamental building block for various flavours of projects you might build with `starters`. 
+A basic project created with `create_basic_project()` is the fundamental building block for various flavours of projects you might build with `starters`. 
+
+Test `create_basic_project()` via running the **innocuous** chunk below, that'll create a basic project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis, and open it in a new RStudio session so you can browse files.
+
+```r
+starters::create_basic_project(name = "cooldoggos",
+                               title = "A project about dogs",
+                               folder = tempdir(),
+                               packagedeps = "none",
+                               external_setup = NULL,
+                               open = TRUE)
+```
+
+
 A basic project contains a minimal package structure to allow you an easy way to:
 
- - make functions for use within your work
- - list packages needed for easy dependency management
- - build your outputs using mechanisms aimed at packages
+- make functions for use within your work
+
+- list packages needed for easy dependency management
+
+- build your outputs using mechanisms aimed at packages
  
 All basic projects contain:
 
-* a DESCRIPTION file
+* a DESCRIPTION file with default values taken from default DESCRIPTION values you had set (probably at least your name), a `Package` field equal to your project name and a `Title` field equal to the `title` argument. If you let `title` to its `NULL` value a random title would be generated using the `praise` package.
+
 * an `R/` directory
+
 * an RStudio project file
-* a README.Rmd. A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. We will create a README.Rmd so that you can write R Markdown and produce a README.md suitable for GitHub. This enables you to show off your functions, your test results, etc. In the README created, there will be a [repostatus.org badge indicating the status of your project](https://www.repostatus.org/). By default the initial status is WIP, change it via the `initial_status` argument. 
+
+* a README.Rmd. A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. We will create a README.Rmd so that you can write R Markdown and produce a README.md suitable for GitHub. This enables you to show off your functions, your test results, etc. At the top of the README created, there will be a [repostatus.org badge indicating the status of your project](https://www.repostatus.org/). By default the initial status is WIP, change it via the `initial_status` argument. 
 
 ### Optional extras
+
 We take the opinion that your project should feature the following things by default but they can always be turned off by using the parameters in the creation of a project.
 
+* git, controlled by the Boolean `git` argument.
 
+* external setup
 
 #### External setup
 
@@ -147,23 +205,5 @@ You can also specify an alternative package for your slides via `slideEngine`. T
 
 If the `packrat` argument is not supplied or is set to `TRUE`, we will update the packrat manifest so that the packages are available when you open the project.
 
-
-## Make your own
-We think `create_basic_project()` provides a strong foundation for creating project templates.
-
-To use it as a base for your own internal functions, you will need to import the package and then do something like this as a function wrapper:
-
-```{r}
-create_analysis_project <- function(name,
-                                  dirs = c("data", "analysis", "outputs"),
-                                  ...) {
-  create_basic_project(name, ...)
-  createdirs(name, dirs)
-  invisible(TRUE)
-}
-
-```
-
-You can browse [`starters`' source code](https://github.com/lockedata/starters/) for inspiration.
 
 
