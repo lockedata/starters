@@ -1,9 +1,13 @@
 #' Check your setup before using starters
 #'
-#' @details This function checks different aspects of your setup,
+#' @details This function checks different aspects of your setup
+#' (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values,
+#'  GitHub username guessing),
 #'  that will help automatic steps later on. Most of these aspects
 #'  are inspired from \code{usethis} setup article,
 #'  https://usethis.r-lib.org/articles/articles/usethis-setup.html.
+#'  For each aspect, if your setup needs improvements an informative error
+#'  message will be thrown so you might be able to know how to proceed.
 #'
 #' @export
 #'
