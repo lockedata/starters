@@ -2,6 +2,9 @@ template:
   package: lockedatapkg
   default_assets: false
 
+toc:
+  depth: 4
+
 authors:
   Locke Data:
     href: "https://itsalocke.com/"

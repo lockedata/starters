@@ -29,7 +29,7 @@ If NULL, a random one will be generated.}
 \item{initial_status}{initial repostatus.org status for the project,
 whose badge will be added to the README.}
 
-\item{coverage}{What code coverage platform to use, "codecov" or "coveralls".}
+\item{coverage}{What code coverage platform to use, NULL, "codecov" or "coveralls".}
 
 \item{git}{Configure Git}
 

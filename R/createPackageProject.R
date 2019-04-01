@@ -9,7 +9,7 @@
 #'                       whose badge will be added to the README.
 #' @param git Configure Git
 #' @param pkgdown Add a pkgdown config file
-#' @param coverage What code coverage platform to use, "codecov" or "coveralls".
+#' @param coverage What code coverage platform to use, NULL, "codecov" or "coveralls".
 #' @param external_setup How to do the partly interactive setup
 #'  of online git, CI and coverage platforms. If NULL, no setup.
 #'  \itemize{

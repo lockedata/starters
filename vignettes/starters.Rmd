@@ -1,0 +1,253 @@
+---
+title: "Get started with starters"
+author: "Steph Locke"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Basic Projects}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+> **`starters` is designed to take away some grunt work around setting up new projects.**
+
+# Principles
+
+## Setup: `start_here()`
+
+Before using `starters` for the first time, run `starters::start_here()`.
+
+This function checks different aspects of your setup (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). 
+
+```r
+starters::start_here()
+#> Checking GitHub account can be guessed...
+#> ✔ Your GitHub username is maelle.
+#> Checking git is installed...
+#> ✔ git seems to be installed!
+#> Checking gitconfig...
+#> ✔ gitconfig is already set!
+#> Checking GITHUB_PAT...
+#> ✔ GITHUB_PAT is already set!
+#> Checking default description values...
+#> ✔ DESCRIPTION defaults are already set!
+#> Checking build tools are available...
+#> ✔ Build tools are available!
+#> ✔ All set now!
+```
+
+For each aspect, if your setup needs improvements an informative error message will be thrown so you might be able to know how to proceed.
+
+```r
+starters::start_here()
+#> Checking GitHub account can be guessed...
+#> ✔ Your GitHub username is maelle.
+#> Checking git is installed...
+#> ✔ git seems to be installed!
+#> Checking gitconfig...
+#> ✔ gitconfig is already set!
+#> Checking GITHUB_PAT...
+#> ● GITHUB_PAT not set yet. Use this code (copied to clipboard): usethis::browse_github_pat()
+#>  Error: Set your GITHUB_PAT then run starters::start_here() again. 
+```
+
+## RStudio 
+
+All the projects are created with an RStudio project, but you could use `starters` outside of RStudio. For RStudio addins fans who want to set up a pRoject without using the R functions, [\@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for setting up projects with `starters`.
+
+## Best practice: Git, GitHub, Continuous Integration
+
+By default, `starters` functions encourage the combined use of Git, GitHub and Travis for version control, project sharing, continuous checks and deliveries. 
+
+* We take the stance that you should be using source control and that the source control technology you should be using is [Git](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). 
+
+* For the most part, we expect your Git repositories to live on [GitHub](https://github.com). **To learn more about git and GitHub we recommend reading [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs, Jim Hester.**
+
+* If you don't opt out of Git, the projects will be created with a [`styler`](https://github.com/r-lib/styler) pre-commit hook.
+
+* For continuous integration, we only support Travis at the moment, via the [`tic`](https://ropenscilabs.github.io/tic/) and [`travis`](https://ropenscilabs.github.io/travis/) packages. [Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and training projects as you can use it to build your reproducible documentation and host it for free on GitHub. If you're new to Travis, read [Julia Silge's great intro](https://juliasilge.com/blog/beginners-guide-to-travis/), and create a Travis account linked to your GitHub account.
+
+_You can opt out of git by setting the `git` argument of `starters` function to `FALSE`, and of GitHub as well as Travis by setting their `external_setup` argument to `NULL`._
+
+When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
+
+As all the projects are created with an RStudio project, you should be able to work with the source control aspects within RStudio. You can also use your preferred shell or GUI to interact with it.
+
+
+## Camel or snake?
+
+All project-creating functions in `starters` have both a snake case name, and a lower camel case name (for historical reasons). E.g. `create_basic_project()` (snake case) used to be named `createBasicProject()` (lower camel case). One can use any of these names to call the functions.
+
+## Your own adventure
+
+[All feedback, bug reports and feature requests, are welcome](https://itsalocke.com/starters/#contributing). Furthermore, if you want to create your own project-creating functions, you could browse [`starters`' source code](https://github.com/lockedata/starters/) for inspiration.
+
+# Basic projects and their extensions
+
+## Basic projects
+
+A basic project created with `create_basic_project()` is the fundamental building block for various flavours of projects you might build with `starters`. 
+
+Test `create_basic_project()` via running the **innocuous** chunk below, that'll create a basic project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis, and open it in a new RStudio session so you can browse files.
+
+```r
+starters::create_basic_project(name = "cooldoggos",
+                               title = "A project about dogs",
+                               folder = tempdir(),
+                               packagedeps = "none",
+                               external_setup = NULL,
+                               open = TRUE)
+```
+
+
+A basic project contains a minimal package structure to allow you an easy way to:
+
+- make functions for use within your work
+
+- list packages needed for easy dependency management
+
+- build your outputs using mechanisms aimed at packages
+ 
+All basic projects contain:
+
+* a DESCRIPTION file with default values taken from default DESCRIPTION values you had set (probably at least your name), a `Package` field equal to your project name and a `Title` field equal to the `title` argument. If you let `title` to its `NULL` value a random title would be generated using the `praise` package.
+
+* an `R/` directory
+
+* an RStudio project file
+
+* a README.Rmd. A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. We will create a README.Rmd so that you can write R Markdown and produce a README.md suitable for GitHub. This enables you to show off your functions, your test results, etc. At the top of the README created, there will be a [repostatus.org badge indicating the status of your project](https://www.repostatus.org/). By default the initial status is WIP, change it via the `initial_status` argument. Depending on the `external_setup` options, a Travis badge might be added too. 
+
+### Dependency management
+A problem with programming using other people's code is that other people's code changes. This risks your results changing over time. To prevent this, 
+
+* `starters` projects are created with a DESCRIPTION file where you can naturally list dependencies via running `usethis::use_package()`.
+
+* `starters` help you use packages improving dependency management even more, via the `packagedeps` argument that can be either "none", "packrat" or "checkpoint" (default).
+
+    * [`packrat`](https://rstudio.github.io/packrat/) will build a manifest of package versions based on what you use at the point of production. It will then ensure people use the Packrat defined packages, instead of whatever version they have installed. [Read more on `packrat`](https://rstudio.github.io/packrat/)
+    
+    * [`checkpoint`](https://rdrr.io/cran/checkpoint) moves away from using your default CRAN repository and points to a specific repository that has daily snapshots. You then work with CRAN as of a specific date (by default the date you created the project). This is lighter weight than `packrat` but does not help with non-CRAN packages. [Read more on `checkpoint`.](https://rdrr.io/cran/checkpoint)
+
+
+### Git, GitHub, Travis
+
+We take the opinion that your project should feature the following things by default but they can always be turned off by using the parameters in the creation of a project.
+
+* Git, controlled by the Boolean `git` argument.
+
+* external setup, controlled by the `external_setup` argument, either `NULL` (no external setup) or a named list. Below is its default value:
+
+```r
+external_setup = list(
+                     git_service = "GitHub",
+                     login = gh::gh_whoami()$login,
+                     private = FALSE,
+                     protocol = "ssh",
+                     ci_activation = "travis"
+                               )
+```                  
+
+Let's dig into the different elements of the list.
+
+* "GitHub" is the only supported `git_service` (Git platform) at the moment. A GitHub repo of the same name as the project will be created. Its description will use the `title` 
+argument of the `create_basic_project()` function.
+
+* The account used will be the one provided as `login`, if none is provided `gh::gh_whoami()$login`. 
+
+* The repo created will be public by default (`private` argument). If you set `private` to TRUE the repo will be private. It means Travis CI won't work.
+
+* You can opt out of "ssh" in favour of "https" via the `git_protocol` element of the `external_setup` argument.
+
+* "travis" is the only `ci_activation` option at the moment. What will happen is the creation of a Travis config file (`.travis.yml`), of an empty `tic.R` file (for other project types, `tic.R` does contain useful ), and the Travis project activation. Since the `tic.R` file of basic projects is empty, it's pretty harmless until you add instructions in there. 
+
+
+## Analysis projects
+
+Analysis projects are projects where you perform some analysis and probably produce some outputs. The function `create_analysis_project()` aims to facilitate your analysis by setting up a best practices template project.
+
+At the moment, this function will set up a **basic project with some additional folders**:
+
+- data/
+
+- analysis/
+
+- outputs/
+
+### Travis
+
+By default, these projects' tic.R will knit the R Markdown files contained in analysis/ and deploy them to a gh-pages branch. Note that GitHub pages websites are public.
+
+## Training projects
+
+Training projects are projects where you need to produce materials for others and/or to produce slides. The function `create_training_project()` aims to facilitate your training projects by setting up a best practices template project.
+
+At the moment, this function will set up a **basic project with some additional folders**:
+
+- data
+
+- handouts
+
+- slides
+
+### Travis
+
+By default, these projects' tic.R will knit the R Markdown files contained in handouts/ and slides/ and deploy them to a gh-pages branch. Note that GitHub pages websites are public.
+
+### Packages used to document 
+
+If you make a `handouts/` or `slides/` directory (both of which are created with the defaults), we will add `rmarkdown` to the project's DESCRIPTION file. 
+
+You can specify an alternative package for your handouts via `handoutEngine`. At present, two additional package options are supported. The first is [`bookdown`](https://cran.r-project.org/package=bookdown), and the second is [`tufte`](https://cran.r-project.org/package=tufte). If you select `bookdown` or `tufte` as the `handoutEngine`, the relevant package will be added to the DESCRIPTION file and the demo files for this handout format will be added to the `handouts/` directory.
+
+You can also specify an alternative package for your slides via `slideEngine`. The currently supported (most popular) package options are [`revealjs`](https://cran.r-project.org/package=revealjs) and [`xaringan`](https://cran.r-project.org/package=xaringan). Note also that the default `slideEngine` option (`rmarkdown`) caters for a number of additional R Markdown presentation formats such as `io_slides`, `slidy`, and `beamer` since these formats do not have additional package dependencies (although in the case of `beamer`, you'll need to have `TeX` installed). If you are using RStudio, you can find R Markdown templates for these presentation formats by going to File -> New File -> R Markdown -> Presentation.
+
+If the `packrat` argument is not supplied or is set to `TRUE`, we will update the packrat manifest so that the packages are available when you open the project.
+
+
+
+
+
+# Package projects
+
+The function `create_package_project()` aims to facilitate your package development by setting up a best practices template project. All `starters` projects take advantage of R package building infrastructure, but `create_package_project()` is the function you'd use as an R package developer to create an R package (or a research compendium). 
+
+Test `create_package_project()` via running the **innocuous** chunk below, that'll create a package project in a temporary directory, and nothing on GitHub/Travis, and open it in a new RStudio session so you can browse files.
+
+```r
+starters::create_package_project(name = "coolkittens",
+                               title = "A project about baby cats",
+                               folder = tempdir(),
+                               external_setup = NULL,
+                               open = TRUE)
+```
+
+Package projects contain
+
+* A DESCRIPTION file filled like the DESCRIPTION of basic projects
+
+* An .Rbuildignore file
+
+* An RStudio project file
+
+* An R/ folder with a file containing the skeleton of a package-level doc (`usethis::use_package_doc()`)
+
+* A MIT licence file, at the moment not taking into account the default description you might have set via DESCRIPTION defaults.
+
+* A code of conduct (`usethis::use_code_of_conduct()`)
+
+* A NEWS.md file (`usethis::use_news_md()`)
+
+* A README.Rmd (`usethis::use_readme_rmd()`) with a repostatus.org badge (`initial_status` argument, "wip" by default). Depending on the `external_setup` options, a Travis badge and a code coverage badge might be added too.
+
+* A test folder (`usethis::use_testthat` + `usethis::use_test("test-sample")`)
+
+* A vignette named like the project (`usethis::use_vignette()`)
+
+* A `pkgdown` config file (`usethis::use_pkgdown()`) unless the `pkgdown` argument is set to FALSE.
+
+## Continuous integration
+
+External setup is controlled [like for basic projects](#git-github-travis) with a supplementary argument `coverage`, either NULL, "codecov" or "coveralls" to control which code coverage, if any, is to be used.
+
+The tic.R of package projects will check the package, build the pkgdown website and deploy it to a gh-pages branch, compute a project health report (see `starters::get_project_health()`) and deploy it to a project-health branch.
