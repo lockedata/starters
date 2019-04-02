@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-> **`starters` is designed to take away some grunt work around setting up new projects.**
+> **One-liners to set-up R projects**
 
 # Principles
 
@@ -17,7 +17,7 @@ vignette: >
 
 Before using `starters` for the first time, run `start_here()`.
 
-This function checks different aspects of your setup (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). 
+This function checks different aspects of your setup (Git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). 
 
 ```r
 starters::start_here()
@@ -63,11 +63,11 @@ By default, `starters` functions encourage the combined use of Git, GitHub and T
 
 * For the most part, we expect your Git repositories to live on [GitHub](https://github.com). **To learn more about git and GitHub we recommend reading [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs, Jim Hester.**
 
-* If you don't opt out of Git, the projects will be created with a [`styler`](https://github.com/r-lib/styler) pre-commit hook.
+* If you don't opt out of Git, the projects will be created with a [`styler`](https://github.com/r-lib/styler) pre-commit hook. It'll run the code `styler::style_pkg()` to ensure you're committing properly styled code (you can override it for some commits by using the `--no-verify` option).
 
 * For continuous integration, we only support Travis at the moment, via the [`tic`](https://ropenscilabs.github.io/tic/) and [`travis`](https://ropenscilabs.github.io/travis/) packages. [Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and training projects as you can use it to build your reproducible documentation and host it for free on GitHub. If you're new to Travis, read [Julia Silge's great intro](https://juliasilge.com/blog/beginners-guide-to-travis/), and create a Travis account linked to your GitHub account.
 
-_You can opt out of git by setting the `git` argument of `starters` function to `FALSE`, and of GitHub as well as Travis by setting their `external_setup` argument to `NULL`._
+_You can opt out of git by setting the `git` argument of `starters` functions to `FALSE`, and of GitHub as well as Travis by setting the `external_setup` argument to `NULL`._
 
 When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
 
@@ -88,7 +88,15 @@ All project-creating functions in `starters` have both a snake case name, and a 
 
 A basic project created with `create_basic_project()` is the fundamental building block for various flavours of projects you might build with `starters`. 
 
-Test `create_basic_project()` via running the **innocuous** chunk below, that'll create a basic project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis, and open it in a new RStudio session so you can browse files.
+A basic project contains a minimal package structure to allow you an easy way to:
+
+- make functions for use within your work,
+
+- list packages needed for easy dependency management,
+
+- build your outputs using mechanisms aimed at packages.
+
+Test `create_basic_project()` via running the **innocuous** chunk below, that'll create a basic project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
 
 ```r
 starters::create_basic_project(name = "cooldoggos",
@@ -98,25 +106,24 @@ starters::create_basic_project(name = "cooldoggos",
                                external_setup = NULL,
                                open = TRUE)
 ```
-
-
-A basic project contains a minimal package structure to allow you an easy way to:
-
-- make functions for use within your work
-
-- list packages needed for easy dependency management
-
-- build your outputs using mechanisms aimed at packages
  
 All basic projects contain:
+
+```
+├── DESCRIPTION
+├── R
+├── README.Rmd
+├── README.md
+└── cooldoggos.Rproj
+```
 
 * a DESCRIPTION file with default values taken from default DESCRIPTION values you had set (probably at least your name), a `Package` field equal to your project name and a `Title` field equal to the `title` argument. If you let `title` to its `NULL` value a random title would be generated using the `praise` package.
 
 * an `R/` directory
 
-* an RStudio project file
-
 * a README.Rmd. A README is a wonderful introduction to your project and it's the first thing people see when they look at it on GitHub. We will create a README.Rmd so that you can write R Markdown and produce a README.md suitable for GitHub. This enables you to show off your functions, your test results, etc. At the top of the README created, there will be a [repostatus.org badge indicating the status of your project](https://www.repostatus.org/). By default the initial status is WIP, change it via the `initial_status` argument. Depending on the `external_setup` options, a Travis badge might be added too. 
+
+* an RStudio project file
 
 ### Dependency management
 A problem with programming using other people's code is that other people's code changes. This risks your results changing over time. To prevent this, 
@@ -151,7 +158,7 @@ external_setup = list(
 Let's dig into the different elements of the list.
 
 * "GitHub" is the only supported `git_service` (Git platform) at the moment. A GitHub repo of the same name as the project will be created. Its description will use the `title` 
-argument of the `create_basic_project()` function.
+argument of the `create_basic_project()` function. You'll still need to set up the remote and push because of `git2r`'s current limitations on some OS.
 
 * The account used will be the one provided as `login`, if none is provided `gh::gh_whoami()$login`. 
 
@@ -166,13 +173,37 @@ argument of the `create_basic_project()` function.
 
 Analysis projects are projects where you perform some analysis and probably produce some outputs. The function `create_analysis_project()` aims to facilitate your analysis by setting up a best practices template project.
 
-At the moment, this function will set up a **basic project with some additional folders**:
+At the moment, this function will set up a **basic project with some additional folders**, by default:
 
 - data/
 
 - analysis/
 
 - outputs/
+
+Test `create_analysis_project()` via running the **innocuous** chunk below, that'll create an analysis project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
+
+```r
+starters::create_analysis_project(name = "verycooldoggos",
+                               title = "A project about dogs",
+                               folder = tempdir(),
+                               packagedeps = "none",
+                               external_setup = NULL,
+                               open = TRUE)
+```
+ 
+Resulting directory tree:
+
+```
+├── DESCRIPTION
+├── R
+├── README.Rmd
+├── README.md
+├── analysis
+├── data
+├── outputs
+└── verycooldoggos.Rproj
+```
 
 ### Travis
 
@@ -182,7 +213,7 @@ By default, these projects' tic.R will knit the R Markdown files contained in an
 
 Training projects are projects where you need to produce materials for others and/or to produce slides. The function `create_training_project()` aims to facilitate your training projects by setting up a best practices template project.
 
-At the moment, this function will set up a **basic project with some additional folders**:
+At the moment, this function will set up a **basic project with some additional folders**, by default:
 
 - data
 
@@ -190,6 +221,31 @@ At the moment, this function will set up a **basic project with some additional 
 
 - slides
 
+Test `create_training_project()` via running the **innocuous** chunk below, that'll create a training project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
+
+```r
+starters::create_training_project(name = "verynicedoggos",
+                               title = "A project about dogs",
+                               folder = tempdir(),
+                               dirs = c("data", "handouts", "slides", "cat-pictures"),
+                               packagedeps = "none",
+                               external_setup = NULL,
+                               open = TRUE)
+```
+ 
+Resulting directory tree:
+
+```
+├── DESCRIPTION
+├── R
+├── README.Rmd
+├── README.md
+├── cat-pictures
+├── data
+├── handouts
+├── slides
+└── verynicedoggos.Rproj
+```
 ### Travis
 
 By default, these projects' tic.R will knit the R Markdown files contained in handouts/ and slides/ and deploy them to a gh-pages branch. Note that GitHub pages websites are public.
@@ -212,7 +268,7 @@ If the `packrat` argument is not supplied or is set to `TRUE`, we will update th
 
 The function `create_package_project()` aims to facilitate your package development by setting up a best practices template project. All `starters` projects take advantage of R package building infrastructure, but `create_package_project()` is the function you'd use as an R package developer to create an R package (or a research compendium). 
 
-Test `create_package_project()` via running the **innocuous** chunk below, that'll create a package project in a temporary directory, and nothing on GitHub/Travis, and open it in a new RStudio session so you can browse files.
+Test `create_package_project()` via running the **innocuous** chunk below, that'll create a package project in a temporary directory, nothing on GitHub/Travis, and will open the new project in a new RStudio session so you can browse files.
 
 ```r
 starters::create_package_project(name = "coolkittens",
