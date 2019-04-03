@@ -69,7 +69,7 @@ By default, `starters` functions encourage the combined use of Git, GitHub and T
 
 * For continuous integration, we only support Travis at the moment, via the [`tic`](https://ropenscilabs.github.io/tic/) and [`travis`](https://ropenscilabs.github.io/travis/) packages. [Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and training projects as you can use it to build your reproducible documentation and host it for free on GitHub. If you're new to Travis, read [Julia Silge's great intro](https://juliasilge.com/blog/beginners-guide-to-travis/), and create a Travis account linked to your GitHub account.
 
-_You can opt out of git by setting the `git` argument of `starters` functions to `FALSE`, and of GitHub as well as Travis by setting the `external_setup` argument to `NULL`._
+**You can opt out of git by setting the `git` argument of `starters` functions to `FALSE`, and of GitHub as well as Travis by setting the `external_setup` argument to `NULL`. See [this section](#git-github-travis) for more information about git and external setup options in `starters`.**
 
 When the project is created all the template aspects will be committed to source control, such that you could import the project into GitHub, or use the command line to push it to GitHub.
 
@@ -160,15 +160,15 @@ external_setup = list(
 Let's dig into the different elements of the list.
 
 * "GitHub" is the only supported `git_service` (Git platform) at the moment. A GitHub repo of the same name as the project will be created. Its description will use the `title` 
-argument of the `create_basic_project()` function. You'll still need to set up the remote and push because of `git2r`'s current limitations on some operating systems.
+argument of the `create_basic_project()` function.
 
 * The account used will be the one provided as `login`, if none is provided `gh::gh_whoami()$login`. 
 
 * The repo created will be public by default (`private` argument). If you set `private` to TRUE the repo will be private. It means Travis CI won't work.
 
-* You can opt out of "ssh" in favour of "https" via the `git_protocol` element of the `external_setup` argument.
+* You can opt out of "ssh" in favour of "https" via the `git_protocol` element of the `external_setup` argument. This will be taken into account whilst setting up the origin remote URL.  You'll still need to write `git push --set-upstream origin master` for the first push, because of `git2r`'s current limitations on some operating systems preventing us from setting the upstream.
 
-* "travis" is the only `ci_activation` option at the moment. What will happen is the creation of a Travis config file (`.travis.yml`), of an empty `tic.R` file (for other project types, `tic.R` does contain useful instructions), and the Travis project activation. Since the `tic.R` file of basic projects is empty, it's pretty harmless until you add instructions in there. 
+* "travis" is the only `ci_activation` option at the moment, or you can choose `NULL` for no CI. What will happen is the creation of a Travis config file (`.travis.yml`), of an empty `tic.R` file (for other project types, `tic.R` does contain useful instructions), and the Travis project activation. Since the `tic.R` file of basic projects is empty, it's pretty harmless until you add instructions in there. 
 
 
 ## Analysis projects
@@ -280,29 +280,55 @@ starters::create_package_project(name = "coolkittens",
                                open = TRUE)
 ```
 
+Resulting directory tree:
+
+```
+├── CODE_OF_CONDUCT.md
+├── DESCRIPTION
+├── LICENSE
+├── LICENSE.md
+├── NAMESPACE
+├── NEWS.md
+├── R
+│   └── coolkittens-package.R
+├── README.Rmd
+├── README.md
+├── _pkgdown.yml
+├── coolkittens.Rproj
+├── tests
+│   ├── testthat
+│   │   └── test-sample.R
+│   └── testthat.R
+└── vignettes
+    └── coolkittens.Rmd
+```
+
 Package projects contain
-
-* A DESCRIPTION file filled like the DESCRIPTION of basic projects
-
-* An .Rbuildignore file
-
-* An RStudio project file
-
-* An R/ folder with a file containing the skeleton of a package-level doc (`usethis::use_package_doc()`)
-
-* A MIT licence file, at the moment not taking into account the default description you might have set via DESCRIPTION defaults.
 
 * A code of conduct (`usethis::use_code_of_conduct()`)
 
+* A DESCRIPTION file filled like the DESCRIPTION of basic projects
+
+* A MIT licence file, at the moment not taking into account the default description you might have set via DESCRIPTION defaults.
+
+* A NAMESPACE
+
 * A NEWS.md file (`usethis::use_news_md()`)
 
+* An R/ folder with a file containing the skeleton of a package-level doc (`usethis::use_package_doc()`)
+
+* An .Rbuildignore file
+
 * A README.Rmd (`usethis::use_readme_rmd()`) with a repostatus.org badge (`initial_status` argument, "wip" by default). Depending on the `external_setup` options, a Travis badge and a code coverage badge might be added too.
+
+* A `pkgdown` config file (`usethis::use_pkgdown()`) unless the `pkgdown` argument is set to FALSE.
+
+* An RStudio project file
 
 * A test folder (`usethis::use_testthat` + `usethis::use_test("test-sample")`)
 
 * A vignette named like the project (`usethis::use_vignette()`)
 
-* A `pkgdown` config file (`usethis::use_pkgdown()`) unless the `pkgdown` argument is set to FALSE.
 
 ## Continuous integration
 
