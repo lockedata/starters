@@ -53,7 +53,9 @@ starters::start_here()
 
 ## RStudio 
 
-All the projects are created with an RStudio project, but you could use `starters` outside of RStudio. For RStudio addins fans, [\@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for setting up projects with `starters`.
+All the projects are created with an RStudio project, but **you could use `starters` outside of RStudio**. 
+
+For RStudio addins fans, [\@jonmcalder](https://github.com/jonmcalder) made a nifty **[RStudio addin](https://rstudio.github.io/rstudioaddins/)** for setting up projects with `starters`.
 
 ## Best practice: Git, GitHub, Continuous Integration
 
@@ -63,7 +65,7 @@ By default, `starters` functions encourage the combined use of Git, GitHub and T
 
 * For the most part, we expect your Git repositories to live on [GitHub](https://github.com). **To learn more about git and GitHub we recommend reading [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan, the STAT 545 TAs, Jim Hester.**
 
-* If you don't opt out of Git, the projects will be created with a [`styler`](https://github.com/r-lib/styler) pre-commit hook. It'll run the code `styler::style_pkg()` to ensure you're committing properly styled code (you can override it for some commits by using the `--no-verify` option).
+* If you don't opt out of Git, the projects will be created with a [`styler`](https://github.com/r-lib/styler) pre-commit hook. It'll run the code `styler::style_pkg()` to ensure you're committing properly styled code (you can override it for some commits by using the `--no-verify` option of `git commit`).
 
 * For continuous integration, we only support Travis at the moment, via the [`tic`](https://ropenscilabs.github.io/tic/) and [`travis`](https://ropenscilabs.github.io/travis/) packages. [Travis-CI](https://travis-ci.org/) is a free continuous integration tool that allows projects from GitHub to be checked in a clean environment and for further actions to be taken if the project doesn't have any errors. This is great for checking out your packages work, but it's also a really useful utility for analysis and training projects as you can use it to build your reproducible documentation and host it for free on GitHub. If you're new to Travis, read [Julia Silge's great intro](https://juliasilge.com/blog/beginners-guide-to-travis/), and create a Travis account linked to your GitHub account.
 
@@ -86,7 +88,7 @@ All project-creating functions in `starters` have both a snake case name, and a 
 
 ## Basic projects
 
-A basic project created with `create_basic_project()` is the fundamental building block for various flavours of projects you might build with `starters`. 
+A basic project created with `create_basic_project()` is the fundamental building block for various flavours of projects you might build with `starters` ([analysis projects](#analysis-projects), [training projects](#training-projects)). 
 
 A basic project contains a minimal package structure to allow you an easy way to:
 
@@ -96,7 +98,7 @@ A basic project contains a minimal package structure to allow you an easy way to
 
 - build your outputs using mechanisms aimed at packages.
 
-Test `create_basic_project()` via running the **innocuous** chunk below, that'll create a basic project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
+Test `create_basic_project()` via running the chunk below, that'll create a basic project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
 
 ```r
 starters::create_basic_project(name = "cooldoggos",
@@ -130,9 +132,9 @@ A problem with programming using other people's code is that other people's code
 
 * `starters` projects are created with a DESCRIPTION file where you can naturally list dependencies via running `usethis::use_package()`.
 
-* `starters` help you use packages improving dependency management even more, via the `packagedeps` argument that can be either "none", "packrat" or "checkpoint" (default).
+* `starters` helps you use packages improving dependency management even more, via the `packagedeps` argument that can be either "none", "packrat" or "checkpoint" (default).
 
-    * [`packrat`](https://rstudio.github.io/packrat/) will build a manifest of package versions based on what you use at the point of production. It will then ensure people use the Packrat defined packages, instead of whatever version they have installed. [Read more on `packrat`](https://rstudio.github.io/packrat/)
+    * [`packrat`](https://rstudio.github.io/packrat/) will build a manifest of package versions based on what you use at the point of production. It will then ensure people use the Packrat defined packages, instead of whatever version they have installed. [Read more on `packrat`](https://rstudio.github.io/packrat/).
     
     * [`checkpoint`](https://rdrr.io/cran/checkpoint) moves away from using your default CRAN repository and points to a specific repository that has daily snapshots. You then work with CRAN as of a specific date (by default the date you created the project). This is lighter weight than `packrat` but does not help with non-CRAN packages. [Read more on `checkpoint`.](https://rdrr.io/cran/checkpoint)
 
@@ -158,7 +160,7 @@ external_setup = list(
 Let's dig into the different elements of the list.
 
 * "GitHub" is the only supported `git_service` (Git platform) at the moment. A GitHub repo of the same name as the project will be created. Its description will use the `title` 
-argument of the `create_basic_project()` function. You'll still need to set up the remote and push because of `git2r`'s current limitations on some OS.
+argument of the `create_basic_project()` function. You'll still need to set up the remote and push because of `git2r`'s current limitations on some operating systems.
 
 * The account used will be the one provided as `login`, if none is provided `gh::gh_whoami()$login`. 
 
@@ -166,7 +168,7 @@ argument of the `create_basic_project()` function. You'll still need to set up t
 
 * You can opt out of "ssh" in favour of "https" via the `git_protocol` element of the `external_setup` argument.
 
-* "travis" is the only `ci_activation` option at the moment. What will happen is the creation of a Travis config file (`.travis.yml`), of an empty `tic.R` file (for other project types, `tic.R` does contain useful ), and the Travis project activation. Since the `tic.R` file of basic projects is empty, it's pretty harmless until you add instructions in there. 
+* "travis" is the only `ci_activation` option at the moment. What will happen is the creation of a Travis config file (`.travis.yml`), of an empty `tic.R` file (for other project types, `tic.R` does contain useful instructions), and the Travis project activation. Since the `tic.R` file of basic projects is empty, it's pretty harmless until you add instructions in there. 
 
 
 ## Analysis projects
@@ -181,7 +183,7 @@ At the moment, this function will set up a **basic project with some additional 
 
 - outputs/
 
-Test `create_analysis_project()` via running the **innocuous** chunk below, that'll create an analysis project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
+Test `create_analysis_project()` via running the chunk below, that'll create an analysis project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
 
 ```r
 starters::create_analysis_project(name = "verycooldoggos",
@@ -221,7 +223,7 @@ At the moment, this function will set up a **basic project with some additional 
 
 - slides
 
-Test `create_training_project()` via running the **innocuous** chunk below, that'll create a training project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
+Test `create_training_project()` via running the chunk below, that'll create a training project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.
 
 ```r
 starters::create_training_project(name = "verynicedoggos",
@@ -268,7 +270,7 @@ If the `packrat` argument is not supplied or is set to `TRUE`, we will update th
 
 The function `create_package_project()` aims to facilitate your package development by setting up a best practices template project. All `starters` projects take advantage of R package building infrastructure, but `create_package_project()` is the function you'd use as an R package developer to create an R package (or a research compendium). 
 
-Test `create_package_project()` via running the **innocuous** chunk below, that'll create a package project in a temporary directory, nothing on GitHub/Travis, and will open the new project in a new RStudio session so you can browse files.
+Test `create_package_project()` via running the chunk below, that'll create a package project in a temporary directory, nothing on GitHub/Travis, and will open the new project in a new RStudio session so you can browse files.
 
 ```r
 starters::create_package_project(name = "coolkittens",
