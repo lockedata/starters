@@ -21,15 +21,15 @@ new projects.
 
 All projects get setup with Git, GitHub and Travis by default.
 
-  - Use `createPackageProject` to setup a project with code coverage,
-    vignettes, unit testing etc. out of the box
+  - Use `create_package_project()` to setup a project with code
+    coverage, vignettes, unit testing etc. out of the box
 
-  - Use `createAnalysisProject` to get a project ready for a typical
+  - Use `create_analysis_project()` to get a project ready for a typical
     analysis project. It includes packrat to help with reproducibility.
 
-  - Use `createTrainingProject` to get a project ready for delivering
-    training that often involves handouts and presentation materials. It
-    includes packrat to help with reproducibility.
+  - Use `create_training_project()` to get a project ready for
+    delivering training that often involves handouts and presentation
+    materials. It includes packrat to help with reproducibility.
 
 All functions implement name validation based on the guidance in
 [“Writing R
