@@ -53,7 +53,7 @@ starters::start_here()
 
 ## RStudio 
 
-All the projects are created with an RStudio project, but you could use `starters` outside of RStudio. For RStudio addins fans who want to set up a pRoject without using the R functions, [\@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for setting up projects with `starters`.
+All the projects are created with an RStudio project, but you could use `starters` outside of RStudio. For RStudio addins fans, [\@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for setting up projects with `starters`.
 
 ## Best practice: Git, GitHub, Continuous Integration
 

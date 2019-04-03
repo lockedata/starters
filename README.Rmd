@@ -49,7 +49,7 @@ starters::start_here()
 This function checks different aspects of your setup (git installation, gitconfig, `GITHUB_PAT`, `DESCRIPTION` default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from [`usethis` setup article](https://usethis.r-lib.org/articles/articles/usethis-setup.html). For each aspect, if your setup needs improvements an informative error message will be thrown so you might be able to know how to proceed.
 
 ## RStudio gadget
-If you want to set up a pRoject without using the R functions, [\@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/) for making starters. Install the package to get it added to your RStudio instance.
+If you want to set up a project without using the R functions, [\@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio addin](https://rstudio.github.io/rstudioaddins/). Install the package to get it added to your RStudio instance.
 
 ## Contributing
 

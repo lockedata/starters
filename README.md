@@ -61,10 +61,10 @@ message will be thrown so you might be able to know how to proceed.
 
 ## RStudio gadget
 
-If you want to set up a pRoject without using the R functions,
+If you want to set up a project without using the R functions,
 [@jonmcalder](https://github.com/jonmcalder) made a nifty [RStudio
-addin](https://rstudio.github.io/rstudioaddins/) for making starters.
-Install the package to get it added to your RStudio instance.
+addin](https://rstudio.github.io/rstudioaddins/). Install the package to
+get it added to your RStudio instance.
 
 ## Contributing
 
