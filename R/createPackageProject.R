@@ -112,7 +112,7 @@ createPackageProject <- function(name, title = NULL,
       add_repo_status(initial_status)
 
       usethis::use_testthat()
-      usethis::use_vignette(name)
+      usethis::use_vignette(gsub("\\.", "-", name))
       if (git) {
         usethis::use_git(message = cool_first_commit())
         add_styler_hook()
