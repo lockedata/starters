@@ -61,4 +61,4 @@ Please note that this R package is released with a [Contributor Code of Conduct]
  
 ### Up for grabs
 
-Make sure to check out the [Issues tab in GitHub](https://github.com/stephlocke/starters/issues)! We're making this project a great place to start contributing to R packages. We will help you through the process. 
+Make sure to check out the [Issues tab in GitHub](https://github.com/lockedata/starters/issues)! We're making this project a great place to start contributing to R packages. We will help you through the process. 
