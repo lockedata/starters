@@ -88,23 +88,7 @@ createPackageProject <- function(name, title = NULL,
         maintainer <- "Jane Doe"
       }
 
-      usethis::use_template("license-mit.md",
-                            "LICENSE.md",
-                            ignore = TRUE,
-                            data = list(
-                              year = format(Sys.Date(), "%Y"),
-                              name = maintainer,
-                              project = name
-                            )
-      )
-      usethis::use_template("license-mit.txt",
-                            "LICENSE",
-                            data = list(
-                              year = format(Sys.Date(), "%Y"),
-                              name = maintainer,
-                              project = name
-                            )
-      )
+      usethis::use_mit_license()
       usethis::use_package_doc()
       # README stuff
       use_readme(name)
