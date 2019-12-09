@@ -3,7 +3,7 @@
 # Usually you shouldn't need to change the first part of the file
 
 # DO NOT CHANGE THE CODE BELOW
-before_install: R -q -e 'install.packages(c("remotes", "curl")); remotes::install_github("lockedatapublished/lockedatapkg"); remotes::install_github("metrumresearchgroup/covrpage"); remotes::install_github("ropenscilabs/tic"); tic::prepare_all_stages(); tic::before_install()'
+before_install: R -q -e 'install.packages(c("remotes", "curl", "cli")); remotes::install_github("lockedatapublished/lockedatapkg"); remotes::install_github("metrumresearchgroup/covrpage"); remotes::install_github("ropenscilabs/tic"); tic::prepare_all_stages(); tic::before_install()'
 install: R -q -e 'tic::install()'
 after_install: R -q -e 'tic::after_install()'
 before_script: R -q -e 'tic::before_script()'
@@ -34,7 +34,7 @@ env:
   global:
   - _R_CHECK_FORCE_SUGGESTS_=false
   - MAKEFLAGS="-j 2"
-  
+
 notifications:
   webhooks:
     urls:
