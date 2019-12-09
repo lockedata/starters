@@ -90,7 +90,7 @@ projectGadget <- function() {
   server <- function(input, output, session) {
 
     # Call custom javascript to scroll window
-    observeEvent(input$externalSetup,
+    shiny::observeEvent(input$externalSetup,
       if(input$externalSetup) session$sendCustomMessage(type = "scrollCallback", 1)
     )
 
