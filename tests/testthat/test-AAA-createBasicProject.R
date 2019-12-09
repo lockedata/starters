@@ -35,7 +35,6 @@ test_that("createBasicProject() errors if name missing or not correct", {
 
 
 test_that("createBasicProject() creates as expected", {
-  skip("local")
   createBasicProject(project_name,
     folder = tmp,
     packagedeps = "renv",
@@ -62,16 +61,18 @@ unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd(), force = TRUE)
 
 test_that("createBasicProject() cleans if there was an error", {
-  m <- mockery::mock(stop())
-  with_mock(dir.create = m, {
+  mockery::stub(where = createBasicProject,
+                what = dir.create,
+                what = stop())
     expect_message(
       createBasicProject("blablabla",
-        external_setup = NULL
+        external_setup = NULL,
+        packagedeps = "none"
       ),
       "Oops"
     )
-  })
 })
+
 
 test_that("createBasicProject() can create a GitHub repo", {
   skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
