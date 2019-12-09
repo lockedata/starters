@@ -1,12 +1,9 @@
-tmp <- tempfile(
-  pattern = "ttt",
-  tempdir(check = TRUE)
-)
-fs::dir_create(tmp)
-
 project_name <- "trainingProject2"
 
 test_that("createTrainingProject() errors if name missing or not correct", {
+
+  tmp <- temp_folder("ttt")
+
   expect_error(createTrainingProject(
     folder = tmp,
     packagedeps = "renv",
@@ -33,6 +30,9 @@ test_that("createTrainingProject() errors if name missing or not correct", {
 
 
 test_that("createTrainingProject() creates as expected when using defaults", {
+
+  tmp <- temp_folder("ttt")
+
   createTrainingProject(project_name,
     folder = tmp,
     packagedeps = "none",
@@ -52,9 +52,10 @@ test_that("createTrainingProject() creates as expected when using defaults", {
   expect_true(file.exists(file.path(tmp, project_name, "slides")))
 })
 
-fs::dir_delete(file.path(tmp, project_name))
-
 test_that("createTrainingProject() creates as expected when using bookdown and revealjs", { # nolint
+
+  tmp <- temp_folder("ttt")
+
   createTrainingProject(project_name,
     folder = tmp,
     handoutEngine = "bookdown", slideEngine = "revealjs",
@@ -82,9 +83,10 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
   )))
 })
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-
 test_that("createTrainingProject() creates as expected when using tufte and xaringan", { # nolint
+
+  tmp <- temp_folder("ttt")
+
   createTrainingProject(project_name,
     folder = tmp,
     handoutEngine = "tufte", slideEngine = "xaringan",
@@ -114,6 +116,9 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 })
 
 test_that("createTrainingProject() cleans if there was an error", {
+
+  tmp <- temp_folder("ttt")
+
   mockery::stub(where = createTrainingProject,
                 what = "createdirs",
                 how = stop)
@@ -126,12 +131,10 @@ test_that("createTrainingProject() cleans if there was an error", {
       ),
       "Oops"
     )
-    unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 
 })
 
 teardown({
-fs::dir_delete(tmp)
 unloadNamespace("tufte")
 unloadNamespace("bookdown")
 unloadNamespace("xaringan")

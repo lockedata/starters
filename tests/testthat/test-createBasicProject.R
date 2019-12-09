@@ -1,12 +1,7 @@
-usethis::proj_set(getwd(), force = TRUE)
-tmp <- fs::path_temp("basic")
-
-fs::dir_create(tmp)
-
 project_name <- "basicProject"
 
 test_that("createBasicProject() creates as expected", {
-
+  tmp <- temp_folder("bbb")
   createBasicProject(project_name,
                      folder = tmp,
                      packagedeps = "renv",
@@ -24,10 +19,11 @@ test_that("createBasicProject() creates as expected", {
   expect_true(dir.exists(file.path(tmp, project_name, "renv")))
   expect_true(file.exists(file.path(tmp, project_name, ".git")))
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
-  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 })
 
 test_that("createBasicProject() errors if name missing or not correct", {
+  tmp <- temp_folder("bbb")
+
   expect_error(createBasicProject(
     folder = tmp,
     packagedeps = "renv",
@@ -53,6 +49,8 @@ test_that("createBasicProject() errors if name missing or not correct", {
 })
 
 test_that("createBasicProject() cleans if there was an error", {
+  tmp <- temp_folder("bbb")
+
   mockery::stub(where = .createBasicProject,
                 what = "desc::desc_set",
                 how = stop)
@@ -66,9 +64,11 @@ test_that("createBasicProject() cleans if there was an error", {
     )
 })
 
-
 test_that("createBasicProject() can create a GitHub repo", {
   skip_if_not(identical(Sys.getenv("TRAVIS"), "true"))
+
+  tmp <- temp_folder("bbb")
+
   testthat::skip_if_not(nzchar(Sys.getenv("GITHUB_PAT")))
   testthat::skip_if_not(gh::gh_whoami()$name == "chibimaelle")
   createBasicProject(
@@ -91,9 +91,4 @@ test_that("createBasicProject() can create a GitHub repo", {
     ))
 
   expect_true(gh_retry(quoted_expression))
-  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-})
-
-teardown({
-  fs::dir_delete(tmp)
 })

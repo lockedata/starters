@@ -1,9 +1,3 @@
-tmp <- tempfile(
-  pattern = "ppp",
-  tempdir(check = TRUE)
-)
-fs::dir_create(tmp)
-
 setup({
   options(usethis.description = list(
     usethis.name = "Jane Doe",
@@ -18,6 +12,9 @@ setup({
 project_name <- "packageProject2"
 
 test_that("createPackageProject() errors if name missing or not correct", {
+
+  tmp <- temp_folder("ppp")
+
   expect_error(createPackageProject(
     folder = tmp,
     packagedeps = "renv",
@@ -42,9 +39,10 @@ test_that("createPackageProject() errors if name missing or not correct", {
   ))
 })
 
-
 test_that("createPackageProject() creates as expected when using defaults", {
-print(usethis::proj_get())
+
+  tmp <- temp_folder("ppp")
+
   createPackageProject(project_name,
     folder = tmp,
     external_setup = NULL
@@ -68,9 +66,10 @@ print(usethis::proj_get())
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
 })
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-
 test_that("createPackageProject() cleans if there was an error", {
+
+  tmp <- temp_folder("ppp")
+
   mockery::stub(where = createPackageProject,
                 what = "usethis::use_testthat",
                 how = stop)
@@ -81,9 +80,4 @@ test_that("createPackageProject() cleans if there was an error", {
       "Oops"
     )
 
-})
-
-teardown({
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-fs::dir_delete(tmp)
 })
