@@ -62,8 +62,8 @@ usethis::proj_set(getwd(), force = TRUE)
 
 test_that("createBasicProject() cleans if there was an error", {
   mockery::stub(where = createBasicProject,
-                what = dir.create,
-                what = stop())
+                what = "dir.create",
+                what = stop)
     expect_message(
       createBasicProject("blablabla",
         external_setup = NULL,

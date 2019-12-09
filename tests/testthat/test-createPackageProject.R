@@ -72,15 +72,16 @@ unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd(), force = TRUE)
 
 test_that("createPackageProject() cleans if there was an error", {
-  m <- mockery::mock(stop())
-  with_mock(dir.create = m, {
+  mockery::stub(where = createPackageProject,
+                what = "dir.create",
+                how = stop)
     expect_message(
       createPackageProject("reallynotapkgnameplease",
         external_setup = NULL
       ),
       "Oops"
     )
-  })
+
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
