@@ -55,8 +55,9 @@ test_that("createAnalysisProject() creates as expected when using defaults", {
 })
 
 test_that("createAnalysisProject() cleans if there was an error", {
-  m <- mockery::mock(stop("Nooo"))
-  with_mock(createBasicProject = m, {
+  mockery::stub(where = createAnalysisProject,
+                what = "dir.create",
+                how = stop)
     expect_message(
       createAnalysisProject(project_name,
         folder = tmp,
@@ -66,7 +67,6 @@ test_that("createAnalysisProject() cleans if there was an error", {
       ),
       "Oops"
     )
-  })
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
