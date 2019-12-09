@@ -158,7 +158,8 @@ createBasicProject <- function(name, title = NULL,
                       reset = reset)
 
   if (open) {
-    rstudioapi::openProject(file.path(folder, name), newSession=TRUE)
+    rstudioapi::openProject(file.path(folder, name),
+                            newSession = TRUE)
   }
 }
 
