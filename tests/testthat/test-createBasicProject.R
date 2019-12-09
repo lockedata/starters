@@ -1,3 +1,4 @@
+usethis::proj_set(getwd(), force = TRUE)
 tmp <- tempfile(
   pattern = "bbb",
   tempdir(check = TRUE)
@@ -8,7 +9,7 @@ fs::dir_create(tmp)
 project_name <- "basicProject"
 
 test_that("createBasicProject() creates as expected", {
-  #skip("horror")
+
   createBasicProject(project_name,
                      folder = tmp,
                      packagedeps = "renv",
