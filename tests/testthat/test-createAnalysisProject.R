@@ -1,12 +1,9 @@
-tmp <- tempfile(
-  pattern = "aaa",
-  tempdir(check = TRUE)
-)
-fs::dir_create(tmp)
-
 project_name <- "analysisProject"
 
 test_that("createAnalysisProject() errors if name missing or not correct", {
+
+  tmp <- temp_folder("aaa")
+
   expect_error(createAnalysisProject(
     folder = tmp,
     packagedeps = "renv",
@@ -33,6 +30,8 @@ test_that("createAnalysisProject() errors if name missing or not correct", {
 
 
 test_that("createAnalysisProject() creates as expected", {
+  tmp <- temp_folder("aaa")
+
   createAnalysisProject(project_name,
     folder = tmp,
     external_setup = NULL,
@@ -51,11 +50,13 @@ test_that("createAnalysisProject() creates as expected", {
   expect_true(file.exists(file.path(tmp, project_name, "data")))
   expect_true(file.exists(file.path(tmp, project_name, "analysis")))
   expect_true(file.exists(file.path(tmp, project_name, "outputs")))
-  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 
 })
 
 test_that("createAnalysisProject() cleans if there was an error", {
+
+  tmp <- temp_folder("aaa")
+
   mockery::stub(where = createAnalysisProject,
                 what = "createdirs",
                 how = stop)
@@ -69,6 +70,3 @@ test_that("createAnalysisProject() cleans if there was an error", {
     )
 })
 
-teardown({
-fs::dir_delete(tmp)
-})
