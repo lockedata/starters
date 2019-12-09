@@ -3,6 +3,7 @@ library("tufte")
 library("bookdown")
 library("xaringan")
 library("revealjs")
+library("cli")
 
 # adapted from https://github.com/r-lib/usethis/blob/master/tests/testthat/helper.R
 
