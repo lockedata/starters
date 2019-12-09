@@ -1,7 +1,6 @@
-#####################################
+######################################
 # Dependencies management
 #####################################
-
 #' supported package dependency tools
 #'
 #' @noRd
@@ -33,7 +32,11 @@ setup_dep_system <- function(packagedeps) {
       file = usethis::proj_get()
     )
 
-    checkpoint::checkpoint(Sys.Date(),
+    myinit <- checkpoint::checkpoint
+    mockery::stub(where = myinit,
+                  what = "authorizeFileSystemUse",
+                  how = invisible())
+    myinit(Sys.Date(),
       project = usethis::proj_get(),
       checkpointLocation = usethis::proj_get(),
       forceProject = TRUE,

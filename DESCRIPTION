@@ -38,7 +38,6 @@ Suggests:
     clipr,
     covr,
     covrpage,
-    mockery,
     revealjs,
     shinyFiles,
     styler,
@@ -66,12 +65,13 @@ Imports:
     praise,
     travis,
     pkgbuild,
-    rstudioapi
+    rstudioapi,
+    mockery
 Remotes:
     r-lib/usethis,
     metrumresearchgroup/covrpage,
     ropenscilabs/travis
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 URL: https://github.com/lockedata/starters, https://itsalocke.com/starters/
 BugReports: https://github.com/lockedata/starters/issues

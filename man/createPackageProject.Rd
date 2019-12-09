@@ -6,17 +6,33 @@
 \title{Create a package the usethis way with a number of infrastructure
 commands executed to save you hassle}
 \usage{
-createPackageProject(name, title = NULL, folder = getwd(),
-  initial_status = "wip", coverage = "codecov", git = TRUE,
-  pkgdown = TRUE, external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+createPackageProject(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  coverage = "codecov",
+  git = TRUE,
+  pkgdown = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 
-create_package_project(name, title = NULL, folder = getwd(),
-  initial_status = "wip", coverage = "codecov", git = TRUE,
-  pkgdown = TRUE, external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+create_package_project(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  coverage = "codecov",
+  git = TRUE,
+  pkgdown = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 }
 \arguments{
 \item{name}{Project / package name}

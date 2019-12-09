@@ -5,21 +5,37 @@
 \alias{create_training_project}
 \title{Create a training project}
 \usage{
-createTrainingProject(name, title = NULL, folder = getwd(),
-  initial_status = "wip", dirs = c("data", "handouts", "slides"),
-  handoutEngine = "rmarkdown", slideEngine = "rmarkdown",
-  packagedeps = "packrat", git = TRUE,
-  external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+createTrainingProject(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  dirs = c("data", "handouts", "slides"),
+  handoutEngine = "rmarkdown",
+  slideEngine = "rmarkdown",
+  packagedeps = "packrat",
+  git = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 
-create_training_project(name, title = NULL, folder = getwd(),
-  initial_status = "wip", dirs = c("data", "handouts", "slides"),
-  handoutEngine = "rmarkdown", slideEngine = "rmarkdown",
-  packagedeps = "packrat", git = TRUE,
-  external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+create_training_project(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  dirs = c("data", "handouts", "slides"),
+  handoutEngine = "rmarkdown",
+  slideEngine = "rmarkdown",
+  packagedeps = "packrat",
+  git = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 }
 \arguments{
 \item{name}{Project}
