@@ -21,7 +21,9 @@ setup_dep_system <- function(packagedeps) {
       type = "Imports",
       file = usethis::proj_get()
     )
-    packrat::init(usethis::proj_get(), enter = FALSE)
+    suppressWarnings(
+      packrat::init(usethis::proj_get(), enter = FALSE)
+      )
   }
 
   if (packagedeps == "checkpoint") {
