@@ -97,7 +97,7 @@ createPackageProject <- function(name, title = NULL,
                               project = name
                             )
       )
-      usethis::use_template("license-mit.txt",
+      usethis::use_template("year-copyright.txt",
                             "LICENSE",
                             data = list(
                               year = format(Sys.Date(), "%Y"),
