@@ -38,6 +38,7 @@ Suggests:
     clipr,
     covr,
     covrpage,
+    mockery,
     revealjs,
     shinyFiles,
     styler,
@@ -66,7 +67,6 @@ Imports:
     rstudioapi,
     renv
 Remotes:
-    r-lib/usethis,
     metrumresearchgroup/covrpage,
     ropenscilabs/travis
 Roxygen: list(markdown = TRUE)
