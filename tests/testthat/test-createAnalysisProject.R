@@ -71,5 +71,4 @@ test_that("createAnalysisProject() cleans if there was an error", {
 
 teardown({
 fs::dir_delete(tmp)
-usethis::proj_set(getwd(), force = TRUE)
 })

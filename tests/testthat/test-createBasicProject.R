@@ -1,8 +1,5 @@
 usethis::proj_set(getwd(), force = TRUE)
-tmp <- tempfile(
-  pattern = "bbb",
-  tempdir(check = TRUE)
-)
+tmp <- fs::path_temp("basic")
 
 fs::dir_create(tmp)
 
@@ -99,5 +96,4 @@ test_that("createBasicProject() can create a GitHub repo", {
 
 teardown({
   fs::dir_delete(tmp)
-  usethis::proj_set(getwd(), force = TRUE)
 })

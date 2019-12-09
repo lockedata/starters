@@ -53,7 +53,6 @@ test_that("createTrainingProject() creates as expected when using defaults", {
 })
 
 fs::dir_delete(file.path(tmp, project_name))
-usethis::proj_set(getwd(), force = TRUE)
 
 test_that("createTrainingProject() creates as expected when using bookdown and revealjs", { # nolint
   createTrainingProject(project_name,
@@ -84,7 +83,6 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd(), force = TRUE)
 
 test_that("createTrainingProject() creates as expected when using tufte and xaringan", { # nolint
   createTrainingProject(project_name,
@@ -134,7 +132,6 @@ test_that("createTrainingProject() cleans if there was an error", {
 
 teardown({
 fs::dir_delete(tmp)
-usethis::proj_set(getwd(), force = TRUE)
 unloadNamespace("tufte")
 unloadNamespace("bookdown")
 unloadNamespace("xaringan")
