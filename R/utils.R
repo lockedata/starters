@@ -5,7 +5,7 @@
 #'
 #' @noRd
 okpackagedeps <- function() {
-  c("none", "packrat", "checkpoint")
+  c("none", "renv")
 }
 
 #' set up dependencies management
@@ -14,35 +14,16 @@ okpackagedeps <- function() {
 #'
 #' @noRd
 setup_dep_system <- function(packagedeps) {
-  if (packagedeps == "packrat") {
+  if (packagedeps == "renv") {
     desc::desc_set_dep(
-      package = "packrat",
+      package = "renv",
       type = "Imports",
       file = usethis::proj_get()
     )
-    suppressWarnings(
-      packrat::init(usethis::proj_get(), enter = FALSE)
-      )
+    renv::init(project = usethis::proj_get(),
+               restart = FALSE)
   }
 
-  if (packagedeps == "checkpoint") {
-    desc::desc_set_dep(
-      package = "checkpoint",
-      type = "Imports",
-      file = usethis::proj_get()
-    )
-
-    myinit <- checkpoint::checkpoint
-    mockery::stub(where = myinit,
-                  what = "authorizeFileSystemUse",
-                  how = invisible())
-    myinit(Sys.Date(),
-      project = usethis::proj_get(),
-      checkpointLocation = usethis::proj_get(),
-      forceProject = TRUE,
-      verbose = FALSE
-    )
-  }
 }
 
 #' Create directories

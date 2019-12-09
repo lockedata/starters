@@ -11,7 +11,7 @@ project_name <- "basicProject"
 test_that("createBasicProject() errors if name missing or not correct", {
   expect_error(createBasicProject(
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -19,7 +19,7 @@ test_that("createBasicProject() errors if name missing or not correct", {
   expect_error(createBasicProject(
     name = 1,
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -27,7 +27,7 @@ test_that("createBasicProject() errors if name missing or not correct", {
   expect_error(createBasicProject(
     name = "a",
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -35,9 +35,10 @@ test_that("createBasicProject() errors if name missing or not correct", {
 
 
 test_that("createBasicProject() creates as expected", {
+  skip("local")
   createBasicProject(project_name,
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   )
@@ -49,31 +50,13 @@ test_that("createBasicProject() creates as expected", {
   expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
   expect_true(dir.exists(file.path(tmp, project_name, "R")))
   expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
-  expect_true(dir.exists(file.path(tmp, project_name, "packrat")))
+  expect_true(dir.exists(file.path(tmp, project_name, "renv")))
   expect_true(file.exists(file.path(tmp, project_name, ".git")))
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
 })
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd(), force = TRUE)
-
-test_that("createBasicProject() creates as expected when using checkpoint", {
-  testthat::skip_on_travis()
-  createBasicProject(project_name,
-    folder = tmp,
-    packagedeps = "checkpoint",
-    external_setup = NULL,
-    git = FALSE
-  )
-
-  expect_true(file.exists(file.path(
-    tmp, project_name,
-    paste0(project_name, ".Rproj")
-  )))
-  expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
-  expect_true(dir.exists(file.path(tmp, project_name, "R")))
-  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
-})
 
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 usethis::proj_set(getwd(), force = TRUE)

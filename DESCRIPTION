@@ -47,10 +47,8 @@ Suggests:
 VignetteBuilder: knitr
 Imports: 
     devtools,
-    packrat,
     shiny,
     miniUI,
-    checkpoint,
     knitr,
     available,
     methods,
@@ -66,7 +64,7 @@ Imports:
     travis,
     pkgbuild,
     rstudioapi,
-    mockery
+    renv
 Remotes:
     r-lib/usethis,
     metrumresearchgroup/covrpage,

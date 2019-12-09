@@ -25,11 +25,11 @@ All projects get setup with Git, GitHub and Travis by default.
     coverage, vignettes, unit testing etc. out of the box
 
   - Use `create_analysis_project()` to get a project ready for a typical
-    analysis project. It includes packrat to help with reproducibility.
+    analysis project. It includes renv to help with reproducibility.
 
   - Use `create_training_project()` to get a project ready for
     delivering training that often involves handouts and presentation
-    materials. It includes packrat to help with reproducibility.
+    materials. It includes renv to help with reproducibility.
 
 All functions implement name validation based on the guidance in
 [“Writing R

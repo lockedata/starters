@@ -21,7 +21,7 @@ project_name <- "packageProject2"
 test_that("createPackageProject() errors if name missing or not correct", {
   expect_error(createPackageProject(
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -29,7 +29,7 @@ test_that("createPackageProject() errors if name missing or not correct", {
   expect_error(createPackageProject(
     name = 1,
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -37,7 +37,7 @@ test_that("createPackageProject() errors if name missing or not correct", {
   expect_error(createPackageProject(
     name = "a",
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))

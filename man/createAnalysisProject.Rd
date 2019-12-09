@@ -11,7 +11,7 @@ createAnalysisProject(
   folder = getwd(),
   initial_status = "wip",
   dirs = c("data", "analysis", "outputs"),
-  packagedeps = "packrat",
+  packagedeps = "renv",
   git = TRUE,
   external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
     FALSE, protocol = "ssh", ci_activation = "travis"),
@@ -25,7 +25,7 @@ create_analysis_project(
   folder = getwd(),
   initial_status = "wip",
   dirs = c("data", "analysis", "outputs"),
-  packagedeps = "packrat",
+  packagedeps = "renv",
   git = TRUE,
   external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
     FALSE, protocol = "ssh", ci_activation = "travis"),

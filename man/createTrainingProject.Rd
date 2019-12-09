@@ -13,7 +13,7 @@ createTrainingProject(
   dirs = c("data", "handouts", "slides"),
   handoutEngine = "rmarkdown",
   slideEngine = "rmarkdown",
-  packagedeps = "packrat",
+  packagedeps = "renv",
   git = TRUE,
   external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
     FALSE, protocol = "ssh", ci_activation = "travis"),
@@ -29,7 +29,7 @@ create_training_project(
   dirs = c("data", "handouts", "slides"),
   handoutEngine = "rmarkdown",
   slideEngine = "rmarkdown",
-  packagedeps = "packrat",
+  packagedeps = "renv",
   git = TRUE,
   external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
     FALSE, protocol = "ssh", ci_activation = "travis"),
