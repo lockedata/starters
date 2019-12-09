@@ -1,13 +1,10 @@
-context("createTrainingProject")
 tmp <- tempfile(
-  pattern = "aaa",
+  pattern = "ttt",
   tempdir(check = TRUE)
 )
 fs::dir_create(tmp)
 
 project_name <- "trainingProject2"
-library("tufte")
-library("bookdown")
 
 test_that("createTrainingProject() errors if name missing or not correct", {
   expect_error(createTrainingProject(
@@ -119,8 +116,9 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 })
 
 test_that("createTrainingProject() cleans if there was an error", {
-  m <- mockery::mock(stop("Nooo"))
-  with_mock(createBasicProject = m, {
+  mockery::stub(where = createTrainingProject,
+                what = "createdirs",
+                how = stop)
     expect_message(
       createTrainingProject(project_name,
         folder = tmp,
@@ -130,13 +128,15 @@ test_that("createTrainingProject() cleans if there was an error", {
       ),
       "Oops"
     )
-  })
+    unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
+
 })
 
 teardown({
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)
-unload("tufte")
-unload("bookdown")
+unloadNamespace("tufte")
+unloadNamespace("bookdown")
+unloadNamespace("xaringan")
+unloadNamespace("revealjs")
 })

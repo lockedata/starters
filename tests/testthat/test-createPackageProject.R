@@ -1,6 +1,5 @@
-context("createPackageProject")
 tmp <- tempfile(
-  pattern = "aaa",
+  pattern = "ppp",
   tempdir(check = TRUE)
 )
 fs::dir_create(tmp)

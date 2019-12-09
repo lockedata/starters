@@ -1,12 +1,33 @@
-context("createBasicProject")
-
 tmp <- tempfile(
-  pattern = "aaa",
+  pattern = "bbb",
   tempdir(check = TRUE)
 )
+
 fs::dir_create(tmp)
 
 project_name <- "basicProject"
+
+test_that("createBasicProject() creates as expected", {
+  #skip("horror")
+  createBasicProject(project_name,
+                     folder = tmp,
+                     packagedeps = "renv",
+                     git = TRUE,
+                     external_setup = NULL
+  )
+
+  expect_true(file.exists(file.path(
+    tmp, project_name,
+    paste0(project_name, ".Rproj")
+  )))
+  expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
+  expect_true(dir.exists(file.path(tmp, project_name, "R")))
+  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
+  expect_true(dir.exists(file.path(tmp, project_name, "renv")))
+  expect_true(file.exists(file.path(tmp, project_name, ".git")))
+  expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
+  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
+})
 
 test_that("createBasicProject() errors if name missing or not correct", {
   expect_error(createBasicProject(
@@ -31,33 +52,6 @@ test_that("createBasicProject() errors if name missing or not correct", {
     git = TRUE,
     external_setup = NULL
   ))
-})
-
-
-test_that("createBasicProject() creates as expected", {
-
-  createBasicProject(project_name,
-    folder = tmp,
-    packagedeps = "renv",
-    git = TRUE,
-    external_setup = NULL
-  )
-
-  expect_true(file.exists(file.path(
-    tmp, project_name,
-    paste0(project_name, ".Rproj")
-  )))
-  expect_true(file.exists(file.path(tmp, project_name, "DESCRIPTION")))
-  expect_true(dir.exists(file.path(tmp, project_name, "R")))
-  expect_true(file.exists(file.path(tmp, project_name, "README.Rmd")))
-  expect_true(dir.exists(file.path(tmp, project_name, "renv")))
-  expect_true(file.exists(file.path(tmp, project_name, ".git")))
-  expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
-})
-
-teardown({
-  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-  usethis::proj_set(getwd(), force = TRUE)
 })
 
 test_that("createBasicProject() cleans if there was an error", {
@@ -99,10 +93,10 @@ test_that("createBasicProject() can create a GitHub repo", {
     ))
 
   expect_true(gh_retry(quoted_expression))
+  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 })
 
 teardown({
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-fs::dir_delete(tmp)
-usethis::proj_set(getwd(), force = TRUE)
+  fs::dir_delete(tmp)
+  usethis::proj_set(getwd(), force = TRUE)
 })

@@ -50,6 +50,8 @@ test_that("createAnalysisProject() creates as expected when using defaults", {
   expect_true(file.exists(file.path(tmp, project_name, "data")))
   expect_true(file.exists(file.path(tmp, project_name, "analysis")))
   expect_true(file.exists(file.path(tmp, project_name, "outputs")))
+  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
+
 })
 
 test_that("createAnalysisProject() cleans if there was an error", {
@@ -67,7 +69,6 @@ test_that("createAnalysisProject() cleans if there was an error", {
 })
 
 teardown({
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)
 })

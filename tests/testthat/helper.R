@@ -1,0 +1,5 @@
+library("mockery")
+library("tufte")
+library("bookdown")
+library("xaringan")
+library("revealjs")
