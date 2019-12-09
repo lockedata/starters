@@ -32,10 +32,11 @@ test_that("createAnalysisProject() errors if name missing or not correct", {
 })
 
 
-test_that("createAnalysisProject() creates as expected when using defaults", {
+test_that("createAnalysisProject() creates as expected", {
   createAnalysisProject(project_name,
     folder = tmp,
-    external_setup = NULL
+    external_setup = NULL,
+    packagedeps = "none"
   )
 
   expect_true(file.exists(file.path(
