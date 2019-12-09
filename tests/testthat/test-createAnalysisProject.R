@@ -1,5 +1,3 @@
-context("createAnalysisProject")
-
 tmp <- tempfile(
   pattern = "aaa",
   tempdir(check = TRUE)
@@ -68,6 +66,8 @@ test_that("createAnalysisProject() cleans if there was an error", {
     )
 })
 
+teardown({
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)
+})

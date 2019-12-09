@@ -1,20 +1,16 @@
-language: r
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-warnings_are_errors: true
+language: R
+cache: packages
 
-matrix:
-  include:
-   - r: release
-     before_cache: Rscript -e 'remotes::install_github("r-lib/pkgdown")'
-     deploy:
-       provider: script
-       script: Rscript -e 'pkgdown::deploy_site_github()'
-       skip_cleanup: true
-   - r: devel
-   - r: oldrel
+before_cache: Rscript -e 'remotes::install_github("r-lib/pkgdown")'
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::coveralls()'
 
 notifications:
   webhooks:

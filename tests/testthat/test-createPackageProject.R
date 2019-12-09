@@ -84,6 +84,8 @@ test_that("createPackageProject() cleans if there was an error", {
 
 })
 
+teardown({
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)
+})

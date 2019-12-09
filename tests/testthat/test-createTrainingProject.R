@@ -6,6 +6,8 @@ tmp <- tempfile(
 fs::dir_create(tmp)
 
 project_name <- "trainingProject2"
+library("tufte")
+library("bookdown")
 
 test_that("createTrainingProject() errors if name missing or not correct", {
   expect_error(createTrainingProject(
@@ -131,6 +133,10 @@ test_that("createTrainingProject() cleans if there was an error", {
   })
 })
 
+teardown({
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)
+unload("tufte")
+unload("bookdown")
+})

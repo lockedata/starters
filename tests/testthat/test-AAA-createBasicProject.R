@@ -35,7 +35,7 @@ test_that("createBasicProject() errors if name missing or not correct", {
 
 
 test_that("createBasicProject() creates as expected", {
-  skip("parce que")
+
   createBasicProject(project_name,
     folder = tmp,
     packagedeps = "renv",
@@ -55,11 +55,10 @@ test_that("createBasicProject() creates as expected", {
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
 })
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd(), force = TRUE)
-
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd(), force = TRUE)
+teardown({
+  unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
+  usethis::proj_set(getwd(), force = TRUE)
+})
 
 test_that("createBasicProject() cleans if there was an error", {
   mockery::stub(where = .createBasicProject,
@@ -102,7 +101,8 @@ test_that("createBasicProject() can create a GitHub repo", {
   expect_true(gh_retry(quoted_expression))
 })
 
-
+teardown({
 unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
 fs::dir_delete(tmp)
 usethis::proj_set(getwd(), force = TRUE)
+})
