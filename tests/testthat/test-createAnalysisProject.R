@@ -56,13 +56,12 @@ test_that("createAnalysisProject() creates as expected when using defaults", {
 
 test_that("createAnalysisProject() cleans if there was an error", {
   mockery::stub(where = createAnalysisProject,
-                what = "dir.create",
+                what = "createdirs",
                 how = stop)
     expect_message(
       createAnalysisProject(project_name,
         folder = tmp,
         external_setup = NULL,
-        dirs = 1,
         packagedeps = NULL
       ),
       "Oops"
