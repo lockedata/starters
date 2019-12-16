@@ -1,5 +1,3 @@
-library("cli")
-
 # adapted from https://github.com/r-lib/usethis/blob/master/tests/testthat/helper.R
 
 temp_folder <- function(pattern) {
