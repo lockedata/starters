@@ -20,8 +20,7 @@ setup_dep_system <- function(packagedeps) {
       type = "Imports",
       file = usethis::proj_get()
     )
-    renv::init(project = usethis::proj_get(),
-               restart = FALSE)
+    renv::scaffold(project = usethis::proj_get())
   }
 
 }
