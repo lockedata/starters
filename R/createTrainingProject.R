@@ -67,6 +67,7 @@ createTrainingProject <- function(name, title = NULL,
   # Skeleton
   message("Creating skeleton")
   current_proj <- get_current_proj()
+  current_wd <- getwd()
   tryCatch({
     if(!is.null(external_setup)){
       external_setup$project_type <- "training"
@@ -145,7 +146,7 @@ createTrainingProject <- function(name, title = NULL,
   setup_dep_system(packagedeps)
 
   if (reset) {
-    reset_proj(current_proj)
+    reset_proj(current_proj, current_wd)
   }
 
   invisible(TRUE)

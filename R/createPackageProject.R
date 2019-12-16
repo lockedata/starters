@@ -64,6 +64,7 @@ createPackageProject <- function(name, title = NULL,
   # only go on if available pkg name
   if (is_available(name)) {
     current_proj <- get_current_proj()
+    current_wd <- getwd()
     tryCatch({
       # create package skeleton
       usethis::create_package(file.path(folder, name),
@@ -167,7 +168,7 @@ createPackageProject <- function(name, title = NULL,
   }
 
   if (reset) {
-    reset_proj(current_proj)
+    reset_proj(current_proj, current_wd)
   }
 
   invisible(TRUE)

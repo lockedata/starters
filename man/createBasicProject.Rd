@@ -10,7 +10,7 @@ createBasicProject(
   title = NULL,
   folder = getwd(),
   initial_status = "wip",
-  packagedeps = "checkpoint",
+  packagedeps = "renv",
   git = TRUE,
   external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
     FALSE, protocol = "ssh", ci_activation = "travis"),
@@ -23,7 +23,7 @@ create_basic_project(
   title = NULL,
   folder = getwd(),
   initial_status = "wip",
-  packagedeps = "checkpoint",
+  packagedeps = "renv",
   git = TRUE,
   external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
     FALSE, protocol = "ssh", ci_activation = "travis"),

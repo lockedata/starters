@@ -42,6 +42,7 @@ createAnalysisProject <- function(name, title = NULL,
   packagedeps <- match.arg(packagedeps, okpackagedeps())
 
   current_proj <- get_current_proj()
+  current_wd <- getwd()
   tryCatch({
     if(!is.null(external_setup)){
       external_setup$project_type <- "analysis"
@@ -73,7 +74,7 @@ createAnalysisProject <- function(name, title = NULL,
   )
 
   if (reset) {
-    reset_proj(current_proj)
+    reset_proj(current_proj, current_wd)
   }
 
   invisible(TRUE)

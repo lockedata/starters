@@ -1,7 +1,7 @@
 .createBasicProject <- function(name, title = NULL,
                                folder = getwd(),
                                initial_status = "wip",
-                               packagedeps = "checkpoint",
+                               packagedeps = "renv",
                                git = TRUE,
                                external_setup = list(
                                  git_service = "GitHub",
@@ -24,6 +24,7 @@
 
   # for later resetting the project
   current_proj <- get_current_proj()
+  current_wd <- getwd()
 
   tryCatch({
 
@@ -84,7 +85,7 @@
   }
   )
   if (reset) {
-    reset_proj(current_proj)
+    reset_proj(current_proj, current_wd)
   }
 
   invisible(TRUE)
@@ -135,7 +136,7 @@
 createBasicProject <- function(name, title = NULL,
                                folder = getwd(),
                                initial_status = "wip",
-                               packagedeps = "checkpoint",
+                               packagedeps = "renv",
                                git = TRUE,
                                external_setup = list(
                                  git_service = "GitHub",
