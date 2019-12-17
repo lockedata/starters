@@ -133,10 +133,3 @@ test_that("createTrainingProject() cleans if there was an error", {
     )
 
 })
-
-teardown({
-unloadNamespace("tufte")
-unloadNamespace("bookdown")
-unloadNamespace("xaringan")
-unloadNamespace("revealjs")
-})
