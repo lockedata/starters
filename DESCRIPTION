@@ -45,8 +45,7 @@ Suggests:
     styler,
     testthat,
     tufte,
-    xaringan,
-    cli
+    xaringan
 VignetteBuilder: knitr
 Imports: 
     devtools,
