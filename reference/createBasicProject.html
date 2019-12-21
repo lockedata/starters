@@ -13,16 +13,18 @@
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -34,8 +36,8 @@
 
 
 
-
 <link href="../lockedata.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -55,7 +57,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -69,11 +71,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/lockedata/starters">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -83,6 +84,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -94,23 +96,35 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Create a very basic project directory</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>createBasicProject</span>(<span class='no'>name</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>folder</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/getwd'>getwd</a></span>(),
-  <span class='kw'>initial_status</span> <span class='kw'>=</span> <span class='st'>"wip"</span>, <span class='kw'>packagedeps</span> <span class='kw'>=</span> <span class='st'>"checkpoint"</span>, <span class='kw'>git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>external_setup</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>git_service</span> <span class='kw'>=</span> <span class='st'>"GitHub"</span>, <span class='kw'>login</span> <span class='kw'>=</span>
-  <span class='kw pkg'>gh</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/gh/topics/gh_whoami'>gh_whoami</a></span>()$<span class='no'>login</span>, <span class='kw'>private</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ssh"</span>, <span class='kw'>ci_activation</span> <span class='kw'>=</span>
-  <span class='st'>"travis"</span>), <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>createBasicProject</span>(
+  <span class='no'>name</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>folder</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
+  <span class='kw'>initial_status</span> <span class='kw'>=</span> <span class='st'>"wip"</span>,
+  <span class='kw'>packagedeps</span> <span class='kw'>=</span> <span class='st'>"renv"</span>,
+  <span class='kw'>git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>external_setup</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>git_service</span> <span class='kw'>=</span> <span class='st'>"GitHub"</span>, <span class='kw'>login</span> <span class='kw'>=</span> <span class='kw pkg'>gh</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gh/man/gh_whoami.html'>gh_whoami</a></span>()$<span class='no'>login</span>, <span class='kw'>private</span> <span class='kw'>=</span>
+    <span class='fl'>FALSE</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ssh"</span>, <span class='kw'>ci_activation</span> <span class='kw'>=</span> <span class='st'>"travis"</span>),
+  <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 
-<span class='fu'>create_basic_project</span>(<span class='no'>name</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>folder</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/getwd'>getwd</a></span>(),
-  <span class='kw'>initial_status</span> <span class='kw'>=</span> <span class='st'>"wip"</span>, <span class='kw'>packagedeps</span> <span class='kw'>=</span> <span class='st'>"checkpoint"</span>, <span class='kw'>git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>external_setup</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>git_service</span> <span class='kw'>=</span> <span class='st'>"GitHub"</span>, <span class='kw'>login</span> <span class='kw'>=</span>
-  <span class='kw pkg'>gh</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/gh/topics/gh_whoami'>gh_whoami</a></span>()$<span class='no'>login</span>, <span class='kw'>private</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ssh"</span>, <span class='kw'>ci_activation</span> <span class='kw'>=</span>
-  <span class='st'>"travis"</span>), <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+<span class='fu'>create_basic_project</span>(
+  <span class='no'>name</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>folder</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
+  <span class='kw'>initial_status</span> <span class='kw'>=</span> <span class='st'>"wip"</span>,
+  <span class='kw'>packagedeps</span> <span class='kw'>=</span> <span class='st'>"renv"</span>,
+  <span class='kw'>git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>external_setup</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>git_service</span> <span class='kw'>=</span> <span class='st'>"GitHub"</span>, <span class='kw'>login</span> <span class='kw'>=</span> <span class='kw pkg'>gh</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gh/man/gh_whoami.html'>gh_whoami</a></span>()$<span class='no'>login</span>, <span class='kw'>private</span> <span class='kw'>=</span>
+    <span class='fl'>FALSE</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ssh"</span>, <span class='kw'>ci_activation</span> <span class='kw'>=</span> <span class='st'>"travis"</span>),
+  <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -163,17 +177,17 @@ badge to the README.</p></li>
       <td><p>Whether to open the newly created project (in another RStudio session)</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
-    <ul>
+    
+<ul>
 <li><p><code>create_basic_project</code>: aesthetic addition for continuity purposes</p></li>
 </ul>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>folder</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span>()
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>folder</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>()
 <span class='fu'>createBasicProject</span>(
   <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"doggos"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Counting cute dogs"</span>,
   <span class='kw'>folder</span> <span class='kw'>=</span> <span class='no'>folder</span>,
@@ -182,22 +196,21 @@ badge to the README.</p></li>
   <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list.files'>list.files</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>folder</span>, <span class='st'>"doggos"</span>))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlink'>unlink</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>folder</span>, <span class='st'>"doggos"</span>))
-<span class='co'># }</span></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>folder</span>, <span class='st'>"doggos"</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>folder</span>, <span class='st'>"doggos"</span>))
+}</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#functions">Functions</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -208,11 +221,14 @@ badge to the README.</p></li>
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
