@@ -1,10 +1,3 @@
-context("createPackageProject")
-tmp <- tempfile(
-  pattern = "aaa",
-  tempdir(check = TRUE)
-)
-fs::dir_create(tmp)
-
 setup({
   options(usethis.description = list(
     usethis.name = "Jane Doe",
@@ -19,9 +12,12 @@ setup({
 project_name <- "packageProject2"
 
 test_that("createPackageProject() errors if name missing or not correct", {
+
+  tmp <- temp_folder("ppp")
+
   expect_error(createPackageProject(
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -29,7 +25,7 @@ test_that("createPackageProject() errors if name missing or not correct", {
   expect_error(createPackageProject(
     name = 1,
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -37,14 +33,16 @@ test_that("createPackageProject() errors if name missing or not correct", {
   expect_error(createPackageProject(
     name = "a",
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
 })
 
-
 test_that("createPackageProject() creates as expected when using defaults", {
+
+  tmp <- temp_folder("ppp")
+
   createPackageProject(project_name,
     folder = tmp,
     external_setup = NULL
@@ -68,21 +66,18 @@ test_that("createPackageProject() creates as expected when using defaults", {
   expect_true(file.exists(file.path(tmp, project_name, ".gitignore")))
 })
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd(), force = TRUE)
-
 test_that("createPackageProject() cleans if there was an error", {
-  m <- mockery::mock(stop())
-  with_mock(dir.create = m, {
+
+  tmp <- temp_folder("ppp")
+
+  mockery::stub(where = createPackageProject,
+                what = "usethis::use_testthat",
+                how = stop)
     expect_message(
       createPackageProject("reallynotapkgnameplease",
         external_setup = NULL
       ),
       "Oops"
     )
-  })
-})
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-fs::dir_delete(tmp)
-usethis::proj_set(getwd(), force = TRUE)
+})

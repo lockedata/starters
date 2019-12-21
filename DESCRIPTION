@@ -34,6 +34,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
+    withr,
     bookdown,
     clipr,
     covr,
@@ -48,10 +49,8 @@ Suggests:
 VignetteBuilder: knitr
 Imports: 
     devtools,
-    packrat,
     shiny,
     miniUI,
-    checkpoint,
     knitr,
     available,
     methods,
@@ -66,12 +65,14 @@ Imports:
     praise,
     travis,
     pkgbuild,
-    rstudioapi
+    rstudioapi,
+    renv
 Remotes:
-    r-lib/usethis,
     metrumresearchgroup/covrpage,
-    ropenscilabs/travis
+    ropenscilabs/travis,
+    r-lib/usethis,
+    rstudio/renv
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 URL: https://github.com/lockedata/starters, https://itsalocke.com/starters/
 BugReports: https://github.com/lockedata/starters/issues

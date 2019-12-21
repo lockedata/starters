@@ -1,12 +1,11 @@
-#####################################
+######################################
 # Dependencies management
 #####################################
-
 #' supported package dependency tools
 #'
 #' @noRd
 okpackagedeps <- function() {
-  c("none", "packrat", "checkpoint")
+  c("none", "renv")
 }
 
 #' set up dependencies management
@@ -15,29 +14,15 @@ okpackagedeps <- function() {
 #'
 #' @noRd
 setup_dep_system <- function(packagedeps) {
-  if (packagedeps == "packrat") {
+  if (packagedeps == "renv") {
     desc::desc_set_dep(
-      package = "packrat",
+      package = "renv",
       type = "Imports",
       file = usethis::proj_get()
     )
-    packrat::init(usethis::proj_get(), enter = FALSE)
+    renv::scaffold(project = usethis::proj_get())
   }
 
-  if (packagedeps == "checkpoint") {
-    desc::desc_set_dep(
-      package = "checkpoint",
-      type = "Imports",
-      file = usethis::proj_get()
-    )
-
-    checkpoint::checkpoint(Sys.Date(),
-      project = usethis::proj_get(),
-      checkpointLocation = usethis::proj_get(),
-      forceProject = TRUE,
-      verbose = FALSE
-    )
-  }
 }
 
 #' Create directories
@@ -110,8 +95,9 @@ get_current_proj <- function() {
 
 #' Reset project to what it was before
 #' @noRd
-reset_proj <- function(current_proj) {
+reset_proj <- function(current_proj, current_wd) {
   usethis::proj_set(current_proj, force = TRUE)
+  setwd(current_wd)
 }
 
 #####################################

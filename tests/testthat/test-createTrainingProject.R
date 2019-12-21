@@ -1,16 +1,12 @@
-context("createTrainingProject")
-tmp <- tempfile(
-  pattern = "aaa",
-  tempdir(check = TRUE)
-)
-fs::dir_create(tmp)
-
 project_name <- "trainingProject2"
 
 test_that("createTrainingProject() errors if name missing or not correct", {
+
+  tmp <- temp_folder("ttt")
+
   expect_error(createTrainingProject(
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -18,7 +14,7 @@ test_that("createTrainingProject() errors if name missing or not correct", {
   expect_error(createTrainingProject(
     name = 1,
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -26,7 +22,7 @@ test_that("createTrainingProject() errors if name missing or not correct", {
   expect_error(createTrainingProject(
     name = "a",
     folder = tmp,
-    packagedeps = "packrat",
+    packagedeps = "renv",
     git = TRUE,
     external_setup = NULL
   ))
@@ -34,6 +30,9 @@ test_that("createTrainingProject() errors if name missing or not correct", {
 
 
 test_that("createTrainingProject() creates as expected when using defaults", {
+
+  tmp <- temp_folder("ttt")
+
   createTrainingProject(project_name,
     folder = tmp,
     packagedeps = "none",
@@ -53,10 +52,10 @@ test_that("createTrainingProject() creates as expected when using defaults", {
   expect_true(file.exists(file.path(tmp, project_name, "slides")))
 })
 
-fs::dir_delete(file.path(tmp, project_name))
-usethis::proj_set(getwd(), force = TRUE)
-
 test_that("createTrainingProject() creates as expected when using bookdown and revealjs", { # nolint
+
+  tmp <- temp_folder("ttt")
+
   createTrainingProject(project_name,
     folder = tmp,
     handoutEngine = "bookdown", slideEngine = "revealjs",
@@ -84,10 +83,10 @@ test_that("createTrainingProject() creates as expected when using bookdown and r
   )))
 })
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-usethis::proj_set(getwd(), force = TRUE)
-
 test_that("createTrainingProject() creates as expected when using tufte and xaringan", { # nolint
+
+  tmp <- temp_folder("ttt")
+
   createTrainingProject(project_name,
     folder = tmp,
     handoutEngine = "tufte", slideEngine = "xaringan",
@@ -117,8 +116,12 @@ test_that("createTrainingProject() creates as expected when using tufte and xari
 })
 
 test_that("createTrainingProject() cleans if there was an error", {
-  m <- mockery::mock(stop("Nooo"))
-  with_mock(createBasicProject = m, {
+
+  tmp <- temp_folder("ttt")
+
+  mockery::stub(where = createTrainingProject,
+                what = "createdirs",
+                how = stop)
     expect_message(
       createTrainingProject(project_name,
         folder = tmp,
@@ -128,9 +131,5 @@ test_that("createTrainingProject() cleans if there was an error", {
       ),
       "Oops"
     )
-  })
-})
 
-unlink(file.path(tmp, project_name), recursive = TRUE, force = TRUE)
-fs::dir_delete(tmp)
-usethis::proj_set(getwd(), force = TRUE)
+})

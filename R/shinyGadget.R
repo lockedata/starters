@@ -90,7 +90,7 @@ projectGadget <- function() {
   server <- function(input, output, session) {
 
     # Call custom javascript to scroll window
-    observeEvent(input$externalSetup,
+    shiny::observeEvent(input$externalSetup,
       if(input$externalSetup) session$sendCustomMessage(type = "scrollCallback", 1)
     )
 
@@ -134,7 +134,7 @@ projectGadget <- function() {
           shiny::radioButtons("packagedeps",
             label = "Dependency Management",
             choices = okpackagedeps(),
-            selected = "checkpoint"
+            selected = "renv"
           )
         ),
         "Analysis" = shiny::inputPanel(
@@ -154,7 +154,7 @@ projectGadget <- function() {
           shiny::radioButtons("packagedeps",
             label = "Dependency Management",
             choices = okpackagedeps(),
-            selected = "checkpoint"
+            selected = "renv"
           )
         ),
         "Package" = shiny::inputPanel(
@@ -192,7 +192,7 @@ projectGadget <- function() {
           shiny::radioButtons("packagedeps",
             label = "Dependency Management",
             choices = okpackagedeps(),
-            selected = "checkpoint"
+            selected = "renv"
           ),
           shiny::radioButtons("handoutE",
             label = "Handouts",

@@ -5,17 +5,31 @@
 \alias{create_basic_project}
 \title{Create a very basic project directory}
 \usage{
-createBasicProject(name, title = NULL, folder = getwd(),
-  initial_status = "wip", packagedeps = "checkpoint", git = TRUE,
-  external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+createBasicProject(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  packagedeps = "renv",
+  git = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 
-create_basic_project(name, title = NULL, folder = getwd(),
-  initial_status = "wip", packagedeps = "checkpoint", git = TRUE,
-  external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+create_basic_project(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  packagedeps = "renv",
+  git = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 }
 \arguments{
 \item{name}{Project}

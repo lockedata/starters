@@ -3,7 +3,6 @@
 \docType{package}
 \name{starters}
 \alias{starters}
-\alias{starters-package}
 \title{starters: Manage project directories for R starters}
 \description{
 Setting up R project directories can be a pain. starters provides shortcut

@@ -5,19 +5,33 @@
 \alias{create_analysis_project}
 \title{Create a project laid out for an analysis project}
 \usage{
-createAnalysisProject(name, title = NULL, folder = getwd(),
-  initial_status = "wip", dirs = c("data", "analysis", "outputs"),
-  packagedeps = "packrat", git = TRUE,
-  external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+createAnalysisProject(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  dirs = c("data", "analysis", "outputs"),
+  packagedeps = "renv",
+  git = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 
-create_analysis_project(name, title = NULL, folder = getwd(),
-  initial_status = "wip", dirs = c("data", "analysis", "outputs"),
-  packagedeps = "packrat", git = TRUE,
-  external_setup = list(git_service = "GitHub", login =
-  gh::gh_whoami()$login, private = FALSE, protocol = "ssh", ci_activation =
-  "travis"), reset = TRUE, open = FALSE)
+create_analysis_project(
+  name,
+  title = NULL,
+  folder = getwd(),
+  initial_status = "wip",
+  dirs = c("data", "analysis", "outputs"),
+  packagedeps = "renv",
+  git = TRUE,
+  external_setup = list(git_service = "GitHub", login = gh::gh_whoami()$login, private =
+    FALSE, protocol = "ssh", ci_activation = "travis"),
+  reset = TRUE,
+  open = FALSE
+)
 }
 \arguments{
 \item{name}{Project}
