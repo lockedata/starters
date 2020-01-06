@@ -129,7 +129,7 @@ createPackageProject <- function(name, title = NULL,
         usethis::use_build_ignore("_pkgdown.yml")
       }
 
-      if (!is.null(external_setup)) {
+      if (!is.null(external_setup$git_service)) {
         setup_repo(
           name = name,
           title = title,
