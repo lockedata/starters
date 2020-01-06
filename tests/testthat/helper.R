@@ -2,7 +2,7 @@
 
 temp_folder <- function(pattern) {
   tmp <- tempfile(
-    pattern = "aaa",
+    pattern = pattern,
     tempdir(check = TRUE)
   )
   fs::dir_create(tmp)
