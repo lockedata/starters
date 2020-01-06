@@ -70,6 +70,25 @@ If you want to set up a project without using the R functions,
 addin](https://rstudio.github.io/rstudioaddins/). Install the package to
 get it added to your RStudio instance.
 
+## Related work
+
+Other R tools (not necessarily active, vet them first) useful for
+starting new projects.
+
+  - [`usethis`](https://usethis.r-lib.org/) in general,
+    [`create_project()` and `create_package()` in
+    particular](https://usethis.r-lib.org/reference/create_package.html).
+    starters actually depends on usethis.
+
+  - [`skeletor`](https://github.com/nealrichardson/skeletor), An R
+    Package Skeleton Generator.
+
+  - [`mkrpkg`](https://github.com/noamross/mkrpkg), Template for making
+    R packages.
+
+  - [`mason`](https://github.com/metacran/mason), A friendly craftsman
+    that builds you great R packages.
+
 ## Contributing
 
 ### General info
