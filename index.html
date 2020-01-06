@@ -78,7 +78,7 @@
 <li><p>Use <code><a href="reference/createAnalysisProject.html">create_analysis_project()</a></code> to get a project ready for a typical analysis project. It includes <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a> to help with reproducibility.</p></li>
 <li><p>Use <code><a href="reference/createTrainingProject.html">create_training_project()</a></code> to get a project ready for delivering training that often involves handouts and presentation materials. It includes <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a> to help with reproducibility.</p></li>
 </ul>
-<p>All functions implement name validation based on the guidance in <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file">“Writing R Extensions”</a>, “[The name] should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot”.</p>
+<p>All functions implement name validation based on the guidance in <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file">“Writing R Extensions”</a>, “<br><span class="math display"><em>T</em><em>h</em><em>e</em><em>n</em><em>a</em><em>m</em><em>e</em></span><br> should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot”.</p>
 <div id="setup-for-starters" class="section level2">
 <h2 class="hasAnchor">
 <a href="#setup-for-starters" class="anchor"></a>Setup for <code>starters</code>
@@ -100,6 +100,17 @@
 <h2 class="hasAnchor">
 <a href="#rstudio-gadget" class="anchor"></a>RStudio gadget</h2>
 <p>If you want to set up a project without using the R functions, <a href="https://github.com/jonmcalder">@jonmcalder</a> made a nifty <a href="https://rstudio.github.io/rstudioaddins/">RStudio addin</a>. Install the package to get it added to your RStudio instance.</p>
+</div>
+<div id="related-work" class="section level2">
+<h2 class="hasAnchor">
+<a href="#related-work" class="anchor"></a>Related work</h2>
+<p>Other R tools (not necessarily active, vet them first) useful for starting new projects.</p>
+<ul>
+<li><p><a href="https://usethis.r-lib.org/"><code>usethis</code></a> in general, <a href="https://usethis.r-lib.org/reference/create_package.html"><code>create_project()</code> and <code>create_package()</code> in particular</a>. starters actually depends on usethis.</p></li>
+<li><p><a href="https://github.com/nealrichardson/skeletor"><code>skeletor</code></a>, An R Package Skeleton Generator.</p></li>
+<li><p><a href="https://github.com/noamross/mkrpkg"><code>mkrpkg</code></a>, Template for making R packages.</p></li>
+<li><p><a href="https://github.com/metacran/mason"><code>mason</code></a>, A friendly craftsman that builds you great R packages.</p></li>
+</ul>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
