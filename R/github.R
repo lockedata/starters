@@ -31,7 +31,7 @@ check_github_name <- function(username, name) {
     return(invisible(TRUE))
   } else {
     if (repo_exists(username, name)) {
-      stop(glue::glue("There is already a GitHub repo named {name} for the {github} account"), # nolint
+      stop(glue::glue("There is already a GitHub repo named {name} for the {username} account"), # nolint
         call. = FALSE
       )
     } else {
