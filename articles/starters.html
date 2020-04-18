@@ -15,7 +15,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--><link href="../lockedata.css" rel="stylesheet">
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,7 +47,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/lockedata/starters">
+  <a href="https://github.com/lockedata/starters/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -65,10 +65,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Get started with starters</h1>
+      <h1 data-toc-skip>Get started with starters</h1>
                         <h4 class="author">Steph Locke, Maëlle Salmon</h4>
             
-            <h4 class="date">2020-01-18</h4>
+            <h4 class="date">2020-04-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lockedata/starters/blob/master/vignettes/starters.Rmd"><code>vignettes/starters.Rmd</code></a></small>
       <div class="hidden name"><code>starters.Rmd</code></div>
@@ -89,31 +89,31 @@
 </h2>
 <p>Before using <code>starters</code> for the first time, run <code><a href="../reference/start_here.html">start_here()</a></code>.</p>
 <p>This function checks different aspects of your setup (Git installation, gitconfig, <code>GITHUB_PAT</code>, <code>DESCRIPTION</code> default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html"><code>usethis</code> setup article</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/start_here.html">start_here</a></span>()</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; Checking GitHub account can be guessed...</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; ✔ Your GitHub username is maelle.</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; Checking git is installed...</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; ✔ git seems to be installed!</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; Checking gitconfig...</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; ✔ gitconfig is already set!</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; Checking GITHUB_PAT...</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; ✔ GITHUB_PAT is already set!</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; Checking default description values...</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; ✔ DESCRIPTION defaults are already set!</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt; Checking build tools are available...</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt; ✔ Build tools are available!</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt; ✔ All set now!</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/start_here.html">start_here</a></span>()
+<span class="co">#&gt; Checking GitHub account can be guessed...</span>
+<span class="co">#&gt; ✔ Your GitHub username is maelle.</span>
+<span class="co">#&gt; Checking git is installed...</span>
+<span class="co">#&gt; ✔ git seems to be installed!</span>
+<span class="co">#&gt; Checking gitconfig...</span>
+<span class="co">#&gt; ✔ gitconfig is already set!</span>
+<span class="co">#&gt; Checking GITHUB_PAT...</span>
+<span class="co">#&gt; ✔ GITHUB_PAT is already set!</span>
+<span class="co">#&gt; Checking default description values...</span>
+<span class="co">#&gt; ✔ DESCRIPTION defaults are already set!</span>
+<span class="co">#&gt; Checking build tools are available...</span>
+<span class="co">#&gt; ✔ Build tools are available!</span>
+<span class="co">#&gt; ✔ All set now!</span></pre></body></html></div>
 <p>For each aspect, if your setup needs improvements an informative error message will be thrown so you might be able to know how to proceed.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/start_here.html">start_here</a></span>()</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Checking GitHub account can be guessed...</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; ✔ Your GitHub username is maelle.</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Checking git is installed...</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; ✔ git seems to be installed!</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; Checking gitconfig...</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; ✔ gitconfig is already set!</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; Checking GITHUB_PAT...</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; ● GITHUB_PAT not set yet. Use this code (copied to clipboard): usethis::browse_github_pat()</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  Error: Set your GITHUB_PAT then run starters::start_here() again. </span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/start_here.html">start_here</a></span>()
+<span class="co">#&gt; Checking GitHub account can be guessed...</span>
+<span class="co">#&gt; ✔ Your GitHub username is maelle.</span>
+<span class="co">#&gt; Checking git is installed...</span>
+<span class="co">#&gt; ✔ git seems to be installed!</span>
+<span class="co">#&gt; Checking gitconfig...</span>
+<span class="co">#&gt; ✔ gitconfig is already set!</span>
+<span class="co">#&gt; Checking GITHUB_PAT...</span>
+<span class="co">#&gt; ● GITHUB_PAT not set yet. Use this code (copied to clipboard): usethis::browse_github_pat()</span>
+<span class="co">#&gt;  Error: Set your GITHUB_PAT then run starters::start_here() again. </span></pre></body></html></div>
 </div>
 <div id="rstudio" class="section level2">
 <h2 class="hasAnchor">
@@ -160,12 +160,12 @@
 <li><p>build your outputs using mechanisms aimed at packages.</p></li>
 </ul>
 <p>Test <code><a href="../reference/createBasicProject.html">create_basic_project()</a></code> via running the chunk below, that’ll create a basic project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/createBasicProject.html">create_basic_project</a></span>(<span class="dt">name =</span> <span class="st">"cooldoggos"</span>,</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">                               <span class="dt">title =</span> <span class="st">"A project about dogs"</span>,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">                               <span class="dt">folder =</span> <span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">                               <span class="dt">packagedeps =</span> <span class="st">"none"</span>,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">                               <span class="dt">external_setup =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">                               <span class="dt">open =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/createBasicProject.html">create_basic_project</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"cooldoggos"</span>,
+                               <span class="kw">title</span> <span class="kw">=</span> <span class="st">"A project about dogs"</span>,
+                               <span class="kw">folder</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),
+                               <span class="kw">packagedeps</span> <span class="kw">=</span> <span class="st">"none"</span>,
+                               <span class="kw">external_setup</span> <span class="kw">=</span> <span class="kw">NULL</span>,
+                               <span class="kw">open</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p>All basic projects contain:</p>
 <pre><code>├── DESCRIPTION
 ├── R
@@ -201,13 +201,13 @@
 <li><p>Git, controlled by the Boolean <code>git</code> argument.</p></li>
 <li><p>external setup, controlled by the <code>external_setup</code> argument, either <code>NULL</code> (no external setup) or a named list. Below is its default value:</p></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">external_setup =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">                     <span class="dt">git_service =</span> <span class="st">"GitHub"</span>,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">                     <span class="dt">login =</span> gh<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()<span class="op">$</span>login,</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">                     <span class="dt">private =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">                     <span class="dt">protocol =</span> <span class="st">"ssh"</span>,</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">                     <span class="dt">ci_activation =</span> <span class="st">"travis"</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">                               )</a></code></pre></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">external_setup</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
+                     <span class="kw">git_service</span> <span class="kw">=</span> <span class="st">"GitHub"</span>,
+                     <span class="kw">login</span> <span class="kw">=</span> <span class="kw pkg">gh</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()$<span class="no">login</span>,
+                     <span class="kw">private</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+                     <span class="kw">protocol</span> <span class="kw">=</span> <span class="st">"ssh"</span>,
+                     <span class="kw">ci_activation</span> <span class="kw">=</span> <span class="st">"travis"</span>
+                               )</pre></body></html></div>
 <p>Let’s dig into the different elements of the list.</p>
 <ul>
 <li><p>“GitHub” is the only supported <code>git_service</code> (Git platform) at the moment. A GitHub repo of the same name as the project will be created. Its description will use the <code>title</code> argument of the <code><a href="../reference/createBasicProject.html">create_basic_project()</a></code> function.</p></li>
@@ -229,12 +229,12 @@
 <li><p>outputs/</p></li>
 </ul>
 <p>Test <code><a href="../reference/createAnalysisProject.html">create_analysis_project()</a></code> via running the chunk below, that’ll create an analysis project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/createAnalysisProject.html">create_analysis_project</a></span>(<span class="dt">name =</span> <span class="st">"verycooldoggos"</span>,</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">                               <span class="dt">title =</span> <span class="st">"A project about dogs"</span>,</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">                               <span class="dt">folder =</span> <span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">                               <span class="dt">packagedeps =</span> <span class="st">"none"</span>,</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">                               <span class="dt">external_setup =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">                               <span class="dt">open =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/createAnalysisProject.html">create_analysis_project</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"verycooldoggos"</span>,
+                               <span class="kw">title</span> <span class="kw">=</span> <span class="st">"A project about dogs"</span>,
+                               <span class="kw">folder</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),
+                               <span class="kw">packagedeps</span> <span class="kw">=</span> <span class="st">"none"</span>,
+                               <span class="kw">external_setup</span> <span class="kw">=</span> <span class="kw">NULL</span>,
+                               <span class="kw">open</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p>Resulting directory tree:</p>
 <pre><code>├── DESCRIPTION
 ├── R
@@ -249,16 +249,16 @@
 <a href="#travis" class="anchor"></a>Travis</h3>
 <p>By default, <code>ci_activation</code> of <code>external_setup</code> is equal to “travis”; these projects’ tic.R will knit the R Markdown files contained in analysis/ and deploy them to a gh-pages branch. Note that GitHub pages websites are public.</p>
 <p>You can opt out of Travis CI via setting the <code>ci_activation</code> element of the <code>external_setup</code> argument to <code>NULL</code>, e.g.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/createAnalysisProject.html">create_analysis_project</a></span>(<span class="dt">name =</span> <span class="st">"verycooldoggos"</span>,</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">                               <span class="dt">title =</span> <span class="st">"A project about dogs"</span>,</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">                               <span class="dt">folder =</span> <span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">                               <span class="dt">packagedeps =</span> <span class="st">"none"</span>,</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">                               <span class="dt">external_setup =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">git_service =</span> <span class="st">"GitHub"</span>, </a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">                                                    <span class="dt">login =</span> gh<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()<span class="op">$</span>login,</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">                                                    <span class="dt">private =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">                                                    <span class="dt">protocol =</span> <span class="st">"ssh"</span>, </a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">                                                    <span class="dt">ci_activation =</span> <span class="ot">NULL</span>),</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">                              <span class="dt">open =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/createAnalysisProject.html">create_analysis_project</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"verycooldoggos"</span>,
+                               <span class="kw">title</span> <span class="kw">=</span> <span class="st">"A project about dogs"</span>,
+                               <span class="kw">folder</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),
+                               <span class="kw">packagedeps</span> <span class="kw">=</span> <span class="st">"none"</span>,
+                               <span class="kw">external_setup</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">git_service</span> <span class="kw">=</span> <span class="st">"GitHub"</span>,
+                                                    <span class="kw">login</span> <span class="kw">=</span> <span class="kw pkg">gh</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()$<span class="no">login</span>,
+                                                    <span class="kw">private</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+                                                    <span class="kw">protocol</span> <span class="kw">=</span> <span class="st">"ssh"</span>,
+                                                    <span class="kw">ci_activation</span> <span class="kw">=</span> <span class="kw">NULL</span>),
+                              <span class="kw">open</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p>or even <code>external_setup = NULL</code> to opt out of GitHub as well.</p>
 </div>
 </div>
@@ -273,13 +273,13 @@
 <li><p>slides</p></li>
 </ul>
 <p>Test <code><a href="../reference/createTrainingProject.html">create_training_project()</a></code> via running the chunk below, that’ll create a training project in a temporary directory, with no dependency management package (to make it run fast), and nothing on GitHub/Travis. The code will also open the new project in a new RStudio session so you can browse files.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/createTrainingProject.html">create_training_project</a></span>(<span class="dt">name =</span> <span class="st">"verynicedoggos"</span>,</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">                               <span class="dt">title =</span> <span class="st">"A project about dogs"</span>,</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">                               <span class="dt">folder =</span> <span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">                               <span class="dt">dirs =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"data"</span>, <span class="st">"handouts"</span>, <span class="st">"slides"</span>, <span class="st">"cat-pictures"</span>),</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">                               <span class="dt">packagedeps =</span> <span class="st">"none"</span>,</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">                               <span class="dt">external_setup =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">                               <span class="dt">open =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/createTrainingProject.html">create_training_project</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"verynicedoggos"</span>,
+                               <span class="kw">title</span> <span class="kw">=</span> <span class="st">"A project about dogs"</span>,
+                               <span class="kw">folder</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),
+                               <span class="kw">dirs</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"data"</span>, <span class="st">"handouts"</span>, <span class="st">"slides"</span>, <span class="st">"cat-pictures"</span>),
+                               <span class="kw">packagedeps</span> <span class="kw">=</span> <span class="st">"none"</span>,
+                               <span class="kw">external_setup</span> <span class="kw">=</span> <span class="kw">NULL</span>,
+                               <span class="kw">open</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p>Resulting directory tree:</p>
 <pre><code>├── DESCRIPTION
 ├── R
@@ -295,16 +295,16 @@
 <a href="#travis-1" class="anchor"></a>Travis</h3>
 <p>By default, <code>ci_activation</code> of <code>external_setup</code> is equal to “travis”; these projects’ tic.R will knit the R Markdown files contained in handouts/ and slides/ and deploy them to a gh-pages branch. Note that GitHub pages websites are public.</p>
 <p>You can opt out of Travis CI via setting the <code>ci_activation</code> element of the <code>external_setup</code> argument to <code>NULL</code>, e.g.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/createTrainingProject.html">create_training_project</a></span>(<span class="dt">name =</span> <span class="st">"verycooldoggos"</span>,</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">                               <span class="dt">title =</span> <span class="st">"A project about dogs"</span>,</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">                               <span class="dt">folder =</span> <span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">                               <span class="dt">packagedeps =</span> <span class="st">"none"</span>,</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">                               <span class="dt">external_setup =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">git_service =</span> <span class="st">"GitHub"</span>, </a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">                                                    <span class="dt">login =</span> gh<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()<span class="op">$</span>login,</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">                                                    <span class="dt">private =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">                                                    <span class="dt">protocol =</span> <span class="st">"ssh"</span>, </a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">                                                    <span class="dt">ci_activation =</span> <span class="ot">NULL</span>),</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">                              <span class="dt">open =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/createTrainingProject.html">create_training_project</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"verycooldoggos"</span>,
+                               <span class="kw">title</span> <span class="kw">=</span> <span class="st">"A project about dogs"</span>,
+                               <span class="kw">folder</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),
+                               <span class="kw">packagedeps</span> <span class="kw">=</span> <span class="st">"none"</span>,
+                               <span class="kw">external_setup</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">git_service</span> <span class="kw">=</span> <span class="st">"GitHub"</span>,
+                                                    <span class="kw">login</span> <span class="kw">=</span> <span class="kw pkg">gh</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()$<span class="no">login</span>,
+                                                    <span class="kw">private</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+                                                    <span class="kw">protocol</span> <span class="kw">=</span> <span class="st">"ssh"</span>,
+                                                    <span class="kw">ci_activation</span> <span class="kw">=</span> <span class="kw">NULL</span>),
+                              <span class="kw">open</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p>or even <code>external_setup = NULL</code> to opt out of GitHub as well.</p>
 </div>
 <div id="packages-used-to-document" class="section level3">
@@ -322,11 +322,11 @@
 <a href="#package-projects" class="anchor"></a>Package projects</h1>
 <p>The function <code><a href="../reference/createPackageProject.html">create_package_project()</a></code> aims to facilitate your package development by setting up a best practices template project. All <code>starters</code> projects take advantage of R package building infrastructure, but <code><a href="../reference/createPackageProject.html">create_package_project()</a></code> is the function you’d use as an R package developer to create an R package (or a research compendium).</p>
 <p>Test <code><a href="../reference/createPackageProject.html">create_package_project()</a></code> via running the chunk below, that’ll create a package project in a temporary directory, nothing on GitHub/Travis, and will open the new project in a new RStudio session so you can browse files.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/createPackageProject.html">create_package_project</a></span>(<span class="dt">name =</span> <span class="st">"coolkittens"</span>,</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">                               <span class="dt">title =</span> <span class="st">"A project about baby cats"</span>,</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">                               <span class="dt">folder =</span> <span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">                               <span class="dt">external_setup =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">                               <span class="dt">open =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/createPackageProject.html">create_package_project</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"coolkittens"</span>,
+                               <span class="kw">title</span> <span class="kw">=</span> <span class="st">"A project about baby cats"</span>,
+                               <span class="kw">folder</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),
+                               <span class="kw">external_setup</span> <span class="kw">=</span> <span class="kw">NULL</span>,
+                               <span class="kw">open</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p>Resulting directory tree:</p>
 <pre><code>├── CODE_OF_CONDUCT.md
 ├── DESCRIPTION
@@ -367,15 +367,15 @@
 <p>External setup is controlled <a href="#git-github-travis">like for basic projects</a> with a supplementary argument <code>coverage</code>, either NULL, “codecov” or “coveralls” to control which code coverage, if any, is to be used.</p>
 <p>The tic.R of package projects will check the package, build the pkgdown website and deploy it to a gh-pages branch, compute a project health report (see <code><a href="../reference/get_project_health.html">get_project_health()</a></code>) and deploy it to a project-health branch.</p>
 <p>You can opt out of Travis CI via setting the <code>ci_activation</code> element of the <code>external_setup</code> argument to <code>NULL</code>, e.g.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/createPackageProject.html">create_package_project</a></span>(<span class="dt">name =</span> <span class="st">"verycooldoggos"</span>,</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">                               <span class="dt">title =</span> <span class="st">"A project about dogs"</span>,</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">                               <span class="dt">folder =</span> <span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">                               <span class="dt">external_setup =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">git_service =</span> <span class="st">"GitHub"</span>, </a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">                                                    <span class="dt">login =</span> gh<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()<span class="op">$</span>login,</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">                                                    <span class="dt">private =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">                                                    <span class="dt">protocol =</span> <span class="st">"ssh"</span>, </a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">                                                    <span class="dt">ci_activation =</span> <span class="ot">NULL</span>),</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">                              <span class="dt">open =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="../reference/createPackageProject.html">create_package_project</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"verycooldoggos"</span>,
+                               <span class="kw">title</span> <span class="kw">=</span> <span class="st">"A project about dogs"</span>,
+                               <span class="kw">folder</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(),
+                               <span class="kw">external_setup</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">git_service</span> <span class="kw">=</span> <span class="st">"GitHub"</span>,
+                                                    <span class="kw">login</span> <span class="kw">=</span> <span class="kw pkg">gh</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/gh/man/gh_whoami.html">gh_whoami</a></span>()$<span class="no">login</span>,
+                                                    <span class="kw">private</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+                                                    <span class="kw">protocol</span> <span class="kw">=</span> <span class="st">"ssh"</span>,
+                                                    <span class="kw">ci_activation</span> <span class="kw">=</span> <span class="kw">NULL</span>),
+                              <span class="kw">open</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p>or even <code>external_setup = NULL</code> to opt out of GitHub as well.</p>
 </div>
 </div>
@@ -383,48 +383,9 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#principles">Principles</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#setup-start_here">Setup: <code>start_here()</code></a></li>
-      <li><a href="#rstudio">RStudio</a></li>
-      <li><a href="#best-practice-git-github-continuous-integration">Best practice: Git, GitHub, Continuous Integration</a></li>
-      <li><a href="#camel-or-snake">Camel or snake?</a></li>
-      <li><a href="#your-own-adventure">Your own adventure</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#basic-projects-and-their-extensions">Basic projects and their extensions</a><ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#basic-projects">Basic projects</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#dependency-management">Dependency management</a></li>
-      <li><a href="#git-github-travis">Git, GitHub, Travis</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#analysis-projects">Analysis projects</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#travis">Travis</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#training-projects">Training projects</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#travis-1">Travis</a></li>
-      <li><a href="#packages-used-to-document">Packages used to document</a></li>
-      </ul>
-</li>
-      </ul>
-</li>
-      <li>
-<a href="#package-projects">Package projects</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#continuous-integration">Continuous integration</a></li>
-      </ul>
-</li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 

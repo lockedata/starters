@@ -15,7 +15,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--><link href="lockedata.css" rel="stylesheet">
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,7 +47,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/lockedata/starters">
+  <a href="https://github.com/lockedata/starters/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -86,13 +86,13 @@
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"lockedata/starters"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"lockedata/starters"</span>)</a></code></pre></div>
 </div>
 <div id="start_here-function" class="section level3">
 <h3 class="hasAnchor">
 <a href="#start_here-function" class="anchor"></a><code>start_here()</code> function</h3>
 <p>Run</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">starters<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/starters/man/start_here.html">start_here</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">starters</span><span class="kw ns">::</span><span class="fu"><a href="reference/start_here.html">start_here</a></span>()</pre></div>
 <p>This function checks different aspects of your setup (git installation, gitconfig, <code>GITHUB_PAT</code>, <code>DESCRIPTION</code> default values, GitHub username guessing), that will help automatic steps later on. Most of these aspects are inspired from <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html"><code>usethis</code> setup article</a>. For each aspect, if your setup needs improvements an informative error message will be thrown so you might be able to know how to proceed.</p>
 </div>
 </div>
@@ -134,7 +134,7 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/lockedata/starters">https://​github.com/​lockedata/​starters</a>
+<li>Browse source code at <br><a href="https://github.com/lockedata/starters/">https://​github.com/​lockedata/​starters/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/lockedata/starters/issues">https://​github.com/​lockedata/​starters/​issues</a>
 </li>
@@ -167,7 +167,16 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://travis-ci.org/lockedata/starters"><img src="https://travis-ci.org/lockedata/starters.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="https://coveralls.io/r/lockedata/starters?branch=master"><img src="https://img.shields.io/coveralls/lockedata/starters.svg" alt="Coverage Status"></a></li>
+<li><a href="https://join.slack.com/t/lockedata/shared_invite/enQtMjkwNjY3ODkwMzg2LTI1OGU1NTM3ZGIyZGFiNTdlODI3MzU2N2ZlNDczMjM4M2U2OWVmNDMzZTQ1ZGNlZDQ3MGM2MGVjMjI2MWIyMjI"><img src="https://img.shields.io/badge/Slack-discuss-blue.svg?logo=slack&amp;longCache=true&amp;style=flat" alt="Locke Data Slack"></a></li>
+<li><a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
