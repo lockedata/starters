@@ -100,29 +100,29 @@
     </div>
 
     <pre class="usage"><span class='fu'>createBasicProject</span>(
-  <span class='no'>name</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>folder</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-  <span class='kw'>initial_status</span> <span class='kw'>=</span> <span class='st'>"wip"</span>,
-  <span class='kw'>packagedeps</span> <span class='kw'>=</span> <span class='st'>"renv"</span>,
-  <span class='kw'>git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>external_setup</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>git_service</span> <span class='kw'>=</span> <span class='st'>"GitHub"</span>, <span class='kw'>login</span> <span class='kw'>=</span> <span class='kw pkg'>gh</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gh/man/gh_whoami.html'>gh_whoami</a></span>()$<span class='no'>login</span>, <span class='kw'>private</span> <span class='kw'>=</span>
-    <span class='fl'>FALSE</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ssh"</span>, <span class='kw'>ci_activation</span> <span class='kw'>=</span> <span class='st'>"travis"</span>),
-  <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>name</span>,
+  title = <span class='kw'>NULL</span>,
+  folder = <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
+  initial_status = <span class='st'>"wip"</span>,
+  packagedeps = <span class='st'>"renv"</span>,
+  git = <span class='fl'>TRUE</span>,
+  external_setup = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(git_service = <span class='st'>"GitHub"</span>, login = <span class='kw'>gh</span>::<span class='fu'><a href='https://rdrr.io/pkg/gh/man/gh_whoami.html'>gh_whoami</a></span>()<span class='op'>$</span><span class='kw'>login</span>, private =
+    <span class='fl'>FALSE</span>, protocol = <span class='st'>"ssh"</span>, ci_activation = <span class='st'>"travis"</span>),
+  reset = <span class='fl'>TRUE</span>,
+  open = <span class='fl'>FALSE</span>
 )
 
 <span class='fu'>create_basic_project</span>(
-  <span class='no'>name</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>folder</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-  <span class='kw'>initial_status</span> <span class='kw'>=</span> <span class='st'>"wip"</span>,
-  <span class='kw'>packagedeps</span> <span class='kw'>=</span> <span class='st'>"renv"</span>,
-  <span class='kw'>git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>external_setup</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>git_service</span> <span class='kw'>=</span> <span class='st'>"GitHub"</span>, <span class='kw'>login</span> <span class='kw'>=</span> <span class='kw pkg'>gh</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gh/man/gh_whoami.html'>gh_whoami</a></span>()$<span class='no'>login</span>, <span class='kw'>private</span> <span class='kw'>=</span>
-    <span class='fl'>FALSE</span>, <span class='kw'>protocol</span> <span class='kw'>=</span> <span class='st'>"ssh"</span>, <span class='kw'>ci_activation</span> <span class='kw'>=</span> <span class='st'>"travis"</span>),
-  <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>name</span>,
+  title = <span class='kw'>NULL</span>,
+  folder = <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
+  initial_status = <span class='st'>"wip"</span>,
+  packagedeps = <span class='st'>"renv"</span>,
+  git = <span class='fl'>TRUE</span>,
+  external_setup = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(git_service = <span class='st'>"GitHub"</span>, login = <span class='kw'>gh</span>::<span class='fu'><a href='https://rdrr.io/pkg/gh/man/gh_whoami.html'>gh_whoami</a></span>()<span class='op'>$</span><span class='kw'>login</span>, private =
+    <span class='fl'>FALSE</span>, protocol = <span class='st'>"ssh"</span>, ci_activation = <span class='st'>"travis"</span>),
+  reset = <span class='fl'>TRUE</span>,
+  open = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -186,18 +186,18 @@ badge to the README.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>folder</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>()
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>folder</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>()
 <span class='fu'>createBasicProject</span>(
-  <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"doggos"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Counting cute dogs"</span>,
-  <span class='kw'>folder</span> <span class='kw'>=</span> <span class='no'>folder</span>,
-  <span class='kw'>packagedeps</span> <span class='kw'>=</span> <span class='st'>"none"</span>,
-  <span class='kw'>git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>external_setup</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>reset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>open</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  name = <span class='st'>"doggos"</span>, title = <span class='st'>"Counting cute dogs"</span>,
+  folder = <span class='kw'>folder</span>,
+  packagedeps = <span class='st'>"none"</span>,
+  git = <span class='fl'>TRUE</span>, external_setup = <span class='kw'>NULL</span>,
+  reset = <span class='fl'>TRUE</span>,
+  open = <span class='fl'>FALSE</span>
 )
-<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>folder</span>, <span class='st'>"doggos"</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>folder</span>, <span class='st'>"doggos"</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>folder</span>, <span class='st'>"doggos"</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='kw'>folder</span>, <span class='st'>"doggos"</span>))
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
